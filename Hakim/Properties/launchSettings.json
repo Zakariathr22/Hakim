@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Hakim (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Hakim (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
