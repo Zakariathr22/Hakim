@@ -29,6 +29,11 @@
     <None Remove="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <None Remove="Assets\StoreLogo.png" />
     <None Remove="Hospital Sign.ico" />
+    <None Remove="View\Clients\ClientsPage.xaml" />
+    <None Remove="View\Folders\FoldersPage.xaml" />
+    <None Remove="View\Home\HomePage.xaml" />
+    <None Remove="View\Schedule\SchedulePage.xaml" />
+    <None Remove="View\Settings\SettingsPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,7 +64,6 @@
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
-    <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="Assets\LockScreenLogo.scale-200.png">
@@ -80,6 +84,31 @@
     <Content Update="Assets\StoreLogo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Settings\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Schedule\SchedulePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Home\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Folders\FoldersPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Clients\ClientsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!-- 

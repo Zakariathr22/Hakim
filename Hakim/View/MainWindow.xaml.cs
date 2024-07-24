@@ -99,7 +99,15 @@ namespace Hakim
 
         private void navigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-
+            var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+            if (selectedItem != null)
+            {
+                string selectedItemTag = ((string)selectedItem.Tag);
+                //sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
+                string pageName = $"Hakim.View.{selectedItemTag}.{selectedItemTag}Page";
+                Type pageType = Type.GetType(pageName);
+                contentFrame.Navigate(pageType);
+            }
         }
     }
 }
