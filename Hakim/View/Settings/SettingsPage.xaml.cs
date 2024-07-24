@@ -47,5 +47,15 @@ namespace Hakim.View.Settings
         {
 
         }
+
+        private void lastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void firstNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

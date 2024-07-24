@@ -22,10 +22,11 @@
             <TextBlock Margin="0 0 0 8" Style="{ThemeResource SubtitleTextBlockStyle}">
             L'utilisateur
             </TextBlock>
-            <controls:SettingsExpander x:Name="userSettingExpander"
+            <controls:SettingsCard x:Name="userSettingExpander"
                                        Header="Dr. BENCHENOUF Mohamed Kamel"
                                        HeaderIcon="{ui:FontIcon Glyph=&#xE748;}">
-            </controls:SettingsExpander>
+                <HyperlinkButton>Modifier</HyperlinkButton>
+            </controls:SettingsCard>
             <TextBlock Margin="0 0 0 8" Style="{ThemeResource SubtitleTextBlockStyle}">
             Apparence
             </TextBlock>
