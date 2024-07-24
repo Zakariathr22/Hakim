@@ -14,6 +14,7 @@
 	<PackageIcon>Hospital Sign.png</PackageIcon>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="appsettings.json" />
     <None Remove="Assets\LockScreenLogo.scale-200.png" />
     <None Remove="Assets\SplashScreen.scale-200.png" />
     <None Remove="Assets\Square150x150Logo.scale-200.png" />
@@ -23,12 +24,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="appsettings.json" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Hospital Sign.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
     <Manifest Include="$(ApplicationManifest)" />
