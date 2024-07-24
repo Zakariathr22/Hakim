@@ -64,9 +64,6 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Update="Assets\LockScreenLogo.scale-200.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
