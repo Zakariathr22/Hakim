@@ -27,5 +27,25 @@ namespace Hakim.View.Settings
         {
             this.InitializeComponent();
         }
+
+        private void themeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void backDropComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void landingPageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ShortCutToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

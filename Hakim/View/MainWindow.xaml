@@ -29,7 +29,7 @@
                         IsBackEnabled="True"
                         SelectionChanged="navigationView_SelectionChanged"
                         IsSettingsVisible="False"
-                        PaneTitle="Dr. LASTNAME First Name">
+                        PaneTitle="Dr. BENCHENOUF Mohamed Kamel">
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox PlaceholderText="Recherch" QueryIcon="Find" AutomationProperties.Name="Search"/>
             </NavigationView.AutoSuggestBox>
