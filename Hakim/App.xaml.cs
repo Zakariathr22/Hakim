@@ -8,13 +8,16 @@ using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Shapes;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -34,6 +37,18 @@ namespace Hakim
         public App()
         {
             this.InitializeComponent();
+
+            // Get the desired culture (e.g., Arabic)
+            CultureInfo newCulture = CultureInfo.GetCultureInfo("fr-FR");
+
+            // Set the CurrentCulture of the current thread
+            Thread.CurrentThread.CurrentCulture = newCulture;
+
+            // Set the CurrentUICulture of the current thread (optional)
+            // This affects UI elements like date pickers and number formats
+            Thread.CurrentThread.CurrentUICulture = newCulture;
+
+            ApplicationLanguages.PrimaryLanguageOverride = "fr-FR";
         }
 
         /// <summary>
