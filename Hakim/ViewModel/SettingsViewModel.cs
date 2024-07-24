@@ -20,7 +20,7 @@ namespace Hakim.ViewModel
 
         public SettingsViewModel()
         {
-            user = new User();
+            user = App.user;
             user.Rank = ConfigurationService.GetAppSetting("Rank");
             user.LastName = ConfigurationService.GetAppSetting("LastName");
             user.FirstName = ConfigurationService.GetAppSetting("FirstName");

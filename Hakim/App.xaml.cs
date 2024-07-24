@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Hakim.Model;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -34,6 +35,7 @@ namespace Hakim
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public static MainWindow mainWindow { get; set; }
+        public static User user = new User();
         public App()
         {
             this.InitializeComponent();

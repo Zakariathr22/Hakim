@@ -16,6 +16,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using WinRT.Interop;
 using Windows.UI;
+using Hakim.ViewModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -31,9 +32,12 @@ namespace Hakim
         private OverlappedPresenter overlappedPresenter;
         private AppWindowTitleBar titleBar;
         private bool isActivatedOnce = false;
+        private MainViewModel viewModel = new MainViewModel();
         public MainWindow()
         {
             this.InitializeComponent();
+
+            mainPanel.DataContext = viewModel;
 
             appWindow = GetAppWindowForCurrentWindow();
             overlappedPresenter = GetAppWindowOverlappedPresenter(appWindow);
@@ -42,15 +46,19 @@ namespace Hakim
 
             titleBar.ButtonForegroundColor = Color.FromArgb(0, 128, 128, 128);
 
-            //appWindow.Resize(new Windows.Graphics.SizeInt32(1130, 480));
             appWindow.Title = "Hakim";
             appWindow.SetIcon("Assets/Icons/Hakim.ico");
             //overlappedPresenter.Maximize();
-            //navigationView.Height = "auto";
 
             titleBar.ExtendsContentIntoTitleBar = true;
 
             CenterWindow();
+
+            viewModel.SetAppTheme(this);
+            viewModel.SetAppBackDrop(this);
+            navigationView.SelectedItem = navigationView.MenuItems.OfType<NavigationViewItem>().ElementAt(viewModel.LandingPage);
+
+            //mainPanel.Loaded += MainPanel_Loaded;
         }
 
         private AppWindow GetAppWindowForCurrentWindow()
