@@ -26,7 +26,6 @@
   <ItemGroup>
     <Content Include="appsettings.json" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="Hospital Sign.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,12 +51,6 @@
     <Folder Include="Service\" />
     <Folder Include="ViewModel\" />
     <Folder Include="View\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\Desktop\Hospital Sign.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Update="Assets\LockScreenLogo.scale-200.png">
