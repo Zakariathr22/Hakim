@@ -8,7 +8,67 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Window.SystemBackdrop>
+        <MicaBackdrop/>
+    </Window.SystemBackdrop>
 
-    </StackPanel>
+    <Grid x:Name="mainPanel" FlowDirection="LeftToRight" x:FieldModifier="public">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border x:Name="AppTitleBar" Grid.Row="0" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Image Source="/Assets/Logo.png" Height="24" Width="24" Margin="8 4 4 4" VerticalAlignment="Center"/>
+                <TextBlock x:Name="AppTitle" Text="Hakim" Margin="4" VerticalAlignment="Center" />
+            </StackPanel>
+        </Border>
+
+        <NavigationView Grid.Row="1" x:Name="navigationView" Width="auto"                            
+                        PaneDisplayMode="Auto"
+                        IsBackEnabled="True"
+                        SelectionChanged="navigationView_SelectionChanged"
+                        IsSettingsVisible="False"
+                        PaneTitle="Dr. LASTNAME First Name">
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox PlaceholderText="Recherch" QueryIcon="Find" AutomationProperties.Name="Search"/>
+            </NavigationView.AutoSuggestBox>
+
+            <NavigationView.MenuItems>
+                <NavigationViewItem Tag="Home" ToolTipService.ToolTip="Principal">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Width="24" Height="24" Source="/Assets/Icons/Home.png"></Image>
+                        <TextBlock Margin="8 0" >Principal</TextBlock>
+                    </StackPanel>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="Clients" ToolTipService.ToolTip="Patients">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Width="24" Height="24" Source="/Assets/Icons/Clients.png"></Image>
+                        <TextBlock Margin="8 0" >Patients</TextBlock>
+                    </StackPanel>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="Folders" ToolTipService.ToolTip="Dossiers">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Width="24" Height="24" Source="/Assets/Icons/Folders.png"></Image>
+                        <TextBlock Margin="8 0" >Dossiers</TextBlock>
+                    </StackPanel>
+                </NavigationViewItem>
+                <NavigationViewItem Tag="Schedule" ToolTipService.ToolTip="Rendez-vous">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Width="24" Height="24" Source="/Assets/Icons/Schedule.png"></Image>
+                        <TextBlock Margin="8 0" >Rendez-vous</TextBlock>
+                    </StackPanel>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Tag="Settings" ToolTipService.ToolTip="Paramètres">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Width="24" Height="24" Source="/Assets/Icons/Settings.png"></Image>
+                        <TextBlock Margin="8 0"  Visibility="Visible">Paramètres</TextBlock>
+                    </StackPanel>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
+        </NavigationView>
+
+    </Grid>
 </Window>

@@ -14,11 +14,15 @@
 	<PackageIcon>Hospital Sign.png</PackageIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Content Remove="Assets\Icons\Hakim.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="Assets\Icons\Clients.png" />
+    <None Remove="Assets\Icons\Folders.png" />
+    <None Remove="Assets\Icons\Hakim.ico" />
+    <None Remove="Assets\Icons\Home.png" />
+    <None Remove="Assets\Icons\Schedule.png" />
+    <None Remove="Assets\Icons\Settings.png" />
     <None Remove="Assets\LockScreenLogo.scale-200.png" />
+    <None Remove="Assets\Logo.png" />
     <None Remove="Assets\SplashScreen.scale-200.png" />
     <None Remove="Assets\Square150x150Logo.scale-200.png" />
     <None Remove="Assets\Square44x44Logo.scale-200.png" />

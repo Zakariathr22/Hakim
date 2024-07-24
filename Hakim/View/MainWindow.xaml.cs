@@ -96,5 +96,10 @@ namespace Hakim
                 }
             }
         }
+
+        private void navigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+
+        }
     }
 }
