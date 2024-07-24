@@ -30,6 +30,8 @@
     <None Remove="Assets\StoreLogo.png" />
     <None Remove="Hospital Sign.ico" />
     <None Remove="View\Clients\ClientsPage.xaml" />
+    <None Remove="View\Controls\EditNamePage.xaml" />
+    <None Remove="View\Controls\TitleControl.xaml" />
     <None Remove="View\Folders\FoldersPage.xaml" />
     <None Remove="View\Home\HomePage.xaml" />
     <None Remove="View\Schedule\SchedulePage.xaml" />
@@ -84,6 +86,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\Controls\EditNamePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="View\Settings\SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,6 +112,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Clients\ClientsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Controls\TitleControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

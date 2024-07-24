@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Hakim.View.Controls.EditNamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hakim.View.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel>
+        <ComboBox x:Name="rankComboBox" Width="360" Header="Grade" Margin="0 0 0 8" SelectionChanged="rankComboBox_SelectionChanged">
+            <ComboBoxItem>Dr.</ComboBoxItem>
+            <ComboBoxItem>Prof.</ComboBoxItem>
+        </ComboBox>
+        <TextBox x:Name="lastNameTextBox" Width="360" Header="Nom" Margin="0 0 0 8" Text="{Binding User.LastName, Mode=TwoWay}"/>
+        <TextBox x:Name="firstNameTextBox" Width="360" Header="Prénom" Text="{Binding User.FirstName, Mode=TwoWay}"/>
+    </StackPanel>
+</Page>

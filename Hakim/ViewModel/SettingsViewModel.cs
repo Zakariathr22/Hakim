@@ -59,5 +59,23 @@ namespace Hakim.ViewModel
         {
             ConfigurationService.SetAppSetting("LandingPage", LandingPage);
         }
+
+        [RelayCommand]
+        void RankChanged()
+        {
+            ConfigurationService.SetAppSetting("Rank", User.Rank);
+        }
+
+        [RelayCommand]
+        void LastNameChanged()
+        {
+            ConfigurationService.SetAppSetting("LastName", User.LastName);
+        }
+
+        [RelayCommand]
+        void FirstNameChanged()
+        {
+            ConfigurationService.SetAppSetting("FirstName", User.FirstName);
+        }
     }
 }

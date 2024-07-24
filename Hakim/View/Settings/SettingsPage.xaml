@@ -24,9 +24,9 @@
             L'utilisateur
             </TextBlock>
             <controls:SettingsCard x:Name="userSettingsCard"
-                                       Header="Dr. BENCHENOUF Mohamed Kamel"
+                                       Header="{Binding User.profitionalName, Mode=TwoWay}"
                                        HeaderIcon="{ui:FontIcon Glyph=&#xE748;}">
-                <HyperlinkButton>Modifier</HyperlinkButton>
+                <HyperlinkButton Click="HyperlinkButton_Click">Modifier</HyperlinkButton>
             </controls:SettingsCard>
             <TextBlock Margin="0 8" Style="{ThemeResource SubtitleTextBlockStyle}">
             Apparence
@@ -90,7 +90,7 @@
                                 Header="Hakim 1.0.0"
                                 HeaderIcon="{ui:FontIcon Glyph=&#xE946;}"
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-                <HyperlinkButton>GitHub</HyperlinkButton>
+                <HyperlinkButton NavigateUri="https://github.com/Zakariathr22/Hakim">GitHub</HyperlinkButton>
             </controls:SettingsCard>
             <controls:SettingsCard x:Name="aboutIcons"
                                Margin="0 0 0 4"
@@ -98,7 +98,7 @@
                                 Header="Icônes"
                                 HeaderIcon="{ui:FontIcon Glyph=&#xED58;}"
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-                <HyperlinkButton>Link</HyperlinkButton>
+                <HyperlinkButton NavigateUri="https://icons8.com/app/windows-pichon">Link</HyperlinkButton>
             </controls:SettingsCard>
         </StackPanel>
     </ScrollView>

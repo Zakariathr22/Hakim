@@ -1,3 +1,5 @@
+using Hakim.Service;
+using Hakim.View.Controls;
 using Hakim.ViewModel;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
@@ -68,6 +70,31 @@ namespace Hakim.View.Settings
         private void ShortCutToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowEditNameDialog();
+        }
+
+        private async void ShowEditNameDialog()
+        {
+            ContentDialog dialog = new ContentDialog();
+
+            // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.Title = new TitleControl("Modifier grade, nom ou prénom");
+            dialog.SecondaryButtonText = "Fermer";
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            dialog.Content = new EditNamePage(dialog, viewModel);
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Secondary) 
+            {
+                viewModel.LastNameChangedCommand.Execute(this);
+                viewModel.FirstNameChangedCommand.Execute(this);
+            }
         }
     }
 }
