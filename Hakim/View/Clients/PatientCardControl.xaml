@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Hakim.View.Clients.PatientCardControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hakim.View.Clients"
+    xmlns:controls ="using:Hakim.View.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout" >
+            <AppBarButton Label="Détails" Icon="List" ToolTipService.ToolTip="Détails"/>
+            <AppBarButton Label="Modifer" Icon="Edit" ToolTipService.ToolTip="Modifer"/>
+            <CommandBarFlyout.SecondaryCommands>
+                <AppBarButton Label="Supprimer" Icon="Delete" ToolTipService.ToolTip="Supprimer">
+                    <AppBarButton.Flyout>
+                        <Flyout>
+                            <StackPanel Width="300">
+                                <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="Êtes-vous sûr de vouloir supprimer ce patient, car cela supprimera toutes ses informations, y compris ses fichiers ?" TextWrapping="Wrap" Margin="0,0,0,12" />
+                                <Button Content="Oui, Supprimer" />
+                            </StackPanel>
+                        </Flyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+            </CommandBarFlyout.SecondaryCommands>
+        </CommandBarFlyout>
+    </UserControl.Resources>
+    
+    <controls:CustomButton Padding="0" BorderThickness="0" Margin="0" ContextRequested="CustomButton_ContextRequested">
+        <Grid BorderThickness="1"
+              BorderBrush="{ThemeResource ControlElevationBorderBrush}"
+              CornerRadius="4"
+              Background="{ThemeResource ControlFillColorDefaultBrush}"
+              Padding="8 16 8 16"
+              VerticalAlignment="Stretch"
+              MinWidth="300"
+              MaxWidth="330">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" VerticalAlignment="Top">
+                <PersonPicture Width="48"></PersonPicture>
+            </Border>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="NOM Prénom (l'age)" Margin="4 0 0 8" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                <TextBlock Grid.Row="1" Text="Tel1: 00000000 (propriétaire)" Margin="4 0 0 4" Style="{ThemeResource BodyTextBlockStyle}"/>
+                <TextBlock Grid.Row="2" Text="Tel2: 00000000 (propriétaire)" Margin="4 0 0 4" Style="{ThemeResource BodyTextBlockStyle}"/>
+            </Grid>
+        </Grid>
+    </controls:CustomButton>
+</UserControl>

@@ -25,8 +25,16 @@
                 </Button>
             </NavigationViewItem>
         </NavigationView.FooterMenuItems>
-        <StackPanel>
-            <TextBlock>Patients</TextBlock>
-        </StackPanel>
+        <ItemsRepeater x:Name="itemsRepeater" Margin="24 16" HorizontalAlignment="Stretch">
+            <ItemsRepeater.ItemTemplate>
+                <DataTemplate>
+                    <local:PatientCardControl/>
+                </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+            <ItemsRepeater.Layout>
+                <UniformGridLayout MinRowSpacing="8" MinColumnSpacing="8"/>
+            </ItemsRepeater.Layout>
+        </ItemsRepeater>
+        
     </NavigationView>
 </Page>

@@ -7,35 +7,35 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using static System.Net.Mime.MediaTypeNames;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Hakim.View.Clients
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class ClientsPage : Page
+    public sealed partial class PatientCardControl : UserControl
     {
-        public ClientsPage()
+        public PatientCardControl()
         {
             this.InitializeComponent();
+        }
 
-            ObservableCollection<string> clients = new ObservableCollection<string>();
-            clients.Add("1");
-            clients.Add("2");
-            clients.Add("3");
-            clients.Add("3");
-            clients.Add("3");
+        private void ShowMenu()
+        {
+            FlyoutShowOptions myOption = new FlyoutShowOptions();
+            myOption.ShowMode = FlyoutShowMode.TransientWithDismissOnPointerMoveAway;
+            CommandBarFlyout.ShowAt(this, myOption);
+        }
 
-            itemsRepeater.ItemsSource = clients;
+        private void CustomButton_ContextRequested(UIElement sender, ContextRequestedEventArgs args)
+        {
+            ShowMenu();
         }
     }
 }

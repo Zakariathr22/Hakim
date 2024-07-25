@@ -31,6 +31,7 @@
     <None Remove="DATA.sqlite" />
     <None Remove="Hospital Sign.ico" />
     <None Remove="View\Clients\ClientsPage.xaml" />
+    <None Remove="View\Clients\PatientCardControl.xaml" />
     <None Remove="View\Controls\EditNamePage.xaml" />
     <None Remove="View\Controls\TitleControl.xaml" />
     <None Remove="View\Folders\FoldersPage.xaml" />
@@ -89,6 +90,11 @@
     <Content Update="Assets\StoreLogo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Clients\PatientCardControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Controls\EditNamePage.xaml">
