@@ -20,7 +20,7 @@ namespace Hakim.Service
         private static IConfigurationRoot configuration;
 
         // This is a method that takes a file path and a number of levels to go up in the directory structure.
-        private static string GetParentDirectoryPath(string path, int levels)
+        public static string GetParentDirectoryPath(string path, int levels)
         {
             // Create a DirectoryInfo object from the provided path. This object provides methods for creating, moving, and enumerating through directories and subdirectories.
             DirectoryInfo directoryInfo = new DirectoryInfo(path);

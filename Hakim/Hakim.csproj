@@ -28,7 +28,7 @@
     <None Remove="Assets\Square44x44Logo.scale-200.png" />
     <None Remove="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <None Remove="Assets\StoreLogo.png" />
-    <None Remove="DATA.db" />
+    <None Remove="DATA.sqlite" />
     <None Remove="Hospital Sign.ico" />
     <None Remove="View\Clients\ClientsPage.xaml" />
     <None Remove="View\Controls\EditNamePage.xaml" />
@@ -42,7 +42,9 @@
   <ItemGroup>
     <Content Include="appsettings.json" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="DATA.db" />
+    <Content Include="DATA.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Hospital Sign.ico" />
   </ItemGroup>
 
@@ -56,6 +58,7 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 

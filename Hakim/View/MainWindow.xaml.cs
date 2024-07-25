@@ -17,6 +17,7 @@ using Windows.Foundation.Collections;
 using WinRT.Interop;
 using Windows.UI;
 using Hakim.ViewModel;
+using Hakim.Service;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -58,7 +59,12 @@ namespace Hakim
             viewModel.SetAppBackDrop(this);
             navigationView.SelectedItem = navigationView.MenuItems.OfType<NavigationViewItem>().ElementAt(viewModel.LandingPage);
 
-            //mainPanel.Loaded += MainPanel_Loaded;
+            Closed += MainWindow_Closed;
+        }
+
+        private void MainWindow_Closed(object sender, WindowEventArgs args)
+        {
+            DataAccessService.CloseConnection();
         }
 
         private AppWindow GetAppWindowForCurrentWindow()

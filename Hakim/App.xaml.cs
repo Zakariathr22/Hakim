@@ -1,4 +1,5 @@
 ﻿using Hakim.Model;
+using Hakim.Service;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -51,6 +52,11 @@ namespace Hakim
             Thread.CurrentThread.CurrentUICulture = newCulture;
 
             ApplicationLanguages.PrimaryLanguageOverride = "fr-FR";
+
+            if (DataAccessService.Connection == null || DataAccessService.Connection.State != System.Data.ConnectionState.Open)
+            {
+                DataAccessService.SetConnection();
+            }
         }
 
         /// <summary>
@@ -63,6 +69,5 @@ namespace Hakim
             mainWindow.Activate();
         }
 
-        //private Window m_window;
     }
 }
