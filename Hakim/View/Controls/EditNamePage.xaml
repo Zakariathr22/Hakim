@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <StackPanel>
-        <ComboBox x:Name="rankComboBox" Width="360" Header="Grade" Margin="0 0 0 8" SelectionChanged="rankComboBox_SelectionChanged">
+        <ComboBox x:Name="rankComboBox" Width="360" Header="Titre" Margin="0 0 0 8" SelectionChanged="rankComboBox_SelectionChanged">
             <ComboBoxItem>Dr.</ComboBoxItem>
             <ComboBoxItem>Prof.</ComboBoxItem>
         </ComboBox>

@@ -8,7 +8,25 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock>Clients Page</TextBlock>
-    </Grid>
+    <NavigationView 
+        PaneDisplayMode="Top"
+        IsBackButtonVisible="Collapsed"
+        IsSettingsVisible="False">
+        <NavigationView.AutoSuggestBox>
+            <AutoSuggestBox PlaceholderText="Recherch" QueryIcon="Find" AutomationProperties.Name="Search"/>
+        </NavigationView.AutoSuggestBox>
+        <NavigationView.FooterMenuItems>
+            <NavigationViewItem IsSelected="True">
+                <Button Margin="0" Background="Transparent" BorderBrush="Transparent">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <FontIcon Glyph="&#xE8FA;" />
+                        <TextBlock Margin="8 0"  Visibility="Visible">Ajouter un patient</TextBlock>
+                    </StackPanel>
+                </Button>
+            </NavigationViewItem>
+        </NavigationView.FooterMenuItems>
+        <StackPanel>
+            <TextBlock>Patients</TextBlock>
+        </StackPanel>
+    </NavigationView>
 </Page>

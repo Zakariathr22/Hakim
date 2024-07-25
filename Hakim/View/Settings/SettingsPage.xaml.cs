@@ -84,7 +84,7 @@ namespace Hakim.View.Settings
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-            dialog.Title = new TitleControl("Modifier grade, nom ou prénom");
+            dialog.Title = new TitleControl("Modifier titre, nom ou prénom");
             dialog.SecondaryButtonText = "Fermer";
             dialog.DefaultButton = ContentDialogButton.Primary;
             dialog.Content = new EditNamePage(dialog, viewModel);
