@@ -28,6 +28,7 @@
     <None Remove="Assets\Square44x44Logo.scale-200.png" />
     <None Remove="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <None Remove="Assets\StoreLogo.png" />
+    <None Remove="DATA.db" />
     <None Remove="Hospital Sign.ico" />
     <None Remove="View\Clients\ClientsPage.xaml" />
     <None Remove="View\Controls\EditNamePage.xaml" />
@@ -41,6 +42,7 @@
   <ItemGroup>
     <Content Include="appsettings.json" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="DATA.db" />
     <Content Include="Hospital Sign.ico" />
   </ItemGroup>
 
