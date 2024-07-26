@@ -33,6 +33,7 @@ namespace Hakim.View.Clients.AddPatient
 
         private void MedicalInfoPage_Loaded(object sender, RoutedEventArgs e)
         {
+            this.DataContext = p.viewModel;
             this.p.dialog.SecondaryButtonText = "Sauvegarder";
             this.p.dialog.PrimaryButtonText = null;
         }

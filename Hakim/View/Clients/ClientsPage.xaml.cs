@@ -63,20 +63,6 @@ namespace Hakim.View.Clients
             viewModel.Patients.Add(patient);
             viewModel.Patients.Add(patient2);
             viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
 
             //var sortedPatients = new ObservableCollection<Patient>(viewModel.Patients.OrderBy(p => p.FirstName));
             //viewModel.Patients = sortedPatients;
@@ -99,12 +85,13 @@ namespace Hakim.View.Clients
             dialog.Title = new TitleControl("Ajouter un patient", addPatientIcon);
             dialog.PrimaryButtonText = "Suivant";
             dialog.CloseButtonText = "Annuler";
+            viewModel.NewPatient = new Patient();
             dialog.Content = new AddPatientPage(dialog,viewModel);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
-            if (result == ContentDialogResult.Primary)
+            if (result == ContentDialogResult.Secondary)
             {
-                //clients.RemoveAt(1);
+                viewModel.AddPatient(viewModel.NewPatient);
             }
         }
     }

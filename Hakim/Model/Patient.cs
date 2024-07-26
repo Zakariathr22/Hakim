@@ -43,8 +43,8 @@ namespace Hakim.Model
                 return $"{lastName.ToUpper()} {firstName}";
             }
         }
-        private DateTime dateOfBirth { get; set; }
-        public DateTime DateOfBirth
+        private DateTimeOffset dateOfBirth { get; set; }
+        public DateTimeOffset DateOfBirth
         {
             get => dateOfBirth;
             set
@@ -133,7 +133,7 @@ namespace Hakim.Model
         void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
 
-        private string GetAgeAsString(DateTime birthDate)
+        private string GetAgeAsString(DateTimeOffset birthDate)
         {
             TimeSpan age = DateTime.Now - birthDate;
 
@@ -186,6 +186,28 @@ namespace Hakim.Model
             }
 
             return result.ToString();
+        }
+
+        public Patient()
+        {
+            LastName = "";
+            FirstName = "";
+            DateOfBirth = DateTime.Now;
+            gender = "";
+            address = "";
+            wilaya = "";
+            commune = "";
+            postalCode = "";
+            Phone1 = "";
+            Phone1Owner = "";
+            Phone2 = "";
+            Phone2Owner = "";
+            email = "";
+            medicalHistory = "";
+            allergies = "";
+            currentMedications = "";
+            insuranceProvider = "";
+            insuranceNumber = "";
         }
     }
 }
