@@ -37,6 +37,7 @@ namespace Hakim
         /// </summary>
         public static MainWindow mainWindow { get; set; }
         public static User user = new User();
+        public static Patient patient = new Patient();
         public App()
         {
             this.InitializeComponent();

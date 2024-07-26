@@ -17,24 +17,25 @@
         </NavigationView.AutoSuggestBox>
         <NavigationView.FooterMenuItems>
             <NavigationViewItem IsSelected="True">
-                <Button Margin="0" Background="Transparent" BorderBrush="Transparent">
+                <Button x:Name="AddPatientButton" Margin="0" Background="Transparent" BorderBrush="Transparent" Click="AddPatientButton_Click">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <FontIcon Glyph="&#xE8FA;" />
+                        <FontIcon x:Name="addPatientIcon" Glyph="&#xE8FA;" />
                         <TextBlock Margin="8 0"  Visibility="Visible">Ajouter un patient</TextBlock>
                     </StackPanel>
                 </Button>
             </NavigationViewItem>
         </NavigationView.FooterMenuItems>
-        <ItemsRepeater x:Name="itemsRepeater" Margin="24 16" HorizontalAlignment="Stretch">
-            <ItemsRepeater.ItemTemplate>
-                <DataTemplate>
-                    <local:PatientCardControl/>
-                </DataTemplate>
-            </ItemsRepeater.ItemTemplate>
-            <ItemsRepeater.Layout>
-                <UniformGridLayout MinRowSpacing="8" MinColumnSpacing="8"/>
-            </ItemsRepeater.Layout>
-        </ItemsRepeater>
-        
+        <ScrollView>
+            <ItemsRepeater x:Name="itemsRepeater" Margin="24 16" HorizontalAlignment="Stretch">
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate>
+                        <local:PatientCardControl/>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+                <ItemsRepeater.Layout>
+                    <UniformGridLayout MinRowSpacing="8" MinColumnSpacing="8"/>
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+        </ScrollView>
     </NavigationView>
 </Page>

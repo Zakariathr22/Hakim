@@ -20,7 +20,8 @@ namespace Hakim.Model
             {
                 lastName = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(profitionalName));
+                OnPropertyChanged(nameof(fullName));
+                OnPropertyChanged(nameof(fullNameAndAge));
             }
         }
         private string firstName { get; set; }
@@ -31,26 +32,96 @@ namespace Hakim.Model
             {
                 firstName = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(profitionalName));
+                OnPropertyChanged(nameof(fullName));
+                OnPropertyChanged(nameof(fullNameAndAge));
             }
         }
-        public string profitionalName
+        public string fullName
         {
             get
             {
-                return $"{lastName} {firstName}";
+                return $"{lastName.ToUpper()} {firstName}";
             }
         }
-        public DateTime dateOfBirth { get; set; }
+        private DateTime dateOfBirth { get; set; }
+        public DateTime DateOfBirth
+        {
+            get => dateOfBirth;
+            set
+            {
+                dateOfBirth = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(fullNameAndAge));
+            }
+        }
+        public string fullNameAndAge { 
+            get
+            {
+                return $"{lastName.ToUpper()} {firstName} ({GetAgeAsString(dateOfBirth)})";
+            } 
+        }
         public string gender { get; set; }
         public string address { get; set; }
         public string wilaya { get; set; }
         public string commune { get; set; }
         public string postalCode { get; set; }
-        public string phone1 { get; set; }
-        public string phone1Owner { get; set; }
-        public string phone2 { get; set; }
-        public string phone2Owner { get; set; }
+        private string phone1 { get; set; }
+        public string Phone1
+        {
+            get => phone1;
+            set
+            {
+                phone1 = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(phone1Details));
+            }
+        }
+        private string phone1Owner { get; set; }
+        public string Phone1Owner
+        {
+            get => phone1Owner;
+            set
+            {
+                phone1Owner = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(phone1Details));
+            }
+        }
+        public string phone1Details { 
+            get
+            {
+                return $"{AddSpacesBetweenDigits(phone1)} ({phone1Owner})";
+            } 
+        }
+        private string phone2 { get; set; }
+        public string Phone2
+        {
+            get => phone2;
+            set
+            {
+                phone2 = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(phone2Details));
+            }
+        }
+        private string phone2Owner { get; set; }
+        public string Phone2Owner
+        {
+            get => phone2Owner;
+            set
+            {
+                phone2Owner = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(phone1Details));
+            }
+        }
+        public string phone2Details
+        {
+            get
+            {
+                return $"{AddSpacesBetweenDigits(phone2)} ({phone2Owner})";
+            }
+        }
         public string email { get; set; }
         public string medicalHistory { get; set; }
         public string allergies { get; set; }
@@ -61,5 +132,60 @@ namespace Hakim.Model
 
         void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+
+        private string GetAgeAsString(DateTime birthDate)
+        {
+            TimeSpan age = DateTime.Now - birthDate;
+
+            if (age.TotalDays < 1)
+            {
+                // Less than 1 day old
+                return $"{age.TotalHours:F0} heures";
+            }
+            else if (age.TotalDays < 30)
+            {
+                // Less than 1 month old
+                return $"{age.TotalDays:F0} jours";
+            }
+            else if (age.TotalDays < 365)
+            {
+                // Less than 1 year old
+                int months = (int)(age.TotalDays / 30);
+                if (months == 0)
+                    return $"{months} mois";
+                else
+                    return $"{months} moi";
+            }
+            else
+            {
+                // 1 year or older
+                int years = (int)(age.TotalDays / 365);
+                if (years == 1)
+                    return $"{years} an";
+                else
+                    return $"{years} ans";
+            }
+        }
+
+        private string AddSpacesBetweenDigits(string input)
+        {
+            StringBuilder result = new StringBuilder();
+
+            for (int i = 0; i < input.Length; i += 2)
+            {
+                if (i + 1 < input.Length)
+                {
+                    result.Append(input[i]);
+                    result.Append(input[i + 1]);
+                    result.Append(' '); // Add a space
+                }
+                else
+                {
+                    result.Append(input[i]);
+                }
+            }
+
+            return result.ToString();
+        }
     }
 }

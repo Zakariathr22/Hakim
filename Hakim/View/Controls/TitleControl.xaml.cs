@@ -30,5 +30,12 @@ namespace Hakim.View.Controls
             this.InitializeComponent();
             Title.Text = title;
         }
+
+        public TitleControl(string title, FontIcon icon)
+        {
+            this.InitializeComponent();
+            Title.Text = title;
+            this.icon.Glyph = icon.Glyph;
+        }
     }
 }

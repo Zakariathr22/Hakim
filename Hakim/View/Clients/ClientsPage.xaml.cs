@@ -1,3 +1,7 @@
+using Hakim.Model;
+using Hakim.Service;
+using Hakim.View.Controls;
+using Hakim.ViewModel;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -24,18 +28,84 @@ namespace Hakim.View.Clients
     /// </summary>
     public sealed partial class ClientsPage : Page
     {
+        public ClientsViewModel viewModel = new ClientsViewModel();
         public ClientsPage()
         {
             this.InitializeComponent();
 
-            ObservableCollection<string> clients = new ObservableCollection<string>();
-            clients.Add("1");
-            clients.Add("2");
-            clients.Add("3");
-            clients.Add("3");
-            clients.Add("3");
+            DataContext = viewModel;
 
-            itemsRepeater.ItemsSource = clients;
+            Patient patient = new Patient();
+            patient.FirstName = "Prénom de Patient";
+            patient.LastName = "Nom";
+            patient.DateOfBirth = DateTime.Now.AddYears(-25);
+            patient.Phone1 = "0999999999";
+            patient.Phone1Owner = "Personnel";
+            patient.Phone2 = "0999999999";
+            patient.Phone2Owner = "Le Père";
+
+            Patient patient2 = new Patient();
+            patient2.LastName = "Nom";
+            patient2.FirstName = "Prénom de Patient2";
+            patient2.DateOfBirth = DateTime.Now.AddYears(-60);
+            patient2.Phone1 = "0888888888";
+            patient2.Phone1Owner = "Personnel";
+            patient2.Phone2 = "0888888888";
+            patient2.Phone2Owner = "La Famme";
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+            viewModel.Patients.Add(patient2);
+            viewModel.Patients.Add(patient);
+
+            //var sortedPatients = new ObservableCollection<Patient>(viewModel.Patients.OrderBy(p => p.FirstName));
+            //viewModel.Patients = sortedPatients;
+
+            itemsRepeater.ItemsSource = viewModel.Patients;
+        }
+
+        private void AddPatientButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowEditNameDialog();
+        }
+
+        private async void ShowEditNameDialog()
+        {
+            ContentDialog dialog = new ContentDialog();
+
+            // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.Title = new TitleControl("Ajouter un patient", addPatientIcon);
+            dialog.PrimaryButtonText = "Suivant";
+            dialog.CloseButtonText = "Annuler";
+            dialog.Content = new AddPatientPage(dialog,viewModel);
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                //clients.RemoveAt(1);
+            }
         }
     }
 }
