@@ -43,7 +43,7 @@ namespace Hakim
             this.InitializeComponent();
 
             // Get the desired culture (e.g., Arabic)
-            CultureInfo newCulture = CultureInfo.GetCultureInfo("fr-FR");
+            CultureInfo newCulture = CultureInfo.GetCultureInfo("fr");
 
             // Set the CurrentCulture of the current thread
             Thread.CurrentThread.CurrentCulture = newCulture;
@@ -52,12 +52,7 @@ namespace Hakim
             // This affects UI elements like date pickers and number formats
             Thread.CurrentThread.CurrentUICulture = newCulture;
 
-            ApplicationLanguages.PrimaryLanguageOverride = "fr-FR";
-
-            if (DataAccessService.Connection == null || DataAccessService.Connection.State != System.Data.ConnectionState.Open)
-            {
-                DataAccessService.SetConnection();
-            }
+            ApplicationLanguages.PrimaryLanguageOverride = "fr";
         }
 
         /// <summary>

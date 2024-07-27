@@ -1,38 +1,30 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Hakim.Model;
 using Hakim.Service;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hakim.ViewModel
 {
     public partial class ClientsViewModel : ObservableObject
     {
         [ObservableProperty] private Patient newPatient = new Patient();
-        [ObservableProperty] private ObservableCollection<Patient> patients = new ObservableCollection<Patient>();
+        [ObservableProperty] private ObservableCollection<Patient> patients;
 
         public ClientsViewModel()
         {
             NewPatient = new Patient();
-            Patients = new ObservableCollection<Patient>();
+            Patients = GetAllPatients();
         }
 
         public void AddPatient(Patient patient)
         {
             try
             {
-                // Ensure connection is open
-                if (DataAccessService.Connection == null || DataAccessService.Connection.State != System.Data.ConnectionState.Open)
-                {
-                    DataAccessService.SetConnection();
-                }
-
-                using (var command = new SQLiteCommand(DataAccessService.Connection))
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
                 {
                     command.CommandText = @"
                         INSERT INTO Patient (
@@ -73,6 +65,63 @@ namespace Hakim.ViewModel
                 Console.WriteLine($"An error occurred while adding the patient: {ex.Message}");
                 // Handle the exception (e.g., log it or rethrow it)
             }
+
+            Patients = GetAllPatients();
+        }
+
+        private ObservableCollection<Patient> GetAllPatients()
+        {
+            var patients = new ObservableCollection<Patient>();
+
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand("SELECT * FROM Patient ORDER BY DateOfRegistration DESC", connection))
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var patient = new Patient
+                        {
+                            id = Convert.ToInt32(reader["id"]),
+                            LastName = reader["LastName"].ToString(),
+                            FirstName = reader["FirstName"].ToString(),
+                            DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
+                            gender = reader["Gender"].ToString(),
+                            address = reader["Address"].ToString(),
+                            wilaya = reader["Wilaya"].ToString(),
+                            commune = reader["Commune"].ToString(),
+                            postalCode = reader["PostalCode"].ToString(),
+                            Phone1 = reader["Phone1"].ToString(),
+                            Phone1Owner = reader["Phone1Owner"].ToString(),
+                            Phone2 = reader["Phone2"].ToString(),
+                            Phone2Owner = reader["Phone2Owner"].ToString(),
+                            email = reader["Email"].ToString(),
+                            medicalHistory = reader["MedicalHistory"].ToString(),
+                            allergies = reader["Allergies"].ToString(),
+                            currentMedications = reader["CurrentMedications"].ToString(),
+                            insuranceProvider = reader["InsuranceProvider"].ToString(),
+                            insuranceNumber = reader["InsuranceNumber"].ToString(),
+                            dateOfRegistration = Convert.ToDateTime(reader["DateOfRegistration"])
+                        };
+
+                        patients.Add(patient);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while retrieving patients: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+
+            return patients;
+        }
+
+        [RelayCommand]
+        private void getAllPatients()
+        {
+            Patients = GetAllPatients();
         }
     }
 }

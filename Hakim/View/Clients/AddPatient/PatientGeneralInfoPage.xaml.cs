@@ -51,6 +51,7 @@ namespace Hakim.View.Clients.AddPatient
                     args.Cancel = true;
                 }
             };
+            p.dialog.IsPrimaryButtonEnabled = false;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -131,6 +132,7 @@ namespace Hakim.View.Clients.AddPatient
             {
                 p.viewModel.NewPatient.gender = "Féminin";
             }
+            UpdateDialogButtonState();
         }
 
         private void Phone1OwnerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -179,6 +181,7 @@ namespace Hakim.View.Clients.AddPatient
             {
                 p.viewModel.NewPatient.Phone1Owner = "Ami";
             }
+            UpdateDialogButtonState();
         }
 
         private void Phone2OwnerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -227,6 +230,34 @@ namespace Hakim.View.Clients.AddPatient
             {
                 p.viewModel.NewPatient.Phone2Owner = "Ami";
             }
+        }
+
+        private void lastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateDialogButtonState();
+        }
+
+        private void firstNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateDialogButtonState();
+        }
+
+        private void phone1TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateDialogButtonState();
+        }
+
+        private void UpdateDialogButtonState()
+        {
+            if (lastNameTextBox.Text != "" 
+                && firstNameTextBox.Text != "" 
+                && (GenderComboBox.SelectedIndex == 0 || GenderComboBox.SelectedIndex == 1)
+                && phone1TextBox.Text != ""
+                && (Phone1OwnerComboBox.SelectedIndex >= 0 && Phone1OwnerComboBox.SelectedIndex <=10))
+            {
+                p.dialog.IsPrimaryButtonEnabled = true;
+            }
+            else p.dialog.IsPrimaryButtonEnabled = false;
         }
     }
 }

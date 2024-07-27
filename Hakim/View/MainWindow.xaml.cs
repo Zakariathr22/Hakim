@@ -64,7 +64,7 @@ namespace Hakim
 
         private void MainWindow_Closed(object sender, WindowEventArgs args)
         {
-            DataAccessService.CloseConnection();
+
         }
 
         private AppWindow GetAppWindowForCurrentWindow()

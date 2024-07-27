@@ -35,35 +35,6 @@ namespace Hakim.View.Clients
 
             DataContext = viewModel;
 
-            Patient patient = new Patient();
-            patient.FirstName = "Prénom de Patient";
-            patient.LastName = "Nom";
-            patient.DateOfBirth = DateTime.Now.AddYears(-25);
-            patient.Phone1 = "0999999999";
-            patient.Phone1Owner = "Personnel";
-            patient.Phone2 = "0999999999";
-            patient.Phone2Owner = "Le Père";
-
-            Patient patient2 = new Patient();
-            patient2.LastName = "Nom";
-            patient2.FirstName = "Prénom de Patient2";
-            patient2.DateOfBirth = DateTime.Now.AddYears(-60);
-            patient2.Phone1 = "0888888888";
-            patient2.Phone1Owner = "Personnel";
-            patient2.Phone2 = "0888888888";
-            patient2.Phone2Owner = "La Famme";
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-            viewModel.Patients.Add(patient2);
-            viewModel.Patients.Add(patient);
-
             //var sortedPatients = new ObservableCollection<Patient>(viewModel.Patients.OrderBy(p => p.FirstName));
             //viewModel.Patients = sortedPatients;
 
@@ -92,6 +63,7 @@ namespace Hakim.View.Clients
             if (result == ContentDialogResult.Secondary)
             {
                 viewModel.AddPatient(viewModel.NewPatient);
+                itemsRepeater.ItemsSource = viewModel.Patients;
             }
         }
     }
