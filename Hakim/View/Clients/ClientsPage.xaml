@@ -7,25 +7,41 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
-    <NavigationView 
-        PaneDisplayMode="Top"
-        IsBackButtonVisible="Collapsed"
-        IsSettingsVisible="False">
-        <NavigationView.AutoSuggestBox>
-            <AutoSuggestBox PlaceholderText="Recherch" QueryIcon="Find" AutomationProperties.Name="Search"/>
-        </NavigationView.AutoSuggestBox>
-        <NavigationView.FooterMenuItems>
-            <NavigationViewItem IsSelected="True">
-                <Button x:Name="AddPatientButton" Margin="0" Background="Transparent" BorderBrush="Transparent" Click="AddPatientButton_Click">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <FontIcon x:Name="addPatientIcon" Glyph="&#xE8FA;" />
-                        <TextBlock Margin="8 0"  Visibility="Visible">Ajouter un patient</TextBlock>
-                    </StackPanel>
-                </Button>
-            </NavigationViewItem>
-        </NavigationView.FooterMenuItems>
-        <ScrollView>
+    <Page.Resources>
+        <FontIcon x:Name="addPatientIcon" x:FieldModifier="public" Glyph="&#xE8FA;"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ContentPresenter Height="56" Grid.Column="0" Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
+                    BorderThickness="0 0 0 1" BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}">
+            <CommandBar IsOpen="False" Height="56">
+                <AppBarButton x:Name="AddPatientButton" Icon="AddFriend" Label="Ajouter" ToolTipService.ToolTip="Ajouter un patient"
+                              Click="AddPatientButton_Click">
+                    <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                </AppBarButton>
+                <AppBarSeparator />
+                <AppBarButton Icon="Sort" Label="Trier" ToolTipService.ToolTip="Trier les patients">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <ToggleMenuFlyoutItem x:Name="OrderByDate" Text="Par date d'ajout" IsChecked="True" Click="OrderByDate_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByLastName" Text="Par nom" IsChecked="False" Click="OrderByLastName_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByFirstName" Text="Par prénom" IsChecked="False" Click="OrderByFirstName_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByAge" Text="Par age" IsChecked="False" Click="OrderByAge_Click"/>
+                            <MenuFlyoutSeparator/>
+                            <ToggleMenuFlyoutItem x:Name="CroissantOrder" Text="Croissant" IsChecked="False" Click="CroissantOrder_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="DecroissantOrder" Text="Décroissant" IsChecked="True" Click="DecroissantOrder_Click"/>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </AppBarButton>
+                <AppBarElementContainer Padding="6">
+                    <AutoSuggestBox Width="250" QueryIcon="Find" PlaceholderText="Recherche"/>
+                </AppBarElementContainer>
+            </CommandBar>
+        </ContentPresenter>
+        <ScrollView Grid.Row="1">
             <ItemsRepeater x:Name="itemsRepeater" Margin="24 16" HorizontalAlignment="Stretch">
                 <ItemsRepeater.ItemTemplate>
                     <DataTemplate>
@@ -37,5 +53,5 @@
                 </ItemsRepeater.Layout>
             </ItemsRepeater>
         </ScrollView>
-    </NavigationView>
+    </Grid>
 </Page>

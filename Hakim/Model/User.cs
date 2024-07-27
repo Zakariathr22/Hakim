@@ -49,7 +49,7 @@ namespace Hakim.Model
         {
             get
             {
-                return $"{rank} {lastName} {firstName}";
+                return $"{rank} {lastName.ToUpper()} {firstName}";
             }
         }
         void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>

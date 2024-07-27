@@ -29,7 +29,25 @@
             </CommandBarFlyout.SecondaryCommands>
         </CommandBarFlyout>
     </UserControl.Resources>
-    
+    <ToolTipService.ToolTip>
+        <Grid MaxWidth="250" MaxHeight="300">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Date et heure d'ajout:" Padding="2" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding dateOfRegistration}" Padding="2"/>
+            </Grid>
+            <TextBlock Grid.Row="1" Text="Antécédents médicaux:" Padding="2" FontWeight="Bold"/>
+            <TextBlock Grid.Row="2" Text="{Binding medicalHistory}" Padding="2" TextWrapping="Wrap" TextAlignment="Justify"/>
+        </Grid>
+    </ToolTipService.ToolTip>
     <controls:CustomButton Padding="0" BorderThickness="0" Margin="0" ContextRequested="CustomButton_ContextRequested">
         <Grid BorderThickness="1"
               BorderBrush="{ThemeResource ControlElevationBorderBrush}"

@@ -10,11 +10,13 @@ namespace Hakim.ViewModel
 {
     public partial class ClientsViewModel : ObservableObject
     {
-        [ObservableProperty] private Patient newPatient = new Patient();
+        [ObservableProperty] private Patient newPatient;
         [ObservableProperty] private ObservableCollection<Patient> patients;
+        [ObservableProperty] private int patientsOrder;
 
         public ClientsViewModel()
         {
+            PatientsOrder = int.Parse(ConfigurationService.GetAppSetting("PatientsOrder"));
             NewPatient = new Patient();
             Patients = GetAllPatients();
         }
@@ -76,7 +78,7 @@ namespace Hakim.ViewModel
             try
             {
                 using (var connection = DataAccessService.GetConnection())
-                using (var command = new SQLiteCommand("SELECT * FROM Patient ORDER BY DateOfRegistration DESC", connection))
+                using (var command = new SQLiteCommand(ReturnQuery(PatientsOrder), connection))
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -121,6 +123,35 @@ namespace Hakim.ViewModel
         [RelayCommand]
         private void getAllPatients()
         {
+            Patients = GetAllPatients();
+        }
+
+        private string ReturnQuery(int PatientsOrdrer)
+        {
+            if (PatientsOrdrer == 0)
+                return "SELECT * FROM Patient ORDER BY DateOfRegistration DESC";
+            else if(PatientsOrdrer == 1) 
+                return "SELECT * FROM Patient ORDER BY DateOfRegistration";
+            else if (PatientsOrdrer == 2)
+                return "SELECT * FROM Patient ORDER BY LastName";
+            else if (PatientsOrdrer == 3)
+                return "SELECT * FROM Patient ORDER BY LastName DESC";
+            else if (PatientsOrdrer == 4)
+                return "SELECT * FROM Patient ORDER BY FirstName";
+            else if (PatientsOrdrer == 5)
+                return "SELECT * FROM Patient ORDER BY FirstName DESC";
+            else if (PatientsOrdrer == 6)
+                return "SELECT * FROM Patient ORDER BY DateOfBirth DESC";
+            else if (PatientsOrdrer == 7)
+                return "SELECT * FROM Patient ORDER BY DateOfBirth";
+            else 
+                return "SELECT * FROM Patient ORDER BY DateOfRegistration DESC";
+        }
+
+        [RelayCommand]
+        private void OrderChanged()
+        {
+            ConfigurationService.SetAppSetting("PatientsOrder", PatientsOrder);
             Patients = GetAllPatients();
         }
     }
