@@ -48,10 +48,10 @@
             <TextBlock Grid.Row="2" Text="{Binding medicalHistory}" Padding="2" TextWrapping="Wrap" TextAlignment="Justify"/>
         </Grid>
     </ToolTipService.ToolTip>
-    <controls:CustomButton Padding="0" BorderThickness="0" Margin="0" ContextRequested="CustomButton_ContextRequested">
+    <controls:CustomButton Padding="0" BorderThickness="0" Margin="0" ContextRequested="CustomButton_ContextRequested"  CornerRadius="8">
         <Grid BorderThickness="1"
               BorderBrush="{ThemeResource ControlElevationBorderBrush}"
-              CornerRadius="4"
+              CornerRadius="8"
               Background="{ThemeResource ControlFillColorDefaultBrush}"
               Padding="8 16 8 16"
               VerticalAlignment="Stretch"
@@ -63,7 +63,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" VerticalAlignment="Top">
-                <PersonPicture Width="48" DisplayName="{Binding fullName}"/>
+                <PersonPicture Width="48" DisplayName="{Binding fullName}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
             </Border>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -71,7 +71,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="{Binding fullNameAndAge}" Margin="4 0 0 8" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                <TextBlock Grid.Row="0" Text="{Binding fullNameAndAge}" Margin="4 0 0 8" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                 <StackPanel Grid.Row="1" Orientation="Horizontal"  Margin="4 0 0 4">
                     <TextBlock Margin="0 0 4 0" FontFamily="Segoe Fluent Icons" Text="&#xE717;" FontWeight="Bold"/>
                     <TextBlock Text="{Binding phone1Details}" Style="{ThemeResource BodyTextBlockStyle}"/>

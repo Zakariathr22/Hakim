@@ -49,7 +49,7 @@
                     </DataTemplate>
                 </ItemsRepeater.ItemTemplate>
                 <ItemsRepeater.Layout>
-                    <UniformGridLayout MinRowSpacing="8" MinColumnSpacing="8"/>
+                    <UniformGridLayout MinRowSpacing="12" MinColumnSpacing="12"/>
                 </ItemsRepeater.Layout>
             </ItemsRepeater>
         </ScrollView>
