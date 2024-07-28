@@ -29,6 +29,8 @@ namespace Hakim.View.Clients
     public sealed partial class ClientsPage : Page
     {
         public ClientsViewModel viewModel = new ClientsViewModel();
+        private bool IsSuggestionChosen = false;
+        private ObservableCollection<Patient> Patients = new ObservableCollection<Patient>();
         public ClientsPage()
         {
             this.InitializeComponent();
@@ -285,7 +287,76 @@ namespace Hakim.View.Clients
         private void OrderChanged()
         {
             viewModel.OrderChangedCommand.Execute(null);
-            itemsRepeater.ItemsSource = viewModel.Patients;
+            UpdatePatientSearchResults(SearchAutoSuggestBox);
         }
+
+        private Dictionary<string, Patient> _patientDictionary = new Dictionary<string, Patient>();
+
+        private void SearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                UpdatePatientSearchResults(sender);
+            }
+        }
+
+        private void SearchAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            IsSuggestionChosen = true;
+            // Retrieve the chosen patient from the dictionary
+            var chosenFullName = args.SelectedItem as string;
+            if (chosenFullName != null && _patientDictionary.ContainsKey(chosenFullName))
+            {
+                Patients.Clear();
+                Patients.Add(_patientDictionary[chosenFullName]);
+                itemsRepeater.ItemsSource = Patients;
+            }
+        }
+
+        private void SearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            if (IsSuggestionChosen == false)
+            {
+                Console.WriteLine();
+            }
+            else 
+                IsSuggestionChosen = false;
+        }
+
+        public void UpdatePatientSearchResults(AutoSuggestBox autoSuggestBox)
+        {
+            if (autoSuggestBox.Text == "")
+            {
+                itemsRepeater.ItemsSource = viewModel.Patients;
+            }
+            else
+            {
+                // Clear the dictionary
+                _patientDictionary.Clear();
+
+                // Filter patient last names based on user input
+                var filteredPatients = viewModel.Patients
+                    .Where(patient => patient.FirstName.Contains(autoSuggestBox.Text, StringComparison.OrdinalIgnoreCase)
+                                   || patient.LastName.Contains(autoSuggestBox.Text, StringComparison.OrdinalIgnoreCase)
+                                   || patient.Phone1.Contains(autoSuggestBox.Text, StringComparison.OrdinalIgnoreCase)
+                                   || patient.Phone2.Contains(autoSuggestBox.Text, StringComparison.OrdinalIgnoreCase)
+                                   || patient.fullName.Contains(autoSuggestBox.Text, StringComparison.OrdinalIgnoreCase));
+
+                // Populate the dictionary with full names as keys and patient objects as values
+                foreach (var patient in filteredPatients)
+                {
+                    var fullName = $"{patient.fullName}";
+                    if (!_patientDictionary.ContainsKey(fullName))
+                    {
+                        _patientDictionary.Add(fullName, patient);
+                    }
+                }
+
+                // Set the ItemsSource to the list of full names
+                autoSuggestBox.ItemsSource = _patientDictionary.Keys.ToList();
+                itemsRepeater.ItemsSource = _patientDictionary.Values.ToList();
+            }
+        }
+
     }
 }

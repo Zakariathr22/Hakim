@@ -90,7 +90,9 @@ namespace Hakim.Model
         public string phone1Details { 
             get
             {
-                return $"{AddSpacesBetweenDigits(phone1)} ({phone1Owner})";
+                if (phone1 != "" && phone1 != null)
+                    return $"{AddSpacesBetweenDigits(phone1)} ({phone1Owner})";
+                else return "Non saisi";
             } 
         }
         private string phone2 { get; set; }
@@ -119,7 +121,9 @@ namespace Hakim.Model
         {
             get
             {
-                return $"{AddSpacesBetweenDigits(phone2)} ({phone2Owner})";
+                if (phone2 != "" && phone2 != null)
+                    return $"{AddSpacesBetweenDigits(phone2)} ({phone2Owner})";
+                else return "Non saisi";
             }
         }
         public string email { get; set; }

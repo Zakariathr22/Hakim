@@ -1,16 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <UserControl
     x:Class="Hakim.View.Clients.PatientCardControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Hakim.View.Clients"
-    xmlns:controls ="using:Hakim.View.Controls"
+    xmlns:controls="using:Hakim.View.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
     <UserControl.Resources>
-        <CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout" >
+        <CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout">
             <AppBarButton Label="Afficher" Icon="ShowResults" ToolTipService.ToolTip="Afficher"/>
             <AppBarButton Label="Modifier" Icon="Edit" ToolTipService.ToolTip="Modifier"/>
             <AppBarButton Label="Nouveau dossier" Icon="NewFolder" ToolTipService.ToolTip="Nouveau dossier"/>
@@ -21,7 +19,7 @@
                             <StackPanel Width="300">
                                 <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="Êtes-vous sûr de vouloir supprimer ce patient, car cela supprimera toutes ses informations, y compris ses dossiers ?" TextWrapping="Wrap" Margin="0,0,0,12" 
                                            Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                                <Button Content="Oui, Supprimer" Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                                <Button x:Name="deletePatientButton" Content="Oui, Supprimer" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Click="deletePatientButton_Click"/>
                             </StackPanel>
                         </Flyout>
                     </AppBarButton.Flyout>
@@ -29,6 +27,7 @@
             </CommandBarFlyout.SecondaryCommands>
         </CommandBarFlyout>
     </UserControl.Resources>
+
     <ToolTipService.ToolTip>
         <Grid MaxWidth="250" MaxHeight="300">
             <Grid.RowDefinitions>
@@ -45,10 +44,11 @@
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding dateOfRegistration}" Padding="2"/>
             </Grid>
             <TextBlock Grid.Row="1" Text="Antécédents médicaux:" Padding="2" FontWeight="Bold"/>
-            <TextBlock Grid.Row="2" Text="{Binding medicalHistory}" Padding="2" TextWrapping="Wrap" TextAlignment="Justify"/>
+            <TextBlock Grid.Row="2" Text="{Binding medicalHistory}" Padding="2" TextWrapping="Wrap"/>
         </Grid>
     </ToolTipService.ToolTip>
-    <controls:CustomButton Padding="0" BorderThickness="0" Margin="0" ContextRequested="CustomButton_ContextRequested"  CornerRadius="8">
+
+    <controls:CustomButton Padding="0" BorderThickness="0" Margin="0" ContextRequested="CustomButton_ContextRequested" CornerRadius="8">
         <Grid BorderThickness="1"
               BorderBrush="{ThemeResource ControlElevationBorderBrush}"
               CornerRadius="8"

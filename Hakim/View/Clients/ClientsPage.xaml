@@ -37,12 +37,14 @@
                     </Button.Flyout>
                 </AppBarButton>
                 <AppBarElementContainer Padding="6">
-                    <AutoSuggestBox Width="250" QueryIcon="Find" PlaceholderText="Recherche"/>
+                    <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="250" QueryIcon="Find" PlaceholderText="Recherche un patient" 
+                                    TextChanged="SearchAutoSuggestBox_TextChanged" SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen"
+                                    QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted"/>
                 </AppBarElementContainer>
             </CommandBar>
         </ContentPresenter>
         <ScrollView Grid.Row="1">
-            <ItemsRepeater x:Name="itemsRepeater" Margin="24 16" HorizontalAlignment="Stretch">
+            <ItemsRepeater x:Name="itemsRepeater" x:FieldModifier="public" Margin="24 16" HorizontalAlignment="Stretch">
                 <ItemsRepeater.ItemTemplate>
                     <DataTemplate>
                         <local:PatientCardControl/>

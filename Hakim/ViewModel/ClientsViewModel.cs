@@ -154,5 +154,51 @@ namespace Hakim.ViewModel
             ConfigurationService.SetAppSetting("PatientsOrder", PatientsOrder);
             Patients = GetAllPatients();
         }
+
+        public void DeletePatientById(int patientId)
+        {
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = @"
+                DELETE FROM Patient 
+                WHERE Id = @Id";
+
+                    command.Parameters.AddWithValue("@Id", patientId);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Patient deleted successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No patient found with the provided ID.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while deleting the patient: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+
+            Patients = GetAllPatients();
+        }
+
+        [RelayCommand]
+        public void DeletePatient(Patient patient)
+        {
+            if (patient == null) return;
+
+            // Delete from database
+            DeletePatientById(patient.id);
+
+            // Remove from ObservableCollection
+            Patients.Remove(patient);
+        }
+
     }
 }
