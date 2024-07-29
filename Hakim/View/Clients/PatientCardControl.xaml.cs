@@ -72,7 +72,7 @@ namespace Hakim.View.Clients
             if (this.DataContext is Patient patient)
             {
                 // Now you have access to the associated Patient object
-                ParentPage.ShowEditPatientDialog();
+                ParentPage.ShowEditPatientDialog(patient);
             }
         }
     }

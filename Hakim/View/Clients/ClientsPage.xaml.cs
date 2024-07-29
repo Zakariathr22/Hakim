@@ -362,10 +362,11 @@ namespace Hakim.View.Clients
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             SearchAutoSuggestBox.Text = "";
+            viewModel.getAllPatientsCommand.Execute(null);
             UpdatePatientSearchResults(SearchAutoSuggestBox);
         }
 
-        public async void ShowEditPatientDialog()
+        public async void ShowEditPatientDialog(Patient patient)
         {
             ContentDialog dialog = new ContentDialog();
 
@@ -374,7 +375,7 @@ namespace Hakim.View.Clients
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.CloseButtonText = "Fermer";
             viewModel.NewPatient = new Patient();
-            dialog.Content = new EdidPatientPage();
+            dialog.Content = new EdidPatientPage(dialog, patient);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Secondary)

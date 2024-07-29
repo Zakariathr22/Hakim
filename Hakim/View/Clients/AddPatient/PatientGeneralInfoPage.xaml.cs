@@ -76,7 +76,7 @@ namespace Hakim.View.Clients.AddPatient
 
         private void GetPhoneOwner(string PhoneOwner, ComboBox comboBox)
         {
-            if (PhoneOwner == "Personal")
+            if (PhoneOwner == "Personnel")
             {
                 comboBox.SelectedIndex = 0;
             }
@@ -139,7 +139,7 @@ namespace Hakim.View.Clients.AddPatient
         {
             if (Phone1OwnerComboBox.SelectedIndex == 0)
             {
-                p.viewModel.NewPatient.Phone1Owner = "Personal";
+                p.viewModel.NewPatient.Phone1Owner = "Personnel";
             }
             else if (Phone1OwnerComboBox.SelectedIndex == 1)
             {
@@ -188,7 +188,7 @@ namespace Hakim.View.Clients.AddPatient
         {
             if (Phone2OwnerComboBox.SelectedIndex == 0)
             {
-                p.viewModel.NewPatient.Phone2Owner = "Personal";
+                p.viewModel.NewPatient.Phone2Owner = "Personnel";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 1)
             {
