@@ -35,11 +35,11 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="lastNameTextBox" Grid.Column="0" Header="Nom" PlaceholderText="Nom (obligatoire)" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.LastName, Mode=TwoWay}" TextChanged="lastNameTextBox_TextChanged"/>
-            <TextBox x:Name="firstNameTextBox" Grid.Column="1" Header="Prénom" PlaceholderText="Prénom (obligatoire)" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.FirstName, Mode=TwoWay}" TextChanged="firstNameTextBox_TextChanged"/>
+            <TextBox x:Name="lastNameTextBox" Grid.Column="0" Header="Nom" PlaceholderText="Nom (obligatoire)" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.LastName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" TextChanged="lastNameTextBox_TextChanged"/>
+            <TextBox x:Name="firstNameTextBox" Grid.Column="1" Header="Prénom" PlaceholderText="Prénom (obligatoire)" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.FirstName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" TextChanged="firstNameTextBox_TextChanged"/>
         </Grid>
         <DatePicker Grid.Row="2" Header="Date de naissance" Width="400" Margin="0 0 0 4" SelectedDate="{Binding NewPatient.DateOfBirth, Mode=TwoWay}"/>
-        <ComboBox x:Name="GenderComboBox" Grid.Row="3" Header="Genre" PlaceholderText="Genre (obligatoire)" Width="400" SelectionChanged="GenderComboBox_SelectionChanged">
+        <ComboBox x:Name="GenderComboBox" Grid.Row="3" Header="Genre" PlaceholderText="Genre (obligatoire)" Width="400" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" SelectionChanged="GenderComboBox_SelectionChanged">
             <x:String>Masculin</x:String>
             <x:String>Féminin</x:String>
         </ComboBox>
@@ -53,8 +53,8 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="phone1TextBox" Grid.Column="0" Header="Numéro de téléphone 1" PlaceholderText="Num de téléphone 1  (obligatoire)" Margin="0 0 4 8" IsSpellCheckEnabled="False" Text="{Binding NewPatient.Phone1, Mode=TwoWay}" TextChanged="phone1TextBox_TextChanged"/>
-            <ComboBox x:Name="Phone1OwnerComboBox" Grid.Column="1" Header="Propriétaire" PlaceholderText="Propriétaire (obligatoire)" Margin="0 0 0 8" Width="160" SelectionChanged="Phone1OwnerComboBox_SelectionChanged">
+            <TextBox x:Name="phone1TextBox" Grid.Column="0" Header="Numéro de téléphone 1" PlaceholderText="Num de téléphone 1  (obligatoire)" Margin="0 0 4 8" IsSpellCheckEnabled="False" Text="{Binding NewPatient.Phone1, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" TextChanged="phone1TextBox_TextChanged"/>
+            <ComboBox x:Name="Phone1OwnerComboBox" Grid.Column="1" Header="Propriétaire" PlaceholderText="Propriétaire (obligatoire)" Margin="0 0 0 8" Width="160" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" SelectionChanged="Phone1OwnerComboBox_SelectionChanged">
                 <x:String>Personnel</x:String>
                 <x:String>Le mari</x:String>
                 <x:String>La femme</x:String>

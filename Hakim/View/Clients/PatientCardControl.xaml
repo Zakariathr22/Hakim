@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout">
             <AppBarButton Label="Afficher" Icon="ShowResults" ToolTipService.ToolTip="Afficher"/>
-            <AppBarButton Label="Modifier" Icon="Edit" ToolTipService.ToolTip="Modifier"/>
+            <AppBarButton x:Name="editButton" Label="Modifier" Icon="Edit" ToolTipService.ToolTip="Modifier" Click="editButton_Click"/>
             <AppBarButton Label="Nouveau dossier" Icon="NewFolder" ToolTipService.ToolTip="Nouveau dossier"/>
             <CommandBarFlyout.SecondaryCommands>
                 <AppBarButton Label="Supprimer" Icon="Delete" ToolTipService.ToolTip="Supprimer" Foreground="{ThemeResource SystemFillColorCriticalBrush}">

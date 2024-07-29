@@ -1,5 +1,6 @@
 using Hakim.Model;
 using Hakim.Service;
+using Hakim.View.Clients.EditPatient;
 using Hakim.View.Controls;
 using Hakim.ViewModel;
 using Microsoft.UI.Xaml;
@@ -44,10 +45,10 @@ namespace Hakim.View.Clients
 
         private void AddPatientButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowEditNameDialog();
+            ShowAddPatientDialog();
         }
 
-        private async void ShowEditNameDialog()
+        private async void ShowAddPatientDialog()
         {
             ContentDialog dialog = new ContentDialog();
 
@@ -358,5 +359,29 @@ namespace Hakim.View.Clients
             }
         }
 
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchAutoSuggestBox.Text = "";
+            UpdatePatientSearchResults(SearchAutoSuggestBox);
+        }
+
+        public async void ShowEditPatientDialog()
+        {
+            ContentDialog dialog = new ContentDialog();
+
+            // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.CloseButtonText = "Fermer";
+            viewModel.NewPatient = new Patient();
+            dialog.Content = new EdidPatientPage();
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Secondary)
+            {
+                viewModel.AddPatient(viewModel.NewPatient);
+                itemsRepeater.ItemsSource = viewModel.Patients;
+            }
+        }
     }
 }

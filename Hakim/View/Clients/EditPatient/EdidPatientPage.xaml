@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Hakim.View.Clients.EditPatient.EdidPatientPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hakim.View.Clients.EditPatient"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Width="456"
+    MaxHeight="500">
+
+    <Pivot>
+        <PivotItem Header="Générale">
+            <ScrollView>
+                <Grid Width="400" Margin="0 16 0 0 ">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Margin="0 0 0 8" Orientation="Horizontal">
+                        <FontIcon Glyph="&#xE77B;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Informations personnelles</TextBlock>
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="lastNameTextBox" Grid.Column="0" Header="Nom" PlaceholderText="Nom (obligatoire)" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.LastName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                        <TextBox x:Name="firstNameTextBox" Grid.Column="1" Header="Prénom" PlaceholderText="Prénom (obligatoire)" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.FirstName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                    </Grid>
+                    <DatePicker Grid.Row="2" Header="Date de naissance" Width="400" Margin="0 0 0 4" SelectedDate="{Binding NewPatient.DateOfBirth, Mode=TwoWay}"/>
+                    <ComboBox x:Name="GenderComboBox" Grid.Row="3" Header="Genre" PlaceholderText="Genre (obligatoire)" Width="400" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}">
+                        <x:String>Masculin</x:String>
+                        <x:String>Féminin</x:String>
+                    </ComboBox>
+
+                    <StackPanel Grid.Row="4" Margin="0 8" Orientation="Horizontal">
+                        <FontIcon Glyph="&#xE779;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Coordonnées</TextBlock>
+                    </StackPanel>
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="phone1TextBox" Grid.Column="0" Header="Numéro de téléphone 1" PlaceholderText="Num de téléphone 1  (obligatoire)" Margin="0 0 4 8" IsSpellCheckEnabled="False" Text="{Binding NewPatient.Phone1, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                        <ComboBox x:Name="Phone1OwnerComboBox" Grid.Column="1" Header="Propriétaire" PlaceholderText="Propriétaire (obligatoire)" Margin="0 0 0 8" Width="160" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}">
+                            <x:String>Personnel</x:String>
+                            <x:String>Le mari</x:String>
+                            <x:String>La femme</x:String>
+                            <x:String>Le fils</x:String>
+                            <x:String>La fille</x:String>
+                            <x:String>Le père</x:String>
+                            <x:String>La mère</x:String>
+                            <x:String>Le frère</x:String>
+                            <x:String>La sœur</x:String>
+                            <x:String>Proche</x:String>
+                            <x:String>Ami</x:String>
+                        </ComboBox>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" Header="Num de téléphone 2" PlaceholderText="Numéro de téléphone 2" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.Phone2, Mode=TwoWay}"/>
+                        <ComboBox x:Name="Phone2OwnerComboBox" Grid.Column="1" Header="Propriétaire" PlaceholderText="Propriétaire" Margin="0 0 0 8" Width="160">
+                            <x:String>Personnel</x:String>
+                            <x:String>Le mari</x:String>
+                            <x:String>La femme</x:String>
+                            <x:String>Le fils</x:String>
+                            <x:String>La fille</x:String>
+                            <x:String>Le père</x:String>
+                            <x:String>La mère</x:String>
+                            <x:String>Le frère</x:String>
+                            <x:String>La sœur</x:String>
+                            <x:String>Proche</x:String>
+                            <x:String>Ami</x:String>
+                        </ComboBox>
+                    </Grid>
+                    <TextBox Grid.Row="7" Header="Email" PlaceholderText="Email" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.email, Mode=TwoWay}"/>
+
+                    <StackPanel Grid.Row="8" Margin="0 8" Orientation="Horizontal">
+                        <FontIcon Glyph="&#xE80F;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Informations sur l'adresse</TextBlock>
+                    </StackPanel>
+                    <TextBox Grid.Row="9" Header="Adresse" PlaceholderText="Adresse" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.address, Mode=TwoWay}"/>
+                    <Grid Grid.Row="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox Grid.Column="0" Header="Wilaya" PlaceholderText="Wilaya" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.wilaya, Mode=TwoWay}"/>
+                        <TextBox Grid.Column="1" Header="Commune" PlaceholderText="Commune" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.commune, Mode=TwoWay}"/>
+                    </Grid>
+                    <TextBox Grid.Row="11" Header="Code Postal" PlaceholderText="Code Postal" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.postalCode, Mode=TwoWay}"/>
+
+                    <StackPanel Grid.Row="12" Margin="0 8" Orientation="Horizontal">
+                        <FontIcon Glyph="&#xEC1B;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Information sur l'assurance</TextBlock>
+                    </StackPanel>
+                    <TextBox Grid.Row="13" Header="Fournisseur d'assurance" PlaceholderText="Fournisseur d'assurance" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.insuranceProvider, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="14" Header="Numéro d'assurance" PlaceholderText="Numéro d'assurance" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding NewPatient.insuranceNumber, Mode=TwoWay}"/>
+                </Grid>
+            </ScrollView>
+        </PivotItem>
+        <PivotItem Header="Informations médicales">
+            <ScrollView>
+                <Grid Width="400" Margin="0 0 24 0 ">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Margin="0 0 0 8" Orientation="Horizontal">
+                        <FontIcon Glyph="&#xE95E;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Informations médicales</TextBlock>
+                    </StackPanel>
+                    <TextBox Grid.Row="1" Header="Antécédents médicaux" PlaceholderText="Dossier détaillant les antécédents médicaux du patient, y compris les maladies passées, les opérations, les hospitalisations et tout (permet aux professionnels de santé de comprendre l'historique de santé du patient)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding NewPatient.medicalHistory, Mode=TwoWay}" Language="fr-FR"/>
+                    <TextBox Grid.Row="2" Header="Allergies" PlaceholderText="Informations sur les allergies du patient (pour éviter les réactions allergiques en évitant certains médicaments ou traitements)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding NewPatient.allergies, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="3" Header="Médicaments actuels" PlaceholderText="Une liste des médicaments que le patient prend actuellement (pour éviter les interactions médicamenteuses et informer les décisions de traitement)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding NewPatient.currentMedications, Mode=TwoWay}"/>
+                </Grid>
+            </ScrollView>
+        </PivotItem>
+    </Pivot>
+</Page>

@@ -30,11 +30,11 @@
     <None Remove="Assets\StoreLogo.png" />
     <None Remove="DATA.sqlite" />
     <None Remove="Hospital Sign.ico" />
-    <None Remove="View\BlankPage1.xaml" />
     <None Remove="View\Clients\AddPatientPage.xaml" />
     <None Remove="View\Clients\AddPatient\MedicalInfoPage.xaml" />
     <None Remove="View\Clients\AddPatient\PatientGeneralInfoPage.xaml" />
     <None Remove="View\Clients\ClientsPage.xaml" />
+    <None Remove="View\Clients\EditPatient\EdidPatientPage.xaml" />
     <None Remove="View\Clients\PatientCardControl.xaml" />
     <None Remove="View\Controls\EditNamePage.xaml" />
     <None Remove="View\Controls\TitleControl.xaml" />
@@ -96,11 +96,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\BlankPage1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="View\Clients\AddPatient\MedicalInfoPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +147,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Clients\AddPatient\PatientGeneralInfoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Clients\EditPatient\EdidPatientPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -36,6 +36,7 @@
                         </MenuFlyout>
                     </Button.Flyout>
                 </AppBarButton>
+                <AppBarButton Icon="Refresh" Label="Actualiser" ToolTipService.ToolTip="Actualiser" Click="AppBarButton_Click"/>
                 <AppBarElementContainer Padding="6">
                     <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="250" QueryIcon="Find" PlaceholderText="Recherche un patient" 
                                     TextChanged="SearchAutoSuggestBox_TextChanged" SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen"

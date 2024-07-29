@@ -61,9 +61,18 @@ namespace Hakim.View.Clients
             if (this.DataContext is Patient patient)
             {
                 // Now you have access to the associated Patient object
-                Debug.WriteLine($"Patient Name: {patient.LastName}, Age: {patient.FirstName}");
                 ParentPage.viewModel.DeletePatientById(patient.id);
                 ParentPage.UpdatePatientSearchResults(ParentPage.SearchAutoSuggestBox);
+            }
+        }
+
+        private void editButton_Click(object sender, RoutedEventArgs e)
+        {
+            CommandBarFlyout.Hide();
+            if (this.DataContext is Patient patient)
+            {
+                // Now you have access to the associated Patient object
+                ParentPage.ShowEditPatientDialog();
             }
         }
     }
