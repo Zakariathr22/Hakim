@@ -380,8 +380,8 @@ namespace Hakim.View.Clients
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Secondary)
             {
-                //viewModel.AddPatient(viewModel.NewPatient);
-                //itemsRepeater.ItemsSource = viewModel.Patients;
+                viewModel.UpdatePatient(patient);
+                UpdatePatientSearchResults(SearchAutoSuggestBox);
             }
         }
     }

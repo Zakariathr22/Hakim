@@ -200,5 +200,66 @@ namespace Hakim.ViewModel
             Patients.Remove(patient);
         }
 
+        public void UpdatePatient(Patient patient)
+        {
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = @"
+                UPDATE Patient SET
+                    LastName = @LastName,
+                    FirstName = @FirstName,
+                    DateOfBirth = @DateOfBirth,
+                    Gender = @Gender,
+                    Address = @Address,
+                    Wilaya = @Wilaya,
+                    Commune = @Commune,
+                    PostalCode = @PostalCode,
+                    Phone1 = @Phone1,
+                    Phone1Owner = @Phone1Owner,
+                    Phone2 = @Phone2,
+                    Phone2Owner = @Phone2Owner,
+                    Email = @Email,
+                    MedicalHistory = @MedicalHistory,
+                    Allergies = @Allergies,
+                    CurrentMedications = @CurrentMedications,
+                    InsuranceProvider = @InsuranceProvider,
+                    InsuranceNumber = @InsuranceNumber
+                WHERE id = @id";
+
+                    command.Parameters.AddWithValue("@LastName", patient.LastName);
+                    command.Parameters.AddWithValue("@FirstName", patient.FirstName);
+                    command.Parameters.AddWithValue("@DateOfBirth", patient.DateOfBirth.DateTime);
+                    command.Parameters.AddWithValue("@Gender", patient.gender);
+                    command.Parameters.AddWithValue("@Address", patient.address);
+                    command.Parameters.AddWithValue("@Wilaya", patient.wilaya);
+                    command.Parameters.AddWithValue("@Commune", patient.commune);
+                    command.Parameters.AddWithValue("@PostalCode", patient.postalCode);
+                    command.Parameters.AddWithValue("@Phone1", patient.Phone1);
+                    command.Parameters.AddWithValue("@Phone1Owner", patient.Phone1Owner);
+                    command.Parameters.AddWithValue("@Phone2", patient.Phone2);
+                    command.Parameters.AddWithValue("@Phone2Owner", patient.Phone2Owner);
+                    command.Parameters.AddWithValue("@Email", patient.email);
+                    command.Parameters.AddWithValue("@MedicalHistory", patient.medicalHistory);
+                    command.Parameters.AddWithValue("@Allergies", patient.allergies);
+                    command.Parameters.AddWithValue("@CurrentMedications", patient.currentMedications);
+                    command.Parameters.AddWithValue("@InsuranceProvider", patient.insuranceProvider);
+                    command.Parameters.AddWithValue("@InsuranceNumber", patient.insuranceNumber);
+                    command.Parameters.AddWithValue("@id", patient.id);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Patient updated successfully.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while updating the patient: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+
+            Patients = GetAllPatients();
+        }
     }
 }
