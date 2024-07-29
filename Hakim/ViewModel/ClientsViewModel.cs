@@ -133,13 +133,13 @@ namespace Hakim.ViewModel
             else if(PatientsOrdrer == 1) 
                 return "SELECT * FROM Patient ORDER BY DateOfRegistration";
             else if (PatientsOrdrer == 2)
-                return "SELECT * FROM Patient ORDER BY LastName";
+                return "SELECT * FROM Patient ORDER BY (LastName || ' ' || FirstName)";
             else if (PatientsOrdrer == 3)
-                return "SELECT * FROM Patient ORDER BY LastName DESC";
+                return "SELECT * FROM Patient ORDER BY (LastName || ' ' || FirstName) DESC";
             else if (PatientsOrdrer == 4)
-                return "SELECT * FROM Patient ORDER BY FirstName";
+                return "SELECT * FROM Patient ORDER BY (FirstName || ' ' || LastName)";
             else if (PatientsOrdrer == 5)
-                return "SELECT * FROM Patient ORDER BY FirstName DESC";
+                return "SELECT * FROM Patient ORDER BY (FirstName || ' ' || LastName) DESC";
             else if (PatientsOrdrer == 6)
                 return "SELECT * FROM Patient ORDER BY DateOfBirth DESC";
             else if (PatientsOrdrer == 7)

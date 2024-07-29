@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Hakim.View.Controls"
+    xmlns:converters="using:Hakim.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -26,6 +27,7 @@
                 </AppBarButton>
             </CommandBarFlyout.SecondaryCommands>
         </CommandBarFlyout>
+        <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
     </UserControl.Resources>
 
     <ToolTipService.ToolTip>
@@ -34,17 +36,26 @@
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Date et heure d'ajout:" Padding="2" FontWeight="Bold"/>
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding dateOfRegistration, Mode=OneWay}" Padding="2"/>
             </Grid>
-            <TextBlock Grid.Row="1" Text="Antécédents médicaux:" Padding="2" FontWeight="Bold"/>
-            <TextBlock Grid.Row="2" Text="{Binding medicalHistory, Mode=OneWay}" Padding="2" TextWrapping="Wrap"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Date de naissance:" Padding="2" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding DateOfBirth.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}" Padding="2"/>
+            </Grid>
+            <TextBlock Grid.Row="2" Text="Antécédents médicaux:" Padding="2" FontWeight="Bold"/>
+            <TextBlock Grid.Row="3" Text="{Binding medicalHistory, Mode=OneWay}" Padding="2" TextWrapping="Wrap"/>
         </Grid>
     </ToolTipService.ToolTip>
 
