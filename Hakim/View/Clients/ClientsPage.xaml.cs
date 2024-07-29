@@ -373,15 +373,15 @@ namespace Hakim.View.Clients
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-            dialog.CloseButtonText = "Fermer";
+            dialog.SecondaryButtonText = "Fermer";
             viewModel.NewPatient = new Patient();
             dialog.Content = new EdidPatientPage(dialog, patient);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Secondary)
             {
-                viewModel.AddPatient(viewModel.NewPatient);
-                itemsRepeater.ItemsSource = viewModel.Patients;
+                //viewModel.AddPatient(viewModel.NewPatient);
+                //itemsRepeater.ItemsSource = viewModel.Patients;
             }
         }
     }

@@ -40,11 +40,11 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="lastNameTextBox" Grid.Column="0" Header="Nom" PlaceholderText="Nom (obligatoire)" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding LastName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                        <TextBox x:Name="firstNameTextBox" Grid.Column="1" Header="Prénom" PlaceholderText="Prénom (obligatoire)" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding FirstName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                        <TextBox x:Name="lastNameTextBox" Grid.Column="0" Header="Nom" PlaceholderText="Nom (obligatoire)" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding LastName, Mode=TwoWay}" TextChanged="lastNameTextBox_TextChanged" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                        <TextBox x:Name="firstNameTextBox" Grid.Column="1" Header="Prénom" PlaceholderText="Prénom (obligatoire)" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding FirstName, Mode=TwoWay}" TextChanged="firstNameTextBox_TextChanged" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
                     </Grid>
                     <DatePicker Grid.Row="2" Header="Date de naissance" Width="400" Margin="0 0 0 4" SelectedDate="{Binding DateOfBirth, Mode=TwoWay}"/>
-                    <ComboBox x:Name="GenderComboBox" Grid.Row="3" Header="Genre" PlaceholderText="Genre (obligatoire)" Width="400" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}">
+                    <ComboBox x:Name="GenderComboBox" Grid.Row="3" Header="Genre" PlaceholderText="Genre (obligatoire)" Width="400" SelectionChanged="GenderComboBox_SelectionChanged" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}">
                         <x:String>Masculin</x:String>
                         <x:String>Féminin</x:String>
                     </ComboBox>
@@ -58,8 +58,8 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="phone1TextBox" Grid.Column="0" Header="Numéro de téléphone 1" PlaceholderText="Num de téléphone 1  (obligatoire)" Margin="0 0 4 8" IsSpellCheckEnabled="False" Text="{Binding Phone1, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                        <ComboBox x:Name="Phone1OwnerComboBox" Grid.Column="1" Header="Propriétaire" PlaceholderText="Propriétaire (obligatoire)" Margin="0 0 0 8" Width="160" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}">
+                        <TextBox x:Name="phone1TextBox" Grid.Column="0" Header="Numéro de téléphone 1" PlaceholderText="Num de téléphone 1  (obligatoire)" Margin="0 0 4 8" IsSpellCheckEnabled="False" Text="{Binding Phone1, Mode=TwoWay}" TextChanged="phone1TextBox_TextChanged" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                        <ComboBox x:Name="Phone1OwnerComboBox" Grid.Column="1" Header="Propriétaire" PlaceholderText="Propriétaire (obligatoire)" Margin="0 0 0 8" Width="160" SelectionChanged="Phone1OwnerComboBox_SelectionChanged" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}">
                             <x:String>Personnel</x:String>
                             <x:String>Le mari</x:String>
                             <x:String>La femme</x:String>
@@ -79,7 +79,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <TextBox Grid.Column="0" Header="Num de téléphone 2" PlaceholderText="Numéro de téléphone 2" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding Phone2, Mode=TwoWay}"/>
-                        <ComboBox x:Name="Phone2OwnerComboBox" Grid.Column="1" Header="Propriétaire" PlaceholderText="Propriétaire" Margin="0 0 0 8" Width="160">
+                        <ComboBox x:Name="Phone2OwnerComboBox" Grid.Column="1" Header="Propriétaire" PlaceholderText="Propriétaire" Margin="0 0 0 8" Width="160" SelectionChanged="Phone2OwnerComboBox_SelectionChanged">
                             <x:String>Personnel</x:String>
                             <x:String>Le mari</x:String>
                             <x:String>La femme</x:String>

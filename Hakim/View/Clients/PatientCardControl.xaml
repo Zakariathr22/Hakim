@@ -41,10 +41,10 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Date et heure d'ajout:" Padding="2" FontWeight="Bold"/>
-                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding dateOfRegistration}" Padding="2"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding dateOfRegistration, Mode=OneWay}" Padding="2"/>
             </Grid>
             <TextBlock Grid.Row="1" Text="Antécédents médicaux:" Padding="2" FontWeight="Bold"/>
-            <TextBlock Grid.Row="2" Text="{Binding medicalHistory}" Padding="2" TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="2" Text="{Binding medicalHistory, Mode=OneWay}" Padding="2" TextWrapping="Wrap"/>
         </Grid>
     </ToolTipService.ToolTip>
 
