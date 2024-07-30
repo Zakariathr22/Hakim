@@ -28,6 +28,14 @@
             </CommandBarFlyout.SecondaryCommands>
         </CommandBarFlyout>
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
+        <Border x:Key="GreenBackground" Background="{ThemeResource SystemFillColorSuccessBackgroundBrush}"/>
+        <Border x:Key="GreenForeground"  Background="{ThemeResource SystemFillColorSuccessBrush}"/>
+        <Border x:Name="AmberBackground" Background="{ThemeResource SystemFillColorCautionBackgroundBrush}"/>
+        <Border x:Name="AmberForeground" Background="{ThemeResource SystemFillColorCautionBrush}"/>
+        <Border x:Name="RedBackground" Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}"/>
+        <Border x:Name="RedForeground" Background="{ThemeResource SystemFillColorCriticalBrush}"/>
+        <Border x:Name="AccentBackground" Background="{ThemeResource AccentAcrylicBackgroundFillColorBaseBrush}"/>
+
     </UserControl.Resources>
 
     <ToolTipService.ToolTip>
@@ -59,7 +67,8 @@
         </Grid>
     </ToolTipService.ToolTip>
 
-    <controls:CustomButton Padding="0" BorderThickness="0" Margin="0" ContextRequested="CustomButton_ContextRequested" CornerRadius="8">
+    <controls:CustomButton Padding="0" BorderThickness="0" Margin="0" ContextRequested="CustomButton_ContextRequested"
+                           CornerRadius="8" Click="CustomButton_Click">
         <Grid BorderThickness="1"
               BorderBrush="{ThemeResource ControlElevationBorderBrush}"
               CornerRadius="8"
@@ -74,7 +83,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" VerticalAlignment="Top">
-                <PersonPicture Width="48" DisplayName="{Binding fullName}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                <PersonPicture x:Name="personPicture" Width="48" DisplayName="{Binding fullName}"/>
             </Border>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -82,7 +91,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="{Binding fullNameAndAge}" Margin="4 0 0 8" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                <TextBlock x:Name="fullNameAndAgeTextBlock" Grid.Row="0" Text="{Binding fullNameAndAge}" Margin="4 0 0 8" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                 <StackPanel Grid.Row="1" Orientation="Horizontal"  Margin="4 0 0 4">
                     <TextBlock Margin="0 0 4 0" FontFamily="Segoe Fluent Icons" Text="&#xE717;" FontWeight="Bold"/>
                     <TextBlock Text="{Binding phone1Details}" Style="{ThemeResource BodyTextBlockStyle}"/>

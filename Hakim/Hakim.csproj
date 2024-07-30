@@ -36,6 +36,7 @@
     <None Remove="View\Clients\ClientsPage.xaml" />
     <None Remove="View\Clients\EditPatient\EdidPatientPage.xaml" />
     <None Remove="View\Clients\PatientCardControl.xaml" />
+    <None Remove="View\Clients\PatientPage.xaml" />
     <None Remove="View\Controls\EditNamePage.xaml" />
     <None Remove="View\Controls\TitleControl.xaml" />
     <None Remove="View\Folders\FoldersPage.xaml" />
@@ -94,6 +95,11 @@
     <Content Update="Assets\StoreLogo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Clients\PatientPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Clients\AddPatient\MedicalInfoPage.xaml">

@@ -24,7 +24,7 @@
             </StackPanel>
         </Border>
 
-        <NavigationView Grid.Row="1" x:Name="navigationView" Width="auto"                            
+        <NavigationView Grid.Row="1" x:Name="navigationView" Width="auto"
                         PaneDisplayMode="Auto"
                         IsBackEnabled="True"
                         SelectionChanged="navigationView_SelectionChanged"
@@ -68,7 +68,7 @@
                     </StackPanel>
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>
-            <Frame Margin="0,0,0,0" x:Name="contentFrame" />
+            <Frame Margin="0,0,0,0" x:Name="contentFrame" x:FieldModifier="public"/>
         </NavigationView>
     </Grid>
 </Window>
