@@ -25,7 +25,7 @@ using Hakim.Service;
 namespace Hakim
 {
     /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// An empty window that can be used on its own or navigated to within patientDetailsDisplay Frame.
     /// </summary>
     public sealed partial class MainWindow : Window
     {

@@ -181,7 +181,7 @@ namespace Hakim.Model
                 {
                     result.Append(input[i]);
                     result.Append(input[i + 1]);
-                    result.Append(' '); // Add a space
+                    result.Append(' '); // Add PatientDetailsDisplay space
                 }
                 else
                 {

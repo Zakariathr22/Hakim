@@ -60,7 +60,7 @@ namespace Hakim.View.Clients
         private void deletePatientButton_Click(object sender, RoutedEventArgs e)
         {
             CommandBarFlyout.Hide();
-            if (this.DataContext is Patient patient)
+            if (this.DataContext is Model.Patient patient)
             {
                 // Now you have access to the associated Patient object
                 ParentPage.viewModel.DeletePatientById(patient.id);
@@ -71,7 +71,7 @@ namespace Hakim.View.Clients
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
             CommandBarFlyout.Hide();
-            if (this.DataContext is Patient patient)
+            if (this.DataContext is Model.Patient patient)
             {
                 // Now you have access to the associated Patient object
                 ParentPage.ShowEditPatientDialog(patient);
@@ -80,7 +80,7 @@ namespace Hakim.View.Clients
 
         private void CustomButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.DataContext is Patient patient)
+            if (this.DataContext is Model.Patient patient)
             {
                 App.mainWindow.contentFrame.Navigate(typeof(PatientPage), patient);
             }
@@ -88,7 +88,7 @@ namespace Hakim.View.Clients
 
         private void SetCardColor()
         {
-            if (this.DataContext is Patient patient)
+            if (this.DataContext is Model.Patient patient)
             {
                 if (patient.id % 4 == 0)
                 {
@@ -121,6 +121,11 @@ namespace Hakim.View.Clients
                     personPicture.Background = Background.Background;
                 }
             }
+        }
+
+        private void UserControl_ActualThemeChanged(FrameworkElement sender, object args)
+        {
+            SetCardColor();
         }
     }
 }

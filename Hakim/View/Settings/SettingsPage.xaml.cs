@@ -23,7 +23,7 @@ using Windows.Foundation.Collections;
 namespace Hakim.View.Settings
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within PatientDetailsDisplay Frame.
     /// </summary>
     public sealed partial class SettingsPage : Page
     {
@@ -81,7 +81,7 @@ namespace Hakim.View.Settings
         {
             ContentDialog dialog = new ContentDialog();
 
-            // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+            // XamlRoot must be set in the case of PatientDetailsDisplay ContentDialog running in PatientDetailsDisplay Desktop app
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.Title = new TitleControl("Modifier titre, nom ou prénom");

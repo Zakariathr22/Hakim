@@ -25,13 +25,13 @@ using Windows.Foundation.Collections;
 namespace Hakim.View.Clients
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within PatientDetailsDisplay Frame.
     /// </summary>
     public sealed partial class ClientsPage : Page
     {
         public ClientsViewModel viewModel = new ClientsViewModel();
         private bool IsSuggestionChosen = false;
-        private ObservableCollection<Patient> Patients = new ObservableCollection<Patient>();
+        private ObservableCollection<Model.Patient> Patients = new ObservableCollection<Model.Patient>();
         public ClientsPage()
         {
             this.InitializeComponent();
@@ -52,13 +52,13 @@ namespace Hakim.View.Clients
         {
             ContentDialog dialog = new ContentDialog();
 
-            // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+            // XamlRoot must be set in the case of PatientDetailsDisplay ContentDialog running in PatientDetailsDisplay Desktop app
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.Title = new TitleControl("Ajouter un patient", addPatientIcon);
             dialog.PrimaryButtonText = "Suivant";
             dialog.CloseButtonText = "Annuler";
-            viewModel.NewPatient = new Patient();
+            viewModel.NewPatient = new Model.Patient();
             dialog.Content = new AddPatientPage(dialog,viewModel);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
@@ -291,7 +291,7 @@ namespace Hakim.View.Clients
             UpdatePatientSearchResults(SearchAutoSuggestBox);
         }
 
-        private Dictionary<string, Patient> _patientDictionary = new Dictionary<string, Patient>();
+        private Dictionary<string, Model.Patient> _patientDictionary = new Dictionary<string, Model.Patient>();
 
         private void SearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
@@ -366,15 +366,15 @@ namespace Hakim.View.Clients
             UpdatePatientSearchResults(SearchAutoSuggestBox);
         }
 
-        public async void ShowEditPatientDialog(Patient patient)
+        public async void ShowEditPatientDialog(Model.Patient patient)
         {
             ContentDialog dialog = new ContentDialog();
 
-            // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
+            // XamlRoot must be set in the case of PatientDetailsDisplay ContentDialog running in PatientDetailsDisplay Desktop app
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.SecondaryButtonText = "Fermer";
-            viewModel.NewPatient = new Patient();
+            viewModel.NewPatient = new Model.Patient();
             dialog.Content = new EdidPatientPage(dialog, patient);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();

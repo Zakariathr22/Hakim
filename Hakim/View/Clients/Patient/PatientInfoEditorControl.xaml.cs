@@ -16,14 +16,11 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Hakim.View.Home
+namespace Hakim.View.Clients.Patient
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within PatientDetailsDisplay Frame.
-    /// </summary>
-    public sealed partial class HomePage : Page
+    public sealed partial class PatientInfoEditorControl : UserControl
     {
-        public HomePage()
+        public PatientInfoEditorControl()
         {
             this.InitializeComponent();
         }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Hakim.View.Clients.PatientPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hakim.View.Clients"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    SizeChanged="Page_SizeChanged">
+
+    <Page.Resources>
+        <ControlTemplate TargetType="Button" x:Key="ButtonTemplate">
+            <Border x:Name="RootElement" HorizontalAlignment="Stretch" Height="100">
+                <Border.Background>
+                    <SolidColorBrush x:Name="BorderBrush" Color="Black" />
+                </Border.Background>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="WidthStates">
+                        <VisualState x:Name="WidthMoreThan450">
+                            <VisualState.StateTriggers>
+                                <AdaptiveTrigger MinWindowWidth="450" />
+                            </VisualState.StateTriggers>
+                            <Storyboard>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBrush" Storyboard.TargetProperty="Color">
+                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Red"/>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Border>
+        </ControlTemplate>
+    </Page.Resources>
+    
+    <Grid x:Name="PagePanel">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ContentPresenter Height="56" Grid.Column="0" Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
+                    BorderThickness="0 0 0 1" BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}">
+            <CommandBar IsOpen="False" Height="56">
+                <AppBarButton x:Name="AddPatientButton" Icon="AddFriend" Label="Ajouter" ToolTipService.ToolTip="Ajouter un patient">
+                    <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                </AppBarButton>
+                <AppBarSeparator />
+                <AppBarButton Icon="Sort" Label="Trier" ToolTipService.ToolTip="Trier les patients">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <ToggleMenuFlyoutItem x:Name="OrderByDate" Text="Par date d'ajout" IsChecked="True"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByLastName" Text="Par nom" IsChecked="False"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByFirstName" Text="Par prénom" IsChecked="False"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByAge" Text="Par age" IsChecked="False"/>
+                            <MenuFlyoutSeparator/>
+                            <ToggleMenuFlyoutItem x:Name="CroissantOrder" Text="Croissant" IsChecked="False"/>
+                            <ToggleMenuFlyoutItem x:Name="DecroissantOrder" Text="Décroissant" IsChecked="True" />
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </AppBarButton>
+                <AppBarButton Icon="Refresh" Label="Actualiser" ToolTipService.ToolTip="Actualiser"/>
+                <AppBarElementContainer Padding="6">
+                    <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="250" QueryIcon="Find" PlaceholderText="Recherche un patient" />
+                </AppBarElementContainer>
+            </CommandBar>
+        </ContentPresenter>
+    </Grid>
+</Page>

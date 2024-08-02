@@ -23,7 +23,7 @@ using Windows.Foundation.Collections;
 namespace Hakim.View.Clients
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within PatientDetailsDisplay Frame.
     /// </summary>
     public sealed partial class AddPatientPage : Page
     {

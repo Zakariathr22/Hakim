@@ -20,7 +20,7 @@ using Windows.Foundation.Collections;
 namespace Hakim.View.Clients.AddPatient
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within patientDetailsDisplay Frame.
     /// </summary>
     public sealed partial class PatientGeneralInfoPage : Page
     {
@@ -63,7 +63,7 @@ namespace Hakim.View.Clients.AddPatient
             base.OnNavigatedTo(e);
         }
 
-        private void GetGender(Patient patient)
+        private void GetGender(Model.Patient patient)
         {
             if (patient.gender == "Masculin")
             {

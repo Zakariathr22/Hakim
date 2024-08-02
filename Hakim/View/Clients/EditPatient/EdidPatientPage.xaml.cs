@@ -20,18 +20,18 @@ using Hakim.Model;
 namespace Hakim.View.Clients.EditPatient
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within PatientDetailsDisplay Frame.
     /// </summary>
     public sealed partial class EdidPatientPage : Page
     {
-        Patient patient;
+        Model.Patient patient;
         ContentDialog dialog;
         public EdidPatientPage()
         {
             this.InitializeComponent();
         }
 
-        public EdidPatientPage(ContentDialog dialog, Patient patient)
+        public EdidPatientPage(ContentDialog dialog, Model.Patient patient)
         {
             this.InitializeComponent();
             this.dialog = dialog;
@@ -48,7 +48,7 @@ namespace Hakim.View.Clients.EditPatient
             UpdateDialogButtonState();
         }
 
-        private void GetGender(Patient patient)
+        private void GetGender(Model.Patient patient)
         {
             if (patient.gender == "Masculin")
             {
