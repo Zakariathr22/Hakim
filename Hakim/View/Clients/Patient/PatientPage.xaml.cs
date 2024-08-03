@@ -32,13 +32,21 @@ namespace Hakim.View.Clients
         Grid InternalPanel = new Grid();
         Expander expander = new Expander();
 
-        PatientInfoEditorControl patientInfoEditor = new PatientInfoEditorControl();
-        PatientDetailsDisplayControl patientDetailsDisplay = new PatientDetailsDisplayControl();
+        PatientInfoEditorControl patientInfoEditor;
+        PatientDetailsDisplayControl patientDetailsDisplay;
         PatientRecordsControl patientRecords = new PatientRecordsControl { Height = 500 , MinWidth = 300 };
 
         public PatientPage()
         {
             this.InitializeComponent();
+            Loaded += PatientPage_Loaded;
+        }
+
+        private void PatientPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataContext = viewModel;
+            patientInfoEditor = new PatientInfoEditorControl(viewModel.SelectedPatient);
+            patientDetailsDisplay = new PatientDetailsDisplayControl(viewModel.SelectedPatient);
 
             Grid.SetRow(scrollView1, 1);
             Grid.SetColumn(scrollView1, 0);
@@ -47,7 +55,6 @@ namespace Hakim.View.Clients
             mainPanel.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto }); // Second row takes 2/3 of available space
 
             mainPanel.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-            
 
             mainPanel.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }); // First column takes 1/3 of available space
 
@@ -79,6 +86,8 @@ namespace Hakim.View.Clients
             patientInfoEditor.Margin = new Thickness(16, 16, 0, 16);
             patientDetailsDisplay.Margin = new Thickness(0);
             patientRecords.Margin = new Thickness(0);
+
+            Page_SizeChanged(null, null);
         }
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)

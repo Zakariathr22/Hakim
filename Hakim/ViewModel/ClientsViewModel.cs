@@ -13,6 +13,7 @@ namespace Hakim.ViewModel
         [ObservableProperty] private Patient newPatient;
         [ObservableProperty] private ObservableCollection<Patient> patients;
         [ObservableProperty] private int patientsOrder;
+        [ObservableProperty] private Patient selectedPatient;
 
         public ClientsViewModel()
         {

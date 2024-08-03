@@ -13,7 +13,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="48"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="NOM et Prénom (age)" Style="{ThemeResource TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+        <TextBlock Grid.Column="0" Text="{Binding fullNameAndAge}" Style="{ThemeResource TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center"/>
         <AppBarButton Grid.Column="1" Icon="Edit" Label="Modifier"
                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>

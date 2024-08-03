@@ -4,10 +4,16 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Hakim.View.Clients.Patient"
+    xmlns:converters="using:Hakim.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <UserControl.Resources>
+        <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
+        <converters:OutputStringConverter x:Key="OutputStringConverter"/>
+    </UserControl.Resources>
+    
     <Pivot>
         <PivotItem Header="Générales" HorizontalAlignment="Left" Visibility="Visible">
             <Grid>
@@ -17,7 +23,8 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -30,7 +37,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Date de naissance:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="08/06/1963" Style="{ThemeResource BodyTextBlockStyle}" />
+                    <TextBlock Grid.Column="1" Text="{Binding DateOfBirth.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="1" Margin="0 8 0 4">
                     <Grid.ColumnDefinitions>
@@ -38,7 +45,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Genre:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="Masculin" Style="{ThemeResource BodyTextBlockStyle}" />
+                    <TextBlock Grid.Column="1" Text="{Binding gender}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="2" Margin="0 8 0 4">
                     <Grid.ColumnDefinitions>
@@ -46,7 +53,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Numéro de téléphone 1:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="06 66 71 75 31 (Personnel)" Style="{ThemeResource BodyTextBlockStyle}" />
+                    <TextBlock Grid.Column="1" Text="{Binding phone1Details}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="3" Margin="0 8 0 4">
                     <Grid.ColumnDefinitions>
@@ -54,7 +61,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Numéro de téléphone 2:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="07 76 70 75 23 (Personnel)" Style="{ThemeResource BodyTextBlockStyle}" />
+                    <TextBlock Grid.Column="1" Text="{Binding phone2Details}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="4" Margin="0 8 0 4">
                     <Grid.ColumnDefinitions>
@@ -62,7 +69,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Email:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="patient.email@example.com" Style="{ThemeResource BodyTextBlockStyle}" />
+                    <TextBlock Grid.Column="1" Text="{Binding email, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="5" Margin="0 8 0 4">
                     <Grid.RowDefinitions>
@@ -73,7 +80,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Adresse:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="11 reu Exemple, Exemple" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
+                    <TextBlock Grid.Column="1" Text="{Binding address, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="6" Margin="0 8 0 4">
                     <Grid.RowDefinitions>
@@ -84,7 +91,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Commune:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="Boussada" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
+                    <TextBlock Grid.Column="1" Text="{Binding commune, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="7" Margin="0 8 0 4">
                     <Grid.RowDefinitions>
@@ -95,7 +102,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Wilaya:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="Boussada" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
+                    <TextBlock Grid.Column="1" Text="{Binding wilaya, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="8" Margin="0 8 0 4">
                     <Grid.RowDefinitions>
@@ -106,7 +113,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Code Postal:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="28001" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
+                    <TextBlock Grid.Column="1" Text="{Binding postalCode, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="9" Margin="0 8 0 4">
                     <Grid.RowDefinitions>
@@ -117,7 +124,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Fournisseur d'assurance:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="CNAS" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
+                    <TextBlock Grid.Column="1" Text="{Binding insuranceProvider, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="10" Margin="0 8 0 4">
                     <Grid.RowDefinitions>
@@ -128,7 +135,18 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Numéro d'assurance:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="879654013911" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
+                    <TextBlock Grid.Column="1" Text="{Binding insuranceNumber, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
+                </Grid>
+                <Grid Grid.Row="11" Margin="0 8 0 4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="● Date et heure d'ajout:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="1" Text="{Binding dateOfRegistration}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
             </Grid>
         </PivotItem>
@@ -143,11 +161,11 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="● Antécédents médicaux:" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                <TextBlock Grid.Row="1" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." Margin="12 8 4 0" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap" TextAlignment="Justify"/>
+                <TextBlock Grid.Row="1" Text="{Binding medicalHistory, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Margin="12 8 4 8" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap" TextAlignment="Justify"/>
                 <TextBlock Grid.Row="2" Text="● Allergies:" Margin="0 8 0 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                <TextBlock Grid.Row="3" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." Margin="12 8 4 0" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap" TextAlignment="Justify"/>
+                <TextBlock Grid.Row="3" Text="{Binding allergies, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Margin="12 8 4 8" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap" TextAlignment="Justify"/>
                 <TextBlock Grid.Row="4" Text="● Médicaments actuels:" Margin="0 8 0 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                <TextBlock Grid.Row="5" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." Margin="12 8 4 0" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap" TextAlignment="Justify"/>
+                <TextBlock Grid.Row="5" Text="{Binding currentMedications, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Margin="12 8 4 0" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap" TextAlignment="Justify"/>
             </Grid>
         </PivotItem>
     </Pivot>
