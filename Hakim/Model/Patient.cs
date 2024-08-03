@@ -38,6 +38,7 @@ namespace Hakim.Model
         public string insuranceNumber { get; set; }
         public DateTime dateOfRegistration { get; set; }
         public ObservableCollection<File> files { get; set; }
+        public ObservableCollection<Appointment> appointments { get; set; }
         private string GetAgeAsString(DateTimeOffset birthDate)
         {
             TimeSpan age = DateTime.Now - birthDate;
@@ -97,7 +98,7 @@ namespace Hakim.Model
     public partial class Patient : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
+        private void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
 
         public string LastName
