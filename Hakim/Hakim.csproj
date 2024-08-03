@@ -42,7 +42,6 @@
     <None Remove="View\Clients\Patient\PatientRecordsControl.xaml" />
     <None Remove="View\Controls\EditNamePage.xaml" />
     <None Remove="View\Controls\TitleControl.xaml" />
-    <None Remove="View\Folders\FoldersPage.xaml" />
     <None Remove="View\Home\HomePage.xaml" />
     <None Remove="View\Schedule\SchedulePage.xaml" />
     <None Remove="View\Settings\SettingsPage.xaml" />
@@ -146,11 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Home\HomePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="View\Folders\FoldersPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
