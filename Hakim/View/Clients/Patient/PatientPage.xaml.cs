@@ -16,6 +16,7 @@ using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using Windows.UI;
 using Hakim.View.Clients.AddPatient;
 using Hakim.View.Clients.Patient;
+using Hakim.ViewModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -24,6 +25,7 @@ namespace Hakim.View.Clients
 {
     public sealed partial class PatientPage : Page
     {
+        ClientsViewModel viewModel;
         ScrollView scrollView1 = new ScrollView();
         Grid mainPanel = new Grid();
         ScrollView scrollView2 = new ScrollView();
@@ -161,6 +163,15 @@ namespace Hakim.View.Clients
                 patientDetailsDisplay.Margin = new Thickness(0);
                 patientRecords.Margin = new Thickness(0);
             } 
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter is ClientsViewModel)
+            {
+                viewModel = e.Parameter as ClientsViewModel;
+            }
+            base.OnNavigatedTo(e);
         }
     }
 }
