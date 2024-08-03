@@ -23,7 +23,7 @@ namespace Hakim.Model
     public partial class File : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
+        public void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
 
         public Patient Patient
