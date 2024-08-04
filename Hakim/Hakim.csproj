@@ -15,12 +15,19 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="Assets\Icons\Appointment.png" />
     <None Remove="Assets\Icons\Clients.png" />
+    <None Remove="Assets\Icons\Counselor.png" />
+    <None Remove="Assets\Icons\File.png" />
     <None Remove="Assets\Icons\Folders.png" />
     <None Remove="Assets\Icons\Hakim.ico" />
     <None Remove="Assets\Icons\Home.png" />
+    <None Remove="Assets\Icons\OldAppointment.png" />
     <None Remove="Assets\Icons\Schedule.png" />
     <None Remove="Assets\Icons\Settings.png" />
+    <None Remove="Assets\Icons\Surgery.png" />
+    <None Remove="Assets\Icons\X-ray.png" />
+    <None Remove="Assets\Icons\X-ray1.png" />
     <None Remove="Assets\LockScreenLogo.scale-200.png" />
     <None Remove="Assets\Logo.png" />
     <None Remove="Assets\SplashScreen.scale-200.png" />

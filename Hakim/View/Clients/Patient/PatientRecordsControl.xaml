@@ -5,9 +5,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:controls="using:Hakim.View.Controls"
     xmlns:local="using:Hakim.View.Clients.Patient"
+    xmlns:converters="using:Hakim.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:DateShortTimeConverter x:Key="DateShortTimeConverter"/>
+        <converters:IconUrlConverter x:Key="IconUrlConverter"/>
+        <converters:UrlNotEmptyConverter x:Key="UrlNotEmptyConverter"/>
+    </UserControl.Resources>
 
     <Pivot>
         <PivotItem Header="Fichiers">
@@ -41,8 +48,8 @@
                                                 <ColumnDefinition Width="62"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Source="C:\Users\TAHRI.ZAKARIA\Desktop\X-ray.png" Margin="8 0"/>
-                                            <TextBlock Grid.Column="1" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center">Radiographie 1</TextBlock>
+                                            <Image Source="{Binding Type, Converter={StaticResource IconUrlConverter}, Mode=OneWay}" Width="32" Height="32" Margin="8 0"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
                                         </Grid>
                                     </Grid>
                                     <Grid Grid.Column="1">
@@ -50,10 +57,18 @@
                                             <RowDefinition/>
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
-                                        <TextBlock Text="Radiographie" TextWrapping="Wrap" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="1" Text="03/08/2024 20:18:33" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                        <TextBlock Text="{Binding Type}" TextWrapping="Wrap" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="1" Text="{Binding CreatedDate, Converter={StaticResource DateShortTimeConverter}, Mode=OneWay}" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
                                     </Grid>
                                 </Grid>
+                                <ToolTipService.ToolTip>
+                                    <ToolTip IsEnabled="{Binding Url, Converter={StaticResource UrlNotEmptyConverter}, Mode=OneWay}" Background="Transparent" BorderThickness="0">
+                                        <StackPanel>
+                                            <Image Source="C:\Users\TAHRI.ZAKARIA\Desktop\radio.jpeg" MaxWidth="200"/>
+                                            <TextBlock Text="{Binding Url}" TextWrapping="Wrap" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemColorHotlightColor}"  MaxWidth="200"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ToolTipService.ToolTip>
                             </Button>
                         </DataTemplate>
                     </ListView.ItemTemplate>
