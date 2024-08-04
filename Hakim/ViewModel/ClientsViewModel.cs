@@ -262,5 +262,50 @@ namespace Hakim.ViewModel
 
             Patients = GetAllPatients();
         }
+
+        private ObservableCollection<File> GetFilesByPatient(Patient patient)
+        {
+            var files = new ObservableCollection<File>();
+
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand("SELECT * FROM File WHERE patient_id = @PatientId", connection))
+                {
+                    command.Parameters.AddWithValue("@PatientId", patient.id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var file = new File
+                            {
+                                id = Convert.ToInt32(reader["id"]),
+                                Patient = patient,
+                                Title = reader["title"].ToString(),
+                                CreatedDate = Convert.ToDateTime(reader["creation_date"]),
+                                Url = reader["url"].ToString(),
+                                Type = reader["type"].ToString()
+                            };
+
+                            files.Add(file);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while retrieving files for patient {patient.FirstName} {patient.LastName}: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+
+            return files;
+        }
+
+        [RelayCommand]
+        private void getFilesByPatient()
+        {
+            SelectedPatient.files = GetFilesByPatient(SelectedPatient);
+        }
     }
 }

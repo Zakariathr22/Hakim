@@ -47,11 +47,7 @@ namespace Hakim.View.Clients
         {
             DataContext = viewModel;
 
-            viewModel.SelectedPatient.files = new ObservableCollection<Model.File>();
-            viewModel.SelectedPatient.files.Add(new Model.File());
-            viewModel.SelectedPatient.files.Add(new Model.File());
-            viewModel.SelectedPatient.files.Add(new Model.File());
-            viewModel.SelectedPatient.files.Add(new Model.File());
+            viewModel.getFilesByPatientCommand.Execute(null);
 
             viewModel.SelectedPatient.appointments = new ObservableCollection<Model.Appointment>();
             viewModel.SelectedPatient.appointments.Add(new Model.Appointment());
