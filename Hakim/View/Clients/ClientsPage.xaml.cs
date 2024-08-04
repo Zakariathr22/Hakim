@@ -346,7 +346,7 @@ namespace Hakim.View.Clients
                 // Populate the dictionary with full names as keys and patient objects as values
                 foreach (var patient in filteredPatients)
                 {
-                    var fullName = $"{patient.fullName}";
+                    var fullName = $"({patient.id}) {patient.fullName}";
                     if (!_patientDictionary.ContainsKey(fullName))
                     {
                         _patientDictionary.Add(fullName, patient);

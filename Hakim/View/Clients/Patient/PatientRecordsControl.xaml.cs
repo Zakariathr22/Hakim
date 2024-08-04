@@ -20,9 +20,11 @@ namespace Hakim.View.Clients.Patient
 {
     public sealed partial class PatientRecordsControl : UserControl
     {
-        public PatientRecordsControl()
+        public PatientRecordsControl(Model.Patient patient)
         {
             this.InitializeComponent();
+            PatientFiles.ItemsSource = patient.files;
+            PatientAppointments.ItemsSource = patient.appointments;
         }
     }
 }

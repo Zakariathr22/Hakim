@@ -17,6 +17,7 @@ using Windows.UI;
 using Hakim.View.Clients.AddPatient;
 using Hakim.View.Clients.Patient;
 using Hakim.ViewModel;
+using System.Collections.ObjectModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -34,7 +35,7 @@ namespace Hakim.View.Clients
 
         PatientInfoEditorControl patientInfoEditor;
         PatientDetailsDisplayControl patientDetailsDisplay;
-        PatientRecordsControl patientRecords = new PatientRecordsControl { Height = 500 , MinWidth = 300 };
+        PatientRecordsControl patientRecords;
 
         public PatientPage()
         {
@@ -45,8 +46,22 @@ namespace Hakim.View.Clients
         private void PatientPage_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = viewModel;
+
+            viewModel.SelectedPatient.files = new ObservableCollection<Model.File>();
+            viewModel.SelectedPatient.files.Add(new Model.File());
+            viewModel.SelectedPatient.files.Add(new Model.File());
+            viewModel.SelectedPatient.files.Add(new Model.File());
+            viewModel.SelectedPatient.files.Add(new Model.File());
+
+            viewModel.SelectedPatient.appointments = new ObservableCollection<Model.Appointment>();
+            viewModel.SelectedPatient.appointments.Add(new Model.Appointment());
+            viewModel.SelectedPatient.appointments.Add(new Model.Appointment());
+            viewModel.SelectedPatient.appointments.Add(new Model.Appointment());
+            viewModel.SelectedPatient.appointments.Add(new Model.Appointment());
+
             patientInfoEditor = new PatientInfoEditorControl(viewModel.SelectedPatient);
             patientDetailsDisplay = new PatientDetailsDisplayControl(viewModel.SelectedPatient);
+            patientRecords = new PatientRecordsControl(viewModel.SelectedPatient);
 
             Grid.SetRow(scrollView1, 1);
             Grid.SetColumn(scrollView1, 0);
@@ -82,7 +97,8 @@ namespace Hakim.View.Clients
             InternalPanel.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
             scrollView1.VerticalScrollBarVisibility = ScrollingScrollBarVisibility.Auto;
-            scrollView1.Padding = new Thickness(24, 24, 24, 24);
+            scrollView1.Padding = new Thickness(24, 0, 24, 24);
+            expander.Margin = new Thickness(0, 24, 0, 0);
             patientInfoEditor.Margin = new Thickness(16, 16, 0, 16);
             patientDetailsDisplay.Margin = new Thickness(0);
             patientRecords.Margin = new Thickness(0);
@@ -92,8 +108,9 @@ namespace Hakim.View.Clients
 
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (this.ActualWidth >= 750 && mainPanel.RowDefinitions.Count == 2)
+            if (this.ActualWidth >= 832 && mainPanel.RowDefinitions.Count == 2)
             {
+                scrollView1.ScrollTo(0, 0);
                 mainPanel.RowDefinitions.Clear();
                 mainPanel.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
                 mainPanel.ColumnDefinitions[0].Width = new GridLength(450);
@@ -133,7 +150,7 @@ namespace Hakim.View.Clients
                 patientDetailsDisplay.Margin = new Thickness(0, 16, 0, 24);
                 patientRecords.Margin = new Thickness(0, 12, 0, 24);
             }
-            else if (this.ActualWidth < 750 && mainPanel.ColumnDefinitions.Count == 2)
+            else if (this.ActualWidth < 832 && mainPanel.ColumnDefinitions.Count == 2)
             {
                 mainPanel.ColumnDefinitions.RemoveAt(1);
                 mainPanel.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
@@ -167,7 +184,8 @@ namespace Hakim.View.Clients
                 expander.Content = patientDetailsDisplay;
 
                 scrollView1.VerticalScrollBarVisibility = ScrollingScrollBarVisibility.Auto;
-                scrollView1.Padding = new Thickness(24, 24, 24, 24);
+                scrollView1.Padding = new Thickness(24, 0, 24, 24);
+                expander.Margin = new Thickness(0, 24, 0, 0);
                 patientInfoEditor.Margin = new Thickness(16, 16, 0, 16);
                 patientDetailsDisplay.Margin = new Thickness(0);
                 patientRecords.Margin = new Thickness(0);

@@ -10,11 +10,98 @@
     mc:Ignorable="d">
 
     <Pivot>
-        <PivotItem Header="Fichiers" HorizontalAlignment="Left" Visibility="Visible">
-            
+        <PivotItem Header="Fichiers">
+            <Grid Margin="0 16 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="0 0 0 4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Titre du fichier" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        <TextBlock Grid.Column="1" Text="Type et date de création" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                    </Grid>
+                </Grid>
+                <ListView x:Name="PatientFiles" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="6*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="62"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="C:\Users\TAHRI.ZAKARIA\Desktop\X-ray.png" Margin="8 0"/>
+                                            <TextBlock Grid.Column="1" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center">Radiographie 1</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Text="Radiographie" TextWrapping="Wrap" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="1" Text="03/08/2024 20:18:33" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                    </Grid>
+                                </Grid>
+                            </Button>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </PivotItem>
-        <PivotItem Header="Rendez-vous" HorizontalAlignment="Left" Visibility="Visible">
-
+        <PivotItem Header="Rendez-vous">
+            <Grid Margin="0 16 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="0 0 0 4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="Objectif du rendez-vous" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        <TextBlock Grid.Column="1" Text="Date et heur" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                    </Grid>
+                </Grid>
+                <ListView x:Name="PatientAppointments" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="6*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="62"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image Source="C:\Users\TAHRI.ZAKARIA\Desktop\Appointment.png" Margin="8 0" Width="32" Height="32"/>
+                                            <TextBlock Grid.Column="1" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" Margin="0 8">Évaluation et traitement des douleurs articulaires Évaluation et traitement des douleurs articulaires Évaluation et traitement des douleurs articulaires</TextBlock>
+                                        </Grid>
+                                    </Grid>
+                                    <TextBlock Grid.Column="1" Text="03/08/2024 09:30" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Grid>
+                            </Button>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </PivotItem>
     </Pivot>
 </UserControl>

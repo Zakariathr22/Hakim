@@ -47,12 +47,6 @@
                         <TextBlock Margin="8 0" >Patients</TextBlock>
                     </StackPanel>
                 </NavigationViewItem>
-                <NavigationViewItem Tag="Folders" ToolTipService.ToolTip="Dossiers">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Width="24" Height="24" Source="/Assets/Icons/Folders.png"></Image>
-                        <TextBlock Margin="8 0" >Dossiers</TextBlock>
-                    </StackPanel>
-                </NavigationViewItem>
                 <NavigationViewItem Tag="Schedule" ToolTipService.ToolTip="Rendez-vous">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Image Width="24" Height="24" Source="/Assets/Icons/Schedule.png"></Image>
