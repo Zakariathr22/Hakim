@@ -10,6 +10,7 @@ namespace Hakim.Model
 {
     public partial class Appointment
     {
+        public int id { set; get; }
         private Patient patient;
         private DateTime appointmentDate;
         private string purpose;

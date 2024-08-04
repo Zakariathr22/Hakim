@@ -14,6 +14,8 @@
         <converters:DateShortTimeConverter x:Key="DateShortTimeConverter"/>
         <converters:IconUrlConverter x:Key="IconUrlConverter"/>
         <converters:UrlNotEmptyConverter x:Key="UrlNotEmptyConverter"/>
+        <converters:AppointmentIconUrlConverter x:Key="AppointmentIconUrlConverter"/>
+        <converters:OutputStringConverter x:Key="OutputStringConverter"/>
     </UserControl.Resources>
 
     <Pivot>
@@ -62,11 +64,10 @@
                                     </Grid>
                                 </Grid>
                                 <ToolTipService.ToolTip>
-                                    <ToolTip IsEnabled="{Binding Url, Converter={StaticResource UrlNotEmptyConverter}, Mode=OneWay}" Background="Transparent" BorderThickness="0">
-                                        <StackPanel>
+                                    <ToolTip IsEnabled="{Binding Url, Converter={StaticResource UrlNotEmptyConverter}, Mode=OneWay}" BorderThickness="0" Background="Transparent" CornerRadius="8">
+                                        <Border CornerRadius="4">
                                             <Image Source="C:\Users\TAHRI.ZAKARIA\Desktop\radio.jpeg" MaxWidth="200"/>
-                                            <TextBlock Text="{Binding Url}" TextWrapping="Wrap" Style="{ThemeResource CaptionTextBlockStyle}" Foreground="{ThemeResource SystemColorHotlightColor}"  MaxWidth="200"/>
-                                        </StackPanel>
+                                        </Border>
                                     </ToolTip>
                                 </ToolTipService.ToolTip>
                             </Button>
@@ -106,12 +107,24 @@
                                                 <ColumnDefinition Width="62"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Image Source="C:\Users\TAHRI.ZAKARIA\Desktop\Appointment.png" Margin="8 0" Width="32" Height="32"/>
-                                            <TextBlock Grid.Column="1" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" Margin="0 8">Évaluation et traitement des douleurs articulaires Évaluation et traitement des douleurs articulaires Évaluation et traitement des douleurs articulaires</TextBlock>
+                                            <Image Source="{Binding AppointmentDate , Converter={StaticResource AppointmentIconUrlConverter}, Mode=OneWay}" Margin="8 0" Width="32" Height="32"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding Purpose}" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" Margin="0 8"/>
                                         </Grid>
                                     </Grid>
-                                    <TextBlock Grid.Column="1" Text="03/08/2024 09:30" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                    </Grid>
+                                    <TextBlock Grid.Column="1" Text="{Binding AppointmentDate, Converter={StaticResource DateShortTimeConverter}, Mode=OneWay}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Grid>
+                                <ToolTipService.ToolTip>
+                                    <ToolTip MaxWidth="248">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="Notes:" FontWeight="Bold"/>
+                                            <TextBlock Grid.Row="1" Text="{Binding Notes, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" TextWrapping="Wrap"/>
+                                        </Grid>
+                                    </ToolTip>
+                                </ToolTipService.ToolTip>
                             </Button>
                         </DataTemplate>
                     </ListView.ItemTemplate>

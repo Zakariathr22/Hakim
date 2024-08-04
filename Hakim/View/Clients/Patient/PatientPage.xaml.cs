@@ -49,11 +49,7 @@ namespace Hakim.View.Clients
 
             viewModel.getFilesByPatientCommand.Execute(null);
 
-            viewModel.SelectedPatient.appointments = new ObservableCollection<Model.Appointment>();
-            viewModel.SelectedPatient.appointments.Add(new Model.Appointment());
-            viewModel.SelectedPatient.appointments.Add(new Model.Appointment());
-            viewModel.SelectedPatient.appointments.Add(new Model.Appointment());
-            viewModel.SelectedPatient.appointments.Add(new Model.Appointment());
+            viewModel.getAppointmentsByPatientCommand.Execute(null);
 
             patientInfoEditor = new PatientInfoEditorControl(viewModel.SelectedPatient);
             patientDetailsDisplay = new PatientDetailsDisplayControl(viewModel.SelectedPatient);

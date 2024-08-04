@@ -307,5 +307,49 @@ namespace Hakim.ViewModel
         {
             SelectedPatient.files = GetFilesByPatient(SelectedPatient);
         }
+
+        private ObservableCollection<Appointment> GetAppointmentsByPatient(Patient patient)
+        {
+            var appointments = new ObservableCollection<Appointment>();
+
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand("SELECT * FROM Appointment WHERE patient_id = @PatientId", connection))
+                {
+                    command.Parameters.AddWithValue("@PatientId", patient.id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var appointment = new Appointment
+                            {
+                                id = Convert.ToInt32(reader["id"]),
+                                Patient = patient,
+                                AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]),
+                                Purpose = reader["Purpose"].ToString(),
+                                Notes = reader["Notes"].ToString()
+                            };
+
+                            appointments.Add(appointment);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while retrieving appointments for patient {patient.FirstName} {patient.LastName}: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+
+            return appointments;
+        }
+
+        [RelayCommand]
+        private void getAppointmentsByPatient()
+        {
+            SelectedPatient.appointments = GetAppointmentsByPatient(SelectedPatient);
+        }
     }
 }
