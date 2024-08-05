@@ -1,4 +1,5 @@
 using Hakim.Model;
+using Hakim.Service;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -8,6 +9,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -21,10 +23,24 @@ namespace Hakim.View.Clients.Patient
 {
     public sealed partial class PatientInfoEditorControl : UserControl
     {
+        PatientPage ParentPage;
+        Model.Patient patient;
         public PatientInfoEditorControl(Model.Patient patient)
         {
             this.InitializeComponent();
-            DataContext = patient;
+            this.patient = patient;
+            DataContext = this.patient;
+            this.Loaded += PatientInfoEditorControl_Loaded;
+        }
+
+        private void PatientInfoEditorControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            ParentPage = VisualTreeExtensionsService.FindParent<PatientPage>(this);
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            ParentPage.ShowEditPatientDialog(this.patient);
         }
     }
 }

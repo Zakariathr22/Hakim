@@ -50,11 +50,11 @@ namespace Hakim.View.Clients.EditPatient
 
         private void GetGender(Model.Patient patient)
         {
-            if (patient.gender == "Masculin")
+            if (patient.Gender == "Masculin")
             {
                 GenderComboBox.SelectedIndex = 0;
             }
-            else if (patient.gender == "Féminin")
+            else if (patient.Gender == "Féminin")
             {
                 GenderComboBox.SelectedIndex = 1;
             }
@@ -111,11 +111,11 @@ namespace Hakim.View.Clients.EditPatient
         {
             if (GenderComboBox.SelectedIndex == 0)
             {
-                patient.gender = "Masculin";
+                patient.Gender = "Masculin";
             }
             else if (GenderComboBox.SelectedIndex == 1)
             {
-                patient.gender = "Féminin";
+                patient.Gender = "Féminin";
             }
             UpdateDialogButtonState();
         }

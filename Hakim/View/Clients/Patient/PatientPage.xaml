@@ -45,7 +45,30 @@
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xED0E;" />
                     </AppBarButton.Icon>
-                    <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                    <AppBarButton.Flyout>
+                        <MenuFlyout>
+                            <MenuFlyoutItem Text="Consultation">
+                                <MenuFlyoutItem.Icon>
+                                    <ImageIcon Source="\Assets\Icons\Counselor.png"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Text="Radiographie">
+                                <MenuFlyoutItem.Icon>
+                                    <ImageIcon Source="\Assets\Icons\X-ray.png"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Text="Radiographie télémétrie">
+                                <MenuFlyoutItem.Icon>
+                                    <ImageIcon Source="\Assets\Icons\X-ray1.png"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                            <MenuFlyoutItem Text="Protocol opératoire">
+                                <MenuFlyoutItem.Icon>
+                                    <ImageIcon Source="\Assets\Icons\Surgery.png"/>
+                                </MenuFlyoutItem.Icon>
+                            </MenuFlyoutItem>
+                        </MenuFlyout>
+                    </AppBarButton.Flyout>
                 </AppBarButton>
                 <AppBarButton x:Name="AddAppointmentButton" x:FieldModifier="public" Visibility="Collapsed" Icon="Add" Label="Ajouter" ToolTipService.ToolTip="Ajouter un rendez-vous"/>
                 <AppBarSeparator />

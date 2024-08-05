@@ -64,7 +64,7 @@
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding DateOfBirth.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}" Padding="2"/>
             </Grid>
             <TextBlock Grid.Row="2" Text="Antécédents médicaux:" Padding="2" FontWeight="Bold"/>
-            <TextBlock Grid.Row="3" Text="{Binding medicalHistory, Mode=OneWay}" Padding="2" TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="3" Text="{Binding MedicalHistory, Mode=OneWay}" Padding="2" TextWrapping="Wrap"/>
         </Grid>
     </ToolTipService.ToolTip>
 

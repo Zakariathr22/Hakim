@@ -32,7 +32,6 @@ namespace Hakim
         private AppWindow appWindow;
         private OverlappedPresenter overlappedPresenter;
         private AppWindowTitleBar titleBar;
-        private bool isActivatedOnce = false;
         private MainViewModel viewModel = new MainViewModel();
         public MainWindow()
         {

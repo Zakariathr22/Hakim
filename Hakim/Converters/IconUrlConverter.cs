@@ -17,7 +17,7 @@ namespace Hakim.Converters
                     return @"\Assets\Icons\Counselor.png";
                 else if (type == "Radiographie")
                     return @"\Assets\Icons\X-ray.png";
-                else if (type == "Radio télémétrie")
+                else if (type == "Radiographie télémétrie")
                     return @"\Assets\Icons\X-ray1.png";
                 else if (type == "Protocol opératoire")
                     return @"\Assets\Icons\Surgery.png";

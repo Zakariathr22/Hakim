@@ -18,6 +18,8 @@ using Hakim.View.Clients.AddPatient;
 using Hakim.View.Clients.Patient;
 using Hakim.ViewModel;
 using System.Collections.ObjectModel;
+using Hakim.Service;
+using Hakim.View.Clients.EditPatient;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -302,6 +304,25 @@ namespace Hakim.View.Clients
             AllAppointments.IsChecked = false;
             PresntAndFutureAppointments.IsChecked = false;
             PastAppointments.IsChecked = true;
+        }
+
+        public async void ShowEditPatientDialog(Model.Patient patient)
+        {
+            ContentDialog dialog = new ContentDialog();
+
+            // XamlRoot must be set in the case of PatientDetailsDisplay ContentDialog running in PatientDetailsDisplay Desktop app
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.SecondaryButtonText = "Fermer";
+            viewModel.NewPatient = new Model.Patient();
+            dialog.Content = new EdidPatientPage(dialog, patient);
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Secondary)
+            {
+                viewModel.UpdatePatient(patient);
+                //UpdatePatientSearchResults(SearchAutoSuggestBox);
+            }
         }
     }
 }

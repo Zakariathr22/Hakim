@@ -15,27 +15,21 @@ namespace Hakim.Model
         private string lastName;
         private string firstName;
         private DateTimeOffset dateOfBirth;
-        public string fullNameAndAge { 
-            get
-            {
-                return $"{lastName.ToUpper()} {firstName} ({GetAgeAsString(dateOfBirth)})";
-            } 
-        }
-        public string gender { get; set; }
-        public string address { get; set; }
-        public string wilaya { get; set; }
-        public string commune { get; set; }
-        public string postalCode { get; set; }
+        private string gender;
+        private string address;
+        private string wilaya;
+        private string commune;
+        private string postalCode;
         private string phone1;
         private string phone1Owner;
         private string phone2;
         private string phone2Owner;
-        public string email { get; set; }
-        public string medicalHistory { get; set; }
-        public string allergies { get; set; }
-        public string currentMedications { get; set; }
-        public string insuranceProvider { get; set; }
-        public string insuranceNumber { get; set; }
+        private string email;
+        private string medicalHistory;
+        private string allergies;
+        private string currentMedications;
+        private string insuranceProvider;
+        private string insuranceNumber;
         public DateTime dateOfRegistration { get; set; }
         public ObservableCollection<File> files { get; set; }
         public ObservableCollection<Appointment> appointments { get; set; }
@@ -133,6 +127,14 @@ namespace Hakim.Model
             }
         }
 
+        public string fullNameAndAge
+        {
+            get
+            {
+                return $"{lastName.ToUpper()} {firstName} ({GetAgeAsString(dateOfBirth)})";
+            }
+        }
+
         public DateTimeOffset DateOfBirth
         {
             get => dateOfBirth;
@@ -141,6 +143,56 @@ namespace Hakim.Model
                 dateOfBirth = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(fullNameAndAge));
+            }
+        }
+
+        public string Gender
+        {
+            get => gender;
+            set
+            {
+                gender = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Address
+        {
+            get => address;
+            set
+            {
+                address = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Wilaya
+        {
+            get => wilaya;
+            set
+            {
+                wilaya = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Commune
+        {
+            get => commune;
+            set
+            {
+                commune = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string PostalCode
+        {
+            get => postalCode;
+            set
+            {
+                postalCode = value;
+                OnPropertyChanged();
             }
         }
 
@@ -194,7 +246,7 @@ namespace Hakim.Model
             {
                 phone2Owner = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(phone1Details));
+                OnPropertyChanged(nameof(phone2Details));
             }
         }
 
@@ -208,26 +260,86 @@ namespace Hakim.Model
             }
         }
 
+        public string Email
+        {
+            get => email;
+            set
+            {
+                email = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string MedicalHistory
+        {
+            get => medicalHistory;
+            set
+            {
+                medicalHistory = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Allergies
+        {
+            get => allergies;
+            set
+            {
+                allergies = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string CurrentMedications
+        {
+            get => currentMedications;
+            set
+            {
+                currentMedications = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string InsuranceProvider
+        {
+            get => insuranceProvider;
+            set
+            {
+                insuranceProvider = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string InsuranceNumber
+        {
+            get => insuranceNumber;
+            set
+            {
+                insuranceNumber = value;
+                OnPropertyChanged();
+            }
+        }
+
         public Patient()
         {
             LastName = "";
             FirstName = "";
             DateOfBirth = DateTime.Now;
             gender = "";
-            address = "";
-            wilaya = "";
-            commune = "";
-            postalCode = "";
+            Address = "";
+            Wilaya = "";
+            Commune = "";
+            PostalCode = "";
             Phone1 = "";
             Phone1Owner = "";
             Phone2 = "";
             Phone2Owner = "";
-            email = "";
-            medicalHistory = "";
-            allergies = "";
-            currentMedications = "";
-            insuranceProvider = "";
-            insuranceNumber = "";
+            Email = "";
+            MedicalHistory = "";
+            Allergies = "";
+            CurrentMedications = "";
+            InsuranceProvider = "";
+            InsuranceNumber = "";
         }
     }
 }

@@ -43,21 +43,21 @@ namespace Hakim.ViewModel
                     command.Parameters.AddWithValue("@LastName", patient.LastName);
                     command.Parameters.AddWithValue("@FirstName", patient.FirstName);
                     command.Parameters.AddWithValue("@DateOfBirth", patient.DateOfBirth.DateTime);
-                    command.Parameters.AddWithValue("@Gender", patient.gender);
-                    command.Parameters.AddWithValue("@Address", patient.address);
-                    command.Parameters.AddWithValue("@Wilaya", patient.wilaya);
-                    command.Parameters.AddWithValue("@Commune", patient.commune);
-                    command.Parameters.AddWithValue("@PostalCode", patient.postalCode);
+                    command.Parameters.AddWithValue("@Gender", patient.Gender);
+                    command.Parameters.AddWithValue("@Address", patient.Address);
+                    command.Parameters.AddWithValue("@Wilaya", patient.Wilaya);
+                    command.Parameters.AddWithValue("@Commune", patient.Commune);
+                    command.Parameters.AddWithValue("@PostalCode", patient.PostalCode);
                     command.Parameters.AddWithValue("@Phone1", patient.Phone1);
                     command.Parameters.AddWithValue("@Phone1Owner", patient.Phone1Owner);
                     command.Parameters.AddWithValue("@Phone2", patient.Phone2);
                     command.Parameters.AddWithValue("@Phone2Owner", patient.Phone2Owner);
-                    command.Parameters.AddWithValue("@Email", patient.email);
-                    command.Parameters.AddWithValue("@MedicalHistory", patient.medicalHistory);
-                    command.Parameters.AddWithValue("@Allergies", patient.allergies);
-                    command.Parameters.AddWithValue("@CurrentMedications", patient.currentMedications);
-                    command.Parameters.AddWithValue("@InsuranceProvider", patient.insuranceProvider);
-                    command.Parameters.AddWithValue("@InsuranceNumber", patient.insuranceNumber);
+                    command.Parameters.AddWithValue("@Email", patient.Email);
+                    command.Parameters.AddWithValue("@MedicalHistory", patient.MedicalHistory);
+                    command.Parameters.AddWithValue("@Allergies", patient.Allergies);
+                    command.Parameters.AddWithValue("@CurrentMedications", patient.CurrentMedications);
+                    command.Parameters.AddWithValue("@InsuranceProvider", patient.InsuranceProvider);
+                    command.Parameters.AddWithValue("@InsuranceNumber", patient.InsuranceNumber);
 
                     command.ExecuteNonQuery();
                     Console.WriteLine("Patient added successfully.");
@@ -90,21 +90,21 @@ namespace Hakim.ViewModel
                             LastName = reader["LastName"].ToString(),
                             FirstName = reader["FirstName"].ToString(),
                             DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
-                            gender = reader["Gender"].ToString(),
-                            address = reader["Address"].ToString(),
-                            wilaya = reader["Wilaya"].ToString(),
-                            commune = reader["Commune"].ToString(),
-                            postalCode = reader["PostalCode"].ToString(),
+                            Gender = reader["Gender"].ToString(),
+                            Address = reader["Address"].ToString(),
+                            Wilaya = reader["Wilaya"].ToString(),
+                            Commune = reader["Commune"].ToString(),
+                            PostalCode = reader["PostalCode"].ToString(),
                             Phone1 = reader["Phone1"].ToString(),
                             Phone1Owner = reader["Phone1Owner"].ToString(),
                             Phone2 = reader["Phone2"].ToString(),
                             Phone2Owner = reader["Phone2Owner"].ToString(),
-                            email = reader["Email"].ToString(),
-                            medicalHistory = reader["MedicalHistory"].ToString(),
-                            allergies = reader["Allergies"].ToString(),
-                            currentMedications = reader["CurrentMedications"].ToString(),
-                            insuranceProvider = reader["InsuranceProvider"].ToString(),
-                            insuranceNumber = reader["InsuranceNumber"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            MedicalHistory = reader["MedicalHistory"].ToString(),
+                            Allergies = reader["Allergies"].ToString(),
+                            CurrentMedications = reader["CurrentMedications"].ToString(),
+                            InsuranceProvider = reader["InsuranceProvider"].ToString(),
+                            InsuranceNumber = reader["InsuranceNumber"].ToString(),
                             dateOfRegistration = Convert.ToDateTime(reader["DateOfRegistration"])
                         };
 
@@ -233,21 +233,21 @@ namespace Hakim.ViewModel
                     command.Parameters.AddWithValue("@LastName", patient.LastName);
                     command.Parameters.AddWithValue("@FirstName", patient.FirstName);
                     command.Parameters.AddWithValue("@DateOfBirth", patient.DateOfBirth.DateTime);
-                    command.Parameters.AddWithValue("@Gender", patient.gender);
-                    command.Parameters.AddWithValue("@Address", patient.address);
-                    command.Parameters.AddWithValue("@Wilaya", patient.wilaya);
-                    command.Parameters.AddWithValue("@Commune", patient.commune);
-                    command.Parameters.AddWithValue("@PostalCode", patient.postalCode);
+                    command.Parameters.AddWithValue("@Gender", patient.Gender);
+                    command.Parameters.AddWithValue("@Address", patient.Address);
+                    command.Parameters.AddWithValue("@Wilaya", patient.Wilaya);
+                    command.Parameters.AddWithValue("@Commune", patient.Commune);
+                    command.Parameters.AddWithValue("@PostalCode", patient.PostalCode);
                     command.Parameters.AddWithValue("@Phone1", patient.Phone1);
                     command.Parameters.AddWithValue("@Phone1Owner", patient.Phone1Owner);
                     command.Parameters.AddWithValue("@Phone2", patient.Phone2);
                     command.Parameters.AddWithValue("@Phone2Owner", patient.Phone2Owner);
-                    command.Parameters.AddWithValue("@Email", patient.email);
-                    command.Parameters.AddWithValue("@MedicalHistory", patient.medicalHistory);
-                    command.Parameters.AddWithValue("@Allergies", patient.allergies);
-                    command.Parameters.AddWithValue("@CurrentMedications", patient.currentMedications);
-                    command.Parameters.AddWithValue("@InsuranceProvider", patient.insuranceProvider);
-                    command.Parameters.AddWithValue("@InsuranceNumber", patient.insuranceNumber);
+                    command.Parameters.AddWithValue("@Email", patient.Email);
+                    command.Parameters.AddWithValue("@MedicalHistory", patient.MedicalHistory);
+                    command.Parameters.AddWithValue("@Allergies", patient.Allergies);
+                    command.Parameters.AddWithValue("@CurrentMedications", patient.CurrentMedications);
+                    command.Parameters.AddWithValue("@InsuranceProvider", patient.InsuranceProvider);
+                    command.Parameters.AddWithValue("@InsuranceNumber", patient.InsuranceNumber);
                     command.Parameters.AddWithValue("@id", patient.id);
 
                     command.ExecuteNonQuery();

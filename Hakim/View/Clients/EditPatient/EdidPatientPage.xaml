@@ -93,29 +93,29 @@
                             <x:String>Ami</x:String>
                         </ComboBox>
                     </Grid>
-                    <TextBox Grid.Row="7" Header="Email" PlaceholderText="Email" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding email, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="7" Header="Email" PlaceholderText="Email" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Email, Mode=TwoWay}"/>
 
                     <StackPanel Grid.Row="8" Margin="0 8" Orientation="Horizontal">
                         <FontIcon Glyph="&#xE80F;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                         <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Informations sur l'adresse</TextBlock>
                     </StackPanel>
-                    <TextBox Grid.Row="9" Header="Adresse" PlaceholderText="Adresse" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding address, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="9" Header="Adresse" PlaceholderText="Adresse" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Address, Mode=TwoWay}"/>
                     <Grid Grid.Row="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Column="0" Header="Wilaya" PlaceholderText="Wilaya" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding wilaya, Mode=TwoWay}"/>
-                        <TextBox Grid.Column="1" Header="Commune" PlaceholderText="Commune" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding commune, Mode=TwoWay}"/>
+                        <TextBox Grid.Column="0" Header="Wilaya" PlaceholderText="Wilaya" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding Wilaya, Mode=TwoWay}"/>
+                        <TextBox Grid.Column="1" Header="Commune" PlaceholderText="Commune" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Commune, Mode=TwoWay}"/>
                     </Grid>
-                    <TextBox Grid.Row="11" Header="Code Postal" PlaceholderText="Code Postal" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding postalCode, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="11" Header="Code Postal" PlaceholderText="Code Postal" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding PostalCode, Mode=TwoWay}"/>
 
                     <StackPanel Grid.Row="12" Margin="0 8" Orientation="Horizontal">
                         <FontIcon Glyph="&#xEC1B;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                         <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Information sur l'assurance</TextBlock>
                     </StackPanel>
-                    <TextBox Grid.Row="13" Header="Fournisseur d'assurance" PlaceholderText="Fournisseur d'assurance" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding insuranceProvider, Mode=TwoWay}"/>
-                    <TextBox Grid.Row="14" Header="Numéro d'assurance" PlaceholderText="Numéro d'assurance" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding insuranceNumber, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="13" Header="Fournisseur d'assurance" PlaceholderText="Fournisseur d'assurance" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding InsuranceProvider, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="14" Header="Numéro d'assurance" PlaceholderText="Numéro d'assurance" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding InsuranceNumber, Mode=TwoWay}"/>
                 </Grid>
             </ScrollView>
         </PivotItem>
@@ -132,9 +132,9 @@
                         <FontIcon Glyph="&#xE95E;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                         <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Informations médicales</TextBlock>
                     </StackPanel>
-                    <TextBox Grid.Row="1" Header="Antécédents médicaux" PlaceholderText="Dossier détaillant les antécédents médicaux du patient, y compris les maladies passées, les opérations, les hospitalisations et tout (permet aux professionnels de santé de comprendre l'historique de santé du patient)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding medicalHistory, Mode=TwoWay}" Language="fr-FR"/>
-                    <TextBox Grid.Row="2" Header="Allergies" PlaceholderText="Informations sur les allergies du patient (pour éviter les réactions allergiques en évitant certains médicaments ou traitements)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding allergies, Mode=TwoWay}"/>
-                    <TextBox Grid.Row="3" Header="Médicaments actuels" PlaceholderText="Une liste des médicaments que le patient prend actuellement (pour éviter les interactions médicamenteuses et informer les décisions de traitement)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding currentMedications, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="1" Header="Antécédents médicaux" PlaceholderText="Dossier détaillant les antécédents médicaux du patient, y compris les maladies passées, les opérations, les hospitalisations et tout (permet aux professionnels de santé de comprendre l'historique de santé du patient)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding MedicalHistory, Mode=TwoWay}" Language="fr-FR"/>
+                    <TextBox Grid.Row="2" Header="Allergies" PlaceholderText="Informations sur les allergies du patient (pour éviter les réactions allergiques en évitant certains médicaments ou traitements)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Allergies, Mode=TwoWay}"/>
+                    <TextBox Grid.Row="3" Header="Médicaments actuels" PlaceholderText="Une liste des médicaments que le patient prend actuellement (pour éviter les interactions médicamenteuses et informer les décisions de traitement)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding CurrentMedications, Mode=TwoWay}"/>
                 </Grid>
             </ScrollView>
         </PivotItem>
