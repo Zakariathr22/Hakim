@@ -192,5 +192,116 @@ namespace Hakim.View.Clients
             }
             base.OnNavigatedTo(e);
         }
+
+        private void OrderByDate_Click(object sender, RoutedEventArgs e)
+        {
+            OrderByDate.IsChecked = true;
+            OrderByTitle.IsChecked = false;
+            OrderByType.IsChecked = false;
+        }
+
+        private void OrderByTitle_Click(object sender, RoutedEventArgs e)
+        {
+            OrderByDate.IsChecked = false;
+            OrderByTitle.IsChecked = true;
+            OrderByType.IsChecked = false;
+        }
+
+        private void OrderByType_Click(object sender, RoutedEventArgs e)
+        {
+            OrderByDate.IsChecked = false;
+            OrderByTitle.IsChecked = false;
+            OrderByType.IsChecked = true;
+        }
+
+        private void CroissantOrder_Click(object sender, RoutedEventArgs e)
+        {
+            CroissantOrder.IsChecked = true;
+            DecroissantOrder.IsChecked = false;
+        }
+
+        private void DecroissantOrder_Click(object sender, RoutedEventArgs e)
+        {
+            CroissantOrder.IsChecked = false;
+            DecroissantOrder.IsChecked = true;
+        }
+
+        private void CroissantAppointmentOrder_Click(object sender, RoutedEventArgs e)
+        {
+            CroissantAppointmentOrder.IsChecked = true;
+            DecroissantAppointmentOrder.IsChecked = false;
+        }
+
+        private void DecroissantAppointmentOrder_Click(object sender, RoutedEventArgs e)
+        {
+            CroissantAppointmentOrder.IsChecked = false;
+            DecroissantAppointmentOrder.IsChecked = true;
+        }
+
+        private void AllFiles_Click(object sender, RoutedEventArgs e)
+        {
+            AllFiles.IsChecked = true;
+            Consultations.IsChecked = true;
+            Xray.IsChecked = true;
+            TXray.IsChecked = true;
+            SurgeryProtocol.IsChecked = true;
+        }
+
+        private void Consultations_Click(object sender, RoutedEventArgs e)
+        {
+            AllFiles.IsChecked = false;
+            Consultations.IsChecked = true;
+            Xray.IsChecked = false;
+            TXray.IsChecked = false;
+            SurgeryProtocol.IsChecked = false;
+        }
+
+        private void Xray_Click(object sender, RoutedEventArgs e)
+        {
+            AllFiles.IsChecked = false;
+            Consultations.IsChecked = false;
+            Xray.IsChecked = true;
+            TXray.IsChecked = false;
+            SurgeryProtocol.IsChecked = false;
+        }
+
+        private void TXray_Click(object sender, RoutedEventArgs e)
+        {
+            AllFiles.IsChecked = false;
+            Consultations.IsChecked = false;
+            Xray.IsChecked = false;
+            TXray.IsChecked = true;
+            SurgeryProtocol.IsChecked = false;
+        }
+
+        private void SurgeryProtocol_Click(object sender, RoutedEventArgs e)
+        {
+            AllFiles.IsChecked = false;
+            Consultations.IsChecked = false;
+            Xray.IsChecked = false;
+            TXray.IsChecked = false;
+            SurgeryProtocol.IsChecked = true;
+        }
+
+        private void AllAppointments_Click(object sender, RoutedEventArgs e)
+        {
+            AllAppointments.IsChecked = true;
+            PresntAndFutureAppointments.IsChecked = true;
+            PastAppointments.IsChecked = true;
+        }
+
+        private void PresntAndFutureAppointments_Click(object sender, RoutedEventArgs e)
+        {
+            AllAppointments.IsChecked = false;
+            PresntAndFutureAppointments.IsChecked = true;
+            PastAppointments.IsChecked = false;
+        }
+
+        private void PastAppointments_Click(object sender, RoutedEventArgs e)
+        {
+            AllAppointments.IsChecked = false;
+            PresntAndFutureAppointments.IsChecked = false;
+            PastAppointments.IsChecked = true;
+        }
     }
 }

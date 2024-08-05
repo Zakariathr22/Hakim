@@ -41,54 +41,53 @@
         <ContentPresenter Height="56" Grid.Column="0" Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
                     BorderThickness="0 0 0 1" BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}">
             <CommandBar IsOpen="False" Height="56">
-                <AppBarButton x:Name="AddFileButton" Label="Ajouter" ToolTipService.ToolTip="Ajouter un fichier">
+                <AppBarButton x:Name="AddFileButton" x:FieldModifier="public" Label="Ajouter" ToolTipService.ToolTip="Ajouter un fichier">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xED0E;" />
                     </AppBarButton.Icon>
                     <KeyboardAccelerator Modifiers="Control" Key="N"/>
                 </AppBarButton>
-                <AppBarButton x:Name="AddAppointmentButton" Icon="Add" Label="Ajouter" ToolTipService.ToolTip="Ajouter un rendez-vous"/>
+                <AppBarButton x:Name="AddAppointmentButton" x:FieldModifier="public" Visibility="Collapsed" Icon="Add" Label="Ajouter" ToolTipService.ToolTip="Ajouter un rendez-vous"/>
                 <AppBarSeparator />
-                <AppBarButton Icon="Sort" Label="Trier" ToolTipService.ToolTip="Trier les fichiers">
+                <AppBarButton x:Name="SortFilesButton" x:FieldModifier="public" Icon="Sort" Label="Trier" ToolTipService.ToolTip="Trier les fichiers">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <ToggleMenuFlyoutItem x:Name="OrderByDate" Text="Par date création" IsChecked="True"/>
-                            <ToggleMenuFlyoutItem x:Name="OrderByTitle" Text="Par titre" IsChecked="False"/>
-                            <ToggleMenuFlyoutItem x:Name="OrderByType" Text="Par type" IsChecked="False"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByDate" Text="Par date création" IsChecked="True" Click="OrderByDate_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByTitle" Text="Par titre" IsChecked="False" Click="OrderByTitle_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByType" Text="Par type" IsChecked="False" Click="OrderByType_Click"/>
                             <MenuFlyoutSeparator/>
-                            <ToggleMenuFlyoutItem x:Name="CroissantOrder" Text="Croissant" IsChecked="False"/>
-                            <ToggleMenuFlyoutItem x:Name="DecroissantOrder" Text="Décroissant" IsChecked="True" />
+                            <ToggleMenuFlyoutItem x:Name="CroissantOrder" Text="Croissant" IsChecked="False" Click="CroissantOrder_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="DecroissantOrder" Text="Décroissant" IsChecked="True" Click="DecroissantOrder_Click"/>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </AppBarButton>
+                <AppBarButton x:Name="SortAppintmentsButton" x:FieldModifier="public" Visibility="Collapsed" Icon="Sort" Label="Trier" ToolTipService.ToolTip="Trier les rendez-vous">
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <ToggleMenuFlyoutItem x:Name="CroissantAppointmentOrder" Text="Croissant" IsChecked="False" Click="CroissantAppointmentOrder_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="DecroissantAppointmentOrder" Text="Décroissant" IsChecked="True" Click="DecroissantAppointmentOrder_Click"/>
                         </MenuFlyout>
                     </Button.Flyout>
                 </AppBarButton>
 
-                <AppBarButton Icon="Sort" Label="Trier" ToolTipService.ToolTip="Trier les rendez-vous">
+                <AppBarButton x:Name="FilterFilesButton" x:FieldModifier="public" Icon="Filter" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <ToggleMenuFlyoutItem x:Name="CroissantAppointmentOrder" Text="Croissant" IsChecked="False"/>
-                            <ToggleMenuFlyoutItem x:Name="DecroissantAppointmentOrder" Text="Décroissant" IsChecked="True" />
+                            <ToggleMenuFlyoutItem x:Name="AllFiles" Text="Tous les fichiers" IsChecked="True" Click="AllFiles_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="Consultations" Text="Consultations" IsChecked="True" Click="Consultations_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="Xray" Text="Radiographies" IsChecked="True" Click="Xray_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="TXray" Text="Radiographies télémétries" IsChecked="True" Click="TXray_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="SurgeryProtocol" Text="Protocols opératoires" IsChecked="True" Click="SurgeryProtocol_Click"/>
                         </MenuFlyout>
                     </Button.Flyout>
                 </AppBarButton>
 
-                <AppBarButton Icon="Filter" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers">
+                <AppBarButton x:Name="FilterAppointmentsButton" x:FieldModifier="public" Icon="Filter" Visibility="Collapsed" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <ToggleMenuFlyoutItem Text="Tous les fichiers" IsChecked="True"/>
-                            <ToggleMenuFlyoutItem Text="Consultations" IsChecked="True"/>
-                            <ToggleMenuFlyoutItem Text="Radiographies" IsChecked="True"/>
-                            <ToggleMenuFlyoutItem Text="Radiographies télémétries" IsChecked="True"/>
-                            <ToggleMenuFlyoutItem Text="Protocols opératoires" IsChecked="True"/>
-                        </MenuFlyout>
-                    </Button.Flyout>
-                </AppBarButton>
-
-                <AppBarButton Icon="Filter" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers">
-                    <Button.Flyout>
-                        <MenuFlyout>
-                            <ToggleMenuFlyoutItem Text="Tous les rendez-vous" IsChecked="True"/>
-                            <ToggleMenuFlyoutItem Text="Rendez-vous à venir" IsChecked="True"/>
-                            <ToggleMenuFlyoutItem Text="Aanciens rendez-vous" IsChecked="True"/>
+                            <ToggleMenuFlyoutItem x:Name="AllAppointments" Text="Tous les rendez-vous" IsChecked="True" Click="AllAppointments_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="PresntAndFutureAppointments" Text="Rendez-vous à venir" IsChecked="True" Click="PresntAndFutureAppointments_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="PastAppointments" Text="Aanciens rendez-vous" IsChecked="True" Click="PastAppointments_Click"/>
                         </MenuFlyout>
                     </Button.Flyout>
                 </AppBarButton>

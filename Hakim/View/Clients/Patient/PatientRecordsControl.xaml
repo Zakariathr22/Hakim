@@ -19,7 +19,12 @@
     </UserControl.Resources>
 
     <Pivot>
-        <PivotItem Header="Fichiers">
+        <PivotItem>
+            <PivotItem.Header >
+                <PivotHeaderItem x:Name="FilesHeader" Tapped="FilesHeader_Tapped">
+                    <TextBlock>Fichiers</TextBlock>
+                </PivotHeaderItem>
+            </PivotItem.Header>
             <Grid Margin="0 16 0 0">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -76,7 +81,12 @@
                 </ListView>
             </Grid>
         </PivotItem>
-        <PivotItem Header="Rendez-vous">
+        <PivotItem>
+            <PivotItem.Header>
+                <PivotHeaderItem x:Name="AppointmentsHeader" Tapped="AppointmentsHeader_Tapped">
+                    <TextBlock>Rendez-vous</TextBlock>
+                </PivotHeaderItem>
+            </PivotItem.Header>
             <Grid Margin="0 16 0 0">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
