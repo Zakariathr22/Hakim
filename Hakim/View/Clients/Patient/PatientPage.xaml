@@ -47,17 +47,17 @@
                     </AppBarButton.Icon>
                     <AppBarButton.Flyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem Text="Consultation">
+                            <MenuFlyoutItem x:Name="AddConsultationItem" Text="Consultation" Click="AddConsultationItem_Click">
                                 <MenuFlyoutItem.Icon>
                                     <ImageIcon Source="\Assets\Icons\Counselor.png"/>
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem Text="Radiographie">
+                            <MenuFlyoutItem x:Name="AddXRayItem" Text="Radiographie" Click="AddXRayItem_Click">
                                 <MenuFlyoutItem.Icon>
                                     <ImageIcon Source="\Assets\Icons\X-ray.png"/>
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem Text="Radiographie télémétrie">
+                            <MenuFlyoutItem x:Name="TelemetryXRayItem" Text="Radiographie télémétrie" Click="TelemetryXRayItem_Click">
                                 <MenuFlyoutItem.Icon>
                                     <ImageIcon Source="\Assets\Icons\X-ray1.png"/>
                                 </MenuFlyoutItem.Icon>

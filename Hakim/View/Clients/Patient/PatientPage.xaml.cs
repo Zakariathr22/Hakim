@@ -20,6 +20,9 @@ using Hakim.ViewModel;
 using System.Collections.ObjectModel;
 using Hakim.Service;
 using Hakim.View.Clients.EditPatient;
+using Hakim.View.Controls;
+using Hakim.View.Clients.Patient.Consultations;
+using Hakim.View.Clients.Patient.XRay_s;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -322,6 +325,81 @@ namespace Hakim.View.Clients
             {
                 viewModel.UpdatePatient(patient);
                 //UpdatePatientSearchResults(SearchAutoSuggestBox);
+            }
+        }
+
+        private void AddConsultationItem_Click(object sender, RoutedEventArgs e)
+        {
+            ShowAddConsultationDialog();
+        }
+
+        public async void ShowAddConsultationDialog()
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.Title = new TitleControl("Ajouter une consultation", new FontIcon { Glyph = "\uED0E" });
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.CloseButtonText = "Annuler";
+            dialog.IsPrimaryButtonEnabled = false;
+            dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
+            dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
+            //viewModel.NewPatient = new Model.Patient();
+            dialog.Content = new AddEditConsultaionFilePage(dialog);
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Secondary)
+            {
+                
+            }
+        }
+
+        private void AddXRayItem_Click(object sender, RoutedEventArgs e)
+        {
+            ShowAddXRayDialog();
+        }
+
+        public async void ShowAddXRayDialog()
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.Title = new TitleControl("Ajouter une radiographie", new FontIcon { Glyph = "\uED0E" });
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.CloseButtonText = "Annuler";
+            dialog.IsPrimaryButtonEnabled = false;
+            dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
+            dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
+            //viewModel.NewPatient = new Model.Patient();
+            dialog.Content = new AddXRayPage();
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Secondary)
+            {
+
+            }
+        }
+
+        private void TelemetryXRayItem_Click(object sender, RoutedEventArgs e)
+        {
+            ShowAddTelemetryXRayDialog();
+        }
+
+        public async void ShowAddTelemetryXRayDialog()
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.Title = new TitleControl("Ajouter une radiographie télémétrie", new FontIcon { Glyph = "\uED0E" });
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.CloseButtonText = "Annuler";
+            dialog.IsPrimaryButtonEnabled = false;
+            dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
+            dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
+            //viewModel.NewPatient = new Model.Patient();
+            dialog.Content = new AddTelemetryXRayPage();
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Secondary)
+            {
+
             }
         }
     }

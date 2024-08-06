@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="Hakim.View.Clients.Patient.XRay_s.AddTelemetryXRayPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hakim.View.Clients.Patient.XRay_s"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    MaxHeight="450">
+
+    <ScrollView>
+        <Grid Width="400" Margin="0 0 24 0 ">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="titleTextBox" Grid.Row="0" Header="Titre" PlaceholderText="Titre de radiographie (obligatoire)" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" Margin="0 0 0 8" IsSpellCheckEnabled="True" FontWeight="Bold" Text="{Binding NewPatient.MedicalHistory, Mode=TwoWay}" Language="fr-FR"/>
+            <DatePicker x:Name="xRayDate" Grid.Row="1" Header="Date de la radiographie" Margin="0 0 0 8" Width="400"/>
+            <TimePicker x:Name="xRayTime" Grid.Row="2" Header="Heur de la radiographie" Margin="0 0 0 8" Width="400" MinuteIncrement="5"/>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="photoName" PlaceholderText="Aucune image choisie" IsReadOnly="True" Header="Photo de la radiographie" Margin="0 0 8 8" VerticalAlignment="Bottom" Foreground="{ThemeResource SystemColorHotlightColor}"/>
+                <Button x:Name="pickPhotoButton" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 0 8" Click="pickPhotoButton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <FontIcon Glyph="&#xE7C5;" Margin="0 0 8 0"/>
+                        <TextBlock Text="Choisir"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <TextBox x:Name="radiologistTextBox" Grid.Row="4" Header="Radiologue" PlaceholderText="Dr./Pro. NOM Prénom" Margin="0 0 0 8" IsSpellCheckEnabled="True" Text="{Binding NewPatient.MedicalHistory, Mode=TwoWay}" Language="fr-FR"/>
+            <TextBox x:Name="diagnosisTextBox" Grid.Row="5" Header="Diagnostic" PlaceholderText="Veuillez fournir un diagnostic détaillé et concis basé sur les résultats de la radiographie, en incluant toutes les anomalies ou conditions observées." Margin="0 0 0 8" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding NewPatient.MedicalHistory, Mode=TwoWay}" Language="fr-FR"/>
+            <Grid Grid.Row="6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <NumberBox x:Name="VLSNumberBox" Grid.Row="0" Grid.Column="0" Header="VLS" Margin="0 0 4 8" Value="0" SpinButtonPlacementMode="Inline"/>
+                <NumberBox x:Name="VLINumberBox" Grid.Row="0" Grid.Column="1" Header="VLI" Margin="4 0 0 8" Value="0" SpinButtonPlacementMode="Inline"/>
+                <NumberBox x:Name="COBBNumberBox" Grid.Row="1" Grid.Column="0" Header="COBB" Margin="0 0 4 8" Value="0" SpinButtonPlacementMode="Inline"/>
+                <NumberBox x:Name="BENDNumberBox" Grid.Row="1" Grid.Column="1" Header="BEND" Margin="4 0 0 8" Value="0" SpinButtonPlacementMode="Inline"/>
+                <NumberBox x:Name="REDNumberBox" Grid.Row="2" Grid.Column="0" Header="RED" Margin="0 0 4 8" Value="0" SpinButtonPlacementMode="Inline"/>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</Page>

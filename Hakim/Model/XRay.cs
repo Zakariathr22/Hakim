@@ -50,7 +50,7 @@ namespace Hakim.Model
             get => xray_type;
             set
             {
-                diagnosis = xray_type;
+                xray_type = value;
                 OnPropertyChanged();
             }
         }
