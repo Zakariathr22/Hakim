@@ -48,6 +48,7 @@
     <None Remove="View\Clients\Patient\PatientDetailsDisplayControl.xaml" />
     <None Remove="View\Clients\Patient\PatientInfoEditorControl.xaml" />
     <None Remove="View\Clients\Patient\PatientRecordsControl.xaml" />
+    <None Remove="View\Clients\Patient\SurgeryProtocols\AddSurgeryProtocolPage.xaml" />
     <None Remove="View\Clients\Patient\XRay_s\AddTelemetryXRayPage.xaml" />
     <None Remove="View\Clients\Patient\XRay_s\AddXRayPage.xaml" />
     <None Remove="View\Controls\EditNamePage.xaml" />
@@ -195,6 +196,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Clients\Patient\XRay_s\AddXRayPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Clients\Patient\SurgeryProtocols\AddSurgeryProtocolPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

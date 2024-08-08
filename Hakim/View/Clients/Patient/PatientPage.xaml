@@ -62,7 +62,7 @@
                                     <ImageIcon Source="\Assets\Icons\X-ray1.png"/>
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem Text="Protocol opératoire">
+                            <MenuFlyoutItem x:Name="SurgeryProtocolItem" Text="Protocol opératoire" Click="SurgeryProtocolItem_Click">
                                 <MenuFlyoutItem.Icon>
                                     <ImageIcon Source="\Assets\Icons\Surgery.png"/>
                                 </MenuFlyoutItem.Icon>

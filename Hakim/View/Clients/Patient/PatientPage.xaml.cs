@@ -23,6 +23,7 @@ using Hakim.View.Clients.EditPatient;
 using Hakim.View.Controls;
 using Hakim.View.Clients.Patient.Consultations;
 using Hakim.View.Clients.Patient.XRay_s;
+using Hakim.View.Clients.Patient.SurgeryProtocols;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -94,7 +95,7 @@ namespace Hakim.View.Clients
             InternalPanel.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
             scrollView1.VerticalScrollBarVisibility = ScrollingScrollBarVisibility.Auto;
-            scrollView1.Padding = new Thickness(24, 0, 24, 24);
+            scrollView1.Padding = new Thickness(24, 0, 24, 0);
             expander.Margin = new Thickness(0, 24, 0, 0);
             patientInfoEditor.Margin = new Thickness(16, 16, 0, 16);
             patientDetailsDisplay.Margin = new Thickness(0);
@@ -181,7 +182,7 @@ namespace Hakim.View.Clients
                 expander.Content = patientDetailsDisplay;
 
                 scrollView1.VerticalScrollBarVisibility = ScrollingScrollBarVisibility.Auto;
-                scrollView1.Padding = new Thickness(24, 0, 24, 24);
+                scrollView1.Padding = new Thickness(24, 0, 24, 0);
                 expander.Margin = new Thickness(0, 24, 0, 0);
                 patientInfoEditor.Margin = new Thickness(16, 16, 0, 16);
                 patientDetailsDisplay.Margin = new Thickness(0);
@@ -395,6 +396,31 @@ namespace Hakim.View.Clients
             dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
             //viewModel.NewPatient = new Model.Patient();
             dialog.Content = new AddTelemetryXRayPage();
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Secondary)
+            {
+
+            }
+        }
+
+        private void SurgeryProtocolItem_Click(object sender, RoutedEventArgs e)
+        {
+            ShowAddSurgeryProtocolDialog();
+        }
+
+        public async void ShowAddSurgeryProtocolDialog()
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.Title = new TitleControl("Ajouter un protocol opératoire", new FontIcon { Glyph = "\uED0E" });
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.CloseButtonText = "Annuler";
+            dialog.IsPrimaryButtonEnabled = false;
+            dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
+            dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
+            //viewModel.NewPatient = new Model.Patient();
+            dialog.Content = new AddSurgeryProtocolPage();
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Secondary)
