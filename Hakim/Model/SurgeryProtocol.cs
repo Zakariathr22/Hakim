@@ -83,7 +83,7 @@ namespace Hakim.Model
             }
         }
 
-        private string Diagnosis
+        public string Diagnosis
         {
             get => diagnosis;
             set
@@ -93,7 +93,7 @@ namespace Hakim.Model
             }
         }
 
-        private string Intervention
+        public string Intervention
         {
             get => intervention;
             set
@@ -112,5 +112,6 @@ namespace Hakim.Model
                 OnPropertyChanged();
             }
         }
+
     }
 }
