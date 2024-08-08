@@ -17,6 +17,8 @@ namespace Hakim.Model
         private string anesthetist;
         private string scrub_nurse;
         private DateTime intervention_date;
+        private string diagnosis;
+        private string intervention;
         private string operative_report;
     }
     public partial class SurgeryProtocol
@@ -77,6 +79,26 @@ namespace Hakim.Model
             set
             {
                 intervention_date = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string Diagnosis
+        {
+            get => diagnosis;
+            set
+            {
+                diagnosis = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string Intervention
+        {
+            get => intervention;
+            set
+            {
+                intervention = value;
                 OnPropertyChanged();
             }
         }
