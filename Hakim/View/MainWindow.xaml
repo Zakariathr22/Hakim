@@ -30,7 +30,7 @@
                         SelectionChanged="navigationView_SelectionChanged"
                         IsSettingsVisible="False"
                         PaneTitle="{Binding User.profitionalName, Mode=TwoWay}"
-                        FlowDirection="RightToLeft">
+                        FlowDirection="LeftToRight">
             <NavigationView.AutoSuggestBox>
                 <AutoSuggestBox x:Name="searchAutoSuggestBox" QueryIcon="Find" AutomationProperties.Name="Search"/>
             </NavigationView.AutoSuggestBox>
