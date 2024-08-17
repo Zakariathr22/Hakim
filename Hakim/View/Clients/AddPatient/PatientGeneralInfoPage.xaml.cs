@@ -34,9 +34,9 @@ namespace Hakim.View.Clients.AddPatient
         private void PatientGeneralInfoPage_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = p.viewModel;
-            GetGender(p.viewModel.NewPatient);
-            GetPhoneOwner(p.viewModel.NewPatient.Phone1Owner, Phone1OwnerComboBox);
-            GetPhoneOwner(p.viewModel.NewPatient.Phone2Owner, Phone2OwnerComboBox);
+            GetGender(p.viewModel.Patient);
+            GetPhoneOwner(p.viewModel.Patient.Phone1Owner, Phone1OwnerComboBox);
+            GetPhoneOwner(p.viewModel.Patient.Phone2Owner, Phone2OwnerComboBox);
             p.dialog.PrimaryButtonClick += (sender, args) =>
             {
                 // Perform validation or other logic here
@@ -126,11 +126,11 @@ namespace Hakim.View.Clients.AddPatient
         {
             if (GenderComboBox.SelectedIndex == 0)
             {
-                p.viewModel.NewPatient.Gender = "Masculin";
+                p.viewModel.Patient.Gender = "Masculin";
             }
             else if (GenderComboBox.SelectedIndex == 1)
             {
-                p.viewModel.NewPatient.Gender = "Féminin";
+                p.viewModel.Patient.Gender = "Féminin";
             }
             UpdateDialogButtonState();
         }
@@ -139,47 +139,47 @@ namespace Hakim.View.Clients.AddPatient
         {
             if (Phone1OwnerComboBox.SelectedIndex == 0)
             {
-                p.viewModel.NewPatient.Phone1Owner = "Personnel";
+                p.viewModel.Patient.Phone1Owner = "Personnel";
             }
             else if (Phone1OwnerComboBox.SelectedIndex == 1)
             {
-                p.viewModel.NewPatient.Phone1Owner = "Le mari";
+                p.viewModel.Patient.Phone1Owner = "Le mari";
             }
             else if (Phone1OwnerComboBox.SelectedIndex == 2)
             {
-                p.viewModel.NewPatient.Phone1Owner = "La femme";
+                p.viewModel.Patient.Phone1Owner = "La femme";
             }
             else if (Phone1OwnerComboBox.SelectedIndex == 3)
             {
-                p.viewModel.NewPatient.Phone1Owner = "Le fils";
+                p.viewModel.Patient.Phone1Owner = "Le fils";
             }
             else if (Phone1OwnerComboBox.SelectedIndex == 4)
             {
-                p.viewModel.NewPatient.Phone1Owner = "La fille";
+                p.viewModel.Patient.Phone1Owner = "La fille";
             }
             else if (Phone1OwnerComboBox.SelectedIndex == 5)
             {
-                p.viewModel.NewPatient.Phone1Owner = "Le père";
+                p.viewModel.Patient.Phone1Owner = "Le père";
             }
             else if (Phone1OwnerComboBox.SelectedIndex == 6)
             {
-                p.viewModel.NewPatient.Phone1Owner = "La mère";
+                p.viewModel.Patient.Phone1Owner = "La mère";
             }
             else if (Phone1OwnerComboBox.SelectedIndex == 7)
             {
-                p.viewModel.NewPatient.Phone1Owner = "Le frère";
+                p.viewModel.Patient.Phone1Owner = "Le frère";
             }
             else if (Phone1OwnerComboBox.SelectedIndex == 8)
             {
-                p.viewModel.NewPatient.Phone1Owner = "La sœur";
+                p.viewModel.Patient.Phone1Owner = "La sœur";
             }
             else if (Phone1OwnerComboBox.SelectedIndex == 9)
             {
-                p.viewModel.NewPatient.Phone1Owner = "Proche";
-            }
+                p.viewModel.Patient.Phone1Owner = "Proche";
+            }   
             else if (Phone1OwnerComboBox.SelectedIndex == 10)
             {
-                p.viewModel.NewPatient.Phone1Owner = "Ami";
+                p.viewModel.Patient.Phone1Owner = "Ami";
             }
             UpdateDialogButtonState();
         }
@@ -188,47 +188,47 @@ namespace Hakim.View.Clients.AddPatient
         {
             if (Phone2OwnerComboBox.SelectedIndex == 0)
             {
-                p.viewModel.NewPatient.Phone2Owner = "Personnel";
+                p.viewModel.Patient.Phone2Owner = "Personnel";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 1)
             {
-                p.viewModel.NewPatient.Phone2Owner = "Le mari";
+                p.viewModel.Patient.Phone2Owner = "Le mari";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 2)
             {
-                p.viewModel.NewPatient.Phone2Owner = "La femme";
+                p.viewModel.Patient.Phone2Owner = "La femme";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 3)
             {
-                p.viewModel.NewPatient.Phone2Owner = "Le fils";
+                p.viewModel.Patient.Phone2Owner = "Le fils";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 4)
             {
-                p.viewModel.NewPatient.Phone2Owner = "La fille";
+                p.viewModel.Patient.Phone2Owner = "La fille";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 5)
             {
-                p.viewModel.NewPatient.Phone2Owner = "Le père";
+                p.viewModel.Patient.Phone2Owner = "Le père";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 6)
             {
-                p.viewModel.NewPatient.Phone2Owner = "La mère";
+                p.viewModel.Patient.Phone2Owner = "La mère";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 7)
             {
-                p.viewModel.NewPatient.Phone2Owner = "Le frère";
+                p.viewModel.Patient.Phone2Owner = "Le frère";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 8)
             {
-                p.viewModel.NewPatient.Phone2Owner = "La sœur";
+                p.viewModel.Patient.Phone2Owner = "La sœur";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 9)
             {
-                p.viewModel.NewPatient.Phone2Owner = "Proche";
+                p.viewModel.Patient.Phone2Owner = "Proche";
             }
             else if (Phone2OwnerComboBox.SelectedIndex == 10)
             {
-                p.viewModel.NewPatient.Phone2Owner = "Ami";
+                p.viewModel.Patient.Phone2Owner = "Ami";
             }
         }
 

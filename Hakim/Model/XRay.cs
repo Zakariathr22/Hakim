@@ -8,14 +8,14 @@ namespace Hakim.Model
 {
     public partial class XRay : File
     {
-        private DateTime xray_date;
+        private DateTimeOffset xray_date;
         private string radiologist;
         private string diagnosis;
         private string xray_type;
     }
     public partial class XRay
     {
-        public DateTime Xray_date
+        public DateTimeOffset Xray_date
         {
             get => xray_date;
             set

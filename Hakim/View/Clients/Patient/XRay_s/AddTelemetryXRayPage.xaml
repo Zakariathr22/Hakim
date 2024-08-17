@@ -20,7 +20,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="titleTextBox" Grid.Row="0" Header="Titre" PlaceholderText="Titre de radiographie (obligatoire)" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" Margin="0 0 0 8" IsSpellCheckEnabled="True" FontWeight="Bold" Text="{Binding NewPatient.MedicalHistory, Mode=TwoWay}" Language="fr-FR"/>
+            <TextBox x:Name="titleTextBox" Grid.Row="0" Header="Titre" PlaceholderText="Titre de radiographie (obligatoire)" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" Margin="0 0 0 8" IsSpellCheckEnabled="True" FontWeight="Bold" Text="{Binding NewPatient.MedicalHistory, Mode=TwoWay}" Language="fr-FR" TextChanged="titleTextBox_TextChanged_1"/>
             <DatePicker x:Name="xRayDate" Grid.Row="1" Header="Date de la radiographie" Margin="0 0 0 8" Width="400"/>
             <TimePicker x:Name="xRayTime" Grid.Row="2" Header="Heur de la radiographie" Margin="0 0 0 8" Width="400" MinuteIncrement="5"/>
             <Grid Grid.Row="3">

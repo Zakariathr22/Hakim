@@ -1,3 +1,4 @@
+using Hakim.Model;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -24,10 +25,13 @@ namespace Hakim.View.Clients.Patient.Consultations
     public sealed partial class AddEditConsultaionFilePage : Page
     {
         ContentDialog dialog;
-        public AddEditConsultaionFilePage(ContentDialog dialog)
+        MedicalConsultation consultation;
+        public AddEditConsultaionFilePage(ContentDialog dialog, MedicalConsultation consultation)
         {
             this.InitializeComponent();
             this.dialog = dialog;
+            this.consultation = consultation;
+            DataContext = consultation;
         }
 
         private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)

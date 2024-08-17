@@ -10,15 +10,17 @@ namespace Hakim.ViewModel
 {
     public partial class ClientsViewModel : ObservableObject
     {
-        [ObservableProperty] private Patient newPatient;
+        [ObservableProperty] private Patient patient;
+        [ObservableProperty] private XRay xRay;
         [ObservableProperty] private ObservableCollection<Patient> patients;
         [ObservableProperty] private int patientsOrder;
         [ObservableProperty] private Patient selectedPatient;
+        [ObservableProperty] private MedicalConsultation consultation;
 
         public ClientsViewModel()
         {
             PatientsOrder = int.Parse(ConfigurationService.GetAppSetting("PatientsOrder"));
-            NewPatient = new Patient();
+            Patient = new Patient();
             Patients = GetAllPatients();
         }
 
@@ -131,7 +133,7 @@ namespace Hakim.ViewModel
         {
             if (PatientsOrdrer == 0)
                 return "SELECT * FROM Patient ORDER BY DateOfRegistration DESC";
-            else if(PatientsOrdrer == 1) 
+            else if (PatientsOrdrer == 1)
                 return "SELECT * FROM Patient ORDER BY DateOfRegistration";
             else if (PatientsOrdrer == 2)
                 return "SELECT * FROM Patient ORDER BY (LastName || ' ' || FirstName)";
@@ -145,7 +147,7 @@ namespace Hakim.ViewModel
                 return "SELECT * FROM Patient ORDER BY DateOfBirth DESC";
             else if (PatientsOrdrer == 7)
                 return "SELECT * FROM Patient ORDER BY DateOfBirth";
-            else 
+            else
                 return "SELECT * FROM Patient ORDER BY DateOfRegistration DESC";
         }
 
@@ -351,5 +353,102 @@ namespace Hakim.ViewModel
         {
             SelectedPatient.appointments = GetAppointmentsByPatient(SelectedPatient);
         }
+
+        public void AddMedicalConsultation()
+        {
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
+                {
+                    // Insert into the File table
+                    command.CommandText = @"
+                INSERT INTO File (
+                    patient_id, title, creation_date, type
+                ) VALUES (
+                    @PatientId, @Title, @CreatedDate, @Type
+                );
+                SELECT last_insert_rowid();";  // Retrieve the last inserted ID
+                    command.Parameters.AddWithValue("@PatientId", Consultation.Patient.id);
+                    command.Parameters.AddWithValue("@Title", Consultation.Title);
+                    command.Parameters.AddWithValue("@CreatedDate", consultation.CreatedDate);
+                    command.Parameters.AddWithValue("@Type", "Consultation");
+
+                    // Execute the command and get the last inserted file_id
+                    Consultation.id = Convert.ToInt32(command.ExecuteScalar());
+
+                    // Insert into the MedicalConsultation table
+                    command.CommandText = @"
+                INSERT INTO MedicalConsultation (
+                    file_id, notes, prescription
+                ) VALUES (
+                    @FileId, @Notes, @Prescription
+                )";
+                    command.Parameters.AddWithValue("@FileId", Consultation.id);
+                    command.Parameters.AddWithValue("@Notes", Consultation.Notes);
+                    command.Parameters.AddWithValue("@Prescription", Consultation.Prescription);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Medical consultation added successfully.");
+                    SelectedPatient.files = GetFilesByPatient(SelectedPatient);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while adding the medical consultation: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+        }
+
+        public void AddXRay()
+        {
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
+                {
+                    // Insert into the File table
+                    command.CommandText = @"
+                INSERT INTO File (
+                    patient_id, title, creation_date, type, url
+                ) VALUES (
+                    @PatientId, @Title, @CreatedDate, @Type, @Url
+                );
+                SELECT last_insert_rowid();";  // Retrieve the last inserted ID
+                    command.Parameters.AddWithValue("@PatientId", XRay.Patient.id);
+                    command.Parameters.AddWithValue("@Title", XRay.Title);
+                    command.Parameters.AddWithValue("@CreatedDate", XRay.CreatedDate);
+                    command.Parameters.AddWithValue("@Type", "Radiographie");  // Automatically set type to "Radiographie"
+                    command.Parameters.AddWithValue("@Url", XRay.Url);
+
+                    // Execute the command and get the last inserted file_id
+                    XRay.id = Convert.ToInt32(command.ExecuteScalar());
+
+                    // Insert into the XRay table
+                    command.CommandText = @"
+                INSERT INTO XRay (
+                    file_id, xray_date, radiologist, diagnosis, type
+                ) VALUES (
+                    @FileId, @XrayDate, @Radiologist, @Diagnosis, @XrayType
+                )";
+                    command.Parameters.AddWithValue("@FileId", XRay.id);
+                    command.Parameters.AddWithValue("@XrayDate", XRay.Xray_date);
+                    command.Parameters.AddWithValue("@Url", XRay.Url);
+                    command.Parameters.AddWithValue("@Radiologist", XRay.Radiologist);
+                    command.Parameters.AddWithValue("@Diagnosis", XRay.Diagnosis);
+                    command.Parameters.AddWithValue("@XrayType", "Radiographie");  // Set type as "Radiographie"
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("X-Ray added successfully.");
+                    SelectedPatient.files = GetFilesByPatient(SelectedPatient);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while adding the X-Ray: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+        }
+
     }
 }

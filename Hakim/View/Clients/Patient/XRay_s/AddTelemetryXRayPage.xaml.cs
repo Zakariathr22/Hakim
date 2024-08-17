@@ -24,9 +24,11 @@ namespace Hakim.View.Clients.Patient.XRay_s
     /// </summary>
     public sealed partial class AddTelemetryXRayPage : Page
     {
-        public AddTelemetryXRayPage()
+        ContentDialog dialog;
+        public AddTelemetryXRayPage(ContentDialog dialog)
         {
             this.InitializeComponent();
+            this.dialog = dialog;
         }
 
         private async void pickPhotoButton_Click(object sender, RoutedEventArgs e)
@@ -65,6 +67,20 @@ namespace Hakim.View.Clients.Patient.XRay_s
                 photoName.Text = "";
             }
 
+        }
+
+        private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (titleTextBox.Text != "")
+                dialog.IsPrimaryButtonEnabled = true;
+            else dialog.IsPrimaryButtonEnabled = false;
+        }
+
+        private void titleTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            if (titleTextBox.Text != "")
+                dialog.IsPrimaryButtonEnabled = true;
+            else dialog.IsPrimaryButtonEnabled = false;
         }
     }
 }

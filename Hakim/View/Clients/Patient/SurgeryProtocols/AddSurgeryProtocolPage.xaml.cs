@@ -23,9 +23,18 @@ namespace Hakim.View.Clients.Patient.SurgeryProtocols
     /// </summary>
     public sealed partial class AddSurgeryProtocolPage : Page
     {
-        public AddSurgeryProtocolPage()
+        ContentDialog dialog;
+        public AddSurgeryProtocolPage(ContentDialog dialog)
         {
             this.InitializeComponent();
+            this.dialog = dialog;
+        }
+
+        private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (titleTextBox.Text != "")
+                dialog.IsPrimaryButtonEnabled = true;
+            else dialog.IsPrimaryButtonEnabled = false;
         }
     }
 }

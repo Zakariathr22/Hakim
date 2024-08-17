@@ -16,6 +16,7 @@ using Windows.Foundation.Collections;
 using Windows.Storage.Pickers;
 using Windows.Storage;
 using Windows.Storage.AccessCache;
+using Hakim.Model;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -27,9 +28,14 @@ namespace Hakim.View.Clients.Patient.XRay_s
     /// </summary>
     public sealed partial class AddXRayPage : Page
     {
-        public AddXRayPage()
+        ContentDialog dialog;
+        XRay xRay;
+        public AddXRayPage(ContentDialog dialog, XRay xRay)
         {
             this.InitializeComponent();
+            this.dialog = dialog;
+            this.xRay = xRay;
+            DataContext = xRay;
         }
 
         private async void pickPhotoButton_Click(object sender, RoutedEventArgs e)
@@ -68,6 +74,18 @@ namespace Hakim.View.Clients.Patient.XRay_s
                 photoName.Text = "";
             }
 
+        }
+
+        private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (titleTextBox.Text != "")
+                dialog.IsPrimaryButtonEnabled = true;
+            else dialog.IsPrimaryButtonEnabled = false;
+        }
+
+        private void xRayTime_SelectedTimeChanged(TimePicker sender, TimePickerSelectedValueChangedEventArgs args)
+        {
+            //xRay.Xray_date.Hour = xRayTime.SelectedTime.Value.Hours;
         }
     }
 }

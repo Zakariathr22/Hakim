@@ -40,7 +40,7 @@
                         <TextBlock Grid.Column="1" Text="Type et date de création" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
                     </Grid>
                 </Grid>
-                <ListView x:Name="PatientFiles" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch">
+                <ListView x:Name="PatientFiles" x:FieldModifier="public" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0">

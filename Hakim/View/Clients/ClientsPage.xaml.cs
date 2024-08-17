@@ -58,13 +58,13 @@ namespace Hakim.View.Clients
             dialog.Title = new TitleControl("Ajouter un patient", addPatientIcon);
             dialog.PrimaryButtonText = "Suivant";
             dialog.CloseButtonText = "Annuler";
-            viewModel.NewPatient = new Model.Patient();
+            viewModel.Patient = new Model.Patient();
             dialog.Content = new AddPatientPage(dialog,viewModel);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Secondary)
             {
-                viewModel.AddPatient(viewModel.NewPatient);
+                viewModel.AddPatient(viewModel.Patient);
                 itemsRepeater.ItemsSource = viewModel.Patients;
             }
         }
@@ -374,7 +374,7 @@ namespace Hakim.View.Clients
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.SecondaryButtonText = "Fermer";
-            viewModel.NewPatient = new Model.Patient();
+            viewModel.Patient = new Model.Patient();
             dialog.Content = new EdidPatientPage(dialog, patient);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();

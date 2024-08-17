@@ -24,7 +24,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="titleTextBox" Grid.Row="0" Header="Titre" PlaceholderText="Titre de protocol opératoire (obligatoire)" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" Margin="0 0 0 8" IsSpellCheckEnabled="True" FontWeight="Bold" Language="fr-FR"/>
+            <TextBox x:Name="titleTextBox" Grid.Row="0" Header="Titre" PlaceholderText="Titre de protocol opératoire (obligatoire)" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" Margin="0 0 0 8" IsSpellCheckEnabled="True" FontWeight="Bold" Language="fr-FR" TextChanged="titleTextBox_TextChanged"/>
             <TextBox x:Name="surgeonTextBox" Grid.Row="1" Header="Chirurgien" PlaceholderText="Chirurgien qui a réalisé l'opération" Margin="0 0 0 8" IsSpellCheckEnabled="True" Language="fr-FR"/>
             <TextBox x:Name="opratingAssistantTextBox" Grid.Row="2" Header="Assistant opératoire" PlaceholderText="L'assistant opératoire, qui aide le chirurgien pendant l'intervention." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"/>
             <TextBox x:Name="instrumentTechnicianTextBox" Grid.Row="3" Header="Instrumentiste" PlaceholderText="Responsable de la préparation et de la gestion des instruments chirurgicaux avant, pendant et après l'opération." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"/>

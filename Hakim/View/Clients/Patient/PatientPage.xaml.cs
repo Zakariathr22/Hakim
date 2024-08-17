@@ -24,6 +24,7 @@ using Hakim.View.Controls;
 using Hakim.View.Clients.Patient.Consultations;
 using Hakim.View.Clients.Patient.XRay_s;
 using Hakim.View.Clients.Patient.SurgeryProtocols;
+using Hakim.Model;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -318,7 +319,7 @@ namespace Hakim.View.Clients
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.SecondaryButtonText = "Fermer";
-            viewModel.NewPatient = new Model.Patient();
+            viewModel.Patient = new Model.Patient();
             dialog.Content = new EdidPatientPage(dialog, patient);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
@@ -341,16 +342,16 @@ namespace Hakim.View.Clients
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.CloseButtonText = "Annuler";
-            dialog.IsPrimaryButtonEnabled = false;
             dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
             dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
-            //viewModel.NewPatient = new Model.Patient();
-            dialog.Content = new AddEditConsultaionFilePage(dialog);
+            viewModel.Consultation = new MedicalConsultation { Patient = viewModel.SelectedPatient,Title = $"Consultation du {DateTime.Now.Date.ToString("d")}", CreatedDate = DateTime.Now};
+            dialog.Content = new AddEditConsultaionFilePage(dialog,viewModel.Consultation);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
-            if (result == ContentDialogResult.Secondary)
+            if (result == ContentDialogResult.Primary)
             {
-                
+                viewModel.AddMedicalConsultation();
+                patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
             }
         }
 
@@ -366,16 +367,16 @@ namespace Hakim.View.Clients
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.CloseButtonText = "Annuler";
-            dialog.IsPrimaryButtonEnabled = false;
             dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
             dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
-            //viewModel.NewPatient = new Model.Patient();
-            dialog.Content = new AddXRayPage();
+            viewModel.XRay = new XRay { Patient = viewModel.SelectedPatient, Title = $"Radiographie du {DateTime.Now.Date.ToString("d")}", CreatedDate = DateTime.Now, Xray_date = DateTime.Now };
+            dialog.Content = new AddXRayPage(dialog, viewModel.XRay);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
-            if (result == ContentDialogResult.Secondary)
+            if (result == ContentDialogResult.Primary)
             {
-
+                viewModel.AddXRay();
+                patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
             }
         }
 
@@ -395,7 +396,7 @@ namespace Hakim.View.Clients
             dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
             dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
             //viewModel.NewPatient = new Model.Patient();
-            dialog.Content = new AddTelemetryXRayPage();
+            dialog.Content = new AddTelemetryXRayPage(dialog);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Secondary)
@@ -420,7 +421,7 @@ namespace Hakim.View.Clients
             dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
             dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
             //viewModel.NewPatient = new Model.Patient();
-            dialog.Content = new AddSurgeryProtocolPage();
+            dialog.Content = new AddSurgeryProtocolPage(dialog);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Secondary)

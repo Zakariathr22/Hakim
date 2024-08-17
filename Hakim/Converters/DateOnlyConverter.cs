@@ -23,4 +23,26 @@ namespace Hakim.Converters
             throw new NotImplementedException();
         }
     }
+
+    public class TimeSpanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is TimeSpan timeSpan)
+            {
+                // Customize the format as needed
+                return timeSpan.ToString(@"hh\:mm\:ss");
+            }
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            if (value is string timeSpanString && TimeSpan.TryParseExact(timeSpanString, @"hh\:mm\:ss", null, out TimeSpan result))
+            {
+                return result;
+            }
+            return null;
+        }
+    }
 }
