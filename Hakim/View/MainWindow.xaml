@@ -29,36 +29,37 @@
                         IsBackEnabled="True"
                         SelectionChanged="navigationView_SelectionChanged"
                         IsSettingsVisible="False"
-                        PaneTitle="{Binding User.profitionalName, Mode=TwoWay}">
+                        PaneTitle="{Binding User.profitionalName, Mode=TwoWay}"
+                        FlowDirection="RightToLeft">
             <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox PlaceholderText="Recherch" QueryIcon="Find" AutomationProperties.Name="Search"/>
+                <AutoSuggestBox x:Name="searchAutoSuggestBox" QueryIcon="Find" AutomationProperties.Name="Search"/>
             </NavigationView.AutoSuggestBox>
 
             <NavigationView.MenuItems>
-                <NavigationViewItem Tag="Home" ToolTipService.ToolTip="Principal">
+                <NavigationViewItem x:Name="homeNavigationItem" Tag="Home">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Width="24" Height="24" Source="/Assets/Icons/Home.png"></Image>
-                        <TextBlock Margin="8 0" >Principal</TextBlock>
+                        <Image Width="24" Height="24" Source="/Assets/Icons/Home.png"/>
+                        <TextBlock x:Name="homeNavigationItemText" Margin="8 0"/>
                     </StackPanel>
                 </NavigationViewItem>
-                <NavigationViewItem Tag="Clients" ToolTipService.ToolTip="Patients">
+                <NavigationViewItem x:Name="patientsNavigationItem" Tag="Clients">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Width="24" Height="24" Source="/Assets/Icons/Clients.png"></Image>
-                        <TextBlock Margin="8 0" >Patients</TextBlock>
+                        <Image Width="24" Height="24" Source="/Assets/Icons/Clients.png"/>
+                        <TextBlock x:Name="patientsNavigationItemText" Margin="8 0"/>
                     </StackPanel>
                 </NavigationViewItem>
-                <NavigationViewItem Tag="Schedule" ToolTipService.ToolTip="Rendez-vous">
+                <NavigationViewItem x:Name="scheduleNavigationItem" Tag="Schedule">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Image Width="24" Height="24" Source="/Assets/Icons/Schedule.png"></Image>
-                        <TextBlock Margin="8 0" >Rendez-vous</TextBlock>
+                        <TextBlock x:Name="scheduleNavigationItemText" Margin="8 0"/>
                     </StackPanel>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem Tag="Settings" ToolTipService.ToolTip="Paramètres">
+                <NavigationViewItem x:Name="settingsNavigationItem" Tag="Settings">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Width="24" Height="24" Source="/Assets/Icons/Settings.png"></Image>
-                        <TextBlock Margin="8 0"  Visibility="Visible">Paramètres</TextBlock>
+                        <Image Width="24" Height="24" Source="/Assets/Icons/Settings.png"/>
+                        <TextBlock x:Name="settingsNavigationItemText" Margin="8 0"/>
                     </StackPanel>
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>

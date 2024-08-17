@@ -59,6 +59,19 @@ namespace Hakim
             navigationView.SelectedItem = navigationView.MenuItems.OfType<NavigationViewItem>().ElementAt(viewModel.LandingPage);
 
             Closed += MainWindow_Closed;
+
+            searchAutoSuggestBox.PlaceholderText = LanguageService.GetResourceValue("Search");
+            ToolTipService.SetToolTip(homeNavigationItem, LanguageService.GetResourceValue("Home"));
+            homeNavigationItemText.Text = LanguageService.GetResourceValue("Home");
+
+            ToolTipService.SetToolTip(patientsNavigationItem, LanguageService.GetResourceValue("Patients"));
+            patientsNavigationItemText.Text = LanguageService.GetResourceValue("Patients");
+
+            ToolTipService.SetToolTip(scheduleNavigationItem, LanguageService.GetResourceValue("Appointments"));
+            scheduleNavigationItemText.Text = LanguageService.GetResourceValue("Appointments");
+
+            ToolTipService.SetToolTip(settingsNavigationItem, LanguageService.GetResourceValue("Settings"));
+            settingsNavigationItemText.Text = LanguageService.GetResourceValue("Settings");
         }
 
         private void MainWindow_Closed(object sender, WindowEventArgs args)
@@ -116,7 +129,6 @@ namespace Hakim
             if (selectedItem != null)
             {
                 string selectedItemTag = ((string)selectedItem.Tag);
-                //sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
                 string pageName = $"Hakim.View.{selectedItemTag}.{selectedItemTag}Page";
                 Type pageType = Type.GetType(pageName);
                 contentFrame.Navigate(pageType);

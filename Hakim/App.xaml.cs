@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Shapes;
+using Microsoft.Windows.ApplicationModel.Resources;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -26,39 +27,17 @@ using Windows.Globalization;
 
 namespace Hakim
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
     public partial class App : Application
     {
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
         public static MainWindow mainWindow { get; set; }
         public static User user = new User();
-        public static Patient patient = new Patient();
+
         public App()
         {
             this.InitializeComponent();
-
-            // Get the desired culture (e.g., Arabic)
-            CultureInfo newCulture = CultureInfo.GetCultureInfo("fr");
-
-            // Set the CurrentCulture of the current thread
-            Thread.CurrentThread.CurrentCulture = newCulture;
-
-            // Set the CurrentUICulture of the current thread (optional)
-            // This affects UI elements like date pickers and number formats
-            Thread.CurrentThread.CurrentUICulture = newCulture;
-
-            ApplicationLanguages.PrimaryLanguageOverride = "fr";
+            LanguageService.SetLanguage("fr-DZ");
         }
 
-        /// <summary>
-        /// Invoked when the application is launched.
-        /// </summary>
-        /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             mainWindow = new MainWindow();
