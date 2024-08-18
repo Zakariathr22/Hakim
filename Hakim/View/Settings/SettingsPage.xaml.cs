@@ -1,3 +1,4 @@
+using Hakim.Converters;
 using Hakim.Service;
 using Hakim.View.Controls;
 using Hakim.ViewModel;
@@ -31,6 +32,8 @@ namespace Hakim.View.Settings
         public SettingsPage()
         {
             this.InitializeComponent();
+            this.InitializeLocalization();
+
             viewModel = new SettingsViewModel();
             DataContext = viewModel;
 
@@ -38,11 +41,20 @@ namespace Hakim.View.Settings
             themeComboBox.SelectedIndex = viewModel.AppTheme;
             backDropComboBox.SelectedIndex = viewModel.AppBackDrop;
             landingPageComboBox.SelectedIndex = viewModel.LandingPage;
+
+            Binding binding = new Binding
+            {
+                Path = new PropertyPath("Language"),
+                Converter = new LanguageTagConverter(),
+                ConverterParameter = languageComboBox,
+                Mode = BindingMode.TwoWay
+            };
+            languageComboBox.SetBinding(ComboBox.SelectedIndexProperty, binding);
         }
 
         private void themeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            viewModel.ThemeChangedCommand.Execute(this);
+            viewModel.ThemeChangedCommand.Execute(null);
         }
 
         private void backDropComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -64,7 +76,7 @@ namespace Hakim.View.Settings
 
         private void landingPageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            viewModel.LandingPageChangedCommand.Execute(this);
+            viewModel.LandingPageChangedCommand.Execute(null);
         }
 
         private void ShortCutToggleSwitch_Toggled(object sender, RoutedEventArgs e)
@@ -92,9 +104,75 @@ namespace Hakim.View.Settings
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Secondary) 
             {
-                viewModel.LastNameChangedCommand.Execute(this);
-                viewModel.FirstNameChangedCommand.Execute(this);
+                viewModel.LastNameChangedCommand.Execute(null);
+                viewModel.FirstNameChangedCommand.Execute(null);
             }
+        }
+
+        public void InitializeLocalization()
+        {
+            settingsPageHeader.Text = LanguageService.GetResourceValue("Settings");
+
+            userSubtitle.Text = LanguageService.GetResourceValue("User");
+
+            editUserHyperlinkButton.Content = LanguageService.GetResourceValue("Edit");
+            
+            themeSettingCard.Header = LanguageService.GetResourceValue("AppTheme");
+            themeSettingCard.Description = LanguageService.GetResourceValue("AppThemeDescription");
+            
+            systemModeComboBoxItem.Content = LanguageService.GetResourceValue("SystemMode");
+            lightModeComboBoxItem.Content = LanguageService.GetResourceValue("LightMode");
+            darkmModeComboBoxItem.Content = LanguageService.GetResourceValue("DarkMode");
+
+            backDropSettingCard.Header = LanguageService.GetResourceValue("AppBackdrop");
+            backDropSettingCard.Description = LanguageService.GetResourceValue("AppBackDropDescription");
+
+            mikaComboBoxItem.Content = LanguageService.GetResourceValue("Mika");
+            altMikaComboBoxItem.Content = LanguageService.GetResourceValue("AltMika");
+            desktopAcrylicComboBoxItem.Content = LanguageService.GetResourceValue("DesktopAcrylic");
+            
+            generalSettingsSubtitle.Text = LanguageService.GetResourceValue("GeneralSettings");
+            
+            landingPageSettingCard.Header = LanguageService.GetResourceValue("LandingPage");
+            landingPageSettingCard.Description = LanguageService.GetResourceValue("LandingPageDescription");
+            
+            homeComboBoxItem.Content = LanguageService.GetResourceValue("Home");
+            patientsComboBoxItem.Content = LanguageService.GetResourceValue("Patients");
+            appointmentsComboBoxItem.Content = LanguageService.GetResourceValue("Appointments");
+
+            languageSettingCard.Header = LanguageService.GetResourceValue("AppLanguage");
+            languageSettingCard.Description = LanguageService.GetResourceValue("AppLanguageDescription");
+
+            shortCutSettingCard.Header = LanguageService.GetResourceValue("CreateShortCut");
+            shortCutSettingCard.Description = LanguageService.GetResourceValue("CreateShortCutDescription");
+
+            aboutAppSubtitle.Text = LanguageService.GetResourceValue("AboutApp");
+            
+            aboutAppSettingCard.Description = LanguageService.GetResourceValue("AboutAppDescription");
+
+            aboutIcons.Header = LanguageService.GetResourceValue("Icons");
+            aboutIcons.Description = LanguageService.GetResourceValue("IconsDescription");
+
+            pichonHyperlinkButton.Content = LanguageService.GetResourceValue("Link");
+        }
+
+        private void languageComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            viewModel.LanguageChangedCommand.Execute(null);
+            this.InitializeLocalization();
+            App.mainWindow.InitializeLocalization();
+
+            ForceComboBoxRefresh(themeComboBox);
+            ForceComboBoxRefresh(backDropComboBox);
+            ForceComboBoxRefresh(landingPageComboBox);
+        }
+
+        private void ForceComboBoxRefresh(ComboBox comboBox)
+        {
+            // Force a UI refresh by resetting the SelectedIndex
+            int selectedIndex = comboBox.SelectedIndex;
+            comboBox.SelectedIndex = -1; // Temporarily set to an invalid index
+            comboBox.SelectedIndex = selectedIndex; // Reset to the original index
         }
     }
 }

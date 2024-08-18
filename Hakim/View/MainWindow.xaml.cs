@@ -36,6 +36,7 @@ namespace Hakim
         public MainWindow()
         {
             this.InitializeComponent();
+            this.InitializeLocalization();
 
             mainPanel.DataContext = viewModel;
 
@@ -58,26 +59,8 @@ namespace Hakim
             viewModel.SetAppBackDrop(this);
             navigationView.SelectedItem = navigationView.MenuItems.OfType<NavigationViewItem>().ElementAt(viewModel.LandingPage);
 
-            Closed += MainWindow_Closed;
-
-            searchAutoSuggestBox.PlaceholderText = LanguageService.GetResourceValue("Search");
-            ToolTipService.SetToolTip(homeNavigationItem, LanguageService.GetResourceValue("Home"));
-            homeNavigationItemText.Text = LanguageService.GetResourceValue("Home");
-
-            ToolTipService.SetToolTip(patientsNavigationItem, LanguageService.GetResourceValue("Patients"));
-            patientsNavigationItemText.Text = LanguageService.GetResourceValue("Patients");
-
-            ToolTipService.SetToolTip(scheduleNavigationItem, LanguageService.GetResourceValue("Appointments"));
-            scheduleNavigationItemText.Text = LanguageService.GetResourceValue("Appointments");
-
-            ToolTipService.SetToolTip(settingsNavigationItem, LanguageService.GetResourceValue("Settings"));
-            settingsNavigationItemText.Text = LanguageService.GetResourceValue("Settings");
         }
 
-        private void MainWindow_Closed(object sender, WindowEventArgs args)
-        {
-
-        }
 
         private AppWindow GetAppWindowForCurrentWindow()
         {
@@ -133,6 +116,22 @@ namespace Hakim
                 Type pageType = Type.GetType(pageName);
                 contentFrame.Navigate(pageType);
             }
+        }
+
+        public void InitializeLocalization()
+        {
+            searchAutoSuggestBox.PlaceholderText = LanguageService.GetResourceValue("Search");
+            ToolTipService.SetToolTip(homeNavigationItem, LanguageService.GetResourceValue("Home"));
+            homeNavigationItemText.Text = LanguageService.GetResourceValue("Home");
+
+            ToolTipService.SetToolTip(patientsNavigationItem, LanguageService.GetResourceValue("Patients"));
+            patientsNavigationItemText.Text = LanguageService.GetResourceValue("Patients");
+
+            ToolTipService.SetToolTip(scheduleNavigationItem, LanguageService.GetResourceValue("Appointments"));
+            scheduleNavigationItemText.Text = LanguageService.GetResourceValue("Appointments");
+
+            ToolTipService.SetToolTip(settingsNavigationItem, LanguageService.GetResourceValue("Settings"));
+            settingsNavigationItemText.Text = LanguageService.GetResourceValue("Settings");
         }
     }
 }

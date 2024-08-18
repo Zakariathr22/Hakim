@@ -117,11 +117,80 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutApp" xml:space="preserve">
+    <value>About the Application</value>
+  </data>
+  <data name="AboutAppDescription" xml:space="preserve">
+    <value>The application was developed with passion by "TAHRI ZAKARIA", Software Engineer.</value>
+  </data>
+  <data name="AltMika" xml:space="preserve">
+    <value>Alternative Mika</value>
+  </data>
+  <data name="AppBackdrop" xml:space="preserve">
+    <value>Application Back Drop</value>
+  </data>
+  <data name="AppBackDropDescription" xml:space="preserve">
+    <value>The application back drop corresponds to the main colors that appear behind the main interface of the application.</value>
+  </data>
+  <data name="AppLanguage" xml:space="preserve">
+    <value>Application Language</value>
+  </data>
+  <data name="AppLanguageDescription" xml:space="preserve">
+    <value>App language refers to the language setting used within an application for its user interface.</value>
+  </data>
   <data name="Appointments" xml:space="preserve">
     <value>Appointments</value>
   </data>
+  <data name="AppTheme" xml:space="preserve">
+    <value>Application Theme</value>
+  </data>
+  <data name="AppThemeDescription" xml:space="preserve">
+    <value>The app theme allows you to change the appearance of the app between dark mode and light mode.</value>
+  </data>
+  <data name="CreateShortCut" xml:space="preserve">
+    <value>Create a Shortcut</value>
+  </data>
+  <data name="CreateShortCutDescription" xml:space="preserve">
+    <value>Access is faster, place the application shortcut icon on the desktop.</value>
+  </data>
+  <data name="DarkMode" xml:space="preserve">
+    <value>Dark Mode</value>
+  </data>
+  <data name="DesktopAcrylic" xml:space="preserve">
+    <value>Desktop Acrylic</value>
+  </data>
+  <data name="Display" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="GeneralSettings" xml:space="preserve">
+    <value>General Settings</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="Icons" xml:space="preserve">
+    <value>Icons</value>
+  </data>
+  <data name="IconsDescription" xml:space="preserve">
+    <value>Some of the icons used in this application are taken from the "Icons8 Pichon" application.</value>
+  </data>
+  <data name="LandingPage" xml:space="preserve">
+    <value>Landing Page</value>
+  </data>
+  <data name="LandingPageDescription" xml:space="preserve">
+    <value>The landing page is the page that first appears when you open the app.</value>
+  </data>
+  <data name="LightMode" xml:space="preserve">
+    <value>Light Mode</value>
+  </data>
+  <data name="Link" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="Mika" xml:space="preserve">
+    <value>Mika</value>
   </data>
   <data name="Patients" xml:space="preserve">
     <value>Patients</value>
@@ -131,5 +200,11 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="SystemMode" xml:space="preserve">
+    <value>System Mode</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>The User</value>
   </data>
 </root>

@@ -35,7 +35,7 @@ namespace Hakim
         public App()
         {
             this.InitializeComponent();
-            LanguageService.SetLanguage("fr-DZ");
+            LanguageService.SetLanguage(ConfigurationService.GetAppSetting("Language"));
         }
 
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)

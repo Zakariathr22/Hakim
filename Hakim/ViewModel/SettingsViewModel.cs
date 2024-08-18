@@ -17,6 +17,7 @@ namespace Hakim.ViewModel
         [ObservableProperty] private int appTheme;
         [ObservableProperty] private int appBackDrop;
         [ObservableProperty] private int landingPage;
+        [ObservableProperty] private string language;
 
         public SettingsViewModel()
         {
@@ -28,6 +29,7 @@ namespace Hakim.ViewModel
             appTheme = int.Parse(ConfigurationService.GetAppSetting("AppTheme"));
             appBackDrop = int.Parse(ConfigurationService.GetAppSetting("AppBackDrop"));
             landingPage = int.Parse(ConfigurationService.GetAppSetting("LandingPage"));
+            language = ConfigurationService.GetAppSetting("Language");
         }
 
         [RelayCommand]
@@ -76,6 +78,13 @@ namespace Hakim.ViewModel
         void FirstNameChanged()
         {
             ConfigurationService.SetAppSetting("FirstName", User.FirstName);
+        }
+
+        [RelayCommand]
+        void LanguageChanged()
+        {
+            ConfigurationService.SetAppSetting("Language", Language);
+            LanguageService.SetLanguage(ConfigurationService.GetAppSetting("Language"));
         }
     }
 }
