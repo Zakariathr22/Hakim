@@ -207,4 +207,157 @@
   <data name="User" xml:space="preserve">
     <value>The User</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddPatient" xml:space="preserve">
+    <value>Add Patient</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="SortPatients" xml:space="preserve">
+    <value>Sort Patients</value>
+  </data>
+  <data name="ByAge" xml:space="preserve">
+    <value>By Age</value>
+  </data>
+  <data name="ByDateAdded" xml:space="preserve">
+    <value>By Date Added</value>
+  </data>
+  <data name="ByFirstname" xml:space="preserve">
+    <value>By Firstname</value>
+  </data>
+  <data name="ByLastname" xml:space="preserve">
+    <value>By Lastname</value>
+  </data>
+  <data name="Descending" xml:space="preserve">
+    <value>Descending</value>
+  </data>
+  <data name="Ascending" xml:space="preserve">
+    <value>Ascending</value>
+  </data>
+  <data name="SearchForAPatient" xml:space="preserve">
+    <value>Search for a Patient</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>Personal Information</value>
+  </data>
+  <data name="Lastname(Required)" xml:space="preserve">
+    <value>Lastname (Required)</value>
+  </data>
+  <data name="Lastname" xml:space="preserve">
+    <value>Lastname</value>
+  </data>
+  <data name="Firstname(Required)" xml:space="preserve">
+    <value>Firstname (Required)</value>
+  </data>
+  <data name="Firstname" xml:space="preserve">
+    <value>Firstname</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="Gender(Required)" xml:space="preserve">
+    <value>Gender (Required)</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="PhoneNumber1" xml:space="preserve">
+    <value>Phone Number 1</value>
+  </data>
+  <data name="PhoneNumber2" xml:space="preserve">
+    <value>Phone Number 2</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>Personal</value>
+  </data>
+  <data name="Husband" xml:space="preserve">
+    <value>Husband</value>
+  </data>
+  <data name="Wife" xml:space="preserve">
+    <value>Wife</value>
+  </data>
+  <data name="Son" xml:space="preserve">
+    <value>Son</value>
+  </data>
+  <data name="Daughter" xml:space="preserve">
+    <value>Daughter</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>Father</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>Mother</value>
+  </data>
+  <data name="Brother" xml:space="preserve">
+    <value>Brother</value>
+  </data>
+  <data name="Sister" xml:space="preserve">
+    <value>Sister</value>
+  </data>
+  <data name="Relative" xml:space="preserve">
+    <value>Relative</value>
+  </data>
+  <data name="Friend" xml:space="preserve">
+    <value>Friend</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="AddressInformation" xml:space="preserve">
+    <value>Address Information</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>Zip Code</value>
+  </data>
+  <data name="InsuranceInformation" xml:space="preserve">
+    <value>Insurance Information</value>
+  </data>
+  <data name="InsuranceProvider" xml:space="preserve">
+    <value>Insurance Provider</value>
+  </data>
+  <data name="InsuranceNumber" xml:space="preserve">
+    <value>Insurance Number</value>
+  </data>
+  <data name="MedicalInformation" xml:space="preserve">
+    <value>Medical Information</value>
+  </data>
+  <data name="MedicalHistory" xml:space="preserve">
+    <value>Medical History</value>
+  </data>
+  <data name="Allergies" xml:space="preserve">
+    <value>Allergies</value>
+  </data>
+  <data name="CurrentMedications" xml:space="preserve">
+    <value>Current Medications</value>
+  </data>
+  <data name="MedicalHistoryDetails" xml:space="preserve">
+    <value>A text detailing the patient's medical history, including past illnesses, surgeries, hospitalizations, and everything else (allows healthcare professionals to understand the patient's health history).</value>
+  </data>
+  <data name="AllergiesDetails" xml:space="preserve">
+    <value>Information about the patient's allergies (to avoid allergic reactions by avoiding certain medications or treatments).</value>
+  </data>
+  <data name="CurrentMedicationsDetails" xml:space="preserve">
+    <value>A list of the medications the patient is currently taking (to avoid drug interactions and inform treatment decisions).</value>
+  </data>
 </root>

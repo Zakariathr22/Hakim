@@ -18,27 +18,26 @@
         <ContentPresenter Height="56" Grid.Column="0" Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
                     BorderThickness="0 0 0 1" BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}">
             <CommandBar IsOpen="False" Height="56">
-                <AppBarButton x:Name="AddPatientButton" Icon="AddFriend" Label="Ajouter" ToolTipService.ToolTip="Ajouter un patient"
-                              Click="AddPatientButton_Click">
+                <AppBarButton x:Name="AddPatientButton" Icon="AddFriend" Click="AddPatientButton_Click">
                     <KeyboardAccelerator Modifiers="Control" Key="N"/>
                 </AppBarButton>
                 <AppBarSeparator />
-                <AppBarButton Icon="Sort" Label="Trier" ToolTipService.ToolTip="Trier les patients">
+                <AppBarButton x:Name="sortButton" Icon="Sort">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <ToggleMenuFlyoutItem x:Name="OrderByDate" Text="Par date d'ajout" IsChecked="True" Click="OrderByDate_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="OrderByLastName" Text="Par nom" IsChecked="False" Click="OrderByLastName_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="OrderByFirstName" Text="Par prénom" IsChecked="False" Click="OrderByFirstName_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="OrderByAge" Text="Par age" IsChecked="False" Click="OrderByAge_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByDate" IsChecked="True" Click="OrderByDate_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByLastName" IsChecked="False" Click="OrderByLastName_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByFirstName" IsChecked="False" Click="OrderByFirstName_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByAge" IsChecked="False" Click="OrderByAge_Click"/>
                             <MenuFlyoutSeparator/>
                             <ToggleMenuFlyoutItem x:Name="CroissantOrder" Text="Croissant" IsChecked="False" Click="CroissantOrder_Click"/>
                             <ToggleMenuFlyoutItem x:Name="DecroissantOrder" Text="Décroissant" IsChecked="True" Click="DecroissantOrder_Click"/>
                         </MenuFlyout>
                     </Button.Flyout>
                 </AppBarButton>
-                <AppBarButton Icon="Refresh" Label="Actualiser" ToolTipService.ToolTip="Actualiser" Click="AppBarButton_Click"/>
+                <AppBarButton x:Name="refreshButton" Icon="Refresh" Click="AppBarButton_Click"/>
                 <AppBarElementContainer Padding="6">
-                    <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="250" QueryIcon="Find" PlaceholderText="Recherche un patient" 
+                    <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="250" QueryIcon="Find"
                                     TextChanged="SearchAutoSuggestBox_TextChanged" SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen"
                                     QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted"/>
                 </AppBarElementContainer>

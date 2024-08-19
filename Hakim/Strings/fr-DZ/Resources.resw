@@ -207,4 +207,157 @@
   <data name="User" xml:space="preserve">
     <value>L'utilisateur</value>
   </data>
+  <data name="Add" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="AddPatient" xml:space="preserve">
+    <value>Ajouter un patient</value>
+  </data>
+  <data name="SortPatients" xml:space="preserve">
+    <value>Trier les patients</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Trier</value>
+  </data>
+  <data name="ByDateAdded" xml:space="preserve">
+    <value>Par date d'ajout</value>
+  </data>
+  <data name="ByLastname" xml:space="preserve">
+    <value>Par nom</value>
+  </data>
+  <data name="ByFirstname" xml:space="preserve">
+    <value>Par prénom</value>
+  </data>
+  <data name="ByAge" xml:space="preserve">
+    <value>Par age</value>
+  </data>
+  <data name="Ascending" xml:space="preserve">
+    <value>Croissant</value>
+  </data>
+  <data name="Descending" xml:space="preserve">
+    <value>Décroissant</value>
+  </data>
+  <data name="SearchForAPatient" xml:space="preserve">
+    <value>Recherche un patient</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Actualiser</value>
+  </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>Informations personnelles</value>
+  </data>
+  <data name="Lastname" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="Firstname" xml:space="preserve">
+    <value>Prénom</value>
+  </data>
+  <data name="Lastname(Required)" xml:space="preserve">
+    <value>Nom (obligatoire)</value>
+  </data>
+  <data name="Firstname(Required)" xml:space="preserve">
+    <value>Prénom (obligatoire)</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="Gender(Required)" xml:space="preserve">
+    <value>Genre (obligatoire)</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Coordonnées</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>date de naissance</value>
+  </data>
+  <data name="PhoneNumber1" xml:space="preserve">
+    <value>Numéro de téléphone 1</value>
+  </data>
+  <data name="PhoneNumber2" xml:space="preserve">
+    <value>Numéro de téléphone 2</value>
+  </data>
+  <data name="Personal" xml:space="preserve">
+    <value>Personnel</value>
+  </data>
+  <data name="Husband" xml:space="preserve">
+    <value>Le mari</value>
+  </data>
+  <data name="Wife" xml:space="preserve">
+    <value>La femme</value>
+  </data>
+  <data name="Son" xml:space="preserve">
+    <value>Le fils</value>
+  </data>
+  <data name="Daughter" xml:space="preserve">
+    <value>La fille</value>
+  </data>
+  <data name="Father" xml:space="preserve">
+    <value>Le père</value>
+  </data>
+  <data name="Mother" xml:space="preserve">
+    <value>La mère</value>
+  </data>
+  <data name="Brother" xml:space="preserve">
+    <value>Le frère</value>
+  </data>
+  <data name="Sister" xml:space="preserve">
+    <value>La sœur</value>
+  </data>
+  <data name="Relative" xml:space="preserve">
+    <value>Proche</value>
+  </data>
+  <data name="Friend" xml:space="preserve">
+    <value>Ami</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Propriétaire</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="AddressInformation" xml:space="preserve">
+    <value>Informations sur l'adresse</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Adresse</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Wilaya</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Commune</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>Code postal</value>
+  </data>
+  <data name="InsuranceInformation" xml:space="preserve">
+    <value>Information sur l'assurance</value>
+  </data>
+  <data name="InsuranceProvider" xml:space="preserve">
+    <value>Fournisseur d'assurance</value>
+  </data>
+  <data name="InsuranceNumber" xml:space="preserve">
+    <value>Numéro d'assurance</value>
+  </data>
+  <data name="MedicalInformation" xml:space="preserve">
+    <value>Informations médicales</value>
+  </data>
+  <data name="MedicalHistory" xml:space="preserve">
+    <value>Antécédents médicaux</value>
+  </data>
+  <data name="Allergies" xml:space="preserve">
+    <value>Allergies</value>
+  </data>
+  <data name="CurrentMedications" xml:space="preserve">
+    <value>Médicaments actuels</value>
+  </data>
+  <data name="MedicalHistoryDetails" xml:space="preserve">
+    <value>Texte détaillant les antécédents médicaux du patient, y compris les maladies passées, les opérations, les hospitalisations et tout (permet aux professionnels de santé de comprendre l'historique de santé du patient)</value>
+  </data>
+  <data name="AllergiesDetails" xml:space="preserve">
+    <value>Informations sur les allergies du patient (pour éviter les réactions allergiques en évitant certains médicaments ou traitements)</value>
+  </data>
+  <data name="CurrentMedicationsDetails" xml:space="preserve">
+    <value>Une liste des médicaments que le patient prend actuellement (pour éviter les interactions médicamenteuses et informer les décisions de traitement)</value>
+  </data>
 </root>

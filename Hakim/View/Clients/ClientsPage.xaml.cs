@@ -19,14 +19,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace Hakim.View.Clients
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within PatientDetailsDisplay Frame.
-    /// </summary>
     public sealed partial class ClientsPage : Page
     {
         public ClientsViewModel viewModel = new ClientsViewModel();
@@ -35,6 +29,7 @@ namespace Hakim.View.Clients
         public ClientsPage()
         {
             this.InitializeComponent();
+            this.InitializeLocalization();
 
             DataContext = viewModel;
 
@@ -51,11 +46,9 @@ namespace Hakim.View.Clients
         private async void ShowAddPatientDialog()
         {
             ContentDialog dialog = new ContentDialog();
-
-            // XamlRoot must be set in the case of PatientDetailsDisplay ContentDialog running in PatientDetailsDisplay Desktop app
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-            dialog.Title = new TitleControl("Ajouter un patient", addPatientIcon);
+            dialog.Title = new TitleControl(LanguageService.GetResourceValue("AddPatient"), addPatientIcon);
             dialog.PrimaryButtonText = "Suivant";
             dialog.CloseButtonText = "Annuler";
             viewModel.Patient = new Model.Patient();
@@ -384,5 +377,28 @@ namespace Hakim.View.Clients
                 UpdatePatientSearchResults(SearchAutoSuggestBox);
             }
         }
+
+        public void InitializeLocalization()
+        {
+            AddPatientButton.Label = LanguageService.GetResourceValue("Add");
+            ToolTipService.SetToolTip(AddPatientButton, LanguageService.GetResourceValue("AddPatient"));
+
+            sortButton.Label = LanguageService.GetResourceValue("Sort");
+            ToolTipService.SetToolTip(sortButton, LanguageService.GetResourceValue("SortPatients"));
+
+            OrderByDate.Text = LanguageService.GetResourceValue("ByDateAdded");
+            OrderByLastName.Text = LanguageService.GetResourceValue("ByLastname");
+            OrderByFirstName.Text = LanguageService.GetResourceValue("ByFirstname");
+            OrderByAge.Text = LanguageService.GetResourceValue("ByAge");
+
+            CroissantOrder.Text = LanguageService.GetResourceValue("Ascending");
+            DecroissantOrder.Text = LanguageService.GetResourceValue("Descending");
+
+            refreshButton.Label = LanguageService.GetResourceValue("Refresh");
+            ToolTipService.SetToolTip(refreshButton, LanguageService.GetResourceValue("Refresh"));
+
+            SearchAutoSuggestBox.PlaceholderText = LanguageService.GetResourceValue("SearchForAPatient");
+        }
+
     }
 }
