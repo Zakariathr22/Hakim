@@ -11,7 +11,7 @@
     MaxHeight="500">
 
     <Pivot>
-        <PivotItem Header="Générale">
+        <PivotItem x:Name="GeneralInfoPivotItem">
             <ScrollView>
                 <Grid Width="400" Margin="0 16 0 0 ">
                     <Grid.RowDefinitions>
@@ -33,44 +33,44 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Margin="0 0 0 8" Orientation="Horizontal">
                         <FontIcon Glyph="&#xE77B;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Informations personnelles</TextBlock>
+                        <TextBlock x:Name="personalInformationSubtitle" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     </StackPanel>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="lastNameTextBox" Grid.Column="0" Header="Nom" PlaceholderText="Nom (obligatoire)" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding LastName, Mode=TwoWay}" TextChanged="lastNameTextBox_TextChanged" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                        <TextBox x:Name="firstNameTextBox" Grid.Column="1" Header="Prénom" PlaceholderText="Prénom (obligatoire)" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding FirstName, Mode=TwoWay}" TextChanged="firstNameTextBox_TextChanged" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                        <TextBox x:Name="lastNameTextBox" Grid.Column="0" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding LastName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" TextChanged="lastNameTextBox_TextChanged"/>
+                        <TextBox x:Name="firstNameTextBox" Grid.Column="1" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding FirstName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" TextChanged="firstNameTextBox_TextChanged"/>
                     </Grid>
-                    <DatePicker Grid.Row="2" Header="Date de naissance" Width="400" Margin="0 0 0 4" SelectedDate="{Binding DateOfBirth, Mode=TwoWay}"/>
-                    <ComboBox x:Name="GenderComboBox" Grid.Row="3" Header="Genre" PlaceholderText="Genre (obligatoire)" Width="400" SelectionChanged="GenderComboBox_SelectionChanged" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}">
-                        <x:String>Masculin</x:String>
-                        <x:String>Féminin</x:String>
+                    <DatePicker x:Name="dateOfBirthPicker" Grid.Row="2" Width="400" Margin="0 0 0 4" SelectedDate="{Binding DateOfBirth, Mode=TwoWay}"/>
+                    <ComboBox x:Name="GenderComboBox" Grid.Row="3" Width="400" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" SelectionChanged="GenderComboBox_SelectionChanged">
+                        <ComboBoxItem x:Name="maleComboBoxItem"/>
+                        <ComboBoxItem x:Name="femaleComboBoxItem"/>
                     </ComboBox>
 
                     <StackPanel Grid.Row="4" Margin="0 8" Orientation="Horizontal">
                         <FontIcon Glyph="&#xE779;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Coordonnées</TextBlock>
+                        <TextBlock x:Name="contactSubtitle" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     </StackPanel>
                     <Grid Grid.Row="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox x:Name="phone1TextBox" Grid.Column="0" Header="Numéro de téléphone 1" PlaceholderText="Num de téléphone 1  (obligatoire)" Margin="0 0 4 8" IsSpellCheckEnabled="False" Text="{Binding Phone1, Mode=TwoWay}" TextChanged="phone1TextBox_TextChanged" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                        <ComboBox x:Name="Phone1OwnerComboBox" Grid.Column="1" Header="Propriétaire" PlaceholderText="Propriétaire (obligatoire)" Margin="0 0 0 8" Width="160" SelectionChanged="Phone1OwnerComboBox_SelectionChanged" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}">
-                            <x:String>Personnel</x:String>
-                            <x:String>Le mari</x:String>
-                            <x:String>La femme</x:String>
-                            <x:String>Le fils</x:String>
-                            <x:String>La fille</x:String>
-                            <x:String>Le père</x:String>
-                            <x:String>La mère</x:String>
-                            <x:String>Le frère</x:String>
-                            <x:String>La sœur</x:String>
-                            <x:String>Proche</x:String>
-                            <x:String>Ami</x:String>
+                        <TextBox x:Name="phone1TextBox" Grid.Column="0" Margin="0 0 4 8" IsSpellCheckEnabled="False" Text="{Binding Phone1, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" TextChanged="phone1TextBox_TextChanged"/>
+                        <ComboBox x:Name="Phone1OwnerComboBox" Grid.Column="1" Margin="0 0 0 8" Width="160" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" SelectionChanged="Phone1OwnerComboBox_SelectionChanged">
+                            <ComboBoxItem x:Name="personalPhone1"/>
+                            <ComboBoxItem x:Name="husbandPhone1"/>
+                            <ComboBoxItem x:Name="wifePhone1"/>
+                            <ComboBoxItem x:Name="sonPhone1"/>
+                            <ComboBoxItem x:Name="daughterPhone1"/>
+                            <ComboBoxItem x:Name="fatherPhone1"/>
+                            <ComboBoxItem x:Name="motherPhone1"/>
+                            <ComboBoxItem x:Name="brotherPhone1"/>
+                            <ComboBoxItem x:Name="sisterPhone1"/>
+                            <ComboBoxItem x:Name="relativePhone1"/>
+                            <ComboBoxItem x:Name="friendPhone1"/>
                         </ComboBox>
                     </Grid>
                     <Grid Grid.Row="6">
@@ -78,48 +78,48 @@
                             <ColumnDefinition Width="3*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Column="0" Header="Num de téléphone 2" PlaceholderText="Numéro de téléphone 2" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding Phone2, Mode=TwoWay}"/>
-                        <ComboBox x:Name="Phone2OwnerComboBox" Grid.Column="1" Header="Propriétaire" PlaceholderText="Propriétaire" Margin="0 0 0 8" Width="160" SelectionChanged="Phone2OwnerComboBox_SelectionChanged">
-                            <x:String>Personnel</x:String>
-                            <x:String>Le mari</x:String>
-                            <x:String>La femme</x:String>
-                            <x:String>Le fils</x:String>
-                            <x:String>La fille</x:String>
-                            <x:String>Le père</x:String>
-                            <x:String>La mère</x:String>
-                            <x:String>Le frère</x:String>
-                            <x:String>La sœur</x:String>
-                            <x:String>Proche</x:String>
-                            <x:String>Ami</x:String>
+                        <TextBox x:Name="phone2TextBox" Grid.Column="0" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding Phone2, Mode=TwoWay}"/>
+                        <ComboBox x:Name="Phone2OwnerComboBox" Grid.Column="1" Margin="0 0 0 8" Width="160" SelectionChanged="Phone2OwnerComboBox_SelectionChanged">
+                            <ComboBoxItem x:Name="personalPhone2"/>
+                            <ComboBoxItem x:Name="husbandPhone2"/>
+                            <ComboBoxItem x:Name="wifePhone2"/>
+                            <ComboBoxItem x:Name="sonPhone2"/>
+                            <ComboBoxItem x:Name="daughterPhone2"/>
+                            <ComboBoxItem x:Name="fatherPhone2"/>
+                            <ComboBoxItem x:Name="motherPhone2"/>
+                            <ComboBoxItem x:Name="brotherPhone2"/>
+                            <ComboBoxItem x:Name="sisterPhone2"/>
+                            <ComboBoxItem x:Name="relativePhone2"/>
+                            <ComboBoxItem x:Name="friendPhone2"/>
                         </ComboBox>
                     </Grid>
-                    <TextBox Grid.Row="7" Header="Email" PlaceholderText="Email" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Email, Mode=TwoWay}"/>
+                    <TextBox x:Name="emailTextBox" Grid.Row="7" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Email, Mode=TwoWay}"/>
 
                     <StackPanel Grid.Row="8" Margin="0 8" Orientation="Horizontal">
                         <FontIcon Glyph="&#xE80F;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Informations sur l'adresse</TextBlock>
+                        <TextBlock x:Name="addressInformationSubtitle" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     </StackPanel>
-                    <TextBox Grid.Row="9" Header="Adresse" PlaceholderText="Adresse" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Address, Mode=TwoWay}"/>
+                    <TextBox x:Name="AddressTextBox" Grid.Row="9" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Address, Mode=TwoWay}"/>
                     <Grid Grid.Row="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Column="0" Header="Wilaya" PlaceholderText="Wilaya" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding Wilaya, Mode=TwoWay}"/>
-                        <TextBox Grid.Column="1" Header="Commune" PlaceholderText="Commune" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Commune, Mode=TwoWay}"/>
+                        <TextBox x:Name="stateTextBox" Grid.Column="0" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding Wilaya, Mode=TwoWay}"/>
+                        <TextBox x:Name="cityTextBox" Grid.Column="1" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Commune, Mode=TwoWay}"/>
                     </Grid>
-                    <TextBox Grid.Row="11" Header="Code Postal" PlaceholderText="Code Postal" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding PostalCode, Mode=TwoWay}"/>
+                    <TextBox x:Name="zipCodeTextBox" Grid.Row="11" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding PostalCode, Mode=TwoWay}"/>
 
                     <StackPanel Grid.Row="12" Margin="0 8" Orientation="Horizontal">
                         <FontIcon Glyph="&#xEC1B;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Information sur l'assurance</TextBlock>
+                        <TextBlock x:Name="insuranceInformationSubtitle" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     </StackPanel>
-                    <TextBox Grid.Row="13" Header="Fournisseur d'assurance" PlaceholderText="Fournisseur d'assurance" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding InsuranceProvider, Mode=TwoWay}"/>
-                    <TextBox Grid.Row="14" Header="Numéro d'assurance" PlaceholderText="Numéro d'assurance" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding InsuranceNumber, Mode=TwoWay}"/>
+                    <TextBox x:Name="insuranceProviderTextBox" Grid.Row="13" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding InsuranceProvider, Mode=TwoWay}"/>
+                    <TextBox x:Name="insuranceNumberTextBox" Grid.Row="14" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding InsuranceNumber, Mode=TwoWay}"/>
                 </Grid>
             </ScrollView>
         </PivotItem>
-        <PivotItem Header="Informations médicales">
+        <PivotItem x:Name="medicalInformationPivotItem">
             <ScrollView>
                 <Grid Width="400" Margin="0 16 0 0 ">
                     <Grid.RowDefinitions>
@@ -130,11 +130,11 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Margin="0 0 0 8" Orientation="Horizontal">
                         <FontIcon Glyph="&#xE95E;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Informations médicales</TextBlock>
+                        <TextBlock x:Name="medicalInformationSubtitle" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     </StackPanel>
-                    <TextBox Grid.Row="1" Header="Antécédents médicaux" PlaceholderText="Dossier détaillant les antécédents médicaux du patient, y compris les maladies passées, les opérations, les hospitalisations et tout (permet aux professionnels de santé de comprendre l'historique de santé du patient)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding MedicalHistory, Mode=TwoWay}" Language="fr-FR"/>
-                    <TextBox Grid.Row="2" Header="Allergies" PlaceholderText="Informations sur les allergies du patient (pour éviter les réactions allergiques en évitant certains médicaments ou traitements)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Allergies, Mode=TwoWay}"/>
-                    <TextBox Grid.Row="3" Header="Médicaments actuels" PlaceholderText="Une liste des médicaments que le patient prend actuellement (pour éviter les interactions médicamenteuses et informer les décisions de traitement)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding CurrentMedications, Mode=TwoWay}"/>
+                    <TextBox x:Name="medicalHistoryTextBox" Grid.Row="1" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding MedicalHistory, Mode=TwoWay}"/>
+                    <TextBox x:Name="allergiesTextBox" Grid.Row="2" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Allergies, Mode=TwoWay}"/>
+                    <TextBox x:Name="currentMedicationsTextBox" Grid.Row="3" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding CurrentMedications, Mode=TwoWay}"/>
                 </Grid>
             </ScrollView>
         </PivotItem>

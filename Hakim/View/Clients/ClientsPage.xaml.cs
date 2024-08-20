@@ -362,11 +362,9 @@ namespace Hakim.View.Clients
         public async void ShowEditPatientDialog(Model.Patient patient)
         {
             ContentDialog dialog = new ContentDialog();
-
-            // XamlRoot must be set in the case of PatientDetailsDisplay ContentDialog running in PatientDetailsDisplay Desktop app
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-            dialog.SecondaryButtonText = "Fermer";
+            dialog.SecondaryButtonText = LanguageService.GetResourceValue("Close");
             viewModel.Patient = new Model.Patient();
             dialog.Content = new EdidPatientPage(dialog, patient);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);

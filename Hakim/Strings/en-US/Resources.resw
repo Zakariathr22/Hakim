@@ -381,4 +381,10 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
 </root>
