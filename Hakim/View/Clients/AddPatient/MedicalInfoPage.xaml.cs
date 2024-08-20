@@ -1,3 +1,4 @@
+using Hakim.Service;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -28,13 +29,15 @@ namespace Hakim.View.Clients.AddPatient
         public MedicalInfoPage()
         {
             this.InitializeComponent();
+            this.InitializeLocation();
             Loaded += MedicalInfoPage_Loaded;
         }
 
         private void MedicalInfoPage_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = p.viewModel;
-            this.p.dialog.SecondaryButtonText = "Sauvegarder";
+            this.p.dialog.SecondaryButtonText = LanguageService.GetResourceValue("Save");
+            this.p.dialog.SecondaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
             this.p.dialog.PrimaryButtonText = null;
         }
 
@@ -45,6 +48,20 @@ namespace Hakim.View.Clients.AddPatient
                 p = e.Parameter as AddPatientPage;
             }
             base.OnNavigatedTo(e);
+        }
+
+        public void InitializeLocation()
+        {
+            medicalInformationSubtitle.Text = LanguageService.GetResourceValue("MedicalInformation");
+
+            medicalHistoryTextBox.Header = LanguageService.GetResourceValue("MedicalHistory");
+            medicalHistoryTextBox.PlaceholderText = LanguageService.GetResourceValue("MedicalHistoryDetails");
+
+            allergiesTextBox.Header = LanguageService.GetResourceValue("Allergies");
+            allergiesTextBox.PlaceholderText = LanguageService.GetResourceValue("AllergiesDetails");
+
+            currentMedicationsTextBox.Header = LanguageService.GetResourceValue("CurrentMedications");
+            currentMedicationsTextBox.PlaceholderText = LanguageService.GetResourceValue("CurrentMedicationsDetails");
         }
     }
 }

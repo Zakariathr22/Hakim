@@ -49,8 +49,8 @@ namespace Hakim.View.Clients
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.Title = new TitleControl(LanguageService.GetResourceValue("AddPatient"), addPatientIcon);
-            dialog.PrimaryButtonText = "Suivant";
-            dialog.CloseButtonText = "Annuler";
+            dialog.PrimaryButtonText = LanguageService.GetResourceValue("Next"); ;
+            dialog.CloseButtonText = LanguageService.GetResourceValue("Cancel"); ;
             viewModel.Patient = new Model.Patient();
             dialog.Content = new AddPatientPage(dialog,viewModel);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);

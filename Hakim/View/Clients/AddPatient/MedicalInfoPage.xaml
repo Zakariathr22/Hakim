@@ -17,10 +17,10 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="0 0 0 8" Orientation="Horizontal">
             <FontIcon Glyph="&#xE95E;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-            <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}">Informations médicales</TextBlock>
+            <TextBlock x:Name="medicalInformationSubtitle" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
         </StackPanel>
-        <TextBox Grid.Row="1" Header="Antécédents médicaux" PlaceholderText="Dossier détaillant les antécédents médicaux du patient, y compris les maladies passées, les opérations, les hospitalisations et tout (permet aux professionnels de santé de comprendre l'historique de santé du patient)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Patient.MedicalHistory, Mode=TwoWay}"/>
-        <TextBox Grid.Row="2" Header="Allergies" PlaceholderText="Informations sur les allergies du patient (pour éviter les réactions allergiques en évitant certains médicaments ou traitements)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Patient.Allergies, Mode=TwoWay}"/>
-        <TextBox Grid.Row="3" Header="Médicaments actuels" PlaceholderText="Une liste des médicaments que le patient prend actuellement (pour éviter les interactions médicamenteuses et informer les décisions de traitement)" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Patient.CurrentMedications, Mode=TwoWay}"/>
+        <TextBox x:Name="medicalHistoryTextBox" Grid.Row="1" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Patient.MedicalHistory, Mode=TwoWay}"/>
+        <TextBox x:Name="allergiesTextBox" Grid.Row="2" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Patient.Allergies, Mode=TwoWay}"/>
+        <TextBox x:Name="currentMedicationsTextBox" Grid.Row="3" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Patient.CurrentMedications, Mode=TwoWay}"/>
     </Grid>
 </Page>

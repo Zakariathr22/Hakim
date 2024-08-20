@@ -360,4 +360,25 @@
   <data name="CurrentMedicationsDetails" xml:space="preserve">
     <value>A list of the medications the patient is currently taking (to avoid drug interactions and inform treatment decisions).</value>
   </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Owner(Required)" xml:space="preserve">
+    <value>Owner (Required)</value>
+  </data>
+  <data name="PhoneNumber1(Required)" xml:space="preserve">
+    <value>Phone Number 1 (Required)</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>
