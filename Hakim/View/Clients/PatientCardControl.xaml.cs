@@ -30,6 +30,7 @@ namespace Hakim.View.Clients
         public PatientCardControl()
         {
             this.InitializeComponent();
+            this.InitializeLocation();
             Loaded += PatientCardControl_Loaded;
         }
 
@@ -127,6 +128,24 @@ namespace Hakim.View.Clients
         private void UserControl_ActualThemeChanged(FrameworkElement sender, object args)
         {
             SetCardColor();
+        }
+
+        public void InitializeLocation()
+        {
+            displayButton.Label = LanguageService.GetResourceValue("Display2");
+            ToolTipService.SetToolTip(displayButton, LanguageService.GetResourceValue("Display2"));
+
+            editButton.Label = LanguageService.GetResourceValue("Edit");
+            ToolTipService.SetToolTip(editButton, LanguageService.GetResourceValue("Edit"));
+
+            deleteButton.Label = LanguageService.GetResourceValue("Delete");
+            ToolTipService.SetToolTip(deleteButton, LanguageService.GetResourceValue("Delete"));
+
+            deleteConfirmationText.Text = LanguageService.GetResourceValue("DeleteConfirmation");
+            deletePatientButton.Content = LanguageService.GetResourceValue("YesDelete");
+            dateAndTimeAddedTitle.Text = LanguageService.GetResourceValue("DateAndTimeAdded") + ":";
+            dateOfBirthTitle.Text = LanguageService.GetResourceValue("DateOfBirth") + ":";
+            medicalHistoryTitle.Text = LanguageService.GetResourceValue("MedicalHistory") + ":";
         }
     }
 }

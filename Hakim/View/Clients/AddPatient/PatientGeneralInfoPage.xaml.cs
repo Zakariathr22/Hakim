@@ -288,7 +288,7 @@ namespace Hakim.View.Clients.AddPatient
             Phone1OwnerComboBox.PlaceholderText = LanguageService.GetResourceValue("Owner(Required)");
             personalPhone1.Content = LanguageService.GetResourceValue("Personal");
             husbandPhone1.Content = LanguageService.GetResourceValue("Husband");
-            wifePhone1.Content = LanguageService.GetResourceValue("Husband");
+            wifePhone1.Content = LanguageService.GetResourceValue("Wife");
             sonPhone1.Content = LanguageService.GetResourceValue("Son");
             daughterPhone1.Content = LanguageService.GetResourceValue("Daughter");
             fatherPhone1.Content = LanguageService.GetResourceValue("Father");
@@ -305,7 +305,7 @@ namespace Hakim.View.Clients.AddPatient
             Phone2OwnerComboBox.PlaceholderText = LanguageService.GetResourceValue("Owner");
             personalPhone2.Content = LanguageService.GetResourceValue("Personal");
             husbandPhone2.Content = LanguageService.GetResourceValue("Husband");
-            wifePhone2.Content = LanguageService.GetResourceValue("Husband");
+            wifePhone2.Content = LanguageService.GetResourceValue("Wife");
             sonPhone2.Content = LanguageService.GetResourceValue("Son");
             daughterPhone2.Content = LanguageService.GetResourceValue("Daughter");
             fatherPhone2.Content = LanguageService.GetResourceValue("Father");

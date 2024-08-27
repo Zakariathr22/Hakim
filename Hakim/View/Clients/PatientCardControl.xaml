@@ -11,15 +11,14 @@
 
     <UserControl.Resources>
         <CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout">
-            <AppBarButton Label="Afficher" Icon="ShowResults" ToolTipService.ToolTip="Afficher"/>
-            <AppBarButton x:Name="editButton" Label="Modifier" Icon="Edit" ToolTipService.ToolTip="Modifier" Click="editButton_Click"/>
-            <AppBarButton Label="Nouveau dossier" Icon="NewFolder" ToolTipService.ToolTip="Nouveau dossier"/>
+            <AppBarButton x:Name="displayButton" Icon="ShowResults" Click="CustomButton_Click"/>
+            <AppBarButton x:Name="editButton" Icon="Edit" Click="editButton_Click"/>
             <CommandBarFlyout.SecondaryCommands>
-                <AppBarButton Label="Supprimer" Icon="Delete" ToolTipService.ToolTip="Supprimer" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
+                <AppBarButton x:Name="deleteButton" Icon="Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
                     <AppBarButton.Flyout>
                         <Flyout>
                             <StackPanel Width="300">
-                                <TextBlock Style="{ThemeResource BaseTextBlockStyle}" Text="Êtes-vous sûr de vouloir supprimer ce patient, car cela supprimera toutes ses informations, y compris ses dossiers ?" TextWrapping="Wrap" Margin="0,0,0,12" 
+                                <TextBlock x:Name="deleteConfirmationText" Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
                                            Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
                                 <Button x:Name="deletePatientButton" Content="Oui, Supprimer" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Click="deletePatientButton_Click"/>
                             </StackPanel>
@@ -29,6 +28,7 @@
             </CommandBarFlyout.SecondaryCommands>
         </CommandBarFlyout>
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
+        <converters:OutputStringConverter x:Key="OutputStringConverter"/>
         <Border x:Key="GreenBackground" Background="{ThemeResource SystemFillColorSuccessBackgroundBrush}"/>
         <Border x:Key="GreenForeground"  Background="{ThemeResource SystemFillColorSuccessBrush}"/>
         <Border x:Name="AmberBackground" Background="{ThemeResource SystemFillColorCautionBackgroundBrush}"/>
@@ -36,7 +36,6 @@
         <Border x:Name="RedBackground" Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}"/>
         <Border x:Name="RedForeground" Background="{ThemeResource SystemFillColorCriticalBrush}"/>
         <Border x:Name="AccentBackground" Background="{ThemeResource AccentAcrylicBackgroundFillColorBaseBrush}"/>
-
     </UserControl.Resources>
 
     <ToolTipService.ToolTip>
@@ -52,7 +51,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Date et heure d'ajout:" Padding="2" FontWeight="Bold"/>
+                <TextBlock x:Name="dateAndTimeAddedTitle" Padding="2" FontWeight="Bold"/>
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding dateOfRegistration, Mode=OneWay}" Padding="2"/>
             </Grid>
             <Grid Grid.Row="1">
@@ -60,11 +59,11 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Date de naissance:" Padding="2" FontWeight="Bold"/>
+                <TextBlock x:Name="dateOfBirthTitle" Padding="2" FontWeight="Bold"/>
                 <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding DateOfBirth.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}" Padding="2"/>
             </Grid>
-            <TextBlock Grid.Row="2" Text="Antécédents médicaux:" Padding="2" FontWeight="Bold"/>
-            <TextBlock Grid.Row="3" Text="{Binding MedicalHistory, Mode=OneWay}" Padding="2" TextWrapping="Wrap"/>
+            <TextBlock x:Name="medicalHistoryTitle" Grid.Row="2" Padding="2" FontWeight="Bold"/>
+            <TextBlock Grid.Row="3" Text="{Binding MedicalHistory,Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Padding="2" TextWrapping="Wrap"/>
         </Grid>
     </ToolTipService.ToolTip>
 

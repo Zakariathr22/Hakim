@@ -387,4 +387,40 @@
   <data name="Close" xml:space="preserve">
     <value>Fermer</value>
   </data>
+  <data name="Display2" xml:space="preserve">
+    <value>Afficher</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="YesDelete" xml:space="preserve">
+    <value>Oui, supprimer</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir supprimer ce patient, car cela supprimera toutes ses informations, y compris ses fichies?</value>
+  </data>
+  <data name="DateAndTimeAdded" xml:space="preserve">
+    <value>Date et heure d'ajout</value>
+  </data>
+  <data name="hours" xml:space="preserve">
+    <value>heurs</value>
+  </data>
+  <data name="days" xml:space="preserve">
+    <value>jours</value>
+  </data>
+  <data name="month" xml:space="preserve">
+    <value>moi</value>
+  </data>
+  <data name="months" xml:space="preserve">
+    <value>mois</value>
+  </data>
+  <data name="year" xml:space="preserve">
+    <value>an</value>
+  </data>
+  <data name="years" xml:space="preserve">
+    <value>ans</value>
+  </data>
+  <data name="NotEntered" xml:space="preserve">
+    <value>Non saisi</value>
+  </data>
 </root>

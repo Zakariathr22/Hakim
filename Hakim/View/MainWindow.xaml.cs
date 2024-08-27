@@ -43,9 +43,10 @@ namespace Hakim
             appWindow = GetAppWindowForCurrentWindow();
             overlappedPresenter = GetAppWindowOverlappedPresenter(appWindow);
             titleBar = GetAppWindowTitleBar(appWindow);
+            
             titleBar.ButtonBackgroundColor = Color.FromArgb(0, 0, 0, 0);
-
             titleBar.ButtonForegroundColor = Color.FromArgb(0, 128, 128, 128);
+            titleBar.ButtonInactiveBackgroundColor = Color.FromArgb(0, 0, 0, 0);
 
             appWindow.Title = "Hakim";
             appWindow.SetIcon("Assets/Icons/Hakim.ico");

@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Data;
+﻿using Hakim.Service;
+using Microsoft.UI.Xaml.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Hakim.Converters
                 if (!string.IsNullOrEmpty(input))
                     return input;
                 else
-                    return "Non saisi";
+                    return LanguageService.GetResourceValue("NotEntered");
             }
             return null;
         }

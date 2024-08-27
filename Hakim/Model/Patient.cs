@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hakim.Service;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -40,30 +41,30 @@ namespace Hakim.Model
             if (age.TotalDays < 1)
             {
                 // Less than 1 day old
-                return $"{age.TotalHours:F0} heures";
+                return $"{age.TotalHours:F0} {LanguageService.GetResourceValue("hours")}";
             }
             else if (age.TotalDays < 30)
             {
                 // Less than 1 month old
-                return $"{age.TotalDays:F0} jours";
+                return $"{age.TotalDays:F0} {LanguageService.GetResourceValue("days")}";
             }
             else if (age.TotalDays < 365)
             {
                 // Less than 1 year old
                 int months = (int)(age.TotalDays / 30);
-                if (months == 0)
-                    return $"{months} mois";
+                if (months == 1)
+                    return $"{months} {LanguageService.GetResourceValue("month")}";
                 else
-                    return $"{months} moi";
+                    return $"{months} {LanguageService.GetResourceValue("months")}";
             }
             else
             {
                 // 1 year or older
                 int years = (int)(age.TotalDays / 365);
                 if (years == 1)
-                    return $"{years} an";
+                    return $"{years} {LanguageService.GetResourceValue("year")}";
                 else
-                    return $"{years} ans";
+                    return $"{years} {LanguageService.GetResourceValue("years")}";
             }
         }
         private string AddSpacesBetweenDigits(string input)
