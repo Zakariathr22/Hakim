@@ -15,17 +15,26 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="Assets\GalleryHeaderImageDark.png" />
+    <None Remove="Assets\GalleryHeaderImageLight.png" />
     <None Remove="Assets\Icons\Appointment.png" />
     <None Remove="Assets\Icons\Clients.png" />
     <None Remove="Assets\Icons\Counselor.png" />
+    <None Remove="Assets\Icons\Documents.png" />
+    <None Remove="Assets\Icons\Edit File.png" />
+    <None Remove="Assets\Icons\EditCalendar.png" />
     <None Remove="Assets\Icons\File.png" />
     <None Remove="Assets\Icons\Folders.png" />
+    <None Remove="Assets\Icons\Gears.png" />
     <None Remove="Assets\Icons\Hakim.ico" />
     <None Remove="Assets\Icons\Home.png" />
+    <None Remove="Assets\Icons\Management.png" />
     <None Remove="Assets\Icons\OldAppointment.png" />
+    <None Remove="Assets\Icons\Plus 1 Day.png" />
     <None Remove="Assets\Icons\Schedule.png" />
     <None Remove="Assets\Icons\Settings.png" />
     <None Remove="Assets\Icons\Surgery.png" />
+    <None Remove="Assets\Icons\Today.png" />
     <None Remove="Assets\Icons\X-ray.png" />
     <None Remove="Assets\Icons\X-ray1.png" />
     <None Remove="Assets\LockScreenLogo.scale-200.png" />
@@ -52,6 +61,7 @@
     <None Remove="View\Clients\Patient\XRay_s\AddTelemetryXRayPage.xaml" />
     <None Remove="View\Clients\Patient\XRay_s\AddXRayPage.xaml" />
     <None Remove="View\Controls\EditNamePage.xaml" />
+    <None Remove="View\Controls\HomePageHeaderImage.xaml" />
     <None Remove="View\Controls\TitleControl.xaml" />
     <None Remove="View\Home\HomePage.xaml" />
     <None Remove="View\Schedule\SchedulePage.xaml" />
@@ -106,6 +116,11 @@
     <Content Update="Assets\StoreLogo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Controls\HomePageHeaderImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Clients\Patient\XRay_s\AddTelemetryXRayPage.xaml">
