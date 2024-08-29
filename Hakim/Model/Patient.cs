@@ -16,15 +16,15 @@ namespace Hakim.Model
         private string lastName;
         private string firstName;
         private DateTimeOffset dateOfBirth;
-        private string gender;
+        private int gender;
         private string address;
         private string wilaya;
         private string commune;
         private string postalCode;
         private string phone1;
-        private string phone1Owner;
+        private int phone1Owner;
         private string phone2;
-        private string phone2Owner;
+        private int phone2Owner;
         private string email;
         private string medicalHistory;
         private string allergies;
@@ -87,7 +87,62 @@ namespace Hakim.Model
 
             return result.ToString();
         }
-
+        private string GetOwner(int phoneOwner)
+        {
+            if (phoneOwner == 0)
+            {
+                return LanguageService.GetResourceValue("Personal");
+            } else if (phoneOwner == 1)
+            {
+                return LanguageService.GetResourceValue("Husband");
+            }
+            else if (phoneOwner == 2)
+            {
+                return LanguageService.GetResourceValue("Wife");
+            }
+            else if (phoneOwner == 3)
+            {
+                return LanguageService.GetResourceValue("Son");
+            }
+            else if (phoneOwner == 4)
+            {
+                return LanguageService.GetResourceValue("Daughter");
+            }
+            else if (phoneOwner == 5)
+            {
+                return LanguageService.GetResourceValue("Father");
+            }
+            else if (phoneOwner == 6)
+            {
+                return LanguageService.GetResourceValue("Mother");
+            }
+            else if (phoneOwner == 7)
+            {
+                return LanguageService.GetResourceValue("Brother");
+            }
+            else if (phoneOwner == 8)
+            {
+                return LanguageService.GetResourceValue("Sister");
+            }
+            else if (phoneOwner == 9)
+            {
+                return LanguageService.GetResourceValue("Relative");
+            }
+            else if (phoneOwner == 10)
+            {
+                return LanguageService.GetResourceValue("Friend");
+            }
+            else 
+                return LanguageService.GetResourceValue("NotEntered");
+        }
+        /*
+        <ComboBoxItem x:Name="fatherPhone1"/>
+        <ComboBoxItem x:Name="motherPhone1"/>
+        <ComboBoxItem x:Name="brotherPhone1"/>
+        <ComboBoxItem x:Name="sisterPhone1"/>
+        <ComboBoxItem x:Name="relativePhone1"/>
+        <ComboBoxItem x:Name="friendPhone1"/>
+         */
     }
 
     public partial class Patient : INotifyPropertyChanged
@@ -147,7 +202,7 @@ namespace Hakim.Model
             }
         }
 
-        public string Gender
+        public int Gender
         {
             get => gender;
             set
@@ -208,7 +263,7 @@ namespace Hakim.Model
             }
         }
 
-        public string Phone1Owner
+        public int Phone1Owner
         {
             get => phone1Owner;
             set
@@ -224,7 +279,7 @@ namespace Hakim.Model
             get
             {
                 if (phone1 != "" && phone1 != null)
-                    return $"{AddSpacesBetweenDigits(phone1)} ({phone1Owner})";
+                    return $"{AddSpacesBetweenDigits(phone1)} ({GetOwner(phone1Owner)})";
                 else return "Non saisi";
             }
         }
@@ -240,7 +295,7 @@ namespace Hakim.Model
             }
         }
 
-        public string Phone2Owner
+        public int Phone2Owner
         {
             get => phone2Owner;
             set
@@ -256,7 +311,7 @@ namespace Hakim.Model
             get
             {
                 if (phone2 != "" && phone2 != null)
-                    return $"{AddSpacesBetweenDigits(phone2)} ({phone2Owner})";
+                    return $"{AddSpacesBetweenDigits(phone2)} ({GetOwner(phone2Owner)})";
                 else return "Non saisi";
             }
         }
@@ -326,15 +381,15 @@ namespace Hakim.Model
             LastName = "";
             FirstName = "";
             DateOfBirth = DateTime.Now;
-            gender = "";
+            gender = -1;
             Address = "";
             Wilaya = "";
             Commune = "";
             PostalCode = "";
             Phone1 = "";
-            Phone1Owner = "";
+            Phone1Owner = -1;
             Phone2 = "";
-            Phone2Owner = "";
+            Phone2Owner = -1;
             Email = "";
             MedicalHistory = "";
             Allergies = "";

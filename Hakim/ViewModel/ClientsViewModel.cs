@@ -92,15 +92,15 @@ namespace Hakim.ViewModel
                             LastName = reader["LastName"].ToString(),
                             FirstName = reader["FirstName"].ToString(),
                             DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
-                            Gender = reader["Gender"].ToString(),
+                            Gender = Convert.ToInt32(reader["Gender"]),
                             Address = reader["Address"].ToString(),
                             Wilaya = reader["Wilaya"].ToString(),
                             Commune = reader["Commune"].ToString(),
                             PostalCode = reader["PostalCode"].ToString(),
                             Phone1 = reader["Phone1"].ToString(),
-                            Phone1Owner = reader["Phone1Owner"].ToString(),
+                            Phone1Owner = Convert.ToInt32(reader["Phone1Owner"]),
                             Phone2 = reader["Phone2"].ToString(),
-                            Phone2Owner = reader["Phone2Owner"].ToString(),
+                            Phone2Owner = Convert.ToInt32(reader["Phone2Owner"].ToString()),
                             Email = reader["Email"].ToString(),
                             MedicalHistory = reader["MedicalHistory"].ToString(),
                             Allergies = reader["Allergies"].ToString(),
@@ -371,7 +371,7 @@ namespace Hakim.ViewModel
                 SELECT last_insert_rowid();";  // Retrieve the last inserted ID
                     command.Parameters.AddWithValue("@PatientId", Consultation.Patient.id);
                     command.Parameters.AddWithValue("@Title", Consultation.Title);
-                    command.Parameters.AddWithValue("@CreatedDate", consultation.CreatedDate);
+                    command.Parameters.AddWithValue("@CreatedDate", Consultation.CreatedDate);
                     command.Parameters.AddWithValue("@Type", "Consultation");
 
                     // Execute the command and get the last inserted file_id

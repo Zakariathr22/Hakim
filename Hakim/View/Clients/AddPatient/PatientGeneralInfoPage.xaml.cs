@@ -37,9 +37,6 @@ namespace Hakim.View.Clients.AddPatient
         private void PatientGeneralInfoPage_Loaded(object sender, RoutedEventArgs e)
         {
             DataContext = p.viewModel;
-            GetGender(p.viewModel.Patient);
-            GetPhoneOwner(p.viewModel.Patient.Phone1Owner, Phone1OwnerComboBox);
-            GetPhoneOwner(p.viewModel.Patient.Phone2Owner, Phone2OwnerComboBox);
             p.dialog.PrimaryButtonClick += (sender, args) =>
             {
                 // Perform validation or other logic here
@@ -66,173 +63,14 @@ namespace Hakim.View.Clients.AddPatient
             base.OnNavigatedTo(e);
         }
 
-        private void GetGender(Model.Patient patient)
-        {
-            if (patient.Gender == "Masculin")
-            {
-                GenderComboBox.SelectedIndex = 0;
-            } else if (patient.Gender == "Féminin")
-            {
-                GenderComboBox.SelectedIndex = 1;
-            }
-        }
-
-        private void GetPhoneOwner(string PhoneOwner, ComboBox comboBox)
-        {
-            if (PhoneOwner == "Personnel")
-            {
-                comboBox.SelectedIndex = 0;
-            }
-            else if (PhoneOwner == "Le mari")
-            {
-                comboBox.SelectedIndex = 1;
-            }
-            else if (PhoneOwner == "La femme")
-            {
-                comboBox.SelectedIndex = 2;
-            }
-            else if (PhoneOwner == "Le fils")
-            {
-                comboBox.SelectedIndex = 3;
-            }
-            else if (PhoneOwner == "La fille")
-            {
-                comboBox.SelectedIndex = 4;
-            }
-            else if (PhoneOwner == "Le père")
-            {
-                comboBox.SelectedIndex = 5;
-            }
-            else if (PhoneOwner == "La mère")
-            {
-                comboBox.SelectedIndex = 6;
-            }
-            else if (PhoneOwner == "Le frère")
-            {
-                comboBox.SelectedIndex = 7;
-            }
-            else if (PhoneOwner == "La sœur")
-            {
-                comboBox.SelectedIndex = 8;
-            }
-            else if (PhoneOwner == "Proche")
-            {
-                comboBox.SelectedIndex = 9;
-            }
-            else if (PhoneOwner == "Ami")
-            {
-                comboBox.SelectedIndex = 10;
-            }
-        }
-
         private void GenderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (GenderComboBox.SelectedIndex == 0)
-            {
-                p.viewModel.Patient.Gender = "Masculin";
-            }
-            else if (GenderComboBox.SelectedIndex == 1)
-            {
-                p.viewModel.Patient.Gender = "Féminin";
-            }
             UpdateDialogButtonState();
         }
 
         private void Phone1OwnerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Phone1OwnerComboBox.SelectedIndex == 0)
-            {
-                p.viewModel.Patient.Phone1Owner = "Personnel";
-            }
-            else if (Phone1OwnerComboBox.SelectedIndex == 1)
-            {
-                p.viewModel.Patient.Phone1Owner = "Le mari";
-            }
-            else if (Phone1OwnerComboBox.SelectedIndex == 2)
-            {
-                p.viewModel.Patient.Phone1Owner = "La femme";
-            }
-            else if (Phone1OwnerComboBox.SelectedIndex == 3)
-            {
-                p.viewModel.Patient.Phone1Owner = "Le fils";
-            }
-            else if (Phone1OwnerComboBox.SelectedIndex == 4)
-            {
-                p.viewModel.Patient.Phone1Owner = "La fille";
-            }
-            else if (Phone1OwnerComboBox.SelectedIndex == 5)
-            {
-                p.viewModel.Patient.Phone1Owner = "Le père";
-            }
-            else if (Phone1OwnerComboBox.SelectedIndex == 6)
-            {
-                p.viewModel.Patient.Phone1Owner = "La mère";
-            }
-            else if (Phone1OwnerComboBox.SelectedIndex == 7)
-            {
-                p.viewModel.Patient.Phone1Owner = "Le frère";
-            }
-            else if (Phone1OwnerComboBox.SelectedIndex == 8)
-            {
-                p.viewModel.Patient.Phone1Owner = "La sœur";
-            }
-            else if (Phone1OwnerComboBox.SelectedIndex == 9)
-            {
-                p.viewModel.Patient.Phone1Owner = "Proche";
-            }   
-            else if (Phone1OwnerComboBox.SelectedIndex == 10)
-            {
-                p.viewModel.Patient.Phone1Owner = "Ami";
-            }
             UpdateDialogButtonState();
-        }
-
-        private void Phone2OwnerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (Phone2OwnerComboBox.SelectedIndex == 0)
-            {
-                p.viewModel.Patient.Phone2Owner = "Personnel";
-            }
-            else if (Phone2OwnerComboBox.SelectedIndex == 1)
-            {
-                p.viewModel.Patient.Phone2Owner = "Le mari";
-            }
-            else if (Phone2OwnerComboBox.SelectedIndex == 2)
-            {
-                p.viewModel.Patient.Phone2Owner = "La femme";
-            }
-            else if (Phone2OwnerComboBox.SelectedIndex == 3)
-            {
-                p.viewModel.Patient.Phone2Owner = "Le fils";
-            }
-            else if (Phone2OwnerComboBox.SelectedIndex == 4)
-            {
-                p.viewModel.Patient.Phone2Owner = "La fille";
-            }
-            else if (Phone2OwnerComboBox.SelectedIndex == 5)
-            {
-                p.viewModel.Patient.Phone2Owner = "Le père";
-            }
-            else if (Phone2OwnerComboBox.SelectedIndex == 6)
-            {
-                p.viewModel.Patient.Phone2Owner = "La mère";
-            }
-            else if (Phone2OwnerComboBox.SelectedIndex == 7)
-            {
-                p.viewModel.Patient.Phone2Owner = "Le frère";
-            }
-            else if (Phone2OwnerComboBox.SelectedIndex == 8)
-            {
-                p.viewModel.Patient.Phone2Owner = "La sœur";
-            }
-            else if (Phone2OwnerComboBox.SelectedIndex == 9)
-            {
-                p.viewModel.Patient.Phone2Owner = "Proche";
-            }
-            else if (Phone2OwnerComboBox.SelectedIndex == 10)
-            {
-                p.viewModel.Patient.Phone2Owner = "Ami";
-            }
         }
 
         private void lastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
