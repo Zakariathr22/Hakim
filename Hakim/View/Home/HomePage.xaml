@@ -27,11 +27,11 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Hello," Style="{ThemeResource TitleLargeTextBlockStyle}" Margin="24 32 16 0"/>
-                    <TextBlock Grid.Column="1" Text="Dr. TAHRI Zakaria" Style="{ThemeResource TitleLargeTextBlockStyle}" Margin="0 32 16 0"/>
+                    <TextBlock Text="Hello," Style="{ThemeResource TitleLargeTextBlockStyle}" Margin="24 48 16 0"/>
+                    <TextBlock Grid.Column="1" Text="Dr. TAHRI Zakaria" Style="{ThemeResource TitleLargeTextBlockStyle}" Margin="0 48 16 0"/>
                     <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="Hakim 0.8.0" Style="{ThemeResource TitleTextBlockStyle}" Margin="24 0 0 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                 </Grid>
                 <Grid Grid.Row="1">
@@ -54,24 +54,25 @@
                             </ItemsControl.ItemsPanel>
                             <!-- Bind your items here -->
                             <ItemsControl.Items>
-                                <Button Width="224" Height="240" Margin="24 0 0 0" Padding="16"
+                                <Button Width="200" Height="224" Margin="24 0 0 0" Padding="16 32 16 16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
-                                    HorizontalContentAlignment="Stretch"
-                                    VerticalContentAlignment="Top">
+                                    HorizontalContentAlignment="Stretch">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Image Width="64" Source="/Assets/Icons/Today.png" HorizontalAlignment="Left"/>
-                                        <TextBlock Grid.Row="1" Text="Number of Appointments Today" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="2" Text="5" Style="{ThemeResource DisplayTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                        <TextBlock Grid.Row="1" Text="Number of Appointments Today" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="5" Style="{ThemeResource TitleLargeTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                        <TextBlock Grid.Row="3" Text="Appointments" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
                                     </Grid>
                                 </Button>
 
-                                <Button Width="224" Height="240" Margin="16 0 0 0" Padding="16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 32 16 16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -80,15 +81,17 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Image Width="64" Source="/Assets/Icons/Plus 1 Day.png" HorizontalAlignment="Left"/>
-                                        <TextBlock Grid.Row="1" Text="Number of Appointments Tomorrow" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="2" Text="26" Style="{ThemeResource DisplayTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                        <TextBlock Grid.Row="1" Text="Number of Appointments Tomorrow" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="26" Style="{ThemeResource TitleLargeTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                        <TextBlock Grid.Row="3" Text="Appointments" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
                                     </Grid>
                                 </Button>
 
-                                <Button Width="224" Height="240" Margin="16 0 0 0" Padding="16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 32 16 16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -97,15 +100,17 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Image Width="64" Source="/Assets/Icons/Appointment.png" HorizontalAlignment="Left"/>
-                                        <TextBlock Grid.Row="1" Text="Total Number of Appointments" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="2" Text="8" Style="{ThemeResource DisplayTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                        <TextBlock Grid.Row="1" Text="Total Number of Appointments" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="8" Style="{ThemeResource TitleLargeTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                        <TextBlock Grid.Row="3" Text="Appointments" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
                                     </Grid>
                                 </Button>
 
-                                <Button Width="224" Height="240" Margin="16 0 0 0" Padding="16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 32 16 16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -114,15 +119,39 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Image Width="64" Source="/Assets/Icons/Clients.png" HorizontalAlignment="Left"/>
-                                        <TextBlock Grid.Row="1" Text="Total Number of Patients" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="2" Text="8" Style="{ThemeResource DisplayTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                        <TextBlock Grid.Row="1" Text="Total Number of Patients" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="8" Style="{ThemeResource TitleLargeTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                        <TextBlock Grid.Row="3" Text="Patients" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
                                     </Grid>
                                 </Button>
 
-                                <Button Width="224" Height="240" Margin="16 0 0 0" Padding="16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 32 16 16"
+                                    Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                                    CornerRadius="12"
+                                    HorizontalContentAlignment="Stretch"
+                                    VerticalContentAlignment="Top">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Width="64" Source="/Assets/Icons/Documents.png" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Row="1" Text="Total Number of Files" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="20" Style="{ThemeResource TitleLargeTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                        <TextBlock Grid.Row="3" Text="Files" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                    </Grid>
+                                </Button>
+
+                                <Border Width="2" Height="224" Margin="24 0 0 0"
+                                    Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"/>
+
+                                <Button Width="200" Height="224" Margin="24 0 0 0" Padding="16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -133,16 +162,13 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <Image Width="64" Source="/Assets/Icons/Documents.png" HorizontalAlignment="Left"/>
-                                        <TextBlock Grid.Row="1" Text="Total Number of Files" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="2" Text="20" Style="{ThemeResource DisplayTextBlockStyle}" VerticalAlignment="Center"  HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                                        <Image Width="64" Source="/Assets/Logo.png" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Row="1" Text="Introduction to the application" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="An article introducing the Hakim application, its features and objectives." Style="{ThemeResource CaptionTextBlockStyle}"  Padding="0 16 0 0"/>
                                     </Grid>
                                 </Button>
 
-                                <Border Width="2" Height="240" Margin="24 0 0 0"
-                                    Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"/>
-
-                                <Button Width="224" Height="240" Margin="24 0 0 0" Padding="16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -154,12 +180,12 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <Image Width="64" Source="/Assets/Icons/Management.png" HorizontalAlignment="Left"/>
-                                        <TextBlock Grid.Row="1" Text="How to Manage Patients?" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="2" Text="Video showing how to add, edit and delete a patient in the app" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Justify" Padding="0 16 0 0"/>
+                                        <TextBlock Grid.Row="1" Text="How to Manage Patients Information?" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="An article showing how to add, edit and delete a patient in the app" Style="{ThemeResource CaptionTextBlockStyle}"  Padding="0 16 0 0"/>
                                     </Grid>
                                 </Button>
 
-                                <Button Width="224" Height="240" Margin="16 0 0 0" Padding="16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -171,12 +197,12 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <Image Width="64" Source="/Assets/Icons/EditCalendar.png" HorizontalAlignment="Left"/>
-                                        <TextBlock Grid.Row="1" Text="How to Manage Appointments?" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="2" Text="Video showing how to add, edit and delete an appointments in the app" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Justify" Padding="0 16 0 0"/>
+                                        <TextBlock Grid.Row="1" Text="How to Manage Appointments?" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="An article showing how to add, edit and delete an appointment in the app" Style="{ThemeResource CaptionTextBlockStyle}"  Padding="0 16 0 0"/>
                                     </Grid>
                                 </Button>
 
-                                <Button Width="224" Height="240" Margin="16 0 0 0" Padding="16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -188,12 +214,12 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <Image Width="64" Source="/Assets/Icons/Edit File.png" HorizontalAlignment="Left"/>
-                                        <TextBlock Grid.Row="1" Text="How to Manage Files?" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="2" Text="Video showing how to add, edit and delete a patient file in the app" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Justify" Padding="0 16 0 0"/>
+                                        <TextBlock Grid.Row="1" Text="How to Manage Files?" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="An article showing how to add, edit and delete a patient file in the app" Style="{ThemeResource CaptionTextBlockStyle}"  Padding="0 16 0 0"/>
                                     </Grid>
                                 </Button>
 
-                                <Button Width="224" Height="240" Margin="16 0 24 0" Padding="16"
+                                <Button Width="200" Height="224" Margin="16 0 24 0" Padding="16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -205,8 +231,8 @@
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <Image Width="64" Source="/Assets/Icons/Gears.png" HorizontalAlignment="Left"/>
-                                        <TextBlock Grid.Row="1" Text="How to Adjust App Settings?" Style="{ThemeResource SubtitleTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="2" Text="Video showing how to adjust the application settings, theme, backdrop, language, etc." Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextAlignment="Justify" Padding="0 16 0 0"/>
+                                        <TextBlock Grid.Row="1" Text="How to Adjust App Settings?" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="An article showing how to adjust the application settings, theme, backdrop, language, etc." Style="{ThemeResource CaptionTextBlockStyle}"  Padding="0 16 0 0"/>
                                     </Grid>
                                 </Button>
                             </ItemsControl.Items>
@@ -215,7 +241,7 @@
                     <Button 
                         x:Name="scrollLeftButton"
                         Padding="2 8"
-                        Margin="8,-16,0,0"
+                        Margin="24,-16,0,0"
                         Style="{StaticResource AccentButtonStyle}"
                         Click="scrollLeftButton_Click">
                         <FontIcon Glyph="&#xF08D;" FontSize="12"/>
@@ -225,13 +251,22 @@
                         Grid.Column="1"
                         HorizontalAlignment="Right"
                         Padding="2 8"
-                        Margin="0,-16,8,0"
+                        Margin="0,-16,24,0"
                         Style="{StaticResource AccentButtonStyle}"
                         Click="scrollRightButton_Click">
                         <FontIcon Glyph="&#xF08F;" FontSize="12"/>
                     </Button>
                 </Grid>
             </Grid>
+            <StackPanel Grid.Row="1" Margin="24">
+                <TextBlock Text="Appointments of Today" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <TextBlock Text="29/08/2024" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+
+                <TextBlock Text="Appointments of Tomorrow" Margin="0 24 0 0" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                <TextBlock Text="30/08/2024" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+
+                <TextBlock Text="Recently Added Patients" Margin="0 24 0 0" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            </StackPanel>
         </Grid>
     </ScrollView>
 </Page>

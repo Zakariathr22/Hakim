@@ -89,12 +89,12 @@ namespace Hakim.View.Home
 
         private void scrollLeftButton_Click(object sender, RoutedEventArgs e)
         {
-            ScrollLeft(600);
+            ScrollLeft(480);
         }
 
         private void scrollRightButton_Click(object sender, RoutedEventArgs e)
         {
-            ScrollRight(600);
+            ScrollRight(480);
         }
 
         private void UpdateScrollButtonVisibility()
