@@ -23,7 +23,6 @@ namespace Hakim.View.Controls
 {
     public sealed partial class HomePageHeaderImage : UserControl
     {
-        HomePage ParentPage;
         public HomePageHeaderImage()
         {
             this.InitializeComponent();
