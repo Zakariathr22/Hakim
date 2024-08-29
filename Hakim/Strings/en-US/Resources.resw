@@ -415,10 +415,10 @@
     <value>moi</value>
   </data>
   <data name="year" xml:space="preserve">
-    <value>yo</value>
+    <value>year</value>
   </data>
   <data name="years" xml:space="preserve">
-    <value>yo</value>
+    <value>years</value>
   </data>
   <data name="NotEntered" xml:space="preserve">
     <value>Not Entered</value>
