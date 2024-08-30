@@ -33,11 +33,11 @@ namespace Hakim.ViewModel
                 {
                     command.CommandText = @"
                         INSERT INTO Patient (
-                            LastName, FirstName, DateOfBirth, Gender, Address, Wilaya, Commune, PostalCode, 
+                            LastName, FirstName, DateOfBirth, Gender, Address, State, City, PostalCode, 
                             Phone1, Phone1Owner, Phone2, Phone2Owner, Email, MedicalHistory, Allergies, 
                             CurrentMedications, InsuranceProvider, InsuranceNumber
                         ) VALUES (
-                            @LastName, @FirstName, @DateOfBirth, @Gender, @Address, @Wilaya, @Commune, @PostalCode, 
+                            @LastName, @FirstName, @DateOfBirth, @Gender, @Address, @State, @City, @PostalCode, 
                             @Phone1, @Phone1Owner, @Phone2, @Phone2Owner, @Email, @MedicalHistory, @Allergies, 
                             @CurrentMedications, @InsuranceProvider, @InsuranceNumber
                         )";
@@ -47,8 +47,8 @@ namespace Hakim.ViewModel
                     command.Parameters.AddWithValue("@DateOfBirth", patient.DateOfBirth.DateTime);
                     command.Parameters.AddWithValue("@Gender", patient.Gender);
                     command.Parameters.AddWithValue("@Address", patient.Address);
-                    command.Parameters.AddWithValue("@Wilaya", patient.Wilaya);
-                    command.Parameters.AddWithValue("@Commune", patient.Commune);
+                    command.Parameters.AddWithValue("@State", patient.State);
+                    command.Parameters.AddWithValue("@City", patient.City);
                     command.Parameters.AddWithValue("@PostalCode", patient.PostalCode);
                     command.Parameters.AddWithValue("@Phone1", patient.Phone1);
                     command.Parameters.AddWithValue("@Phone1Owner", patient.Phone1Owner);
@@ -94,8 +94,8 @@ namespace Hakim.ViewModel
                             DateOfBirth = Convert.ToDateTime(reader["DateOfBirth"]),
                             Gender = Convert.ToInt32(reader["Gender"]),
                             Address = reader["Address"].ToString(),
-                            Wilaya = reader["Wilaya"].ToString(),
-                            Commune = reader["Commune"].ToString(),
+                            State = reader["State"].ToString(),
+                            City = reader["City"].ToString(),
                             PostalCode = reader["PostalCode"].ToString(),
                             Phone1 = reader["Phone1"].ToString(),
                             Phone1Owner = Convert.ToInt32(reader["Phone1Owner"]),
@@ -217,8 +217,8 @@ namespace Hakim.ViewModel
                     DateOfBirth = @DateOfBirth,
                     Gender = @Gender,
                     Address = @Address,
-                    Wilaya = @Wilaya,
-                    Commune = @Commune,
+                    State = @State,
+                    City = @City,
                     PostalCode = @PostalCode,
                     Phone1 = @Phone1,
                     Phone1Owner = @Phone1Owner,
@@ -237,8 +237,8 @@ namespace Hakim.ViewModel
                     command.Parameters.AddWithValue("@DateOfBirth", patient.DateOfBirth.DateTime);
                     command.Parameters.AddWithValue("@Gender", patient.Gender);
                     command.Parameters.AddWithValue("@Address", patient.Address);
-                    command.Parameters.AddWithValue("@Wilaya", patient.Wilaya);
-                    command.Parameters.AddWithValue("@Commune", patient.Commune);
+                    command.Parameters.AddWithValue("@State", patient.State);
+                    command.Parameters.AddWithValue("@City", patient.City);
                     command.Parameters.AddWithValue("@PostalCode", patient.PostalCode);
                     command.Parameters.AddWithValue("@Phone1", patient.Phone1);
                     command.Parameters.AddWithValue("@Phone1Owner", patient.Phone1Owner);
