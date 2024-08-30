@@ -90,8 +90,8 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Commune:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="{Binding Commune, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
+                    <TextBlock Grid.Column="0" Text="● City:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="1" Text="{Binding City, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="7" Margin="0 8 0 4">
                     <Grid.RowDefinitions>
@@ -101,8 +101,8 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Wilaya:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="{Binding Wilaya, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
+                    <TextBlock Grid.Column="0" Text="● State:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="1" Text="{Binding State, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="8" Margin="0 8 0 4">
                     <Grid.RowDefinitions>

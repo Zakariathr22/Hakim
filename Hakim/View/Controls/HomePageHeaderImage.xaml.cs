@@ -54,7 +54,7 @@ namespace Hakim.View.Controls
             linearGradientBrush.GradientStops.Add(new GradientStop
             {
                 Color = background,
-                Offset = 0.85
+                Offset = 0.95
             });
 
             // Apply the brush to a control's background

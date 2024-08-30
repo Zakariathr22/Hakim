@@ -31,6 +31,17 @@ namespace Hakim.View.Home
             this.Loaded += HomePage_Loaded;
             scrollViewer.ViewChanged += ScrollViewer_ViewChanged;
             SizeChanged += HomePage_SizeChanged;
+            ActualThemeChanged += HomePage_ActualThemeChanged;
+        }
+
+        private void HomePage_ActualThemeChanged(FrameworkElement sender, object args)
+        {
+            SolidColorBrush backgroundBrush = this.Background as SolidColorBrush;
+            if (backgroundBrush != null)
+            {
+                Color backgroundColor = backgroundBrush.Color;
+                homePageHeaderImage.SetGradianOfBackground(backgroundColor);
+            }
         }
 
         private void HomePage_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -89,12 +100,12 @@ namespace Hakim.View.Home
 
         private void scrollLeftButton_Click(object sender, RoutedEventArgs e)
         {
-            ScrollLeft(480);
+            ScrollLeft(440);
         }
 
         private void scrollRightButton_Click(object sender, RoutedEventArgs e)
         {
-            ScrollRight(480);
+            ScrollRight(440);
         }
 
         private void UpdateScrollButtonVisibility()

@@ -100,8 +100,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="stateTextBox" Grid.Column="0" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding Patient.Wilaya, Mode=TwoWay}"/>
-            <TextBox x:Name="cityTextBox" Grid.Column="1" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Patient.Commune, Mode=TwoWay}"/>
+            <TextBox x:Name="stateTextBox" Grid.Column="0" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding Patient.State, Mode=TwoWay}"/>
+            <TextBox x:Name="cityTextBox" Grid.Column="1" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Patient.City, Mode=TwoWay}"/>
         </Grid>
         <TextBox x:Name="zipCodeTextBox" Grid.Row="11" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Patient.PostalCode, Mode=TwoWay}"/>
 

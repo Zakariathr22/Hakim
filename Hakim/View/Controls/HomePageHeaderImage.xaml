@@ -13,22 +13,16 @@
         <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
-                    <LinearGradientBrush x:Name="BackgroundGradient" StartPoint="0.5,0" EndPoint="0.5,1">
-                        <GradientStop Offset="0.0" Color="#CED8E4" />
-                        <GradientStop Offset="1.0" Color="#D5DBE3" />
-                    </LinearGradientBrush>
                     <x:Double x:Key="ImageOpacity">0.9</x:Double>
                     <x:String x:Key="ImageSource">/Assets/GalleryHeaderImageLight.png</x:String>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="Dark">
-                    <SolidColorBrush x:Key="BackgroundGradient" Color="#020B20" />
                     <x:Double x:Key="ImageOpacity">0.8</x:Double>
                     <ImageSource x:Key="ImageSource">/Assets/GalleryHeaderImageDark.png</ImageSource>
                 </ResourceDictionary>
                 <ResourceDictionary x:Key="HighContrast">
-                    <SolidColorBrush x:Key="BackgroundGradient" Color="Black" />
                     <x:Double x:Key="ImageOpacity">0.8</x:Double>
-                    <x:String x:Key="ImageSource">/Assets/GalleryHeaderImageLight.png</x:String>
+                    <x:String x:Key="ImageSource"></x:String>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>

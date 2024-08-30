@@ -18,21 +18,20 @@
             <controls:HomePageHeaderImage x:Name="homePageHeaderImage"/>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1.5*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Hello," Style="{ThemeResource TitleLargeTextBlockStyle}" Margin="24 48 16 0"/>
-                    <TextBlock Grid.Column="1" Text="Dr. TAHRI Zakaria" Style="{ThemeResource TitleLargeTextBlockStyle}" Margin="0 48 16 0"/>
-                    <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="Hakim 0.8.0" Style="{ThemeResource TitleTextBlockStyle}" Margin="24 0 0 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Text="Welcom to Hakim 0.8" Style="{ThemeResource TitleLargeTextBlockStyle}" Margin="24 40 0 0"/>
+                    <TextBlock Grid.Row="1" 
+                               Text="Revolutionize Patient Care with Effortless Organization" 
+                               Style="{ThemeResource TitleTextBlockStyle}" 
+                               Margin="24 0 0 0" 
+                               Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -54,7 +53,7 @@
                             </ItemsControl.ItemsPanel>
                             <!-- Bind your items here -->
                             <ItemsControl.Items>
-                                <Button Width="200" Height="224" Margin="24 0 0 0" Padding="16 32 16 16"
+                                <Button Width="200" Height="224" Margin="24 0 0 0" Padding="16 24 16 16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch">
@@ -72,7 +71,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 32 16 16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 24 16 16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -91,7 +90,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 32 16 16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 24 16 16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -110,7 +109,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 32 16 16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 24 16 16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -129,7 +128,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 32 16 16"
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16 24 16 16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -179,6 +178,23 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
+                                        <Image Width="64" Source="/Assets/Icons/Gears.png" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Row="1" Text="How to Adjust App Settings?" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                                        <TextBlock Grid.Row="2" Text="An article showing how to adjust the application settings, theme, backdrop, language, etc." Style="{ThemeResource CaptionTextBlockStyle}"  Padding="0 16 0 0"/>
+                                    </Grid>
+                                </Button>
+
+                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16"
+                                    Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
+                                    CornerRadius="12"
+                                    HorizontalContentAlignment="Stretch"
+                                    VerticalContentAlignment="Top">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
                                         <Image Width="64" Source="/Assets/Icons/Management.png" HorizontalAlignment="Left"/>
                                         <TextBlock Grid.Row="1" Text="How to Manage Patients Information?" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
                                         <TextBlock Grid.Row="2" Text="An article showing how to add, edit and delete a patient in the app" Style="{ThemeResource CaptionTextBlockStyle}"  Padding="0 16 0 0"/>
@@ -202,7 +218,7 @@
                                     </Grid>
                                 </Button>
 
-                                <Button Width="200" Height="224" Margin="16 0 0 0" Padding="16"
+                                <Button Width="200" Height="224" Margin="16 0 24 0" Padding="16"
                                     Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                     CornerRadius="12"
                                     HorizontalContentAlignment="Stretch"
@@ -218,23 +234,6 @@
                                         <TextBlock Grid.Row="2" Text="An article showing how to add, edit and delete a patient file in the app" Style="{ThemeResource CaptionTextBlockStyle}"  Padding="0 16 0 0"/>
                                     </Grid>
                                 </Button>
-
-                                <Button Width="200" Height="224" Margin="16 0 24 0" Padding="16"
-                                    Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
-                                    CornerRadius="12"
-                                    HorizontalContentAlignment="Stretch"
-                                    VerticalContentAlignment="Top">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="*"/>
-                                        </Grid.RowDefinitions>
-                                        <Image Width="64" Source="/Assets/Icons/Gears.png" HorizontalAlignment="Left"/>
-                                        <TextBlock Grid.Row="1" Text="How to Adjust App Settings?" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="2" Text="An article showing how to adjust the application settings, theme, backdrop, language, etc." Style="{ThemeResource CaptionTextBlockStyle}"  Padding="0 16 0 0"/>
-                                    </Grid>
-                                </Button>
                             </ItemsControl.Items>
                         </ItemsControl>
                     </ScrollViewer>
@@ -242,9 +241,9 @@
                         x:Name="scrollLeftButton"
                         Padding="2 8"
                         Margin="24,-16,0,0"
-                        Style="{StaticResource AccentButtonStyle}"
+                        Style="{ThemeResource AccentButtonStyle}"
                         Click="scrollLeftButton_Click">
-                        <FontIcon Glyph="&#xF08D;" FontSize="12"/>
+                        <FontIcon Glyph="&#xF08D;" FontSize="12" />
                     </Button>
                     <Button 
                         x:Name="scrollRightButton"
@@ -252,9 +251,9 @@
                         HorizontalAlignment="Right"
                         Padding="2 8"
                         Margin="0,-16,24,0"
-                        Style="{StaticResource AccentButtonStyle}"
+                        Style="{ThemeResource AccentButtonStyle}"
                         Click="scrollRightButton_Click">
-                        <FontIcon Glyph="&#xF08F;" FontSize="12"/>
+                        <FontIcon Glyph="&#xF08F;" FontSize="12" />
                     </Button>
                 </Grid>
             </Grid>

@@ -117,7 +117,7 @@
             <TextBlock x:Name="aboutAppSubtitle" Margin="0 8" Style="{ThemeResource SubtitleTextBlockStyle}"/>
             <controls:SettingsCard x:Name="aboutAppSettingCard"
                                Margin="0 0 0 4"
-                                Header="Hakim 1.0.0"
+                                Header="Hakim 0.8"
                                 HeaderIcon="{ui:FontIcon Glyph=&#xE946;}"
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                 <HyperlinkButton NavigateUri="https://github.com/Zakariathr22/Hakim">GitHub</HyperlinkButton>
