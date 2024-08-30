@@ -18,8 +18,8 @@ namespace Hakim.Model
         private DateTimeOffset dateOfBirth;
         private int gender;
         private string address;
-        private string wilaya;
-        private string commune;
+        private string state;
+        private string city;
         private string postalCode;
         private string phone1;
         private int phone1Owner;
@@ -222,22 +222,22 @@ namespace Hakim.Model
             }
         }
 
-        public string Wilaya
+        public string State
         {
-            get => wilaya;
+            get => state;
             set
             {
-                wilaya = value;
+                state = value;
                 OnPropertyChanged();
             }
         }
 
-        public string Commune
+        public string City
         {
-            get => commune;
+            get => city;
             set
             {
-                commune = value;
+                city = value;
                 OnPropertyChanged();
             }
         }
@@ -383,8 +383,8 @@ namespace Hakim.Model
             DateOfBirth = DateTime.Now;
             gender = -1;
             Address = "";
-            Wilaya = "";
-            Commune = "";
+            State = "";
+            City = "";
             PostalCode = "";
             Phone1 = "";
             Phone1Owner = -1;
