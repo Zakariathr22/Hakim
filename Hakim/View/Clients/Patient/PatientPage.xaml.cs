@@ -183,7 +183,7 @@ namespace Hakim.View.Clients
 
                 scrollView1.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
                 scrollView1.Padding = new Thickness(24, 0, 24, 0);
-                expander.Margin = new Thickness(0, 24, 0, 0);
+                expander.Margin = new Thickness(0, 24, 0, 24);
                 patientInfoEditor.Margin = new Thickness(16, 16, 0, 16);
                 patientDetailsDisplay.Margin = new Thickness(0);
                 patientRecords.Margin = new Thickness(0);

@@ -40,7 +40,7 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            <TextBox x:Name="radiologistTextBox" Grid.Row="4" Header="Radiologue" PlaceholderText="Dr./Pro. NOM Prénom" Margin="0 0 0 4" IsSpellCheckEnabled="True" Language="fr-FR"  Text="{Binding Radiologisit, Mode=TwoWay}"/>
+            <TextBox x:Name="radiologistTextBox" Grid.Row="4" Header="Radiologue" PlaceholderText="Le professionnel de santé qui est responsable de l'interprétation et de l'analyse de la radiographie." Margin="0 0 0 4" IsSpellCheckEnabled="True" Language="fr-FR"  Text="{Binding Radiologisit, Mode=TwoWay}" TextWrapping="Wrap" AcceptsReturn="True"/>
             <TextBox x:Name="diagnosisTextBox" Grid.Row="5" Header="Diagnostic" PlaceholderText="Veuillez fournir un diagnostic détaillé et concis basé sur les résultats de la radiographie, en incluant toutes les anomalies ou conditions observées." Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Diagnosis, Mode=TwoWay}" Language="fr-FR"/>
         </Grid>
     </ScrollView>
