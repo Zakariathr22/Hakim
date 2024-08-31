@@ -1,3 +1,4 @@
+using Hakim.Model;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -25,10 +26,13 @@ namespace Hakim.View.Clients.Patient.XRay_s
     public sealed partial class AddTelemetryXRayPage : Page
     {
         ContentDialog dialog;
-        public AddTelemetryXRayPage(ContentDialog dialog)
+        SpineTelemetryXRay spineTelemetryXRay;
+        public AddTelemetryXRayPage(ContentDialog dialog, SpineTelemetryXRay spineTelemetryXRay)
         {
             this.InitializeComponent();
             this.dialog = dialog;
+            this.spineTelemetryXRay = spineTelemetryXRay;
+            DataContext = spineTelemetryXRay;
         }
 
         private async void pickPhotoButton_Click(object sender, RoutedEventArgs e)
@@ -70,13 +74,6 @@ namespace Hakim.View.Clients.Patient.XRay_s
         }
 
         private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (titleTextBox.Text != "")
-                dialog.IsPrimaryButtonEnabled = true;
-            else dialog.IsPrimaryButtonEnabled = false;
-        }
-
-        private void titleTextBox_TextChanged_1(object sender, TextChangedEventArgs e)
         {
             if (titleTextBox.Text != "")
                 dialog.IsPrimaryButtonEnabled = true;

@@ -16,6 +16,7 @@ namespace Hakim.ViewModel
         [ObservableProperty] private int patientsOrder;
         [ObservableProperty] private Patient selectedPatient;
         [ObservableProperty] private MedicalConsultation consultation;
+        [ObservableProperty] private SpineTelemetryXRay spineTelemetryXRay;
 
         public ClientsViewModel()
         {
@@ -403,6 +404,12 @@ namespace Hakim.ViewModel
 
         public void AddXRay()
         {
+            FileManagementService.CreateNewFolder(@"D:\", "Hakim");
+            FileManagementService.CreateNewFolder(@"D:\Hakim\", SelectedPatient.id.ToString());
+            string newURL = FileManagementService.CopyFileToFolder(
+                XRay.Url,
+                @"D:\Hakim\" + SelectedPatient.id.ToString() + @"\",
+                $"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Hour}{DateTime.Now.Minute}{DateTime.Now.Second}-XRay-{SelectedPatient.fullName}");
             try
             {
                 using (var connection = DataAccessService.GetConnection())
@@ -420,7 +427,7 @@ namespace Hakim.ViewModel
                     command.Parameters.AddWithValue("@Title", XRay.Title);
                     command.Parameters.AddWithValue("@CreationDate", XRay.CreationDate);
                     command.Parameters.AddWithValue("@Type", 1);  // Automatically set type to "Radiographie"
-                    command.Parameters.AddWithValue("@Url", XRay.Url);
+                    command.Parameters.AddWithValue("@Url", newURL);
 
                     // Execute the command and get the last inserted file_id
                     XRay.id = Convert.ToInt32(command.ExecuteScalar());
@@ -451,6 +458,79 @@ namespace Hakim.ViewModel
                 // Handle the exception (e.g., log it or rethrow it)
             }
         }
+
+        public void AddSpineTelemetryXRay()
+        {
+            FileManagementService.CreateNewFolder(@"D:\", "Hakim");
+            FileManagementService.CreateNewFolder(@"D:\Hakim\", SelectedPatient.id.ToString());
+            string newURL = FileManagementService.CopyFileToFolder(
+                SpineTelemetryXRay.Url,
+                @"D:\Hakim\" + SelectedPatient.id.ToString() + @"\",
+                $"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Hour}{DateTime.Now.Minute}{DateTime.Now.Second}-SpineTelemetryXRay-{SelectedPatient.fullName}");
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
+                {
+                    // Insert into the File table
+                    command.CommandText = @"
+        INSERT INTO File (
+            patient_id, title, creation_date, type, url
+        ) VALUES (
+            @PatientId, @Title, @CreationDate, @Type, @Url
+        );
+        SELECT last_insert_rowid();";  // Retrieve the last inserted ID
+                    command.Parameters.AddWithValue("@PatientId", SpineTelemetryXRay.Patient.id);
+                    command.Parameters.AddWithValue("@Title", SpineTelemetryXRay.Title);
+                    command.Parameters.AddWithValue("@CreationDate", SpineTelemetryXRay.CreationDate);
+                    command.Parameters.AddWithValue("@Type", 2);  // Automatically set type to "Radiographie"
+                    command.Parameters.AddWithValue("@Url", newURL);
+
+                    // Execute the command and get the last inserted file_id
+                    SpineTelemetryXRay.id = Convert.ToInt32(command.ExecuteScalar());
+
+                    // Insert into the XRay table
+                    command.CommandText = @"
+        INSERT INTO XRay (
+            file_id, xray_date, xray_time, radiologist, diagnosis, type
+        ) VALUES (
+            @FileId, @XrayDate, @XrayTime, @Radiologist, @Diagnosis, @XrayType
+        )";
+                    command.Parameters.AddWithValue("@FileId", SpineTelemetryXRay.id);
+                    command.Parameters.AddWithValue("@XrayDate", SpineTelemetryXRay.Xray_date);
+                    command.Parameters.AddWithValue("@XrayTime", SpineTelemetryXRay.XrayTime);
+                    command.Parameters.AddWithValue("@Radiologist", SpineTelemetryXRay.Radiologist);
+                    command.Parameters.AddWithValue("@Diagnosis", SpineTelemetryXRay.Diagnosis);
+                    command.Parameters.AddWithValue("@XrayType", "Spine Telemetry");  // Set type as "Spine Telemetry"
+
+                    command.ExecuteNonQuery();
+
+                    // Insert into the BackXSpineTelemetryXRay table
+                    command.CommandText = @"
+        INSERT INTO BackXSpineTelemetryXRay (
+            xray_id, vls, vli, cobb, bend, red
+        ) VALUES (
+            @XrayId, @Vls, @Vli, @Cobb, @Bend, @Red
+        )";
+                    command.Parameters.AddWithValue("@XrayId", SpineTelemetryXRay.id);
+                    command.Parameters.AddWithValue("@Vls", SpineTelemetryXRay.VLS);
+                    command.Parameters.AddWithValue("@Vli", SpineTelemetryXRay.VLI);
+                    command.Parameters.AddWithValue("@Cobb", SpineTelemetryXRay.COBB);
+                    command.Parameters.AddWithValue("@Bend", SpineTelemetryXRay.BEND);
+                    command.Parameters.AddWithValue("@Red", SpineTelemetryXRay.RED);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Spine Telemetry X-Ray added successfully.");
+                    SelectedPatient.files = GetFilesByPatient(SelectedPatient);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while adding the Spine Telemetry X-Ray: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+        }
+
 
     }
 }

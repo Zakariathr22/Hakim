@@ -82,10 +82,5 @@ namespace Hakim.View.Clients.Patient.XRay_s
                 dialog.IsPrimaryButtonEnabled = true;
             else dialog.IsPrimaryButtonEnabled = false;
         }
-
-        private void xRayTime_SelectedTimeChanged(TimePicker sender, TimePickerSelectedValueChangedEventArgs args)
-        {
-            //xRay.Xray_date.Hour = xRayTime.SelectedTime.Value.Hours;
-        }
     }
 }

@@ -26,7 +26,7 @@
             </Grid.RowDefinitions>
             <TextBox x:Name="titleTextBox" Grid.Row="0" Header="Titre" PlaceholderText="Titre de radiographie (obligatoire)" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" Margin="0 0 0 4" IsSpellCheckEnabled="True" FontWeight="Bold" Text="{Binding Title, Mode=TwoWay}" Language="fr-FR" TextChanged="titleTextBox_TextChanged"/>
             <DatePicker x:Name="xRayDate" Grid.Row="1" Header="Date de la radiographie" Margin="0 0 0 4" Width="400" SelectedDate="{Binding Xray_date, Mode=TwoWay}"/>
-            <TimePicker x:Name="xRayTime" Grid.Row="2" Header="Heur de la radiographie" Margin="0 0 0 4" Width="400" MinuteIncrement="5" SelectedTime="{Binding XrayTime, Mode=TwoWay}" SelectedTimeChanged="xRayTime_SelectedTimeChanged"/>
+            <TimePicker x:Name="xRayTime" Grid.Row="2" Header="Heur de la radiographie" Margin="0 0 0 4" Width="400" MinuteIncrement="5" SelectedTime="{Binding XrayTime, Mode=TwoWay}"/>
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

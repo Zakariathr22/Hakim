@@ -33,7 +33,7 @@
                 </PivotHeaderItem>
             </PivotItem.Header>
             <StackPanel>
-                <TextBlock x:Name="noFilesTextBlock" Margin="0 24 0 0" Text="Il n'y a pas de Fichiers médicaux" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="noFilesTextBlock" Margin="0 24 0 24" Text="Il n'y a pas de Fichiers médicaux" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Grid x:Name="filesGrid"  Margin="0 16 0 0">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -79,9 +79,9 @@
                                         </Grid>
                                     </Grid>
                                     <ToolTipService.ToolTip>
-                                        <ToolTip IsEnabled="{Binding Url, Converter={StaticResource UrlNotEmptyConverter}, Mode=OneWay}" BorderThickness="0" Background="Transparent" CornerRadius="8">
+                                        <ToolTip IsEnabled="{Binding Url, Converter={StaticResource UrlNotEmptyConverter}, Mode=OneWay}" BorderThickness="0" Background="#8888" CornerRadius="8">
                                             <Border CornerRadius="4">
-                                                <Image Source="C:\Users\TAHRI.ZAKARIA\Desktop\New Microsoft Word Document (3).pdf" MaxWidth="200"/>
+                                                <Image Source="{Binding Url, Mode=OneWay}" MaxWidth="200"/>
                                             </Border>
                                         </ToolTip>
                                     </ToolTipService.ToolTip>
@@ -103,7 +103,7 @@
                 </PivotHeaderItem>
             </PivotItem.Header>
             <StackPanel>
-                <TextBlock x:Name="noAppointmentsTextBlock" Margin="0 24 0 0" Text="Il n'y a pas de Rendez-vous" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="noAppointmentsTextBlock" Margin="0 24 0 24" Text="Il n'y a pas de Rendez-vous" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Grid x:Name="appointmentsGrid" Margin="0 16 0 0">
                     <Grid.RowDefinitions>
                         <RowDefinition/>

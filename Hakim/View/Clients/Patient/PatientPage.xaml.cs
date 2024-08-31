@@ -393,16 +393,17 @@ namespace Hakim.View.Clients
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.CloseButtonText = "Annuler";
-            dialog.IsPrimaryButtonEnabled = false;
             dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
             dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
-            //viewModel.NewPatient = new Model.Patient();
-            dialog.Content = new AddTelemetryXRayPage(dialog);
+            viewModel.SpineTelemetryXRay = new SpineTelemetryXRay { Patient = viewModel.SelectedPatient, Title = $"Radiographie Telemetrie {viewModel.SelectedPatient.files.Count(file => file.Type == 1) + 1} du colone vertibrale - {viewModel.SelectedPatient.fullName}", CreationDate = DateTime.Now, Xray_date = DateTime.Now };
+            dialog.Content = new AddTelemetryXRayPage(dialog, viewModel.SpineTelemetryXRay);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
-            if (result == ContentDialogResult.Secondary)
+            if (result == ContentDialogResult.Primary)
             {
-
+                viewModel.AddSpineTelemetryXRay();
+                patientRecords.UpdateFilesDisplayVisibility(viewModel.SelectedPatient);
+                patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
             }
         }
 
