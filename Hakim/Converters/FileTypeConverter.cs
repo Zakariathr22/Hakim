@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace Hakim.Converters
 {
-    internal class IconUrlConverter : IValueConverter
+    internal class FileTypeConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (value is int type)
             {
                 if (type == 0)
-                    return @"\Assets\Icons\Counselor.png";
+                    return @"Consultation";
                 else if (type == 1)
-                    return @"\Assets\Icons\X-ray.png";
+                    return @"Radiographie";
                 else if (type == 2)
-                    return @"\Assets\Icons\X-ray1.png";
+                    return @"Radiographie télémétrie";
                 else if (type == 3)
-                    return @"\Assets\Icons\Surgery.png";
-                else return @"\Assets\Icons\file.png";
+                    return @"Protocol opératoire";
+                else return @"Fichier médical";
             }
-            return @"\Assets\Icons\file.png";
+            return @"Fichier médical";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

@@ -57,7 +57,7 @@
                                     <ImageIcon Source="\Assets\Icons\X-ray.png"/>
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem x:Name="TelemetryXRayItem" Text="Radiographie télémétrie" Click="TelemetryXRayItem_Click">
+                            <MenuFlyoutItem x:Name="TelemetryXRayItem" Text="Radiographie télémétrie &#x0A;de la colonne vertébrale" Click="TelemetryXRayItem_Click">
                                 <MenuFlyoutItem.Icon>
                                     <ImageIcon Source="\Assets\Icons\X-ray1.png"/>
                                 </MenuFlyoutItem.Icon>
@@ -117,7 +117,7 @@
                 
                 <AppBarButton Icon="Refresh" Label="Actualiser" ToolTipService.ToolTip="Actualiser"/>
                 <AppBarElementContainer Padding="6">
-                    <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="250" QueryIcon="Find" PlaceholderText="Recherche un fichier" />
+                    <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="200" QueryIcon="Find" PlaceholderText="Recherche un fichier" />
                 </AppBarElementContainer>
             </CommandBar>
         </ContentPresenter>

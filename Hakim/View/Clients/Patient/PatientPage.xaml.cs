@@ -25,6 +25,7 @@ using Hakim.View.Clients.Patient.Consultations;
 using Hakim.View.Clients.Patient.XRay_s;
 using Hakim.View.Clients.Patient.SurgeryProtocols;
 using Hakim.Model;
+using System.Threading.Tasks;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -34,9 +35,9 @@ namespace Hakim.View.Clients
     public sealed partial class PatientPage : Page
     {
         ClientsViewModel viewModel;
-        ScrollView scrollView1 = new ScrollView();
+        ScrollViewer scrollView1 = new ScrollViewer();
         Grid mainPanel = new Grid();
-        ScrollView scrollView2 = new ScrollView();
+        ScrollViewer scrollView2 = new ScrollViewer();
         Grid InternalPanel = new Grid();
         Expander expander = new Expander();
 
@@ -95,9 +96,10 @@ namespace Hakim.View.Clients
             InternalPanel.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
             InternalPanel.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-            scrollView1.VerticalScrollBarVisibility = ScrollingScrollBarVisibility.Auto;
+            scrollView1.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            scrollView2.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
             scrollView1.Padding = new Thickness(24, 0, 24, 0);
-            expander.Margin = new Thickness(0, 24, 0, 0);
+            expander.Margin = new Thickness(0, 24, 0, 16);
             patientInfoEditor.Margin = new Thickness(16, 16, 0, 16);
             patientDetailsDisplay.Margin = new Thickness(0);
             patientRecords.Margin = new Thickness(0);
@@ -109,13 +111,10 @@ namespace Hakim.View.Clients
         {
             if (this.ActualWidth >= 832 && mainPanel.RowDefinitions.Count == 2)
             {
-                scrollView1.ScrollTo(0, 0);
                 mainPanel.RowDefinitions.Clear();
                 mainPanel.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
                 mainPanel.ColumnDefinitions[0].Width = new GridLength(450);
                 mainPanel.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-                Grid.SetRow(patientRecords, 0);
-                Grid.SetColumn(patientRecords, 1);
 
                 mainPanel.Children.Clear();
                 expander.Header = null;
@@ -142,15 +141,16 @@ namespace Hakim.View.Clients
                 InternalPanel.Children.Add(patientDetailsDisplay);
                 scrollView2.Content = patientRecords;
 
-                scrollView1.VerticalScrollBarVisibility = ScrollingScrollBarVisibility.Visible;
+                scrollView1.VerticalScrollBarVisibility = ScrollBarVisibility.Visible;
                 scrollView1.Padding = new Thickness(12, 0, 16, 0);
                 scrollView2.Padding = new Thickness(12, 0, 16, 0);
                 patientInfoEditor.Margin = new Thickness(16, 24, 0, 0);
                 patientDetailsDisplay.Margin = new Thickness(0, 16, 0, 24);
-                patientRecords.Margin = new Thickness(0, 12, 0, 24);
+                patientRecords.Margin = new Thickness(0, 12, 0, 0);
             }
             else if (this.ActualWidth < 832 && mainPanel.ColumnDefinitions.Count == 2)
             {
+                scrollView1.ChangeView(null, 0, null, true);
                 mainPanel.ColumnDefinitions.RemoveAt(1);
                 mainPanel.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
                 mainPanel.ColumnDefinitions[0].Width = new GridLength(1, GridUnitType.Star);
@@ -163,7 +163,6 @@ namespace Hakim.View.Clients
                 PagePanel.Children.RemoveAt(1);
                 scrollView1.Content = null;
                 scrollView2.Content = null;
-                scrollView1 = new ScrollView();
 
                 Grid.SetColumn(scrollView1, 0);
                 Grid.SetRow(scrollView1, 1);
@@ -182,7 +181,7 @@ namespace Hakim.View.Clients
                 expander.Header = patientInfoEditor;
                 expander.Content = patientDetailsDisplay;
 
-                scrollView1.VerticalScrollBarVisibility = ScrollingScrollBarVisibility.Auto;
+                scrollView1.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
                 scrollView1.Padding = new Thickness(24, 0, 24, 0);
                 expander.Margin = new Thickness(0, 24, 0, 0);
                 patientInfoEditor.Margin = new Thickness(16, 16, 0, 16);
@@ -344,13 +343,14 @@ namespace Hakim.View.Clients
             dialog.CloseButtonText = "Annuler";
             dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
             dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
-            viewModel.Consultation = new MedicalConsultation { Patient = viewModel.SelectedPatient,Title = $"Consultation du {DateTime.Now.Date.ToString("d")}", CreatedDate = DateTime.Now};
+            viewModel.Consultation = new MedicalConsultation { Patient = viewModel.SelectedPatient,Title = $"Consultation {viewModel.SelectedPatient.files.Count(file => file.Type == 0) + 1} - {viewModel.SelectedPatient.fullName}", CreationDate = DateTime.Now};
             dialog.Content = new AddEditConsultaionFilePage(dialog,viewModel.Consultation);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
                 viewModel.AddMedicalConsultation();
+                patientRecords.UpdateFilesDisplayVisibility(viewModel.SelectedPatient);
                 patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
             }
         }
@@ -369,13 +369,14 @@ namespace Hakim.View.Clients
             dialog.CloseButtonText = "Annuler";
             dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
             dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
-            viewModel.XRay = new XRay { Patient = viewModel.SelectedPatient, Title = $"Radiographie du {DateTime.Now.Date.ToString("d")}", CreatedDate = DateTime.Now, Xray_date = DateTime.Now };
+            viewModel.XRay = new XRay { Patient = viewModel.SelectedPatient, Title = $"Radiographie {viewModel.SelectedPatient.files.Count(file => file.Type == 1) + 1} du ....... - {viewModel.SelectedPatient.fullName}", CreationDate = DateTime.Now, Xray_date = DateTime.Now };
             dialog.Content = new AddXRayPage(dialog, viewModel.XRay);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Primary)
             {
                 viewModel.AddXRay();
+                patientRecords.UpdateFilesDisplayVisibility(viewModel.SelectedPatient);
                 patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
             }
         }

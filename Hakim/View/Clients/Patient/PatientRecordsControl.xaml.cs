@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.UI;
 using Hakim.Service;
 using System.Diagnostics;
+using Hakim.Model;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -30,6 +31,8 @@ namespace Hakim.View.Clients.Patient
             PatientFiles.ItemsSource = patient.files;
             PatientAppointments.ItemsSource = patient.appointments;
             this.Loaded += PatientRecordsControl_Loaded;
+            UpdateFilesDisplayVisibility(patient);
+            UpdateAppointmentsDisplayVisibility(patient);
         }
 
         private void PatientRecordsControl_Loaded(object sender, RoutedEventArgs e)
@@ -51,6 +54,11 @@ namespace Hakim.View.Clients.Patient
             ParentPage.AddAppointmentButton.Visibility = Visibility.Collapsed;
             ParentPage.SortAppintmentsButton.Visibility = Visibility.Collapsed;
             ParentPage.FilterAppointmentsButton.Visibility = Visibility.Collapsed;
+
+            docsImageD.Visibility = Visibility.Collapsed;
+            docsImage.Visibility = Visibility.Visible;
+            appointmentsImageD.Visibility = Visibility.Visible;
+            appointmentsImage.Visibility = Visibility.Collapsed;
         }
 
         private void AppointmentsHeader_Tapped(object sender, TappedRoutedEventArgs e)
@@ -62,6 +70,47 @@ namespace Hakim.View.Clients.Patient
             ParentPage.AddAppointmentButton.Visibility = Visibility.Visible;
             ParentPage.SortAppintmentsButton.Visibility = Visibility.Visible;
             ParentPage.FilterAppointmentsButton.Visibility = Visibility.Visible;
+
+            docsImageD.Visibility = Visibility.Visible;
+            docsImage.Visibility = Visibility.Collapsed;
+            appointmentsImageD.Visibility = Visibility.Collapsed;
+            appointmentsImage.Visibility = Visibility.Visible;
+        }
+
+        public void UpdateFilesDisplayVisibility(Model.Patient patient)
+        {
+            if (patient.files.Count == 0)
+            {
+                if (noFilesTextBlock.Visibility == Visibility.Collapsed)
+                    noFilesTextBlock.Visibility = Visibility.Visible;
+                if (filesGrid.Visibility == Visibility.Visible)
+                    filesGrid.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                if (noFilesTextBlock.Visibility == Visibility.Visible)
+                    noFilesTextBlock.Visibility = Visibility.Collapsed;
+                if (filesGrid.Visibility == Visibility.Collapsed)
+                    filesGrid.Visibility = Visibility.Visible;
+            }
+        }
+
+        public void UpdateAppointmentsDisplayVisibility(Model.Patient patient)
+        {
+            if (patient.appointments.Count == 0)
+            {
+                if (noAppointmentsTextBlock.Visibility == Visibility.Collapsed)
+                    noAppointmentsTextBlock.Visibility = Visibility.Visible;
+                if (appointmentsGrid.Visibility == Visibility.Visible)
+                    appointmentsGrid.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                if (noAppointmentsTextBlock.Visibility == Visibility.Visible)
+                    noAppointmentsTextBlock.Visibility = Visibility.Collapsed;
+                if (appointmentsGrid.Visibility == Visibility.Collapsed)
+                    appointmentsGrid.Visibility = Visibility.Visible;
+            }
         }
     }
 }

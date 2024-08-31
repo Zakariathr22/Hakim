@@ -18,13 +18,16 @@
     <None Remove="Assets\GalleryHeaderImageDark.png" />
     <None Remove="Assets\GalleryHeaderImageLight.png" />
     <None Remove="Assets\Icons\Appointment.png" />
+    <None Remove="Assets\Icons\AppointmentDisabled.png" />
     <None Remove="Assets\Icons\Clients.png" />
     <None Remove="Assets\Icons\Counselor.png" />
     <None Remove="Assets\Icons\Documents.png" />
+    <None Remove="Assets\Icons\DocumentsDisabled.png" />
     <None Remove="Assets\Icons\Edit File.png" />
     <None Remove="Assets\Icons\EditCalendar.png" />
     <None Remove="Assets\Icons\File.png" />
     <None Remove="Assets\Icons\Folders.png" />
+    <None Remove="Assets\Icons\Future.png" />
     <None Remove="Assets\Icons\Gears.png" />
     <None Remove="Assets\Icons\Hakim.ico" />
     <None Remove="Assets\Icons\Home.png" />

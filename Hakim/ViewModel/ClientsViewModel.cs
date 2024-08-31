@@ -285,9 +285,9 @@ namespace Hakim.ViewModel
                                 id = Convert.ToInt32(reader["id"]),
                                 Patient = patient,
                                 Title = reader["title"].ToString(),
-                                CreatedDate = Convert.ToDateTime(reader["creation_date"]),
+                                CreationDate = Convert.ToDateTime(reader["creation_date"]),
                                 Url = reader["url"].ToString(),
-                                Type = reader["type"].ToString()
+                                Type = Convert.ToInt32(reader["type"])
                             };
 
                             files.Add(file);
@@ -330,6 +330,7 @@ namespace Hakim.ViewModel
                                 id = Convert.ToInt32(reader["id"]),
                                 Patient = patient,
                                 AppointmentDate = Convert.ToDateTime(reader["AppointmentDate"]),
+                                AppointmentTime = TimeSpan.Parse(reader.GetString(reader.GetOrdinal("AppointmentHour"))),
                                 Purpose = reader["Purpose"].ToString(),
                                 Notes = reader["Notes"].ToString()
                             };
@@ -366,13 +367,13 @@ namespace Hakim.ViewModel
                 INSERT INTO File (
                     patient_id, title, creation_date, type
                 ) VALUES (
-                    @PatientId, @Title, @CreatedDate, @Type
+                    @PatientId, @Title, @CreationDate, @Type
                 );
                 SELECT last_insert_rowid();";  // Retrieve the last inserted ID
                     command.Parameters.AddWithValue("@PatientId", Consultation.Patient.id);
                     command.Parameters.AddWithValue("@Title", Consultation.Title);
-                    command.Parameters.AddWithValue("@CreatedDate", Consultation.CreatedDate);
-                    command.Parameters.AddWithValue("@Type", "Consultation");
+                    command.Parameters.AddWithValue("@CreationDate", Consultation.CreationDate);
+                    command.Parameters.AddWithValue("@Type", 0);
 
                     // Execute the command and get the last inserted file_id
                     Consultation.id = Convert.ToInt32(command.ExecuteScalar());
@@ -412,13 +413,13 @@ namespace Hakim.ViewModel
                 INSERT INTO File (
                     patient_id, title, creation_date, type, url
                 ) VALUES (
-                    @PatientId, @Title, @CreatedDate, @Type, @Url
+                    @PatientId, @Title, @CreationDate, @Type, @Url
                 );
                 SELECT last_insert_rowid();";  // Retrieve the last inserted ID
                     command.Parameters.AddWithValue("@PatientId", XRay.Patient.id);
                     command.Parameters.AddWithValue("@Title", XRay.Title);
-                    command.Parameters.AddWithValue("@CreatedDate", XRay.CreatedDate);
-                    command.Parameters.AddWithValue("@Type", "Radiographie");  // Automatically set type to "Radiographie"
+                    command.Parameters.AddWithValue("@CreationDate", XRay.CreationDate);
+                    command.Parameters.AddWithValue("@Type", 1);  // Automatically set type to "Radiographie"
                     command.Parameters.AddWithValue("@Url", XRay.Url);
 
                     // Execute the command and get the last inserted file_id
@@ -427,12 +428,13 @@ namespace Hakim.ViewModel
                     // Insert into the XRay table
                     command.CommandText = @"
                 INSERT INTO XRay (
-                    file_id, xray_date, radiologist, diagnosis, type
+                    file_id, xray_date, xray_time, radiologist, diagnosis, type
                 ) VALUES (
-                    @FileId, @XrayDate, @Radiologist, @Diagnosis, @XrayType
+                    @FileId, @XrayDate, @XrayTime, @Radiologist, @Diagnosis, @XrayType
                 )";
                     command.Parameters.AddWithValue("@FileId", XRay.id);
                     command.Parameters.AddWithValue("@XrayDate", XRay.Xray_date);
+                    command.Parameters.AddWithValue("@XrayTime", XRay.XrayTime);
                     command.Parameters.AddWithValue("@Url", XRay.Url);
                     command.Parameters.AddWithValue("@Radiologist", XRay.Radiologist);
                     command.Parameters.AddWithValue("@Diagnosis", XRay.Diagnosis);

@@ -13,6 +13,7 @@ namespace Hakim.Model
         public int id { set; get; }
         private Patient patient;
         private DateTime appointmentDate;
+        private TimeSpan appointmentTime;
         private string purpose;
         private string notes;
     }
@@ -39,6 +40,16 @@ namespace Hakim.Model
             set
             {
                 appointmentDate = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TimeSpan AppointmentTime
+        {
+            get => appointmentTime;
+            set
+            {
+                appointmentTime = value;
                 OnPropertyChanged();
             }
         }

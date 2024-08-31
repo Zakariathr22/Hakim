@@ -15,9 +15,9 @@ namespace Hakim.Model
         public int id { get; set; }
         private Patient patient;
         private string title;
-        private DateTime createdDate;
+        private DateTime creationDate;
         private string url;
-        private string type;
+        private int type;
     }
 
     public partial class File : INotifyPropertyChanged
@@ -46,12 +46,12 @@ namespace Hakim.Model
             }
         }
 
-        public DateTime CreatedDate
+        public DateTime CreationDate
         {
-            get => createdDate;
+            get => creationDate;
             set
             {
-                createdDate = value;
+                creationDate = value;
                 OnPropertyChanged();
             }
         }
@@ -66,7 +66,7 @@ namespace Hakim.Model
             }
         }
 
-        public string Type
+        public int Type
         {
             get => type;
             set

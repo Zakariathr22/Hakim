@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Data;
+﻿using Hakim.Service;
+using Microsoft.UI.Xaml.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,23 +8,18 @@ using System.Threading.Tasks;
 
 namespace Hakim.Converters
 {
-    internal class IconUrlConverter : IValueConverter
+    class GenderConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             if (value is int type)
             {
                 if (type == 0)
-                    return @"\Assets\Icons\Counselor.png";
+                    return LanguageService.GetResourceValue("Male");
                 else if (type == 1)
-                    return @"\Assets\Icons\X-ray.png";
-                else if (type == 2)
-                    return @"\Assets\Icons\X-ray1.png";
-                else if (type == 3)
-                    return @"\Assets\Icons\Surgery.png";
-                else return @"\Assets\Icons\file.png";
+                    return LanguageService.GetResourceValue("Female");
             }
-            return @"\Assets\Icons\file.png";
+            return LanguageService.GetResourceValue("NotEntered");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

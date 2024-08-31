@@ -17,6 +17,7 @@ namespace Hakim.Model
         private string anesthetist;
         private string scrub_nurse;
         private DateTime intervention_date;
+        private TimeSpan intervention_time;
         private string diagnosis;
         private string intervention;
         private string operative_report;
@@ -79,6 +80,16 @@ namespace Hakim.Model
             set
             {
                 intervention_date = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TimeSpan Intervention_time
+        {
+            get => intervention_time;
+            set
+            {
+                intervention_time = value;
                 OnPropertyChanged();
             }
         }

@@ -16,130 +16,152 @@
         <converters:UrlNotEmptyConverter x:Key="UrlNotEmptyConverter"/>
         <converters:AppointmentIconUrlConverter x:Key="AppointmentIconUrlConverter"/>
         <converters:OutputStringConverter x:Key="OutputStringConverter"/>
+        <converters:FileTypeConverter x:Key="FileTypeConverter"/>
+        <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
+        <converters:TimeSpanConverter x:Key="TimeSpanConverter"/>
     </UserControl.Resources>
 
     <Pivot>
-        <PivotItem>
+        <PivotItem Margin="0">
             <PivotItem.Header >
                 <PivotHeaderItem x:Name="FilesHeader" Tapped="FilesHeader_Tapped">
-                    <TextBlock>Fichiers</TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="docsImageD" Height="32" Source="/Assets/Icons/DocumentsDisabled.png" Visibility="Collapsed"/>
+                        <Image x:Name="docsImage" Height="32" Source="/Assets/Icons/Documents.png"/>
+                        <TextBlock Margin="8 0 0 0" Foreground="{ThemeResource TextFillColorPrimaryBrush}">Fichiers</TextBlock>
+                    </StackPanel>
                 </PivotHeaderItem>
             </PivotItem.Header>
-            <Grid Margin="0 16 0 0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Margin="0 0 0 4">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="6*"/>
-                            <ColumnDefinition Width="4*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Titre du fichier" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                        <TextBlock Grid.Column="1" Text="Type et date de création" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+            <StackPanel>
+                <TextBlock x:Name="noFilesTextBlock" Margin="0 24 0 0" Text="Il n'y a pas de Fichiers médicaux" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Grid x:Name="filesGrid"  Margin="0 16 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="4 0 0 0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Titre du fichier" HorizontalAlignment="Left" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"
+                       Margin="76 0 0 0" />
+                            <TextBlock Margin="0 0 12 0" Grid.Column="1" Text="Type et date de création" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        </Grid>
                     </Grid>
-                </Grid>
-                <ListView x:Name="PatientFiles" x:FieldModifier="public" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="6*"/>
-                                        <ColumnDefinition Width="4*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="62"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Image Source="{Binding Type, Converter={StaticResource IconUrlConverter}, Mode=OneWay}" Width="32" Height="32" Margin="8 0"/>
-                                            <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
+                    <ListView x:Name="PatientFiles" x:FieldModifier="public" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="62"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Source="{Binding Type, Converter={StaticResource IconUrlConverter}, Mode=OneWay}" Width="32" Height="32" Margin="8 0"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
+                                            </Grid>
                                         </Grid>
-                                    </Grid>
-                                    <Grid Grid.Column="1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <TextBlock Text="{Binding Type}" TextWrapping="Wrap" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                        <TextBlock Grid.Row="1" Text="{Binding CreatedDate, Converter={StaticResource DateShortTimeConverter}, Mode=OneWay}" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                    </Grid>
-                                </Grid>
-                                <ToolTipService.ToolTip>
-                                    <ToolTip IsEnabled="{Binding Url, Converter={StaticResource UrlNotEmptyConverter}, Mode=OneWay}" BorderThickness="0" Background="Transparent" CornerRadius="8">
-                                        <Border CornerRadius="4">
-                                            <Image Source="C:\Users\TAHRI.ZAKARIA\Desktop\radio.jpeg" MaxWidth="200"/>
-                                        </Border>
-                                    </ToolTip>
-                                </ToolTipService.ToolTip>
-                            </Button>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </PivotItem>
-        <PivotItem>
-            <PivotItem.Header>
-                <PivotHeaderItem x:Name="AppointmentsHeader" Tapped="AppointmentsHeader_Tapped">
-                    <TextBlock>Rendez-vous</TextBlock>
-                </PivotHeaderItem>
-            </PivotItem.Header>
-            <Grid Margin="0 16 0 0">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Margin="0 0 0 4">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="6*"/>
-                            <ColumnDefinition Width="4*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Objectif du rendez-vous" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                        <TextBlock Grid.Column="1" Text="Date et heur" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                    </Grid>
-                </Grid>
-                <ListView x:Name="PatientAppointments" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="6*"/>
-                                        <ColumnDefinition Width="4*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Column="0">
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="62"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Image Source="{Binding AppointmentDate , Converter={StaticResource AppointmentIconUrlConverter}, Mode=OneWay}" Margin="8 0" Width="32" Height="32"/>
-                                            <TextBlock Grid.Column="1" Text="{Binding Purpose}" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" Margin="0 8"/>
-                                        </Grid>
-                                    </Grid>
-                                    <TextBlock Grid.Column="1" Text="{Binding AppointmentDate, Converter={StaticResource DateShortTimeConverter}, Mode=OneWay}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </Grid>
-                                <ToolTipService.ToolTip>
-                                    <ToolTip MaxWidth="248">
-                                        <Grid>
+                                        <Grid Grid.Column="1">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition/>
                                                 <RowDefinition/>
                                             </Grid.RowDefinitions>
-                                            <TextBlock Text="Notes:" FontWeight="Bold"/>
-                                            <TextBlock Grid.Row="1" Text="{Binding Notes, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding Type, Converter={StaticResource FileTypeConverter}, Mode=OneWay}" TextWrapping="Wrap" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                            <TextBlock Grid.Row="1" Text="{Binding CreationDate, Converter={StaticResource DateShortTimeConverter}, Mode=OneWay}" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
                                         </Grid>
-                                    </ToolTip>
-                                </ToolTipService.ToolTip>
-                            </Button>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
+                                    </Grid>
+                                    <ToolTipService.ToolTip>
+                                        <ToolTip IsEnabled="{Binding Url, Converter={StaticResource UrlNotEmptyConverter}, Mode=OneWay}" BorderThickness="0" Background="Transparent" CornerRadius="8">
+                                            <Border CornerRadius="4">
+                                                <Image Source="C:\Users\TAHRI.ZAKARIA\Desktop\New Microsoft Word Document (3).pdf" MaxWidth="200"/>
+                                            </Border>
+                                        </ToolTip>
+                                    </ToolTipService.ToolTip>
+                                </Button>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </StackPanel>
+        </PivotItem>
+        <PivotItem Margin="0">
+            <PivotItem.Header>
+                <PivotHeaderItem x:Name="AppointmentsHeader" Tapped="AppointmentsHeader_Tapped">
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="appointmentsImageD" Height="32" Source="/Assets/Icons/AppointmentDisabled.png"/>
+                        <Image x:Name="appointmentsImage" Height="32" Source="/Assets/Icons/Appointment.png" Visibility="Collapsed"/>
+                        <TextBlock Margin="8 0 0 0" Foreground="{ThemeResource TextFillColorPrimaryBrush}">Rendez-vous</TextBlock>
+                    </StackPanel>
+                </PivotHeaderItem>
+            </PivotItem.Header>
+            <StackPanel>
+                <TextBlock x:Name="noAppointmentsTextBlock" Margin="0 24 0 0" Text="Il n'y a pas de Rendez-vous" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Grid x:Name="appointmentsGrid" Margin="0 16 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0 0 0 4">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Objectif du rendez-vous" HorizontalAlignment="Left" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"
+                                       Margin="80 0 0 0"/>
+                            <TextBlock Margin="0 0 16 0" Grid.Column="1" Text="Date et heur" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        </Grid>
+                    </Grid>
+                    <ListView x:Name="PatientAppointments" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="6*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="62"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Source="{Binding AppointmentDate , Converter={StaticResource AppointmentIconUrlConverter}, Mode=OneWay}" Margin="8 0" Width="32" Height="32"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding Purpose}" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" Margin="0 8"/>
+                                            </Grid>
+                                        </Grid>
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Text="{Binding AppointmentDate.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <TextBlock Margin="4 0 0 0" Text="{Binding AppointmentTime,Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <ToolTipService.ToolTip>
+                                        <ToolTip MaxWidth="248">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <TextBlock Text="Notes:" FontWeight="Bold"/>
+                                                <TextBlock Grid.Row="1" Text="{Binding Notes, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" TextWrapping="Wrap"/>
+                                            </Grid>
+                                        </ToolTip>
+                                    </ToolTipService.ToolTip>
+                                </Button>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </StackPanel>
         </PivotItem>
     </Pivot>
 </UserControl>

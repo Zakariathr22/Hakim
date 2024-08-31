@@ -12,6 +12,7 @@
     <UserControl.Resources>
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
         <converters:OutputStringConverter x:Key="OutputStringConverter"/>
+        <converters:GenderConverter x:Key="GenderConverter"/>
     </UserControl.Resources>
     
     <Pivot>
@@ -45,7 +46,7 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="● Genre:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    <TextBlock Grid.Column="1" Text="{Binding Gender}" Style="{ThemeResource BodyTextBlockStyle}" />
+                    <TextBlock Grid.Column="1" Text="{Binding Gender, Converter={StaticResource GenderConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="2" Margin="0 8 0 4">
                     <Grid.ColumnDefinitions>

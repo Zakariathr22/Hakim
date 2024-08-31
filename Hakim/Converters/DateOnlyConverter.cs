@@ -31,7 +31,7 @@ namespace Hakim.Converters
             if (value is TimeSpan timeSpan)
             {
                 // Customize the format as needed
-                return timeSpan.ToString(@"hh\:mm\:ss");
+                return timeSpan.ToString(@"hh\:mm");
             }
             return null;
         }

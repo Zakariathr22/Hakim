@@ -9,9 +9,10 @@ namespace Hakim.Model
     public partial class XRay : File
     {
         private DateTimeOffset xray_date;
+        private TimeSpan xray_time;
         private string radiologist;
         private string diagnosis;
-        private string xray_type;
+        private int xray_type;
     }
     public partial class XRay
     {
@@ -21,6 +22,16 @@ namespace Hakim.Model
             set
             {
                 xray_date = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TimeSpan XrayTime
+        {
+            get => xray_time;
+            set
+            {
+                xray_time = value;
                 OnPropertyChanged();
             }
         }
@@ -45,7 +56,7 @@ namespace Hakim.Model
             }
         }
 
-        public string Xray_type
+        public int Xray_type
         {
             get => xray_type;
             set
