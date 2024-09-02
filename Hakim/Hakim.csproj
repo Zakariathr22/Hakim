@@ -56,6 +56,7 @@
     <None Remove="View\Clients\EditPatient\EdidPatientPage.xaml" />
     <None Remove="View\Clients\PatientCardControl.xaml" />
     <None Remove="View\Clients\PatientPage.xaml" />
+    <None Remove="View\Clients\Patient\Appointments\AddAppointmentPage.xaml" />
     <None Remove="View\Clients\Patient\Consultations\AddEditConsultaionFilePage.xaml" />
     <None Remove="View\Clients\Patient\PatientDetailsDisplayControl.xaml" />
     <None Remove="View\Clients\Patient\PatientInfoEditorControl.xaml" />
@@ -229,6 +230,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Clients\Patient\SurgeryProtocols\AddSurgeryProtocolPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Clients\Patient\Appointments\AddAppointmentPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

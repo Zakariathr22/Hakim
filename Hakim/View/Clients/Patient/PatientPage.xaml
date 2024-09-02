@@ -70,7 +70,8 @@
                         </MenuFlyout>
                     </AppBarButton.Flyout>
                 </AppBarButton>
-                <AppBarButton x:Name="AddAppointmentButton" x:FieldModifier="public" Visibility="Collapsed" Icon="Add" Label="Ajouter" ToolTipService.ToolTip="Ajouter un rendez-vous"/>
+                <AppBarButton x:Name="AddAppointmentButton" x:FieldModifier="public" Visibility="Collapsed" Icon="Add" Label="Ajouter" ToolTipService.ToolTip="Ajouter un rendez-vous"
+                              Click="AddAppointmentButton_Click"/>
                 <AppBarSeparator />
                 <AppBarButton x:Name="SortFilesButton" x:FieldModifier="public" Icon="Sort" Label="Trier" ToolTipService.ToolTip="Trier les fichiers">
                     <Button.Flyout>

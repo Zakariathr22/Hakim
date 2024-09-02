@@ -161,9 +161,9 @@ namespace Hakim.View.Controls
             if (dayItem.Date.Date != DateTime.Now.Date)
             {
                 Border criticalBackground;
-                if (count < 15)
+                if (count < 6)
                     criticalBackground = (Border)this.Resources["FewAppointmentsBackground"];
-                else if (count >= 15 && count < 25)
+                else if (count >= 6 && count < 11)
                     criticalBackground = (Border)this.Resources["AverageAppointmentsBackground"];
                 else
                     criticalBackground = (Border)this.Resources["ManyAppointmentsBackground"];

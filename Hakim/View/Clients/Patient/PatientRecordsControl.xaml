@@ -141,7 +141,7 @@
                             <TextBlock Margin="0 0 16 0" Grid.Column="1" Text="Date et heur" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
                         </Grid>
                     </Grid>
-                    <ListView x:Name="PatientAppointments" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24">
+                    <ListView x:Name="PatientAppointments" x:FieldModifier="public" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0">

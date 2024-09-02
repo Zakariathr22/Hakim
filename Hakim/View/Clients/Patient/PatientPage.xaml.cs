@@ -26,6 +26,7 @@ using Hakim.View.Clients.Patient.XRay_s;
 using Hakim.View.Clients.Patient.SurgeryProtocols;
 using Hakim.Model;
 using System.Threading.Tasks;
+using Hakim.View.Clients.Patient.Appointments;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -49,6 +50,7 @@ namespace Hakim.View.Clients
         {
             this.InitializeComponent();
             Loaded += PatientPage_Loaded;
+            viewModel.getNumberOfAppointmentsPerDayCommand.Execute(null);
         }
 
         private void PatientPage_Loaded(object sender, RoutedEventArgs e)
@@ -429,6 +431,32 @@ namespace Hakim.View.Clients
                 viewModel.AddSurgeryProtocol();
                 patientRecords.UpdateFilesDisplayVisibility(viewModel.SelectedPatient);
                 patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
+            }
+        }
+
+        private void AddAppointmentButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowAddAppointmentDialog();
+        }
+
+        public async void ShowAddAppointmentDialog()
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.Title = new TitleControl("Ajouter un rendez-vous", new FontIcon { Glyph = "\uEC92" });
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.CloseButtonText = "Annuler";
+            dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
+            dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
+            viewModel.Appointment = new Appointment { Patient = viewModel.SelectedPatient, AppointmentDate = DateTime.Now.Date, AppointmentTime = DateTime.Now.TimeOfDay, Purpose = "Routine Checkup" };
+            dialog.Content = new AddAppointmentPage(dialog, viewModel.Appointment, viewModel.AppointmentCounts);
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                viewModel.AddAppointment();
+                patientRecords.UpdateAppointmentsDisplayVisibility(viewModel.SelectedPatient);
+                patientRecords.PatientAppointments.ItemsSource = viewModel.SelectedPatient.appointments;
             }
         }
     }

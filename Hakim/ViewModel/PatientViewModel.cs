@@ -19,6 +19,8 @@ namespace Hakim.ViewModel
         [ObservableProperty] private XRay xRay;
         [ObservableProperty] private SpineTelemetryXRay spineTelemetryXRay;
         [ObservableProperty] private SurgeryProtocol surgeryProtocol;
+        [ObservableProperty] private Dictionary<DateTime, int> appointmentCounts;
+        [ObservableProperty] private Appointment appointment;
 
         public void UpdatePatient(Patient patient)
         {
@@ -400,5 +402,78 @@ namespace Hakim.ViewModel
                 // Handle the exception (e.g., log it or rethrow it)
             }
         }
+
+        private Dictionary<DateTime, int> GetNumberOfAppointmentsPerDay()
+        {
+            var appointmentCounts = new Dictionary<DateTime, int>();
+
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand("SELECT DATE(AppointmentDate) AS AppointmentDay, COUNT(*) AS AppointmentCount FROM Appointment GROUP BY AppointmentDay ORDER BY AppointmentDay;", connection))
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var appointmentDate = Convert.ToDateTime(reader["AppointmentDay"]).Date;
+                        var count = Convert.ToInt32(reader["AppointmentCount"]);
+
+                        // Add or update the dictionary with the count for the given date
+                        appointmentCounts[appointmentDate] = count;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while retrieving appointment counts: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+
+            return appointmentCounts;
+        }
+
+        [RelayCommand]
+        private void getNumberOfAppointmentsPerDay()
+        {
+            AppointmentCounts = GetNumberOfAppointmentsPerDay();
+        }
+
+        public void AddAppointment()
+        {
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
+                {
+                    // Insert into the Appointment table
+                    command.CommandText = @"
+                INSERT INTO Appointment (
+                    patient_id, AppointmentDate, AppointmentHour, Purpose, Notes
+                ) VALUES (
+                    @PatientId, @AppointmentDate, @AppointmentHour, @Purpose, @Notes
+                );";  // Retrieve the last inserted ID
+
+                    command.Parameters.AddWithValue("@PatientId", Appointment.Patient.id);
+                    command.Parameters.AddWithValue("@AppointmentDate", Appointment.AppointmentDate.Date);
+                    command.Parameters.AddWithValue("@AppointmentHour", Appointment.AppointmentTime);
+                    command.Parameters.AddWithValue("@Purpose", Appointment.Purpose);
+                    command.Parameters.AddWithValue("@Notes", Appointment.Notes);
+
+                    // Execute the command and get the last inserted appointment id
+                    command.ExecuteNonQuery();
+
+                    Console.WriteLine("Appointment added successfully.");
+
+                    SelectedPatient.appointments = GetAppointmentsByPatient(SelectedPatient);
+                    AppointmentCounts = GetNumberOfAppointmentsPerDay();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while adding the appointment: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+        }
+
     }
 }
