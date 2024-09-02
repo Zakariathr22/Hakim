@@ -23,17 +23,30 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="titleTextBox" Grid.Row="0" Header="Titre" PlaceholderText="Titre de protocol opératoire (obligatoire)" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" Margin="0 0 0 8" IsSpellCheckEnabled="True" FontWeight="Bold" Language="fr-FR" TextChanged="titleTextBox_TextChanged"/>
-            <TextBox x:Name="surgeonTextBox" Grid.Row="1" Header="Chirurgien" PlaceholderText="Chirurgien qui a réalisé l'opération" Margin="0 0 0 8" IsSpellCheckEnabled="True" Language="fr-FR"/>
-            <TextBox x:Name="opratingAssistantTextBox" Grid.Row="2" Header="Assistant opératoire" PlaceholderText="L'assistant opératoire, qui aide le chirurgien pendant l'intervention." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"/>
-            <TextBox x:Name="instrumentTechnicianTextBox" Grid.Row="3" Header="Instrumentiste" PlaceholderText="Responsable de la préparation et de la gestion des instruments chirurgicaux avant, pendant et après l'opération." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"/>
-            <TextBox x:Name="anesthetistTextBox" Grid.Row="4" Header="Anesthésiste" PlaceholderText="Le professionnel médical responsable de l'administration de l'anesthésie au patient" Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"/>
-            <TextBox x:Name="scrubNurseTextBox" Grid.Row="5" Header="Ponceur" PlaceholderText="Le Ponceur, qui travaille en étroite collaboration avec le chirurgien en passant les instruments" Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"/>
-            <DatePicker x:Name="interventionDateBox" Grid.Row="6" Header="Date d'intervention" Margin="0 0 0 8" Language="fr-FR" Width="400"/>
-            <TextBox x:Name="diagnosisTextBox" Grid.Row="7" Header="Diagnostique" PlaceholderText="Le diagnostic médical qui a conduit à l'intervention chirurgicale." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"/>
-            <TextBox x:Name="interventionTextBox" Grid.Row="8" Header="Intervention" PlaceholderText="L'intervention chirurgicale spécifique qui a été réalisée." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"/>
-            <TextBox x:Name="operativeReportTextBox" Grid.Row="9" Header="Compte Rendu Opératoire" PlaceholderText="Compte rendu opératoire, qui est un récit détaillé de la chirurgie, incluant les étapes réalisées, les complications éventuelles, le résultat et d'autres détails pertinents." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"/>
+            <TextBox x:Name="titleTextBox" Grid.Row="0" Header="Titre" PlaceholderText="Titre de protocol opératoire (obligatoire)" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" Margin="0 0 0 8" IsSpellCheckEnabled="True" FontWeight="Bold" Language="fr-FR" TextChanged="titleTextBox_TextChanged"
+                     Text="{Binding Title , Mode=TwoWay}"/>
+            <TextBox x:Name="surgeonTextBox" Grid.Row="1" Header="Chirurgien" PlaceholderText="Chirurgien qui a réalisé l'opération" Margin="0 0 0 8" IsSpellCheckEnabled="True" Language="fr-FR"
+                     Text="{Binding Surgeon , Mode=TwoWay}"/>
+            <TextBox x:Name="opratingAssistantTextBox" Grid.Row="2" Header="Assistant opératoire" PlaceholderText="L'assistant opératoire, qui aide le chirurgien pendant l'intervention." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"
+                     Text="{Binding Oprating_assistant , Mode=TwoWay}"/>
+            <TextBox x:Name="instrumentTechnicianTextBox" Grid.Row="3" Header="Instrumentiste" PlaceholderText="Responsable de la préparation et de la gestion des instruments chirurgicaux avant, pendant et après l'opération." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"
+                     Text="{Binding Instrument_technician , Mode=TwoWay}"/>
+            <TextBox x:Name="anesthetistTextBox" Grid.Row="4" Header="Anesthésiste" PlaceholderText="Le professionnel médical responsable de l'administration de l'anesthésie au patient" Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"
+                     Text="{Binding Anesthetist , Mode=TwoWay}"/>
+            <TextBox x:Name="scrubNurseTextBox" Grid.Row="5" Header="Ponceur" PlaceholderText="Le Ponceur, qui travaille en étroite collaboration avec le chirurgien en passant les instruments" Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"
+                     Text="{Binding Scrub_nurse , Mode=TwoWay}"/>
+            <DatePicker x:Name="interventionDateBox" Grid.Row="6" Header="Date d'intervention" Margin="0 0 0 8" Language="fr-FR" Width="400"
+                        SelectedDate="{Binding Intervention_date , Mode=TwoWay}"/>
+            <TimePicker x:Name="interventionTimeBox" Grid.Row="7" Header="Heur d'intervention" Margin="0 0 0 8" Language="fr-FR" Width="400"
+                        SelectedTime="{Binding Intervention_time , Mode=TwoWay}"/>
+            <TextBox x:Name="diagnosisTextBox" Grid.Row="8" Header="Diagnostique" PlaceholderText="Le diagnostic médical qui a conduit à l'intervention chirurgicale." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"
+                     Text="{Binding Diagnosis , Mode=TwoWay}"/>
+            <TextBox x:Name="interventionTextBox" Grid.Row="9" Header="Intervention" PlaceholderText="L'intervention chirurgicale spécifique qui a été réalisée." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"
+                     Text="{Binding Intervention , Mode=TwoWay}"/>
+            <TextBox x:Name="operativeReportTextBox" Grid.Row="10" Header="Compte Rendu Opératoire" PlaceholderText="Compte rendu opératoire, qui est un récit détaillé de la chirurgie, incluant les étapes réalisées, les complications éventuelles, le résultat et d'autres détails pertinents." Margin="0 0 0 8" IsSpellCheckEnabled="True" TextWrapping="Wrap" AcceptsReturn="True" Language="fr-FR"
+                     Text="{Binding Operative_report , Mode=TwoWay}"/>
         </Grid>
     </ScrollView>
 </Page>

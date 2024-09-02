@@ -38,7 +38,7 @@
             <TextBox x:Name="lastNameTextBox" Grid.Column="0" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding Patient.LastName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" TextChanged="lastNameTextBox_TextChanged"/>
             <TextBox x:Name="firstNameTextBox" Grid.Column="1" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding Patient.FirstName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" TextChanged="firstNameTextBox_TextChanged"/>
         </Grid>
-        <DatePicker x:Name="dateOfBirthPicker" Grid.Row="2" Width="400" Margin="0 0 0 4" SelectedDate="{Binding Patient.DateOfBirth, Mode=TwoWay}"/>
+        <CalendarDatePicker x:Name="dateOfBirthPicker" Grid.Row="2" Width="400" Margin="0 0 0 4" Date="{Binding Patient.DateOfBirth, Mode=TwoWay}"/>
         <ComboBox x:Name="GenderComboBox" Grid.Row="3" Width="400" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" SelectedIndex="{Binding Patient.Gender, Mode=TwoWay}" SelectionChanged="GenderComboBox_SelectionChanged">
             <ComboBoxItem x:Name="maleComboBoxItem"/>
             <ComboBoxItem x:Name="femaleComboBoxItem"/>

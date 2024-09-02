@@ -37,7 +37,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Date de naissance:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="Date de naissance:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding DateOfBirth.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="1" Margin="0 8 0 4">
@@ -45,7 +45,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Genre:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="Genre:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding Gender, Converter={StaticResource GenderConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="2" Margin="0 8 0 4">
@@ -53,7 +53,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Numéro de téléphone 1:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="Numéro de téléphone 1:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding phone1Details}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="3" Margin="0 8 0 4">
@@ -61,7 +61,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Numéro de téléphone 2:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="Numéro de téléphone 2:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding phone2Details}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="4" Margin="0 8 0 4">
@@ -69,7 +69,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Email:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="Email:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding Email, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
                 </Grid>
                 <Grid Grid.Row="5" Margin="0 8 0 4">
@@ -80,7 +80,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Adresse:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="Adresse:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding Address, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="6" Margin="0 8 0 4">
@@ -91,7 +91,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● City:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="City:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding City, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="7" Margin="0 8 0 4">
@@ -102,7 +102,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● State:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="State:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding State, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="8" Margin="0 8 0 4">
@@ -113,7 +113,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Code Postal:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="Code Postal:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding PostalCode, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="9" Margin="0 8 0 4">
@@ -124,7 +124,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Fournisseur d'assurance:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="Fournisseur d'assurance:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding InsuranceProvider, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="10" Margin="0 8 0 4">
@@ -135,7 +135,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Numéro d'assurance:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="Numéro d'assurance:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding InsuranceNumber, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
                 <Grid Grid.Row="11" Margin="0 8 0 4">
@@ -146,7 +146,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="● Date et heure d'ajout:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    <TextBlock Grid.Column="0" Text="Date et heure d'ajout:" Margin="0 0 4 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     <TextBlock Grid.Column="1" Text="{Binding dateOfRegistration}" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap"/>
                 </Grid>
             </Grid>
@@ -161,11 +161,11 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="● Antécédents médicaux:" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                <TextBlock Grid.Row="0" Text="Antécédents médicaux:" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                 <TextBlock Grid.Row="1" Text="{Binding MedicalHistory, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Margin="12 8 4 8" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap" TextAlignment="Justify"/>
-                <TextBlock Grid.Row="2" Text="● Allergies:" Margin="0 8 0 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                <TextBlock Grid.Row="2" Text="Allergies:" Margin="0 8 0 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                 <TextBlock Grid.Row="3" Text="{Binding Allergies, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Margin="12 8 4 8" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap" TextAlignment="Justify"/>
-                <TextBlock Grid.Row="4" Text="● Médicaments actuels:" Margin="0 8 0 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                <TextBlock Grid.Row="4" Text="Médicaments actuels:" Margin="0 8 0 0" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                 <TextBlock Grid.Row="5" Text="{Binding CurrentMedications, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Margin="12 8 4 0" Style="{ThemeResource BodyTextBlockStyle}"  TextWrapping="Wrap" TextAlignment="Justify"/>
             </Grid>
         </PivotItem>

@@ -84,7 +84,7 @@ namespace Hakim.View.Clients
             if (this.DataContext is Model.Patient patient)
             {
                 ParentPage.viewModel.SelectedPatient = patient;
-                App.mainWindow.contentFrame.Navigate(typeof(PatientPage), ParentPage.viewModel);
+                App.mainWindow.contentFrame.Navigate(typeof(PatientPage), ParentPage.viewModel.SelectedPatient);
             }
         }
 

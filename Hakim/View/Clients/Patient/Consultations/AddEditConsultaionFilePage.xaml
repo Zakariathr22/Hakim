@@ -17,8 +17,8 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <TextBox x:Name="titleTextBox" Grid.Row="0" Header="Titre" PlaceholderText="Titre de consultation (obligatoire)" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" Margin="0 0 0 4" IsSpellCheckEnabled="True" FontWeight="Bold" Text="{Binding Title, Mode=TwoWay}" Language="fr-FR" TextChanged="titleTextBox_TextChanged"/>
-            <TextBox Grid.Row="1" Header="Prescription de consultation" PlaceholderText="Décrivez brièvement la raison de la consultation et mentionnez toute instruction spécifique pour le patient" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Prescription, Mode=TwoWay}"/>
-            <TextBox Grid.Row="2" Header="Notes" PlaceholderText="Notes ou observations détaillées concernant l’état du patient, ses symptômes et tout antécédent médical pertinent." Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Notes, Mode=TwoWay}"/>
+            <TextBox Grid.Row="1" Header="Détails de la consultation" PlaceholderText="Décrivez brièvement la raison de la consultation et mentionnez toute instruction spécifique pour le patient" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Prescription, Mode=TwoWay}"/>
+            <TextBox Grid.Row="2" Header="Notes" PlaceholderText="Notes ou observations détaillées concernant l’état du patient." Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Notes, Mode=TwoWay}"/>
         </Grid>
     </ScrollView>
 </Page>

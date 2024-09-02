@@ -10,8 +10,8 @@
     Width="456"
     MaxHeight="500">
 
-    <Pivot>
-        <PivotItem x:Name="GeneralInfoPivotItem">
+    <Pivot Margin="0">
+        <PivotItem x:Name="GeneralInfoPivotItem" Margin="0">
             <ScrollView>
                 <Grid Width="400" Margin="0 16 0 0 ">
                     <Grid.RowDefinitions>
@@ -43,7 +43,7 @@
                         <TextBox x:Name="lastNameTextBox" Grid.Column="0" Margin="0 0 4 4" IsSpellCheckEnabled="False" Text="{Binding LastName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" TextChanged="lastNameTextBox_TextChanged"/>
                         <TextBox x:Name="firstNameTextBox" Grid.Column="1" Margin="0 0 0 4" IsSpellCheckEnabled="False" Text="{Binding FirstName, Mode=TwoWay}" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" TextChanged="firstNameTextBox_TextChanged"/>
                     </Grid>
-                    <DatePicker x:Name="dateOfBirthPicker" Grid.Row="2" Width="400" Margin="0 0 0 4" SelectedDate="{Binding DateOfBirth, Mode=TwoWay}"/>
+                    <CalendarDatePicker x:Name="dateOfBirthPicker" Grid.Row="2" Width="400" Margin="0 0 0 4" Date="{Binding DateOfBirth, Mode=TwoWay}"/>
                     <ComboBox x:Name="GenderComboBox" Grid.Row="3" Width="400" PlaceholderForeground="{ThemeResource SystemFillColorCriticalBrush}" SelectedIndex="{Binding Gender, Mode=TwoWay}" SelectionChanged="GenderComboBox_SelectionChanged">
                         <ComboBoxItem x:Name="maleComboBoxItem"/>
                         <ComboBoxItem x:Name="femaleComboBoxItem"/>
@@ -119,7 +119,7 @@
                 </Grid>
             </ScrollView>
         </PivotItem>
-        <PivotItem x:Name="medicalInformationPivotItem">
+        <PivotItem x:Name="medicalInformationPivotItem" Margin="0">
             <ScrollView>
                 <Grid Width="400" Margin="0 16 0 0 ">
                     <Grid.RowDefinitions>

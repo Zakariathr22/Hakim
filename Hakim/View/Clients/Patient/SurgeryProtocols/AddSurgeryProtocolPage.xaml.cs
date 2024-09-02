@@ -1,3 +1,4 @@
+using Hakim.Model;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -24,10 +25,13 @@ namespace Hakim.View.Clients.Patient.SurgeryProtocols
     public sealed partial class AddSurgeryProtocolPage : Page
     {
         ContentDialog dialog;
-        public AddSurgeryProtocolPage(ContentDialog dialog)
+        SurgeryProtocol surgeryProtocol;
+        public AddSurgeryProtocolPage(ContentDialog dialog, SurgeryProtocol surgeryProtocol)
         {
             this.InitializeComponent();
             this.dialog = dialog;
+            this.surgeryProtocol = surgeryProtocol;
+            DataContext = surgeryProtocol;
         }
 
         private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
