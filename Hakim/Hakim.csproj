@@ -63,6 +63,8 @@
     <None Remove="View\Clients\Patient\SurgeryProtocols\AddSurgeryProtocolPage.xaml" />
     <None Remove="View\Clients\Patient\XRay_s\AddTelemetryXRayPage.xaml" />
     <None Remove="View\Clients\Patient\XRay_s\AddXRayPage.xaml" />
+    <None Remove="View\Controls\CustomCalendarDatePicker.xaml" />
+    <None Remove="View\Controls\CustomCalendarView.xaml" />
     <None Remove="View\Controls\EditNamePage.xaml" />
     <None Remove="View\Controls\HomePageHeaderImage.xaml" />
     <None Remove="View\Controls\TitleControl.xaml" />
@@ -119,6 +121,16 @@
     <Content Update="Assets\StoreLogo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Controls\CustomCalendarDatePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Controls\CustomCalendarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Controls\HomePageHeaderImage.xaml">

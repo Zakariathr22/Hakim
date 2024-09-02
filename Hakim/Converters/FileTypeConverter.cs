@@ -18,7 +18,7 @@ namespace Hakim.Converters
                 else if (type == 1)
                     return @"Radiographie";
                 else if (type == 2)
-                    return @"Radiographie télémétrie";
+                    return @"Radiographie télémétrie de la colonne vertébrale";
                 else if (type == 3)
                     return @"Protocol opératoire";
                 else return @"Fichier médical";
