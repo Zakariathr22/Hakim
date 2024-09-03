@@ -62,220 +62,123 @@ namespace Hakim.View.Clients
             }
         }
 
+        private void SetOrder(int order)
+        {
+            // Reset all checkboxes
+            OrderByDate.IsChecked = false;
+            OrderByLastName.IsChecked = false;
+            OrderByFirstName.IsChecked = false;
+            OrderByAge.IsChecked = false;
+            CroissantOrder.IsChecked = false;
+            DecroissantOrder.IsChecked = false;
+
+            // Set the appropriate checkboxes based on the order value
+            switch (order)
+            {
+                case 0:
+                    OrderByDate.IsChecked = true;
+                    DecroissantOrder.IsChecked = true;
+                    break;
+                case 1:
+                    OrderByDate.IsChecked = true;
+                    CroissantOrder.IsChecked = true;
+                    break;
+                case 2:
+                    OrderByLastName.IsChecked = true;
+                    CroissantOrder.IsChecked = true;
+                    break;
+                case 3:
+                    OrderByLastName.IsChecked = true;
+                    DecroissantOrder.IsChecked = true;
+                    break;
+                case 4:
+                    OrderByFirstName.IsChecked = true;
+                    CroissantOrder.IsChecked = true;
+                    break;
+                case 5:
+                    OrderByFirstName.IsChecked = true;
+                    DecroissantOrder.IsChecked = true;
+                    break;
+                case 6:
+                    OrderByAge.IsChecked = true;
+                    CroissantOrder.IsChecked = true;
+                    break;
+                case 7:
+                    OrderByAge.IsChecked = true;
+                    DecroissantOrder.IsChecked = true;
+                    break;
+            }
+        }
+
         private void OrderByDate_Click(object sender, RoutedEventArgs e)
         {
             if (OrderByDate.IsChecked == true)
             {
-                if(CroissantOrder.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 1;
-                }
-                else if (DecroissantOrder.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 0;
-                }
+                viewModel.PatientsOrder = CroissantOrder.IsChecked == true ? 1 : 0;
                 OrderChanged();
             }
-            OrderByDate.IsChecked = true;
-            OrderByLastName.IsChecked = false;
-            OrderByFirstName.IsChecked = false;
-            OrderByAge.IsChecked = false;
+            SetOrder(viewModel.PatientsOrder);
         }
 
         private void OrderByLastName_Click(object sender, RoutedEventArgs e)
         {
             if (OrderByLastName.IsChecked == true)
             {
-                if (CroissantOrder.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 2;
-                }
-                else if (DecroissantOrder.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 3;
-                }
+                viewModel.PatientsOrder = CroissantOrder.IsChecked == true ? 2 : 3;
                 OrderChanged();
             }
-            OrderByDate.IsChecked = false;
-            OrderByLastName.IsChecked = true;
-            OrderByFirstName.IsChecked = false;
-            OrderByAge.IsChecked = false;
+            SetOrder(viewModel.PatientsOrder);
         }
 
         private void OrderByFirstName_Click(object sender, RoutedEventArgs e)
         {
             if (OrderByFirstName.IsChecked == true)
             {
-                if (CroissantOrder.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 4;
-                }
-                else if (DecroissantOrder.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 5;
-                }
+                viewModel.PatientsOrder = CroissantOrder.IsChecked == true ? 4 : 5;
                 OrderChanged();
             }
-            OrderByDate.IsChecked = false;
-            OrderByLastName.IsChecked = false;
-            OrderByFirstName.IsChecked = true;
-            OrderByAge.IsChecked = false;
+            SetOrder(viewModel.PatientsOrder);
         }
 
         private void OrderByAge_Click(object sender, RoutedEventArgs e)
         {
             if (OrderByAge.IsChecked == true)
             {
-                if (CroissantOrder.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 6;
-                }
-                else if (DecroissantOrder.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 7;
-                }
+                viewModel.PatientsOrder = CroissantOrder.IsChecked == true ? 6 : 7;
                 OrderChanged();
             }
-            OrderByDate.IsChecked = false;
-            OrderByLastName.IsChecked = false;
-            OrderByFirstName.IsChecked = false;
-            OrderByAge.IsChecked = true;
+            SetOrder(viewModel.PatientsOrder);
         }
 
         private void CroissantOrder_Click(object sender, RoutedEventArgs e)
         {
-            if(CroissantOrder.IsChecked == true)
+            if (CroissantOrder.IsChecked == true)
             {
-                if (OrderByDate.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 1;
-                } 
-                else if (OrderByLastName.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 2;
-                }
-                else if (OrderByFirstName.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 4;
-                }
-                else if (OrderByAge.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 6;
-                }
+                viewModel.PatientsOrder = OrderByDate.IsChecked == true ? 1 :
+                                          OrderByLastName.IsChecked == true ? 2 :
+                                          OrderByFirstName.IsChecked == true ? 4 :
+                                          OrderByAge.IsChecked == true ? 6 : viewModel.PatientsOrder;
                 OrderChanged();
             }
-            CroissantOrder.IsChecked = true;
-            DecroissantOrder.IsChecked = false;
+            SetOrder(viewModel.PatientsOrder);
         }
 
         private void DecroissantOrder_Click(object sender, RoutedEventArgs e)
         {
             if (DecroissantOrder.IsChecked == true)
             {
-                if (OrderByDate.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 0;
-                }
-                else if (OrderByLastName.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 3;
-                }
-                else if (OrderByFirstName.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 5;
-                }
-                else if (OrderByAge.IsChecked == true)
-                {
-                    viewModel.PatientsOrder = 7;
-                }
+                viewModel.PatientsOrder = OrderByDate.IsChecked == true ? 0 :
+                                          OrderByLastName.IsChecked == true ? 3 :
+                                          OrderByFirstName.IsChecked == true ? 5 :
+                                          OrderByAge.IsChecked == true ? 7 : viewModel.PatientsOrder;
                 OrderChanged();
             }
-            CroissantOrder.IsChecked = false;
-            DecroissantOrder.IsChecked = true;
+            SetOrder(viewModel.PatientsOrder);
         }
 
         private void GetTheOrder()
         {
-            if (viewModel.PatientsOrder == 0)
-            {
-                OrderByDate.IsChecked = true;
-                OrderByLastName.IsChecked = false;
-                OrderByFirstName.IsChecked = false;
-                OrderByAge.IsChecked = false;
-
-                CroissantOrder.IsChecked = false;
-                DecroissantOrder.IsChecked = true;
-            }
-            else if (viewModel.PatientsOrder == 1)
-            {
-                OrderByDate.IsChecked = true;
-                OrderByLastName.IsChecked = false;
-                OrderByFirstName.IsChecked = false;
-                OrderByAge.IsChecked = false;
-
-                CroissantOrder.IsChecked = true;
-                DecroissantOrder.IsChecked = false;
-            }
-            else if (viewModel.PatientsOrder == 2)
-            {
-                OrderByDate.IsChecked = false;
-                OrderByLastName.IsChecked = true;
-                OrderByFirstName.IsChecked = false;
-                OrderByAge.IsChecked = false;
-
-                CroissantOrder.IsChecked = true;
-                DecroissantOrder.IsChecked = false;
-            }
-            else if (viewModel.PatientsOrder == 3)
-            {
-                OrderByDate.IsChecked = false;
-                OrderByLastName.IsChecked = true;
-                OrderByFirstName.IsChecked = false;
-                OrderByAge.IsChecked = false;
-
-                CroissantOrder.IsChecked = false;
-                DecroissantOrder.IsChecked = true;
-            }
-            else if (viewModel.PatientsOrder == 4)
-            {
-                OrderByDate.IsChecked = false;
-                OrderByLastName.IsChecked = false;
-                OrderByFirstName.IsChecked = true;
-                OrderByAge.IsChecked = false;
-
-                CroissantOrder.IsChecked = true;
-                DecroissantOrder.IsChecked = false;
-            }
-            else if (viewModel.PatientsOrder == 5)
-            {
-                OrderByDate.IsChecked = false;
-                OrderByLastName.IsChecked = false;
-                OrderByFirstName.IsChecked = true;
-                OrderByAge.IsChecked = false;
-
-                CroissantOrder.IsChecked = false;
-                DecroissantOrder.IsChecked = true;
-            }
-            else if (viewModel.PatientsOrder == 6)
-            {
-                OrderByDate.IsChecked = false;
-                OrderByLastName.IsChecked = false;
-                OrderByFirstName.IsChecked = false;
-                OrderByAge.IsChecked = true;
-
-                CroissantOrder.IsChecked = true;
-                DecroissantOrder.IsChecked = false;
-            }
-            else if (viewModel.PatientsOrder == 7)
-            {
-                OrderByDate.IsChecked = false;
-                OrderByLastName.IsChecked = false;
-                OrderByFirstName.IsChecked = false;
-                OrderByAge.IsChecked = true;
-
-                CroissantOrder.IsChecked = false;
-                DecroissantOrder.IsChecked = true;
-            }
+            SetOrder(viewModel.PatientsOrder);
         }
 
         private void OrderChanged()

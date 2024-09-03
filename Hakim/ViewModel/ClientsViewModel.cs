@@ -129,24 +129,20 @@ namespace Hakim.ViewModel
 
         private string ReturnQuery(int PatientsOrdrer)
         {
-            if (PatientsOrdrer == 0)
-                return "SELECT * FROM Patient ORDER BY DateOfRegistration DESC";
-            else if (PatientsOrdrer == 1)
-                return "SELECT * FROM Patient ORDER BY DateOfRegistration";
-            else if (PatientsOrdrer == 2)
-                return "SELECT * FROM Patient ORDER BY (LastName || ' ' || FirstName)";
-            else if (PatientsOrdrer == 3)
-                return "SELECT * FROM Patient ORDER BY (LastName || ' ' || FirstName) DESC";
-            else if (PatientsOrdrer == 4)
-                return "SELECT * FROM Patient ORDER BY (FirstName || ' ' || LastName)";
-            else if (PatientsOrdrer == 5)
-                return "SELECT * FROM Patient ORDER BY (FirstName || ' ' || LastName) DESC";
-            else if (PatientsOrdrer == 6)
-                return "SELECT * FROM Patient ORDER BY DateOfBirth DESC";
-            else if (PatientsOrdrer == 7)
-                return "SELECT * FROM Patient ORDER BY DateOfBirth";
-            else
-                return "SELECT * FROM Patient ORDER BY DateOfRegistration DESC";
+            string orderClause = PatientsOrdrer switch
+            {
+                0 => "DateOfRegistration DESC",
+                1 => "DateOfRegistration",
+                2 => "(LastName || ' ' || FirstName)",
+                3 => "(LastName || ' ' || FirstName) DESC",
+                4 => "(FirstName || ' ' || LastName)",
+                5 => "(FirstName || ' ' || LastName) DESC",
+                6 => "DateOfBirth DESC",
+                7 => "DateOfBirth",
+                _ => "DateOfRegistration DESC"
+            };
+
+            return $"SELECT * FROM Patient ORDER BY {orderClause}";
         }
 
         [RelayCommand]

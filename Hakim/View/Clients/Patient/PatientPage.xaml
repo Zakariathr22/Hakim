@@ -94,8 +94,8 @@
                     </Button.Flyout>
                 </AppBarButton>
 
-                <AppBarButton x:Name="FilterFilesButton" x:FieldModifier="public" Icon="Filter" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers">
-                    <Button.Flyout>
+                <AppBarToggleButton x:Name="FilterFilesButton" x:FieldModifier="public" Icon="Filter" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers" Click="FilterFilesButton_Click">
+                    <AppBarToggleButton.ContextFlyout>
                         <MenuFlyout>
                             <ToggleMenuFlyoutItem x:Name="AllFiles" Text="Tous les fichiers" IsChecked="True" Click="AllFiles_Click"/>
                             <ToggleMenuFlyoutItem x:Name="Consultations" Text="Consultations" IsChecked="True" Click="Consultations_Click"/>
@@ -103,8 +103,8 @@
                             <ToggleMenuFlyoutItem x:Name="TXray" Text="Radiographies télémétries" IsChecked="True" Click="TXray_Click"/>
                             <ToggleMenuFlyoutItem x:Name="SurgeryProtocol" Text="Protocols opératoires" IsChecked="True" Click="SurgeryProtocol_Click"/>
                         </MenuFlyout>
-                    </Button.Flyout>
-                </AppBarButton>
+                    </AppBarToggleButton.ContextFlyout>
+                </AppBarToggleButton>
 
                 <AppBarButton x:Name="FilterAppointmentsButton" x:FieldModifier="public" Icon="Filter" Visibility="Collapsed" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers">
                     <Button.Flyout>

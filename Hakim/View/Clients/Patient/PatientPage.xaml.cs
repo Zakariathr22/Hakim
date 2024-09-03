@@ -186,6 +186,7 @@ namespace Hakim.View.Clients
                 scrollView1.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
                 scrollView1.Padding = new Thickness(24, 0, 24, 0);
                 expander.Margin = new Thickness(0, 24, 0, 24);
+                expander.Padding = new Thickness(16, 0, 0, 0);
                 patientInfoEditor.Margin = new Thickness(16, 16, 0, 16);
                 patientDetailsDisplay.Margin = new Thickness(0);
                 patientRecords.Margin = new Thickness(0);
@@ -201,37 +202,210 @@ namespace Hakim.View.Clients
             base.OnNavigatedTo(e);
         }
 
-        private void OrderByDate_Click(object sender, RoutedEventArgs e)
+        private void SetOrder(int order)
         {
-            OrderByDate.IsChecked = true;
+            // Reset all checkboxes
+            OrderByDate.IsChecked = false;
             OrderByTitle.IsChecked = false;
             OrderByType.IsChecked = false;
+            CroissantOrder.IsChecked = false;
+            DecroissantOrder.IsChecked = false;
+
+            // Set the appropriate checkboxes based on the order value
+            switch (order)
+            {
+                case 0:
+                    OrderByDate.IsChecked = true;
+                    DecroissantOrder.IsChecked = true;
+                    break;
+                case 1:
+                    OrderByDate.IsChecked = true;
+                    CroissantOrder.IsChecked = true;
+                    break;
+                case 2:
+                    OrderByTitle.IsChecked = true;
+                    CroissantOrder.IsChecked = true;
+                    break;
+                case 3:
+                    OrderByTitle.IsChecked = true;
+                    DecroissantOrder.IsChecked = true;
+                    break;
+                case 4:
+                    OrderByType.IsChecked = true;
+                    CroissantOrder.IsChecked = true;
+                    break;
+                case 5:
+                    OrderByType.IsChecked = true;
+                    DecroissantOrder.IsChecked = true;
+                    break;
+            }
+        }
+
+        private void SetFilter(int filter)
+        {
+            // Reset all checkboxes
+            AllFiles.IsChecked = false;
+            Consultations.IsChecked = false;
+            Xray.IsChecked = false;
+            TXray.IsChecked = false;
+            SurgeryProtocol.IsChecked = false;
+
+            // Set the appropriate checkbox based on the filter value
+            switch (filter)
+            {
+                case 1:
+                    Consultations.IsChecked = true;
+                    break;
+                case 2:
+                    Xray.IsChecked = true;
+                    break;
+                case 3:
+                    TXray.IsChecked = true;
+                    break;
+                case 4:
+                    SurgeryProtocol.IsChecked = true;
+                    break;
+                default:
+                    AllFiles.IsChecked = true;
+                    break;
+            }
+        }
+
+        private void OrderByDate_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.FilesOrder = CroissantOrder.IsChecked == true ? 1 : 0;
+            FilesOrderChanged();
+            SetOrder(viewModel.FilesOrder);
         }
 
         private void OrderByTitle_Click(object sender, RoutedEventArgs e)
         {
-            OrderByDate.IsChecked = false;
-            OrderByTitle.IsChecked = true;
-            OrderByType.IsChecked = false;
+            viewModel.FilesOrder = CroissantOrder.IsChecked == true ? 2 : 3;
+            FilesOrderChanged();
+            SetOrder(viewModel.FilesOrder);
         }
 
         private void OrderByType_Click(object sender, RoutedEventArgs e)
         {
-            OrderByDate.IsChecked = false;
-            OrderByTitle.IsChecked = false;
-            OrderByType.IsChecked = true;
+            viewModel.FilesOrder = CroissantOrder.IsChecked == true ? 4 : 5;
+            FilesOrderChanged();
+            SetOrder(viewModel.FilesOrder);
         }
 
         private void CroissantOrder_Click(object sender, RoutedEventArgs e)
         {
-            CroissantOrder.IsChecked = true;
-            DecroissantOrder.IsChecked = false;
+            if (CroissantOrder.IsChecked == true)
+            {
+                viewModel.FilesOrder = OrderByDate.IsChecked == true ? 1 :
+                                  OrderByTitle.IsChecked == true ? 2 :
+                                  OrderByType.IsChecked == true ? 4 : viewModel.FilesOrder;
+                FilesOrderChanged();
+            }
+            SetOrder(viewModel.FilesOrder);
         }
 
         private void DecroissantOrder_Click(object sender, RoutedEventArgs e)
         {
-            CroissantOrder.IsChecked = false;
-            DecroissantOrder.IsChecked = true;
+            if (DecroissantOrder.IsChecked == true)
+            {
+                viewModel.FilesOrder = OrderByDate.IsChecked == true ? 0 :
+                                  OrderByTitle.IsChecked == true ? 3 :
+                                  OrderByType.IsChecked == true ? 5 : viewModel.FilesOrder;
+                FilesOrderChanged();
+            }
+            SetOrder(viewModel.FilesOrder);
+        }
+        
+        private void AllFiles_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.FilesFilter = 0; // AllFiles
+            FilterFilesButton.IsChecked = false;
+            SetFilter(viewModel.FilesFilter);
+            Consultations.IsChecked = true;
+            Xray.IsChecked = true;
+            TXray.IsChecked = true;
+            SurgeryProtocol.IsChecked = true;
+            FilesFilterChanged();
+
+            AddConsultationItem.Visibility = Visibility.Visible;
+            AddXRayItem.Visibility = Visibility.Visible;
+            TelemetryXRayItem.Visibility = Visibility.Visible;
+            SurgeryProtocol.Visibility = Visibility.Visible;
+        }
+
+        private void Consultations_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.FilesFilter = 1; // Consultation
+            FilterFilesButton.IsChecked = true;
+            SetFilter(viewModel.FilesFilter);
+            FilesFilterChanged();
+
+            AddConsultationItem.Visibility = Visibility.Visible;
+            AddXRayItem.Visibility = Visibility.Collapsed;
+            TelemetryXRayItem.Visibility = Visibility.Collapsed;
+            SurgeryProtocolItem.Visibility = Visibility.Collapsed;
+        }
+
+        private void Xray_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.FilesFilter = 2; // Xray
+            FilterFilesButton.IsChecked = true;
+            SetFilter(viewModel.FilesFilter);
+            FilesFilterChanged();
+
+            AddConsultationItem.Visibility = Visibility.Collapsed;
+            AddXRayItem.Visibility = Visibility.Visible;
+            TelemetryXRayItem.Visibility = Visibility.Collapsed;
+            SurgeryProtocolItem.Visibility = Visibility.Collapsed;
+        }
+
+        private void TXray_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.FilesFilter = 3; // TXray
+            FilterFilesButton.IsChecked = true;
+            SetFilter(viewModel.FilesFilter);
+            FilesFilterChanged();
+
+            AddConsultationItem.Visibility = Visibility.Collapsed;
+            AddXRayItem.Visibility = Visibility.Collapsed;
+            TelemetryXRayItem.Visibility = Visibility.Visible;
+            SurgeryProtocolItem.Visibility = Visibility.Collapsed;
+        }
+
+        private void SurgeryProtocol_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.FilesFilter = 4; // SurgeryProtocol
+            FilterFilesButton.IsChecked = true;
+            SetFilter(viewModel.FilesFilter);
+            FilesFilterChanged();
+
+            AddConsultationItem.Visibility = Visibility.Collapsed;
+            AddXRayItem.Visibility = Visibility.Collapsed;
+            TelemetryXRayItem.Visibility = Visibility.Collapsed;
+            SurgeryProtocolItem.Visibility = Visibility.Visible;
+        }
+
+        private void FilterFilesButton_Click(object sender, RoutedEventArgs e)
+        {
+            FilterFilesButton.ContextFlyout.ShowAt(FilterFilesButton,
+                new FlyoutShowOptions { Placement = FlyoutPlacementMode.Bottom });
+            if (AllFiles.IsChecked)
+                FilterFilesButton.IsChecked = false;
+            else FilterFilesButton.IsChecked = true;
+        }
+
+        private void FilesOrderChanged()
+        {
+            viewModel.FilesOrderChangedCommand.Execute(null);
+            patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
+            patientRecords.UpdateFilesDisplayVisibility(viewModel.SelectedPatient);
+        }
+
+        private void FilesFilterChanged()
+        {
+            viewModel.FilesFilterChangedCommand.Execute(null);
+            patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
+            patientRecords.UpdateFilesDisplayVisibility(viewModel.SelectedPatient);
         }
 
         private void CroissantAppointmentOrder_Click(object sender, RoutedEventArgs e)
@@ -244,51 +418,6 @@ namespace Hakim.View.Clients
         {
             CroissantAppointmentOrder.IsChecked = false;
             DecroissantAppointmentOrder.IsChecked = true;
-        }
-
-        private void AllFiles_Click(object sender, RoutedEventArgs e)
-        {
-            AllFiles.IsChecked = true;
-            Consultations.IsChecked = true;
-            Xray.IsChecked = true;
-            TXray.IsChecked = true;
-            SurgeryProtocol.IsChecked = true;
-        }
-
-        private void Consultations_Click(object sender, RoutedEventArgs e)
-        {
-            AllFiles.IsChecked = false;
-            Consultations.IsChecked = true;
-            Xray.IsChecked = false;
-            TXray.IsChecked = false;
-            SurgeryProtocol.IsChecked = false;
-        }
-
-        private void Xray_Click(object sender, RoutedEventArgs e)
-        {
-            AllFiles.IsChecked = false;
-            Consultations.IsChecked = false;
-            Xray.IsChecked = true;
-            TXray.IsChecked = false;
-            SurgeryProtocol.IsChecked = false;
-        }
-
-        private void TXray_Click(object sender, RoutedEventArgs e)
-        {
-            AllFiles.IsChecked = false;
-            Consultations.IsChecked = false;
-            Xray.IsChecked = false;
-            TXray.IsChecked = true;
-            SurgeryProtocol.IsChecked = false;
-        }
-
-        private void SurgeryProtocol_Click(object sender, RoutedEventArgs e)
-        {
-            AllFiles.IsChecked = false;
-            Consultations.IsChecked = false;
-            Xray.IsChecked = false;
-            TXray.IsChecked = false;
-            SurgeryProtocol.IsChecked = true;
         }
 
         private void AllAppointments_Click(object sender, RoutedEventArgs e)
@@ -370,7 +499,7 @@ namespace Hakim.View.Clients
             dialog.CloseButtonText = "Annuler";
             dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
             dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
-            viewModel.XRay = new XRay { Patient = viewModel.SelectedPatient, Title = $"Radiographie {viewModel.SelectedPatient.files.Count(file => file.Type == 1) + 1} du ....... - {viewModel.SelectedPatient.fullName}", CreationDate = DateTime.Now, Xray_date = DateTime.Now };
+            viewModel.XRay = new XRay { Patient = viewModel.SelectedPatient, Title = $"Radiographie {viewModel.SelectedPatient.files.Count(file => file.Type == 1) + 1} - {viewModel.SelectedPatient.fullName}", CreationDate = DateTime.Now, Xray_date = DateTime.Now };
             dialog.Content = new AddXRayPage(dialog, viewModel.XRay);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
@@ -448,7 +577,7 @@ namespace Hakim.View.Clients
             dialog.CloseButtonText = "Annuler";
             dialog.PrimaryButtonText = "Sauvgarder"; //AccentButtonStyle
             dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
-            viewModel.Appointment = new Appointment { Patient = viewModel.SelectedPatient, AppointmentDate = DateTime.Now.Date, AppointmentTime = DateTime.Now.TimeOfDay, Purpose = "Routine Checkup" };
+            viewModel.Appointment = new Appointment { Patient = viewModel.SelectedPatient, AppointmentDate = DateTime.Now.Date, AppointmentTime = TimeSpan.FromHours(8.5), Purpose = "Routine Checkup" };
             dialog.Content = new AddAppointmentPage(dialog, viewModel.Appointment, viewModel.AppointmentCounts);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();

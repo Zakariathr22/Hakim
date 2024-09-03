@@ -11,7 +11,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="48"/>
+            <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="{Binding fullNameAndAge}" Style="{ThemeResource TitleTextBlockStyle}" TextWrapping="Wrap" VerticalAlignment="Center"/>
         <AppBarButton x:Name="EditButton" Grid.Column="1" Icon="Edit" Label="Modifier"

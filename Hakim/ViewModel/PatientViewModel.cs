@@ -21,6 +21,14 @@ namespace Hakim.ViewModel
         [ObservableProperty] private SurgeryProtocol surgeryProtocol;
         [ObservableProperty] private Dictionary<DateTime, int> appointmentCounts;
         [ObservableProperty] private Appointment appointment;
+        [ObservableProperty] private int filesOrder;
+        [ObservableProperty] private int filesFilter;
+
+        public PatientViewModel()
+        {
+            FilesOrder = int.Parse(ConfigurationService.GetAppSetting("PatientsOrder"));
+            FilesFilter = int.Parse(ConfigurationService.GetAppSetting("PatientsOrder"));
+        }
 
         public void UpdatePatient(Patient patient)
         {
@@ -89,7 +97,7 @@ namespace Hakim.ViewModel
             try
             {
                 using (var connection = DataAccessService.GetConnection())
-                using (var command = new SQLiteCommand("SELECT * FROM File WHERE patient_id = @PatientId", connection))
+                using (var command = new SQLiteCommand(ReturnFilesSelectionQuery(FilesOrder, FilesFilter), connection))
                 {
                     command.Parameters.AddWithValue("@PatientId", patient.id);
 
@@ -475,5 +483,43 @@ namespace Hakim.ViewModel
             }
         }
 
+        private string ReturnFilesSelectionQuery(int order, int filter)
+        {
+            string orderClause = order switch
+            {
+                0 => "creation_date DESC",
+                1 => "creation_date",
+                2 => "Title",
+                3 => "Title DESC",
+                4 => "Type",
+                5 => "Type DESC",
+                _ => "creation_date DESC"
+            };
+
+            string filterClause = filter switch
+            {
+                1 => "WHERE Type = 0 AND patient_id = @PatientId",
+                2 => "WHERE Type = 1 AND patient_id = @PatientId",
+                3 => "WHERE Type = 2 AND patient_id = @PatientId",
+                4 => "WHERE Type = 3 AND patient_id = @PatientId",
+                _ => "WHERE patient_id = @PatientId"  // 0 for AllFiles
+            };
+
+            return $"SELECT * FROM File {filterClause} ORDER BY {orderClause}";
+        }
+
+        [RelayCommand]
+        private void FilesOrderChanged()
+        {
+            ConfigurationService.SetAppSetting("FilesOrder", FilesOrder);
+            SelectedPatient.files = GetFilesByPatient(SelectedPatient);
+        }
+
+        [RelayCommand]
+        private void FilesFilterChanged()
+        {
+            ConfigurationService.SetAppSetting("FilesFilter", FilesFilter);
+            SelectedPatient.files = GetFilesByPatient(SelectedPatient);
+        }
     }
 }
