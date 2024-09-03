@@ -160,8 +160,8 @@ namespace Hakim.ViewModel
                 using (var command = new SQLiteCommand(connection))
                 {
                     command.CommandText = @"
-                DELETE FROM Patient 
-                WHERE Id = @Id";
+                        PRAGMA foreign_keys = ON;
+                        DELETE FROM Patient WHERE Id = @Id";
 
                     command.Parameters.AddWithValue("@Id", patientId);
 
