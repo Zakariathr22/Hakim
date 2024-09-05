@@ -1,6 +1,13 @@
-# Hakim Application (Still under development)
+# Hakim Application (Pre Release)
 
-Hakim is a desktop application designed to manage a doctor's patients' files, appointments, and folders, among other tasks. The application is built using WinUI 3 and follows the MVVM architecture, and it is connected to an SQLite database. This project is a side project to help my brother-in-law in his work.
+Hakim is a desktop application designed to manage a doctor's patients' files, appointments, and folders, among other tasks. The application is built using WinUI 3 and follows the MVVM architecture, and it is connected to an SQLite database.
+
+![image](https://github.com/user-attachments/assets/58006e6e-b528-4674-9f2c-d9a7ab32fabb)
+![image](https://github.com/user-attachments/assets/313179e9-8388-4d44-9291-1537cd072cb2)
+![image](https://github.com/user-attachments/assets/2799a24d-0d4a-4a7d-9725-1a5a22eec6bc)
+![image](https://github.com/user-attachments/assets/3806dd6b-fda3-4846-a0f4-5ae8bcb9911e)
+![image](https://github.com/user-attachments/assets/07485497-fa82-4733-8d63-e4a5957ed7b8)
+![image](https://github.com/user-attachments/assets/0ee9a43e-8ad7-4b95-a300-6d3947a9fdeb)
 
 ## Features
 
