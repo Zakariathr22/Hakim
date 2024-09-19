@@ -58,6 +58,7 @@
     <None Remove="View\Clients\PatientPage.xaml" />
     <None Remove="View\Clients\Patient\Appointments\AddAppointmentPage.xaml" />
     <None Remove="View\Clients\Patient\Consultations\AddEditConsultaionFilePage.xaml" />
+    <None Remove="View\Clients\Patient\FileItemControl.xaml" />
     <None Remove="View\Clients\Patient\PatientDetailsDisplayControl.xaml" />
     <None Remove="View\Clients\Patient\PatientInfoEditorControl.xaml" />
     <None Remove="View\Clients\Patient\PatientRecordsControl.xaml" />
@@ -122,6 +123,11 @@
     <Content Update="Assets\StoreLogo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="View\Clients\Patient\FileItemControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Controls\CustomCalendarDatePicker.xaml">

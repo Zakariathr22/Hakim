@@ -116,9 +116,10 @@
                     </Button.Flyout>
                 </AppBarButton>
                 
-                <AppBarButton Icon="Refresh" Label="Actualiser" ToolTipService.ToolTip="Actualiser"/>
+                <AppBarButton x:Name="RefreshButton" Icon="Refresh" Label="Actualiser" ToolTipService.ToolTip="Actualiser" Click="RefreshButton_Click"/>
                 <AppBarElementContainer Padding="6">
-                    <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="200" QueryIcon="Find" PlaceholderText="Recherche un fichier" />
+                    <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="200" QueryIcon="Find" PlaceholderText="Recherche un fichier" 
+                                    TextChanged="SearchAutoSuggestBox_TextChanged" SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen" QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted" />
                 </AppBarElementContainer>
             </CommandBar>
         </ContentPresenter>

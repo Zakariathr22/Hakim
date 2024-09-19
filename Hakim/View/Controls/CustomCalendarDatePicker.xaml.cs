@@ -1,3 +1,4 @@
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -63,7 +64,7 @@ namespace Hakim.View.Controls
                 "BorderWidth",         // The name of the property
                 typeof(double),       // The type of the property
                 typeof(CustomCalendarDatePicker), // The owner of the property
-                new PropertyMetadata(192, OnBorderWidthChanged)); // Default value
+                new PropertyMetadata(64, OnBorderWidthChanged)); // Default value
 
         public double BorderWidth
         {
@@ -160,15 +161,27 @@ namespace Hakim.View.Controls
             ToolTipService.SetToolTip(dayItem, toolTip);
             if (dayItem.Date.Date != DateTime.Now.Date)
             {
-                Border criticalBackground;
-                if (count < 6)
-                    criticalBackground = (Border)this.Resources["FewAppointmentsBackground"];
-                else if (count >= 6 && count < 11)
-                    criticalBackground = (Border)this.Resources["AverageAppointmentsBackground"];
+                Border criticalBackground = new Border();
+                if (count < 11)
+                    dayItem.SetDensityColors(GetColors(Windows.UI.Color.FromArgb(48, 0, 255, 0)));
+                else if (count >= 11 && count < 20)
+                    dayItem.SetDensityColors(GetColors(Windows.UI.Color.FromArgb(48, 255, 128, 32)));
                 else
-                    criticalBackground = (Border)this.Resources["ManyAppointmentsBackground"];
+                    dayItem.SetDensityColors(GetColors(Windows.UI.Color.FromArgb(48, 255, 0, 0)));
                 dayItem.Background = criticalBackground.Background;
+            }          
+        }
+
+        private IEnumerable<Windows.UI.Color> GetColors(Windows.UI.Color color)
+        {
+            var colors = new List<Windows.UI.Color>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                colors.Add(color);
             }
+
+            return colors;
         }
 
         private void RemoveExistingToolTip(CalendarViewDayItem dayItem)

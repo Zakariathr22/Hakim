@@ -48,12 +48,12 @@
                         <TextBlock x:Name="patientsNavigationItemText" Margin="8 0"/>
                     </StackPanel>
                 </NavigationViewItem>
-                <NavigationViewItem x:Name="scheduleNavigationItem" Tag="Schedule">
+                <!--<NavigationViewItem x:Name="scheduleNavigationItem" Tag="Schedule">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Image Width="24" Height="24" Source="/Assets/Icons/Schedule.png"></Image>
                         <TextBlock x:Name="scheduleNavigationItemText" Margin="8 0"/>
                     </StackPanel>
-                </NavigationViewItem>
+                </NavigationViewItem>-->
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem x:Name="settingsNavigationItem" Tag="Settings">

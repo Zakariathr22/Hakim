@@ -53,60 +53,7 @@
                     <ListView x:Name="PatientFiles" x:FieldModifier="public" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0" ContextRequested="Button_ContextRequested">
-                                    <Button.Resources>
-                                        <CommandBarFlyout Placement="Right" x:Name="FileCommandBarFlyout">
-                                            <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
-                                            <AppBarButton x:Name="editButton" Label="Edit" Icon="Edit"/>
-                                            <AppBarButton x:Name="copyButton" Label="Copy" Icon="Copy"/>
-                                            <CommandBarFlyout.SecondaryCommands>
-                                                <AppBarButton x:Name="printButton" Label="Print" Icon="Print"/>
-                                                <AppBarButton x:Name="deleteButton" Label="Delete" Icon="Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
-                                                    <AppBarButton.Flyout>
-                                                        <Flyout>
-                                                            <StackPanel Width="300">
-                                                                <TextBlock x:Name="deleteConfirmationText" Text="Are you sure you want to delete this file? If you click `Yes, Delete` you will not be able to recover the file." Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
-                                                                            Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                                                                <Button x:Name="deletePatientButton" Content="Yes, Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                                                            </StackPanel>
-                                                        </Flyout>
-                                                    </AppBarButton.Flyout>
-                                                </AppBarButton>
-                                            </CommandBarFlyout.SecondaryCommands>
-                                        </CommandBarFlyout>
-                                    </Button.Resources>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="6*"/>
-                                            <ColumnDefinition Width="4*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid Grid.Column="0">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="62"/>
-                                                    <ColumnDefinition Width="*"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Image Source="{Binding Type, Converter={StaticResource IconUrlConverter}, Mode=OneWay}" Width="32" Height="32" Margin="8 0"/>
-                                                <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
-                                            </Grid>
-                                        </Grid>
-                                        <Grid Grid.Column="1">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition/>
-                                                <RowDefinition/>
-                                            </Grid.RowDefinitions>
-                                            <TextBlock Text="{Binding Type, Converter={StaticResource FileTypeConverter}, Mode=OneWay}" TextWrapping="Wrap" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}" TextAlignment="Center"/>
-                                            <TextBlock Grid.Row="1" Text="{Binding CreationDate, Converter={StaticResource DateShortTimeConverter}, Mode=OneWay}" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                                        </Grid>
-                                    </Grid>
-                                    <ToolTipService.ToolTip>
-                                        <ToolTip IsEnabled="{Binding Url, Converter={StaticResource UrlNotEmptyConverter}, Mode=OneWay}" BorderThickness="0" Background="#8888" CornerRadius="8">
-                                            <Border CornerRadius="4">
-                                                <Image Source="{Binding Url, Mode=OneWay}" MaxWidth="200"/>
-                                            </Border>
-                                        </ToolTip>
-                                    </ToolTipService.ToolTip>
-                                </Button>
+                                <local:FileItemControl/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

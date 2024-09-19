@@ -122,7 +122,7 @@ namespace Hakim.View.Controls
             ToolTipService.SetToolTip(dayItem, toolTip);
             if (dayItem.Date.Date != DateTime.Now.Date)
             {
-                Border criticalBackground;
+                Border criticalBackground = new Border();
                 if (count < 6)
                     criticalBackground = (Border)this.Resources["FewAppointmentsBackground"];
                 else if (count >= 6 && count < 11) 

@@ -521,5 +521,38 @@ namespace Hakim.ViewModel
             ConfigurationService.SetAppSetting("FilesFilter", FilesFilter);
             SelectedPatient.files = GetFilesByPatient(SelectedPatient);
         }
+
+        public void DeleteFileById(int patientId)
+        {
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = @"
+                        PRAGMA foreign_keys = ON;
+                        DELETE FROM File WHERE Id = @Id";
+
+                    command.Parameters.AddWithValue("@Id", patientId);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("File deleted successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No file found with the provided ID.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while deleting the file: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+
+            SelectedPatient.files = GetFilesByPatient(SelectedPatient);
+        }
     }
 }

@@ -114,23 +114,5 @@ namespace Hakim.View.Clients.Patient
                     appointmentsGrid.Visibility = Visibility.Visible;
             }
         }
-
-        private void Button_ContextRequested(UIElement sender, ContextRequestedEventArgs args)
-        {
-            // Cast the sender to a Button, as it is the element that raised the event
-            if (sender is Button button)
-            {
-                // Try to find the CommandBarFlyout in the button's resources
-                if (button.Resources.TryGetValue("FileCommandBarFlyout", out var flyoutResource) && flyoutResource is CommandBarFlyout commandBarFlyout)
-                {
-                    // Show the flyout at the button
-                    FlyoutShowOptions showModeOption = new FlyoutShowOptions
-                    {
-                        ShowMode = FlyoutShowMode.Transient
-                    };
-                    commandBarFlyout.ShowAt(button, showModeOption);
-                }
-            }
-        }
     }
 }

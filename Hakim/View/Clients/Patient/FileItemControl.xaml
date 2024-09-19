@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Hakim.View.Clients.Patient.FileItemControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hakim.View.Clients.Patient"
+    xmlns:converters="using:Hakim.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <converters:DateShortTimeConverter x:Key="DateShortTimeConverter"/>
+        <converters:IconUrlConverter x:Key="IconUrlConverter"/>
+        <converters:UrlNotEmptyConverter x:Key="UrlNotEmptyConverter"/>
+        <converters:AppointmentIconUrlConverter x:Key="AppointmentIconUrlConverter"/>
+        <converters:OutputStringConverter x:Key="OutputStringConverter"/>
+        <converters:FileTypeConverter x:Key="FileTypeConverter"/>
+        <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
+        <converters:TimeSpanConverter x:Key="TimeSpanConverter"/>
+    </UserControl.Resources>
+    
+    <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0" ContextRequested="Button_ContextRequested">
+        <Button.Resources>
+            <CommandBarFlyout Placement="Right" x:Name="FileCommandBarFlyout">
+                <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
+                <AppBarButton x:Name="editButton" Label="Edit" Icon="Edit"/>
+                <AppBarButton x:Name="copyButton" Label="Copy" Icon="Copy"/>
+                <CommandBarFlyout.SecondaryCommands>
+                    <AppBarButton x:Name="printButton" Label="Print" Icon="Print"/>
+                    <AppBarButton x:Name="deleteButton" Label="Delete" Icon="Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
+                        <AppBarButton.Flyout>
+                            <Flyout>
+                                <StackPanel Width="300">
+                                    <TextBlock x:Name="deleteConfirmationText" Text="Are you sure you want to delete this file? If you click `Yes, Delete` you will not be able to recover the file." Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
+                                                                            Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                                    <Button x:Name="deletePatientButton" Content="Yes, Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Click="deletePatientButton_Click"/>
+                                </StackPanel>
+                            </Flyout>
+                        </AppBarButton.Flyout>
+                    </AppBarButton>
+                </CommandBarFlyout.SecondaryCommands>
+            </CommandBarFlyout>
+        </Button.Resources>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="62"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding Type, Converter={StaticResource IconUrlConverter}, Mode=OneWay}" Width="32" Height="32" Margin="8 0"/>
+                    <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Type, Converter={StaticResource FileTypeConverter}, Mode=OneWay}" TextWrapping="Wrap" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}" TextAlignment="Center"/>
+                <TextBlock Grid.Row="1" Text="{Binding CreationDate, Converter={StaticResource DateShortTimeConverter}, Mode=OneWay}" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
+            </Grid>
+        </Grid>
+        <ToolTipService.ToolTip>
+            <ToolTip IsEnabled="{Binding Url, Converter={StaticResource UrlNotEmptyConverter}, Mode=OneWay}" BorderThickness="0" Background="#8888" CornerRadius="8">
+                <Border CornerRadius="4">
+                    <Image Source="{Binding Url, Mode=OneWay}" MaxWidth="200"/>
+                </Border>
+            </ToolTip>
+        </ToolTipService.ToolTip>
+    </Button>
+</UserControl>

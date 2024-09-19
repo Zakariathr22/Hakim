@@ -27,6 +27,7 @@ using Hakim.View.Clients.Patient.SurgeryProtocols;
 using Hakim.Model;
 using System.Threading.Tasks;
 using Hakim.View.Clients.Patient.Appointments;
+using Hakim.Converters;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -35,16 +36,19 @@ namespace Hakim.View.Clients
 {
     public sealed partial class PatientPage : Page
     {
-        PatientViewModel viewModel = new PatientViewModel();
+        public PatientViewModel viewModel = new PatientViewModel();
         ScrollViewer scrollView1 = new ScrollViewer();
         Grid mainPanel = new Grid();
         ScrollViewer scrollView2 = new ScrollViewer();
         Grid InternalPanel = new Grid();
         Expander expander = new Expander();
+        private Dictionary<string, Model.File> _filesDictionary = new Dictionary<string, Model.File>();
+        private bool IsSuggestionChosen = false;
+        ObservableCollection<Model.File> Files = new ObservableCollection<Model.File>();
 
         PatientInfoEditorControl patientInfoEditor;
         PatientDetailsDisplayControl patientDetailsDisplay;
-        PatientRecordsControl patientRecords;
+        public PatientRecordsControl patientRecords;
 
         public PatientPage()
         {
@@ -330,7 +334,7 @@ namespace Hakim.View.Clients
             AddConsultationItem.Visibility = Visibility.Visible;
             AddXRayItem.Visibility = Visibility.Visible;
             TelemetryXRayItem.Visibility = Visibility.Visible;
-            SurgeryProtocol.Visibility = Visibility.Visible;
+            SurgeryProtocolItem.Visibility = Visibility.Visible;
         }
 
         private void Consultations_Click(object sender, RoutedEventArgs e)
@@ -587,6 +591,70 @@ namespace Hakim.View.Clients
                 patientRecords.UpdateAppointmentsDisplayVisibility(viewModel.SelectedPatient);
                 patientRecords.PatientAppointments.ItemsSource = viewModel.SelectedPatient.appointments;
             }
+        }
+
+        private void SearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                UpdatePatientSearchResults(sender);
+            }
+        }
+
+        public void UpdatePatientSearchResults(AutoSuggestBox autoSuggestBox)
+        {
+            if (autoSuggestBox.Text == "")
+            {
+               patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
+            }
+            else
+            {
+                _filesDictionary.Clear();
+
+                var filteredFiles = viewModel.SelectedPatient.files
+                    .Where(file => file.Title.Contains(autoSuggestBox.Text, StringComparison.OrdinalIgnoreCase)
+                                   || file.CreationDate.ToShortDateString().Contains(autoSuggestBox.Text, StringComparison.OrdinalIgnoreCase));
+
+                foreach (var file in filteredFiles)
+                {
+                    var fileDetails = $"{file.Title}";
+                    if (!_filesDictionary.ContainsKey(fileDetails))
+                    {
+                        _filesDictionary.Add(fileDetails, file);
+                    }
+                }
+
+                autoSuggestBox.ItemsSource = _filesDictionary.Keys.ToList();
+                patientRecords.PatientFiles.ItemsSource = _filesDictionary.Values.ToList();
+            }
+        }
+
+        private void SearchAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            IsSuggestionChosen = true;
+            var chosenFullName = args.SelectedItem as string;
+            if (chosenFullName != null && _filesDictionary.ContainsKey(chosenFullName))
+            {
+                Files.Clear();
+                Files.Add(_filesDictionary[chosenFullName]);
+                patientRecords.PatientFiles.ItemsSource = Files;
+            }
+        }
+
+        private void SearchAutoSuggestBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            if (IsSuggestionChosen == false)
+            {
+                Console.WriteLine();
+            }
+            else
+                IsSuggestionChosen = false;
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            viewModel.getFilesByPatientCommand.Execute(null);
+            UpdatePatientSearchResults(SearchAutoSuggestBox);
         }
     }
 }

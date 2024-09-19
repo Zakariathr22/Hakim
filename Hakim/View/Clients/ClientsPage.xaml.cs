@@ -26,6 +26,7 @@ namespace Hakim.View.Clients
         public ClientsViewModel viewModel = new ClientsViewModel();
         private bool IsSuggestionChosen = false;
         private ObservableCollection<Model.Patient> Patients = new ObservableCollection<Model.Patient>();
+        private Dictionary<string, Model.Patient> _patientDictionary = new Dictionary<string, Model.Patient>();
         public ClientsPage()
         {
             this.InitializeComponent();
@@ -186,8 +187,6 @@ namespace Hakim.View.Clients
             viewModel.OrderChangedCommand.Execute(null);
             UpdatePatientSearchResults(SearchAutoSuggestBox);
         }
-
-        private Dictionary<string, Model.Patient> _patientDictionary = new Dictionary<string, Model.Patient>();
 
         private void SearchAutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
