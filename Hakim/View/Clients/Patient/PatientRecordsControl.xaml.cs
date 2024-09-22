@@ -114,5 +114,10 @@ namespace Hakim.View.Clients.Patient
                     appointmentsGrid.Visibility = Visibility.Visible;
             }
         }
+
+        private void PatientFiles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PatientFiles.DeselectRange(new ItemIndexRange(PatientFiles.SelectedIndex,1));
+        }
     }
 }

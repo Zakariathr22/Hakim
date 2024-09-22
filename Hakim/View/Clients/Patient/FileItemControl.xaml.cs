@@ -40,24 +40,6 @@ namespace Hakim.View.Clients.Patient
             }
         }
 
-        private void Button_ContextRequested(UIElement sender, ContextRequestedEventArgs args)
-        {
-            // Cast the sender to a Button, as it is the element that raised the event
-            if (sender is Button button)
-            {
-                // Try to find the CommandBarFlyout in the button's resources
-                if (button.Resources.TryGetValue("FileCommandBarFlyout", out var flyoutResource) && flyoutResource is CommandBarFlyout commandBarFlyout)
-                {
-                    // Show the flyout at the button
-                    FlyoutShowOptions showModeOption = new FlyoutShowOptions
-                    {
-                        ShowMode = FlyoutShowMode.Transient
-                    };
-                    commandBarFlyout.ShowAt(button, showModeOption);
-                }
-            }
-        }
-
         private void deletePatientButton_Click(object sender, RoutedEventArgs e)
         {
             FileCommandBarFlyout.Hide();
@@ -70,6 +52,16 @@ namespace Hakim.View.Clients.Patient
                 ParentPage.patientRecords.UpdateFilesDisplayVisibility(ParentPage.viewModel.SelectedPatient);
             }
             
+        }
+
+        private void UserControl_ContextRequested(UIElement sender, ContextRequestedEventArgs args)
+        {
+            CommandBarFlyout flyout = this.Resources["FileCommandBarFlyout"] as CommandBarFlyout;
+            FlyoutShowOptions showModeOption = new FlyoutShowOptions
+            {
+                ShowMode = FlyoutShowMode.Transient
+            };
+            flyout.ShowAt(this, showModeOption);
         }
     }
 }

@@ -33,7 +33,10 @@
                 </PivotHeaderItem>
             </PivotItem.Header>
             <StackPanel>
-                <TextBlock x:Name="noFilesTextBlock" Margin="0 24 0 24" Text="Il n'y a pas de Fichiers médicaux" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <StackPanel x:Name="noFilesTextBlock">
+                    <Image Margin="0 24 0 0" Source="C:\Users\TAHRI.ZAKARIA\Desktop\Wind.png" Width="96" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Margin="0 0 0 24" Text="Il n'y a pas de Fichiers médicaux" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
                 <Grid x:Name="filesGrid"  Margin="0 16 0 0">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -46,11 +49,12 @@
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Titre du fichier" HorizontalAlignment="Left" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"
-                       Margin="76 0 0 0" />
-                            <TextBlock Margin="0 0 12 0" Grid.Column="1" Text="Type et date de création" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                       Margin="56 0 0 0" />
+                            <TextBlock Margin="0 0 16 0" Grid.Column="1" Text="Type et date de création" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
                         </Grid>
                     </Grid>
-                    <ListView x:Name="PatientFiles" x:FieldModifier="public" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24">
+                    <ListView x:Name="PatientFiles" x:FieldModifier="public" Grid.Row="1" SelectionMode="Extended" HorizontalContentAlignment="Stretch" Margin="0 0 0 24"
+                              SelectionChanged="PatientFiles_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <local:FileItemControl/>

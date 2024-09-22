@@ -128,8 +128,8 @@ namespace Hakim
             ToolTipService.SetToolTip(patientsNavigationItem, LanguageService.GetResourceValue("Patients"));
             patientsNavigationItemText.Text = LanguageService.GetResourceValue("Patients");
 
-            //ToolTipService.SetToolTip(scheduleNavigationItem, LanguageService.GetResourceValue("Appointments"));
-            //scheduleNavigationItemText.Text = LanguageService.GetResourceValue("Appointments");
+            ToolTipService.SetToolTip(scheduleNavigationItem, LanguageService.GetResourceValue("Appointments"));
+            scheduleNavigationItemText.Text = LanguageService.GetResourceValue("Appointments");
 
             ToolTipService.SetToolTip(settingsNavigationItem, LanguageService.GetResourceValue("Settings"));
             settingsNavigationItemText.Text = LanguageService.GetResourceValue("Settings");

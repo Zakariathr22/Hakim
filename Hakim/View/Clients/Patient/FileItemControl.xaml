@@ -7,7 +7,8 @@
     xmlns:converters="using:Hakim.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    ContextRequested="UserControl_ContextRequested">
 
     <UserControl.Resources>
         <converters:DateShortTimeConverter x:Key="DateShortTimeConverter"/>
@@ -18,30 +19,32 @@
         <converters:FileTypeConverter x:Key="FileTypeConverter"/>
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
         <converters:TimeSpanConverter x:Key="TimeSpanConverter"/>
-    </UserControl.Resources>
-    
-    <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0" ContextRequested="Button_ContextRequested">
-        <Button.Resources>
-            <CommandBarFlyout Placement="Right" x:Name="FileCommandBarFlyout">
-                <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
-                <AppBarButton x:Name="editButton" Label="Edit" Icon="Edit"/>
-                <AppBarButton x:Name="copyButton" Label="Copy" Icon="Copy"/>
-                <CommandBarFlyout.SecondaryCommands>
-                    <AppBarButton x:Name="printButton" Label="Print" Icon="Print"/>
-                    <AppBarButton x:Name="deleteButton" Label="Delete" Icon="Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
-                        <AppBarButton.Flyout>
-                            <Flyout>
-                                <StackPanel Width="300">
-                                    <TextBlock x:Name="deleteConfirmationText" Text="Are you sure you want to delete this file? If you click `Yes, Delete` you will not be able to recover the file." Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
+        <CommandBarFlyout x:Name="FileCommandBarFlyout">
+            <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
+            <AppBarButton x:Name="editButton" Label="Edit" Icon="Edit"/>
+            <AppBarButton x:Name="printButton" Label="Print" Icon="Print"/>
+            <CommandBarFlyout.SecondaryCommands>
+                <AppBarButton x:Name="exportButton" Label="Export">
+                    <AppBarButton.Icon>
+                        <FontIcon Glyph="&#xEDE1;" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton x:Name="deleteButton" Label="Delete" Icon="Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
+                    <AppBarButton.Flyout>
+                        <Flyout>
+                            <StackPanel Width="300">
+                                <TextBlock x:Name="deleteConfirmationText" Text="Are you sure you want to delete this file? If you click `Yes, Delete` you will not be able to recover the file." Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
                                                                             Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                                    <Button x:Name="deletePatientButton" Content="Yes, Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Click="deletePatientButton_Click"/>
-                                </StackPanel>
-                            </Flyout>
-                        </AppBarButton.Flyout>
-                    </AppBarButton>
-                </CommandBarFlyout.SecondaryCommands>
-            </CommandBarFlyout>
-        </Button.Resources>
+                                <Button x:Name="deletePatientButton" Content="Yes, Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Click="deletePatientButton_Click"/>
+                            </StackPanel>
+                        </Flyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+            </CommandBarFlyout.SecondaryCommands>
+        </CommandBarFlyout>
+    </UserControl.Resources>
+
+    <Border HorizontalAlignment="Stretch" MinHeight="72" Margin="0" Padding="0" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
@@ -50,10 +53,10 @@
             <Grid Grid.Column="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="62"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="{Binding Type, Converter={StaticResource IconUrlConverter}, Mode=OneWay}" Width="32" Height="32" Margin="8 0"/>
+                    <Image Source="{Binding Type, Converter={StaticResource IconUrlConverter}, Mode=OneWay}" Width="32" Height="32" Margin="0 0 12 0"/>
                     <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
                 </Grid>
             </Grid>
@@ -62,7 +65,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="{Binding Type, Converter={StaticResource FileTypeConverter}, Mode=OneWay}" TextWrapping="Wrap" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}" TextAlignment="Center"/>
+                <TextBlock Text="{Binding Type, Converter={StaticResource FileTypeConverter}, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}" TextAlignment="Center"/>
                 <TextBlock Grid.Row="1" Text="{Binding CreationDate, Converter={StaticResource DateShortTimeConverter}, Mode=OneWay}" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
             </Grid>
         </Grid>
@@ -73,5 +76,5 @@
                 </Border>
             </ToolTip>
         </ToolTipService.ToolTip>
-    </Button>
+    </Border>
 </UserControl>

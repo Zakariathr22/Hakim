@@ -13,7 +13,7 @@ namespace Hakim.Converters
         {
             if (value is DateTime appointmentDate)
             {
-                if (appointmentDate.Date > DateTime.Now.Date)
+                if (appointmentDate.Date >= DateTime.Now.Date)
                 {
                     return @"\Assets\Icons\Future.png";
                 }

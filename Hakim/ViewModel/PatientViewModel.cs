@@ -23,11 +23,13 @@ namespace Hakim.ViewModel
         [ObservableProperty] private Appointment appointment;
         [ObservableProperty] private int filesOrder;
         [ObservableProperty] private int filesFilter;
+        [ObservableProperty] private int appointmentOrder;
 
         public PatientViewModel()
         {
-            FilesOrder = int.Parse(ConfigurationService.GetAppSetting("PatientsOrder"));
-            FilesFilter = int.Parse(ConfigurationService.GetAppSetting("PatientsOrder"));
+            FilesOrder = 0;
+            FilesFilter = 0;
+            AppointmentOrder = 1;
         }
 
         public void UpdatePatient(Patient patient)
@@ -142,7 +144,7 @@ namespace Hakim.ViewModel
             try
             {
                 using (var connection = DataAccessService.GetConnection())
-                using (var command = new SQLiteCommand("SELECT * FROM Appointment WHERE patient_id = @PatientId", connection))
+                using (var command = new SQLiteCommand(ReturnAppointmentSelectionQuery(AppointmentOrder), connection))
                 {
                     command.Parameters.AddWithValue("@PatientId", patient.id);
 
@@ -553,6 +555,18 @@ namespace Hakim.ViewModel
             }
 
             SelectedPatient.files = GetFilesByPatient(SelectedPatient);
+        }
+
+        private string ReturnAppointmentSelectionQuery(int order)
+        {
+            string orderClause = order switch
+            {
+                0 => "AppointmentDate ASC, AppointmentHour ASC",
+                1 => "AppointmentDate DESC, AppointmentHour DESC",
+                _ => "AppointmentDate ASC, AppointmentHour ASC"
+            };
+
+            return $"SELECT * FROM Appointment WHERE patient_id = @PatientId ORDER BY {orderClause}";
         }
     }
 }
