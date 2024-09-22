@@ -63,5 +63,15 @@ namespace Hakim.View.Clients.Patient
             };
             flyout.ShowAt(this, showModeOption);
         }
+
+        private void UserControl_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            CommandBarFlyout flyout = this.Resources["FileCommandBarFlyout"] as CommandBarFlyout;
+            FlyoutShowOptions showModeOption = new FlyoutShowOptions
+            {
+                ShowMode = FlyoutShowMode.Transient
+            };
+            flyout.ShowAt(this, showModeOption);
+        }
     }
 }

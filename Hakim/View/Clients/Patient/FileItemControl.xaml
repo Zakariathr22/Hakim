@@ -8,7 +8,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    ContextRequested="UserControl_ContextRequested">
+    ContextRequested="UserControl_ContextRequested"
+    MinHeight="72">
 
     <UserControl.Resources>
         <converters:DateShortTimeConverter x:Key="DateShortTimeConverter"/>
@@ -44,7 +45,7 @@
         </CommandBarFlyout>
     </UserControl.Resources>
 
-    <Border HorizontalAlignment="Stretch" MinHeight="72" Margin="0" Padding="0" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
+    <Border HorizontalAlignment="Stretch" Margin="0" Padding="0" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
@@ -60,14 +61,16 @@
                     <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
                 </Grid>
             </Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="{Binding Type, Converter={StaticResource FileTypeConverter}, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}" TextAlignment="Center"/>
-                <TextBlock Grid.Row="1" Text="{Binding CreationDate, Converter={StaticResource DateShortTimeConverter}, Mode=OneWay}" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
-            </Grid>
+            <Border Grid.Column="1" VerticalAlignment="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding Type, Converter={StaticResource FileTypeConverter}, Mode=OneWay}" TextWrapping="Wrap" VerticalAlignment="Bottom" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}" TextAlignment="Center"/>
+                    <TextBlock Grid.Row="1" Text="{Binding CreationDate, Converter={StaticResource DateShortTimeConverter}, Mode=OneWay}" HorizontalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                </Grid>
+            </Border>
         </Grid>
         <ToolTipService.ToolTip>
             <ToolTip IsEnabled="{Binding Url, Converter={StaticResource UrlNotEmptyConverter}, Mode=OneWay}" BorderThickness="0" Background="#8888" CornerRadius="8">
