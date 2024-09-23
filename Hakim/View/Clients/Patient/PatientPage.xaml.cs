@@ -278,21 +278,21 @@ namespace Hakim.View.Clients
         private void OrderByDate_Click(object sender, RoutedEventArgs e)
         {
             viewModel.FilesOrder = CroissantOrder.IsChecked == true ? 1 : 0;
-            FilesOrderChanged();
+            FilesOrderOrFilterChanged();
             SetOrder(viewModel.FilesOrder);
         }
 
         private void OrderByTitle_Click(object sender, RoutedEventArgs e)
         {
             viewModel.FilesOrder = CroissantOrder.IsChecked == true ? 2 : 3;
-            FilesOrderChanged();
+            FilesOrderOrFilterChanged();
             SetOrder(viewModel.FilesOrder);
         }
 
         private void OrderByType_Click(object sender, RoutedEventArgs e)
         {
             viewModel.FilesOrder = CroissantOrder.IsChecked == true ? 4 : 5;
-            FilesOrderChanged();
+            FilesOrderOrFilterChanged();
             SetOrder(viewModel.FilesOrder);
         }
 
@@ -303,7 +303,7 @@ namespace Hakim.View.Clients
                 viewModel.FilesOrder = OrderByDate.IsChecked == true ? 1 :
                                   OrderByTitle.IsChecked == true ? 2 :
                                   OrderByType.IsChecked == true ? 4 : viewModel.FilesOrder;
-                FilesOrderChanged();
+                FilesOrderOrFilterChanged();
             }
             SetOrder(viewModel.FilesOrder);
         }
@@ -315,7 +315,7 @@ namespace Hakim.View.Clients
                 viewModel.FilesOrder = OrderByDate.IsChecked == true ? 0 :
                                   OrderByTitle.IsChecked == true ? 3 :
                                   OrderByType.IsChecked == true ? 5 : viewModel.FilesOrder;
-                FilesOrderChanged();
+                FilesOrderOrFilterChanged();
             }
             SetOrder(viewModel.FilesOrder);
         }
@@ -329,7 +329,7 @@ namespace Hakim.View.Clients
             Xray.IsChecked = true;
             TXray.IsChecked = true;
             SurgeryProtocol.IsChecked = true;
-            FilesFilterChanged();
+            FilesOrderOrFilterChanged();
 
             AddConsultationItem.Visibility = Visibility.Visible;
             AddXRayItem.Visibility = Visibility.Visible;
@@ -342,7 +342,7 @@ namespace Hakim.View.Clients
             viewModel.FilesFilter = 1; // Consultation
             FilterFilesButton.IsChecked = true;
             SetFilter(viewModel.FilesFilter);
-            FilesFilterChanged();
+            FilesOrderOrFilterChanged();
 
             AddConsultationItem.Visibility = Visibility.Visible;
             AddXRayItem.Visibility = Visibility.Collapsed;
@@ -355,7 +355,7 @@ namespace Hakim.View.Clients
             viewModel.FilesFilter = 2; // Xray
             FilterFilesButton.IsChecked = true;
             SetFilter(viewModel.FilesFilter);
-            FilesFilterChanged();
+            FilesOrderOrFilterChanged();
 
             AddConsultationItem.Visibility = Visibility.Collapsed;
             AddXRayItem.Visibility = Visibility.Visible;
@@ -368,7 +368,7 @@ namespace Hakim.View.Clients
             viewModel.FilesFilter = 3; // TXray
             FilterFilesButton.IsChecked = true;
             SetFilter(viewModel.FilesFilter);
-            FilesFilterChanged();
+            FilesOrderOrFilterChanged();
 
             AddConsultationItem.Visibility = Visibility.Collapsed;
             AddXRayItem.Visibility = Visibility.Collapsed;
@@ -381,7 +381,7 @@ namespace Hakim.View.Clients
             viewModel.FilesFilter = 4; // SurgeryProtocol
             FilterFilesButton.IsChecked = true;
             SetFilter(viewModel.FilesFilter);
-            FilesFilterChanged();
+            FilesOrderOrFilterChanged();
 
             AddConsultationItem.Visibility = Visibility.Collapsed;
             AddXRayItem.Visibility = Visibility.Collapsed;
@@ -398,34 +398,37 @@ namespace Hakim.View.Clients
             else FilterFilesButton.IsChecked = true;
         }
 
-        private void FilesOrderChanged()
+        private void FilesOrderOrFilterChanged()
         {
-            viewModel.FilesOrderChangedCommand.Execute(null);
-            patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
-            patientRecords.UpdateFilesDisplayVisibility(viewModel.SelectedPatient);
-        }
-
-        private void FilesFilterChanged()
-        {
-            viewModel.FilesFilterChangedCommand.Execute(null);
+            viewModel.FilesOrderOrFilterChangedCommand.Execute(null);
             patientRecords.PatientFiles.ItemsSource = viewModel.SelectedPatient.files;
             patientRecords.UpdateFilesDisplayVisibility(viewModel.SelectedPatient);
         }
 
         private void CroissantAppointmentOrder_Click(object sender, RoutedEventArgs e)
         {
+            viewModel.AppointmentsOrder = 0;
+            AppointmentsOrderOrFilterChanged();
+
             CroissantAppointmentOrder.IsChecked = true;
             DecroissantAppointmentOrder.IsChecked = false;
         }
 
         private void DecroissantAppointmentOrder_Click(object sender, RoutedEventArgs e)
         {
+            viewModel.AppointmentsOrder = 1;
+            AppointmentsOrderOrFilterChanged();
+
             CroissantAppointmentOrder.IsChecked = false;
             DecroissantAppointmentOrder.IsChecked = true;
         }
 
         private void AllAppointments_Click(object sender, RoutedEventArgs e)
         {
+            viewModel.AppointmentsFilter = 0;
+            AppointmentsOrderOrFilterChanged();
+            FilterAppointmentsButton.IsChecked = false;
+
             AllAppointments.IsChecked = true;
             PresntAndFutureAppointments.IsChecked = true;
             PastAppointments.IsChecked = true;
@@ -433,6 +436,10 @@ namespace Hakim.View.Clients
 
         private void PresntAndFutureAppointments_Click(object sender, RoutedEventArgs e)
         {
+            viewModel.AppointmentsFilter = 1;
+            AppointmentsOrderOrFilterChanged();
+            FilterAppointmentsButton.IsChecked = true;
+
             AllAppointments.IsChecked = false;
             PresntAndFutureAppointments.IsChecked = true;
             PastAppointments.IsChecked = false;
@@ -440,9 +447,20 @@ namespace Hakim.View.Clients
 
         private void PastAppointments_Click(object sender, RoutedEventArgs e)
         {
+            viewModel.AppointmentsFilter = 2;
+            AppointmentsOrderOrFilterChanged();
+            FilterAppointmentsButton.IsChecked = true;
+
             AllAppointments.IsChecked = false;
             PresntAndFutureAppointments.IsChecked = false;
             PastAppointments.IsChecked = true;
+        }
+
+        private void AppointmentsOrderOrFilterChanged()
+        {
+            viewModel.AppointmentsOrderOrFilterChangedCommand.Execute(null);
+            patientRecords.PatientAppointments.ItemsSource = viewModel.SelectedPatient.appointments;
+            patientRecords.UpdateAppointmentsDisplayVisibility(viewModel.SelectedPatient);
         }
 
         public async void ShowEditPatientDialog(Model.Patient patient)
@@ -655,6 +673,19 @@ namespace Hakim.View.Clients
         {
             viewModel.getFilesByPatientCommand.Execute(null);
             UpdatePatientSearchResults(SearchAutoSuggestBox);
+
+            viewModel.getAppointmentsByPatientCommand.Execute(null);
+            patientRecords.PatientAppointments.ItemsSource = viewModel.SelectedPatient.appointments;
+            patientRecords.UpdateAppointmentsDisplayVisibility(viewModel.SelectedPatient);
+        }
+
+        private void FilterAppointmentsButton_Click(object sender, RoutedEventArgs e)
+        {
+            FilterAppointmentsButton.ContextFlyout.ShowAt(FilterAppointmentsButton,
+            new FlyoutShowOptions { Placement = FlyoutPlacementMode.Bottom });
+            if (AllAppointments.IsChecked)
+                FilterAppointmentsButton.IsChecked = false;
+            else FilterAppointmentsButton.IsChecked = true;
         }
     }
 }

@@ -88,14 +88,14 @@
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Objectif du rendez-vous" HorizontalAlignment="Left" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"
-                                       Margin="80 0 0 0"/>
-                            <TextBlock Margin="0 0 16 0" Grid.Column="1" Text="Date et heur" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                                       Margin="54 0 0 0"/>
+                            <TextBlock Grid.Column="1" Text="Date et heur" HorizontalAlignment="Left" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
                         </Grid>
                     </Grid>
                     <ListView x:Name="PatientAppointments" x:FieldModifier="public" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Button HorizontalAlignment="Stretch" MinHeight="72" Margin="0 4" HorizontalContentAlignment="Stretch" Padding="0">
+                                <Border HorizontalAlignment="Stretch" MinHeight="72" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="6*"/>
@@ -104,14 +104,14 @@
                                         <Grid Grid.Column="0">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="62"/>
+                                                    <ColumnDefinition Width="auto"/>
                                                     <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <Image Source="{Binding AppointmentDate , Converter={StaticResource AppointmentIconUrlConverter}, Mode=OneWay}" Margin="8 0" Width="32" Height="32"/>
-                                                <TextBlock Grid.Column="1" Text="{Binding Purpose}" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" Margin="0 8"/>
+                                                <Image Source="{Binding AppointmentDate , Converter={StaticResource AppointmentIconUrlConverter}, Mode=OneWay}" Margin="0 0 12 0" Width="32" Height="32"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding Purpose}" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" Padding="0 8"/>
                                             </Grid>
                                         </Grid>
-                                        <StackPanel Grid.Column="1">
+                                        <StackPanel Grid.Column="1" Orientation="Horizontal">
                                             <TextBlock Text="{Binding AppointmentDate.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                             <TextBlock Margin="4 0 0 0" Text="{Binding AppointmentTime,Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                         </StackPanel>
@@ -128,7 +128,7 @@
                                             </Grid>
                                         </ToolTip>
                                     </ToolTipService.ToolTip>
-                                </Button>
+                                </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

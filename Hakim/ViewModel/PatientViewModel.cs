@@ -23,14 +23,8 @@ namespace Hakim.ViewModel
         [ObservableProperty] private Appointment appointment;
         [ObservableProperty] private int filesOrder;
         [ObservableProperty] private int filesFilter;
-        [ObservableProperty] private int appointmentOrder;
-
-        public PatientViewModel()
-        {
-            FilesOrder = 0;
-            FilesFilter = 0;
-            AppointmentOrder = 1;
-        }
+        [ObservableProperty] private int appointmentsOrder = 1;
+        [ObservableProperty] private int appointmentsFilter;
 
         public void UpdatePatient(Patient patient)
         {
@@ -144,7 +138,7 @@ namespace Hakim.ViewModel
             try
             {
                 using (var connection = DataAccessService.GetConnection())
-                using (var command = new SQLiteCommand(ReturnAppointmentSelectionQuery(AppointmentOrder), connection))
+                using (var command = new SQLiteCommand(ReturnAppointmentsSelectionQuery(AppointmentsOrder, AppointmentsFilter), connection))
                 {
                     command.Parameters.AddWithValue("@PatientId", patient.id);
 
@@ -511,16 +505,8 @@ namespace Hakim.ViewModel
         }
 
         [RelayCommand]
-        private void FilesOrderChanged()
+        private void FilesOrderOrFilterChanged()
         {
-            ConfigurationService.SetAppSetting("FilesOrder", FilesOrder);
-            SelectedPatient.files = GetFilesByPatient(SelectedPatient);
-        }
-
-        [RelayCommand]
-        private void FilesFilterChanged()
-        {
-            ConfigurationService.SetAppSetting("FilesFilter", FilesFilter);
             SelectedPatient.files = GetFilesByPatient(SelectedPatient);
         }
 
@@ -557,7 +543,7 @@ namespace Hakim.ViewModel
             SelectedPatient.files = GetFilesByPatient(SelectedPatient);
         }
 
-        private string ReturnAppointmentSelectionQuery(int order)
+        private string ReturnAppointmentsSelectionQuery(int order, int filter)
         {
             string orderClause = order switch
             {
@@ -566,7 +552,20 @@ namespace Hakim.ViewModel
                 _ => "AppointmentDate ASC, AppointmentHour ASC"
             };
 
-            return $"SELECT * FROM Appointment WHERE patient_id = @PatientId ORDER BY {orderClause}";
+            string filterClause = filter switch
+            {
+                0 => "",
+                1 => "AND AppointmentDate >= DATE('now')",
+                2 => "AND AppointmentDate < DATE('now')",
+                _ => "AppointmentDate ASC, AppointmentHour ASC"
+            };
+            return $"SELECT * FROM Appointment WHERE patient_id = @PatientId {filterClause} ORDER BY {orderClause}";
+        }
+
+        [RelayCommand]
+        private void AppointmentsOrderOrFilterChanged()
+        {
+            SelectedPatient.appointments = GetAppointmentsByPatient(SelectedPatient);
         }
     }
 }

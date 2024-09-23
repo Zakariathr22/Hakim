@@ -119,5 +119,13 @@ namespace Hakim.View.Clients.Patient
         {
             PatientFiles.DeselectRange(new ItemIndexRange(PatientFiles.SelectedIndex,1));
         }
+
+        private void Button_PointerEntered(object sender, PointerRoutedEventArgs e)
+        {
+            if (sender is Button button)
+            {
+                button.Background = new SolidColorBrush(Color.FromArgb(128, 128, 128, 128));
+            }
+        }
     }
 }

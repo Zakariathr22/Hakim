@@ -106,15 +106,15 @@
                     </AppBarToggleButton.ContextFlyout>
                 </AppBarToggleButton>
 
-                <AppBarButton x:Name="FilterAppointmentsButton" x:FieldModifier="public" Icon="Filter" Visibility="Collapsed" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers">
-                    <Button.Flyout>
+                <AppBarToggleButton x:Name="FilterAppointmentsButton" x:FieldModifier="public" Icon="Filter" Visibility="Collapsed" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers" Click="FilterAppointmentsButton_Click">
+                    <AppBarToggleButton.ContextFlyout>
                         <MenuFlyout>
                             <ToggleMenuFlyoutItem x:Name="AllAppointments" Text="Tous les rendez-vous" IsChecked="True" Click="AllAppointments_Click"/>
                             <ToggleMenuFlyoutItem x:Name="PresntAndFutureAppointments" Text="Rendez-vous à venir" IsChecked="True" Click="PresntAndFutureAppointments_Click"/>
                             <ToggleMenuFlyoutItem x:Name="PastAppointments" Text="Aanciens rendez-vous" IsChecked="True" Click="PastAppointments_Click"/>
                         </MenuFlyout>
-                    </Button.Flyout>
-                </AppBarButton>
+                    </AppBarToggleButton.ContextFlyout>
+                </AppBarToggleButton>
                 
                 <AppBarButton x:Name="RefreshButton" Icon="Refresh" Label="Actualiser" ToolTipService.ToolTip="Actualiser" Click="RefreshButton_Click"/>
                 <AppBarElementContainer Padding="6">

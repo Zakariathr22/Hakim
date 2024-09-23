@@ -20,7 +20,7 @@
         <converters:FileTypeConverter x:Key="FileTypeConverter"/>
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
         <converters:TimeSpanConverter x:Key="TimeSpanConverter"/>
-        <CommandBarFlyout x:Name="FileCommandBarFlyout">
+        <CommandBarFlyout x:Name="FileCommandBarFlyout" Placement="BottomEdgeAlignedLeft">
             <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
             <AppBarButton x:Name="editButton" Label="Edit" Icon="Edit"/>
             <AppBarButton x:Name="printButton" Label="Print" Icon="Print"/>
@@ -35,7 +35,7 @@
                         <Flyout>
                             <StackPanel Width="300">
                                 <TextBlock x:Name="deleteConfirmationText" Text="Are you sure you want to delete this file? If you click `Yes, Delete` you will not be able to recover the file." Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
-                                                                            Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                                                                           Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
                                 <Button x:Name="deletePatientButton" Content="Yes, Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Click="deletePatientButton_Click"/>
                             </StackPanel>
                         </Flyout>
