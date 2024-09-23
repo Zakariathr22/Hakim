@@ -8,8 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    ContextRequested="UserControl_ContextRequested"
-    MinHeight="72">
+    ContextRequested="UserControl_ContextRequested">
 
     <UserControl.Resources>
         <converters:DateShortTimeConverter x:Key="DateShortTimeConverter"/>
@@ -20,7 +19,7 @@
         <converters:FileTypeConverter x:Key="FileTypeConverter"/>
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
         <converters:TimeSpanConverter x:Key="TimeSpanConverter"/>
-        <CommandBarFlyout x:Name="FileCommandBarFlyout" Placement="BottomEdgeAlignedLeft">
+        <CommandBarFlyout x:Name="FileCommandBarFlyout" Placement="TopEdgeAlignedLeft">
             <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
             <AppBarButton x:Name="editButton" Label="Edit" Icon="Edit"/>
             <AppBarButton x:Name="printButton" Label="Print" Icon="Print"/>
@@ -45,7 +44,8 @@
         </CommandBarFlyout>
     </UserControl.Resources>
 
-    <Border HorizontalAlignment="Stretch" Margin="0" Padding="0" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
+    <Button Margin="-12 0 0 0" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+            MinHeight="72" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Transparent" Padding="12 0 0 0">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
@@ -79,5 +79,5 @@
                 </Border>
             </ToolTip>
         </ToolTipService.ToolTip>
-    </Border>
+    </Button>
 </UserControl>

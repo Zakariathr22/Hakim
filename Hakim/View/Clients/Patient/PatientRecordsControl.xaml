@@ -53,7 +53,7 @@
                             <TextBlock Margin="0 0 16 0" Grid.Column="1" Text="Type et date de création" HorizontalAlignment="Center" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
                         </Grid>
                     </Grid>
-                    <ListView x:Name="PatientFiles" x:FieldModifier="public" Grid.Row="1" SelectionMode="Extended" HorizontalContentAlignment="Stretch" Margin="0 0 0 24"
+                    <ListView x:Name="PatientFiles" x:FieldModifier="public" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24"
                               SelectionChanged="PatientFiles_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -88,14 +88,15 @@
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Objectif du rendez-vous" HorizontalAlignment="Left" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"
-                                       Margin="54 0 0 0"/>
+                                       Margin="60 0 0 0"/>
                             <TextBlock Grid.Column="1" Text="Date et heur" HorizontalAlignment="Left" TextAlignment="Center" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Style="{ThemeResource CaptionTextBlockStyle}"/>
                         </Grid>
                     </Grid>
                     <ListView x:Name="PatientAppointments" x:FieldModifier="public" Grid.Row="1" SelectionMode="None" HorizontalContentAlignment="Stretch" Margin="0 0 0 24">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border HorizontalAlignment="Stretch" MinHeight="72" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}">
+                                <Button HorizontalAlignment="Stretch" MinHeight="72" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                                        HorizontalContentAlignment="Stretch" Background="Transparent" Margin="-12 0 0 0" Padding="12 0 0 0">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="6*"/>
@@ -128,7 +129,7 @@
                                             </Grid>
                                         </ToolTip>
                                     </ToolTipService.ToolTip>
-                                </Border>
+                                </Button>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
