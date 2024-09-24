@@ -12,6 +12,17 @@
     <EnableMsixTooling>true</EnableMsixTooling>
 	<ApplicationIcon>Hospital Sign.ico</ApplicationIcon>
 	<PackageIcon>Hospital Sign.png</PackageIcon>
+	<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
+	<AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+	<PackageCertificateThumbprint>ABF605533FB25579B813C50C9D0673958D0E19D9</PackageCertificateThumbprint>
+	<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+	<AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+	<AppxPackageDir>C:\Users\TAHRI.ZAKARIA\Documents\Projcts Releases\Hakim 0.8.0\</AppxPackageDir>
+	<AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+	<GenerateTestArtifacts>True</GenerateTestArtifacts>
+	<AppxBundle>Never</AppxBundle>
+	<AppInstallerUri>C:\Users\TAHRI.ZAKARIA\Documents\Projcts Releases\Hakim 0.8.0</AppInstallerUri>
+	<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="appsettings.json" />
