@@ -14,11 +14,12 @@
 
     <ScrollView>
         <StackPanel Padding="24">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <FontIcon Glyph="&#xE713;" Margin="0 0 16 0" FontSize="28"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 0 16">
+                <FontIcon Glyph="&#xE713;" Margin="0 0 8 0" FontSize="28" Height="38" VerticalAlignment="Bottom"/>
                 <TextBlock x:Name="settingsPageHeader"
-                           Margin="0 0 0 16"
-                           Style="{ThemeResource TitleTextBlockStyle}"/>
+                           VerticalAlignment="Center"
+                           Style="{ThemeResource TitleTextBlockStyle}"
+                           Margin="0 -5 0 0"/>
             </StackPanel>
             <TextBlock x:Name="userSubtitle" Margin="0 0 0 8" Style="{ThemeResource SubtitleTextBlockStyle}"/>
             <controls:SettingsCard x:Name="userSettingsCard"
