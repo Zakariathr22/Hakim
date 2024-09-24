@@ -8,7 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    ContextRequested="UserControl_ContextRequested">
+    ContextRequested="_ContextRequested">
 
     <UserControl.Resources>
         <converters:DateShortTimeConverter x:Key="DateShortTimeConverter"/>

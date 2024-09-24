@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="Hakim.View.Clients.Patient.AppointmentItemControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Hakim.View.Clients.Patient"
+    xmlns:converters="using:Hakim.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    ContextRequested="_ContextRequested">
+
+    <UserControl.Resources>
+        <converters:DateShortTimeConverter x:Key="DateShortTimeConverter"/>
+        <converters:IconUrlConverter x:Key="IconUrlConverter"/>
+        <converters:UrlNotEmptyConverter x:Key="UrlNotEmptyConverter"/>
+        <converters:AppointmentIconUrlConverter x:Key="AppointmentIconUrlConverter"/>
+        <converters:OutputStringConverter x:Key="OutputStringConverter"/>
+        <converters:FileTypeConverter x:Key="FileTypeConverter"/>
+        <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
+        <converters:TimeSpanConverter x:Key="TimeSpanConverter"/>
+        <CommandBarFlyout x:Name="FileCommandBarFlyout" Placement="TopEdgeAlignedLeft">
+            <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
+            <AppBarButton x:Name="deleteButton" Label="Delete" Icon="Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
+                <AppBarButton.Flyout>
+                    <Flyout>
+                        <StackPanel Width="300">
+                            <TextBlock x:Name="deleteConfirmationText" Text="Are you sure you want to delete this Appointment? If you click `Yes, Delete` you will not be able to recover the Appointment." Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
+                                                                           Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                            <Button x:Name="deletePatientButton" Content="Yes, Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                        </StackPanel>
+                    </Flyout>
+                </AppBarButton.Flyout>
+            </AppBarButton>
+        </CommandBarFlyout>
+    </UserControl.Resources>
+
+    <Button HorizontalAlignment="Stretch" MinHeight="72" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                                        HorizontalContentAlignment="Stretch" Background="Transparent" Margin="-12 0 0 0" Padding="12 0 0 0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding AppointmentDate , Converter={StaticResource AppointmentIconUrlConverter}, Mode=OneWay}" Margin="0 0 12 0" Width="32" Height="32"/>
+                    <TextBlock Grid.Column="1" Text="{Binding Purpose}" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center" Padding="0 8"/>
+                </Grid>
+            </Grid>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <TextBlock Text="{Binding AppointmentDate.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Margin="4 0 0 0" Text="{Binding AppointmentTime,Converter={StaticResource TimeSpanConverter}, Mode=OneWay}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+        <ToolTipService.ToolTip>
+            <ToolTip MaxWidth="248">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Notes:" FontWeight="Bold"/>
+                    <TextBlock Grid.Row="1" Text="{Binding Notes, Converter={StaticResource OutputStringConverter}, Mode=OneWay}" TextWrapping="Wrap"/>
+                </Grid>
+            </ToolTip>
+        </ToolTipService.ToolTip>
+    </Button>
+</UserControl>

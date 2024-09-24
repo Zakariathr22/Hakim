@@ -54,17 +54,7 @@ namespace Hakim.View.Clients.Patient
             
         }
 
-        private void UserControl_ContextRequested(UIElement sender, ContextRequestedEventArgs args)
-        {
-            CommandBarFlyout flyout = this.Resources["FileCommandBarFlyout"] as CommandBarFlyout;
-            FlyoutShowOptions showModeOption = new FlyoutShowOptions
-            {
-                ShowMode = FlyoutShowMode.Transient
-            };
-            flyout.ShowAt(this, showModeOption);
-        }
-
-        private void UserControl_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        private void _ContextRequested(UIElement sender, ContextRequestedEventArgs args)
         {
             CommandBarFlyout flyout = this.Resources["FileCommandBarFlyout"] as CommandBarFlyout;
             FlyoutShowOptions showModeOption = new FlyoutShowOptions
