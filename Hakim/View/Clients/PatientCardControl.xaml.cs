@@ -42,8 +42,6 @@ namespace Hakim.View.Clients
                 // You now have access to the parent page
                 Debug.WriteLine("Parent Page found: " + ParentPage.GetType().Name);
             }
-
-            SetCardColor();
         }
 
         private void ShowMenu()
@@ -92,42 +90,45 @@ namespace Hakim.View.Clients
         {
             if (this.DataContext is Model.Patient patient)
             {
+                // Check the patient's ID and apply the corresponding styles.
                 if (patient.id % 4 == 0)
                 {
-                    var Background = (Border)this.Resources["GreenBackground"];
-                    var Foreground = (Border)this.Resources["GreenForeground"];
+                    // Apply Green Background and Green Foreground styles
+                    var greenBackgroundStyle = (Style)App.Current.Resources["GreenBackgroundStyle"];
+                    var greenForegroundStyle = (Style)App.Current.Resources["GreenForegroundStyle"];
 
-                    personPicture.Background = Background.Background;
-                    fullNameAndAgeTextBlock.Foreground = Foreground.Background;
+                    personPicture.Style = greenBackgroundStyle;
+                    fullNameAndAgeTextBlock.Style = greenForegroundStyle;
                 }
                 else if (patient.id % 3 == 0)
                 {
-                    var Background = (Border)this.Resources["AmberBackground"];
-                    var Foreground = (Border)this.Resources["AmberForeground"];
+                    // Apply Amber Background and Amber Foreground styles
+                    var amberBackgroundStyle = (Style)App.Current.Resources["AmberBackgroundStyle"];
+                    var amberForegroundStyle = (Style)App.Current.Resources["AmberForegroundStyle"];
 
-                    personPicture.Background = Background.Background;
-                    fullNameAndAgeTextBlock.Foreground = Foreground.Background;
+                    personPicture.Style = amberBackgroundStyle;
+                    fullNameAndAgeTextBlock.Style = amberForegroundStyle;
                 }
                 else if (patient.id % 2 == 0)
                 {
-                    var Background = (Border)this.Resources["RedBackground"];
-                    var Foreground = (Border)this.Resources["RedForeground"];
+                    // Apply Red Background and Red Foreground styles
+                    var redBackgroundStyle = (Style)App.Current.Resources["RedBackgroundStyle"];
+                    var redForegroundStyle = (Style)App.Current.Resources["RedForegroundStyle"];
 
-                    personPicture.Background = Background.Background;
-                    fullNameAndAgeTextBlock.Foreground = Foreground.Background;
+                    personPicture.Style = redBackgroundStyle;
+                    fullNameAndAgeTextBlock.Style = redForegroundStyle;
                 }
                 else
                 {
-                    var Background = (Border)this.Resources["AccentBackground"];
+                    // Apply Accent Background style only
+                    var accentBackgroundStyle = (Style)App.Current.Resources["AccentBackgroundStyle"];
+                    var accentForegroundStyle = (Style)App.Current.Resources["AccentForegroundStyle"];
 
-                    personPicture.Background = Background.Background;
+                    personPicture.Style = accentBackgroundStyle;
+                    fullNameAndAgeTextBlock.Style = accentForegroundStyle;
                 }
             }
-        }
 
-        private void UserControl_ActualThemeChanged(FrameworkElement sender, object args)
-        {
-            SetCardColor();
         }
 
         public void InitializeLocation()

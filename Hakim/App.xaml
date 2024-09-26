@@ -11,6 +11,46 @@
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
+            <FontFamily x:Key="SegoeFluentIcons">ms-appx:///Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons</FontFamily>
+            <!-- Green Background Style -->
+            <Style x:Key="GreenBackgroundStyle" TargetType="Control">
+                <Setter Property="Background" Value="{ThemeResource SystemFillColorSuccessBackgroundBrush}" />
+            </Style>
+
+            <!-- Green Foreground Style -->
+            <Style x:Key="GreenForegroundStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{ThemeResource SystemFillColorSuccessBrush}" />
+            </Style>
+
+            <!-- Amber Background Style -->
+            <Style x:Key="AmberBackgroundStyle" TargetType="Control">
+                <Setter Property="Background" Value="{ThemeResource SystemFillColorCautionBackgroundBrush}" />
+            </Style>
+
+            <!-- Amber Foreground Style -->
+            <Style x:Key="AmberForegroundStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{ThemeResource SystemFillColorCautionBrush}" />
+            </Style>
+
+            <!-- Red Background Style -->
+            <Style x:Key="RedBackgroundStyle" TargetType="Control">
+                <Setter Property="Background" Value="{ThemeResource SystemFillColorCriticalBackgroundBrush}" />
+            </Style>
+
+            <!-- Red Foreground Style -->
+            <Style x:Key="RedForegroundStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{ThemeResource SystemFillColorCriticalBrush}" />
+            </Style>
+
+            <!-- Accent Background Style -->
+            <Style x:Key="AccentBackgroundStyle" TargetType="Control">
+                <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorBaseBrush}" />
+            </Style>
+
+            <!-- Accent Foreground Style -->
+            <Style x:Key="AccentForegroundStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

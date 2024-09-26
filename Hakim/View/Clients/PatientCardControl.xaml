@@ -6,8 +6,7 @@
     xmlns:converters="using:Hakim.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    ActualThemeChanged="UserControl_ActualThemeChanged">
+    mc:Ignorable="d">
 
     <UserControl.Resources>
         <CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout">
@@ -29,13 +28,8 @@
         </CommandBarFlyout>
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
         <converters:OutputStringConverter x:Key="OutputStringConverter"/>
-        <Border x:Key="GreenBackground" Background="{ThemeResource SystemFillColorSuccessBackgroundBrush}"/>
-        <Border x:Key="GreenForeground"  Background="{ThemeResource SystemFillColorSuccessBrush}"/>
-        <Border x:Name="AmberBackground" Background="{ThemeResource SystemFillColorCautionBackgroundBrush}"/>
-        <Border x:Name="AmberForeground" Background="{ThemeResource SystemFillColorCautionBrush}"/>
-        <Border x:Name="RedBackground" Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}"/>
-        <Border x:Name="RedForeground" Background="{ThemeResource SystemFillColorCriticalBrush}"/>
-        <Border x:Name="AccentBackground" Background="{ThemeResource AccentAcrylicBackgroundFillColorBaseBrush}"/>
+        <converters:PatientStyleConverter x:Key="PatientStyleConverter"/>
+        <converters:PatientForegroundConverter x:Key="PatientForegroundConverter"/>
     </UserControl.Resources>
 
     <ToolTipService.ToolTip>
@@ -83,7 +77,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0" VerticalAlignment="Top">
-                <PersonPicture x:Name="personPicture" Width="48" DisplayName="{Binding fullName}"/>
+                <PersonPicture x:Name="personPicture" Width="48" DisplayName="{Binding fullName}" Style="{Binding id, Converter={StaticResource PatientStyleConverter}}"/>
             </Border>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -91,7 +85,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="fullNameAndAgeTextBlock" Grid.Row="0" Text="{Binding fullNameAndAge}" Margin="4 0 0 8" Style="{ThemeResource BodyStrongTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                <TextBlock x:Name="fullNameAndAgeTextBlock" Grid.Row="0" Text="{Binding fullNameAndAge}" Margin="4 0 0 8" FontSize="14" FontWeight="SemiBold" Style="{Binding id, Converter={StaticResource PatientForegroundConverter}}"/>
                 <StackPanel Grid.Row="1" Orientation="Horizontal"  Margin="4 0 0 4">
                     <TextBlock Margin="0 0 4 0" FontFamily="Segoe Fluent Icons" Text="&#xE717;" FontWeight="Bold"/>
                     <TextBlock Text="{Binding phone1Details}" Style="{ThemeResource BodyTextBlockStyle}"/>

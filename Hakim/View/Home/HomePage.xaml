@@ -243,7 +243,7 @@
                         Margin="24,-16,0,0"
                         Style="{ThemeResource AccentButtonStyle}"
                         Click="scrollLeftButton_Click">
-                        <FontIcon Glyph="&#xF08D;" FontSize="12" />
+                        <FontIcon Glyph="&#xF08D;" FontSize="12"/>
                     </Button>
                     <Button 
                         x:Name="scrollRightButton"

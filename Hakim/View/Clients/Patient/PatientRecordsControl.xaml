@@ -33,10 +33,15 @@
                 </PivotHeaderItem>
             </PivotItem.Header>
             <StackPanel>
-                <StackPanel x:Name="noFilesTextBlock">
-                    <Image Margin="0 24 0 0" Source="C:\Users\TAHRI.ZAKARIA\Desktop\Wind.png" Width="96" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBlock Margin="0 0 0 24" Text="Il n'y a pas de Fichiers médicaux" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </StackPanel>
+                <Grid x:Name="noFilesTextBlock">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Image Margin="0 24 0 0" Source="/Assets/Icons/DocumentsDisabled.png" Width="96" VerticalAlignment="Center" HorizontalAlignment="Center" Opacity="0.5"/>
+                    <Image Margin="0 24 0 0" Source="C:\Users\TAHRI.ZAKARIA\Desktop\QuestionMark.png" Width="64" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="1" Margin="0 0 0 24" Text="Il n'y a pas de Fichiers médicaux" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Grid>
                 <Grid x:Name="filesGrid"  Margin="0 16 0 0">
                     <Grid.RowDefinitions>
                         <RowDefinition/>

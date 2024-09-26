@@ -16,7 +16,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Margin="0 0 0 8" Orientation="Horizontal">
-            <FontIcon Glyph="&#xE95E;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+            <FontIcon x:Name="CFI" Glyph="&#xE95E;" FontSize="20" FontWeight="Bold" Margin="0 0 8 0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
             <TextBlock x:Name="medicalInformationSubtitle" Style="{ThemeResource SubtitleTextBlockStyle}" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
         </StackPanel>
         <TextBox x:Name="medicalHistoryTextBox" Grid.Row="1" Margin="0 0 0 4" TextWrapping="Wrap" AcceptsReturn="True" IsSpellCheckEnabled="True" Text="{Binding Patient.MedicalHistory, Mode=TwoWay}"/>
