@@ -23,9 +23,9 @@
 	<AppInstallerUri>C:\Users\TAHRI.ZAKARIA\Documents\Projcts Releases\Hakim 0.8.0</AppInstallerUri>
 	<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 	<PackageCertificateKeyFile>Hakim_TemporaryKey.pfx</PackageCertificateKeyFile>
+	<StartupObject></StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="appsettings.json" />
     <None Remove="Assets\Fonts\Segoe Fluent Icons.ttf" />
     <None Remove="Assets\GalleryHeaderImageDark.png" />
     <None Remove="Assets\GalleryHeaderImageLight.png" />
@@ -59,7 +59,6 @@
     <None Remove="Assets\Square44x44Logo.scale-200.png" />
     <None Remove="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <None Remove="Assets\StoreLogo.png" />
-    <None Remove="Data\Database.sqlite" />
     <None Remove="Hospital Sign.ico" />
     <None Remove="View\Clients\AddPatientPage.xaml" />
     <None Remove="View\Clients\AddPatient\MedicalInfoPage.xaml" />
@@ -89,11 +88,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="appsettings.json" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="Data\Database.sqlite">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Hospital Sign.ico" />
   </ItemGroup>
 
