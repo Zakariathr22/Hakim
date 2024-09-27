@@ -123,8 +123,8 @@
   <data name="AboutAppDescription" xml:space="preserve">
     <value>The application was developed with passion by "TAHRI ZAKARIA", Software Engineer.</value>
   </data>
-  <data name="AltMika" xml:space="preserve">
-    <value>Alternative Mika</value>
+  <data name="AltMica" xml:space="preserve">
+    <value>Alternative Mica</value>
   </data>
   <data name="AppBackdrop" xml:space="preserve">
     <value>Application Back Drop</value>
@@ -189,8 +189,8 @@
   <data name="Link" xml:space="preserve">
     <value>Link</value>
   </data>
-  <data name="Mika" xml:space="preserve">
-    <value>Mika</value>
+  <data name="Mica" xml:space="preserve">
+    <value>Mica</value>
   </data>
   <data name="Patients" xml:space="preserve">
     <value>Patients</value>

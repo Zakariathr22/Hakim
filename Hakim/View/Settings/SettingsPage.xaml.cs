@@ -127,8 +127,8 @@ namespace Hakim.View.Settings
             backDropSettingCard.Header = LanguageService.GetResourceValue("AppBackdrop");
             backDropSettingCard.Description = LanguageService.GetResourceValue("AppBackDropDescription");
 
-            mikaComboBoxItem.Content = LanguageService.GetResourceValue("Mika");
-            altMikaComboBoxItem.Content = LanguageService.GetResourceValue("AltMika");
+            micaComboBoxItem.Content = LanguageService.GetResourceValue("Mica");
+            altMicaComboBoxItem.Content = LanguageService.GetResourceValue("AltMica");
             desktopAcrylicComboBoxItem.Content = LanguageService.GetResourceValue("DesktopAcrylic");
             
             generalSettingsSubtitle.Text = LanguageService.GetResourceValue("GeneralSettings");

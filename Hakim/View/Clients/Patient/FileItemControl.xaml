@@ -19,10 +19,11 @@
         <converters:FileTypeConverter x:Key="FileTypeConverter"/>
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
         <converters:TimeSpanConverter x:Key="TimeSpanConverter"/>
+        <converters:TypeToPrintVisibilityConverter x:Key="TypeToPrintVisibilityConverter"/>
         <CommandBarFlyout x:Name="FileCommandBarFlyout" Placement="TopEdgeAlignedLeft">
             <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
             <AppBarButton x:Name="editButton" Label="Edit" Icon="Edit"/>
-            <AppBarButton x:Name="printButton" Label="Print" Icon="Print"/>
+            <AppBarButton x:Name="printButton" Label="Print" Icon="Print" Visibility="{Binding Type, Converter={StaticResource TypeToPrintVisibilityConverter}}"/>
             <CommandBarFlyout.SecondaryCommands>
                 <AppBarButton x:Name="exportButton" Label="Export">
                     <AppBarButton.Icon>

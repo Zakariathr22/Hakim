@@ -45,8 +45,8 @@
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                                 HorizontalAlignment="Stretch">
                 <ComboBox x:Name="backDropComboBox" SelectedIndex="{Binding AppBackDrop, Mode=TwoWay}" SelectionChanged="backDropComboBox_SelectionChanged">
-                    <ComboBoxItem x:Name="mikaComboBoxItem"/>
-                    <ComboBoxItem x:Name="altMikaComboBoxItem"/>
+                    <ComboBoxItem x:Name="micaComboBoxItem"/>
+                    <ComboBoxItem x:Name="altMicaComboBoxItem"/>
                     <ComboBoxItem x:Name="desktopAcrylicComboBoxItem"/>
                 </ComboBox>
             </controls:SettingsCard>
