@@ -325,9 +325,9 @@ namespace Hakim.ViewModel
 
                     command.ExecuteNonQuery();
 
-                    // Insert into the BackXSpineTelemetryXRay table
+                    // Insert into the BackSpineTelemetryXRay table
                     command.CommandText = @"
-                        INSERT INTO BackXSpineTelemetryXRay (
+                        INSERT INTO BackSpineTelemetryXRay (
                             xray_id, vls, vli, cobb, bend, red
                         ) VALUES (
                             @XrayId, @Vls, @Vli, @Cobb, @Bend, @Red

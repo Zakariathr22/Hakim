@@ -20,18 +20,20 @@
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
         <converters:TimeSpanConverter x:Key="TimeSpanConverter"/>
         <CommandBarFlyout x:Name="AppointmentCommandBarFlyout" Placement="TopEdgeAlignedLeft">
-            <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
-            <AppBarButton x:Name="deleteButton" Label="Delete" Icon="Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
-                <AppBarButton.Flyout>
-                    <Flyout>
-                        <StackPanel Width="300">
-                            <TextBlock x:Name="deleteConfirmationText" Text="Are you sure you want to delete this Appointment? If you click `Yes, Delete` you will not be able to recover the Appointment." Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
+            <AppBarButton x:Name="editButton" Label="Edit" Icon="Edit"/>
+            <CommandBarFlyout.SecondaryCommands>
+                <AppBarButton x:Name="deleteButton" Label="Delete" Icon="Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
+                    <AppBarButton.Flyout>
+                        <Flyout>
+                            <StackPanel Width="300">
+                                <TextBlock x:Name="deleteConfirmationText" Text="Are you sure you want to delete this Appointment? If you click `Yes, Delete` you will not be able to recover the Appointment." Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
                                                                            Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                            <Button x:Name="deleteAppointmentButton" Content="Yes, Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Click="deleteAppointmentButton_Click"/>
-                        </StackPanel>
-                    </Flyout>
-                </AppBarButton.Flyout>
-            </AppBarButton>
+                                <Button x:Name="deleteAppointmentButton" Content="Yes, Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Click="deleteAppointmentButton_Click"/>
+                            </StackPanel>
+                        </Flyout>
+                    </AppBarButton.Flyout>
+                </AppBarButton>
+            </CommandBarFlyout.SecondaryCommands>
         </CommandBarFlyout>
     </UserControl.Resources>
 

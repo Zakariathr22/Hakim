@@ -7,13 +7,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Width="456"
-    MaxHeight="500">
+    Width="424"
+    MaxHeight="500"
+    Margin="0">
 
-    <Pivot Margin="0">
-        <PivotItem x:Name="GeneralInfoPivotItem" Margin="0">
+    <Pivot>
+        <PivotItem x:Name="GeneralInfoPivotItem" HorizontalAlignment="Left" Margin="0" Padding="0">
             <ScrollView>
-                <Grid Width="400" Margin="0 16 0 0 ">
+                <Grid Width="400" Margin="8 16 16 0 ">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -119,9 +120,9 @@
                 </Grid>
             </ScrollView>
         </PivotItem>
-        <PivotItem x:Name="medicalInformationPivotItem" Margin="0">
+        <PivotItem x:Name="medicalInformationPivotItem" HorizontalAlignment="Left" Margin="0" Padding="0">
             <ScrollView>
-                <Grid Width="400" Margin="0 16 0 0 ">
+                <Grid Width="400" Margin="8 16 16 0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>

@@ -20,12 +20,14 @@
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
         <converters:TimeSpanConverter x:Key="TimeSpanConverter"/>
         <converters:TypeToPrintVisibilityConverter x:Key="TypeToPrintVisibilityConverter"/>
+        <converters:TypeToDisplayVisibilityConverter x:Key="TypeToDisplayVisibilityConverter"/>
+        <converters:TypeToExportVisibilityConverter x:Key="TypeToExportVisibilityConverter"/>
         <CommandBarFlyout x:Name="FileCommandBarFlyout" Placement="TopEdgeAlignedLeft">
-            <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
+            <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults" Visibility="{Binding Type, Converter={StaticResource TypeToDisplayVisibilityConverter}}"/>
             <AppBarButton x:Name="editButton" Label="Edit" Icon="Edit"/>
             <AppBarButton x:Name="printButton" Label="Print" Icon="Print" Visibility="{Binding Type, Converter={StaticResource TypeToPrintVisibilityConverter}}"/>
             <CommandBarFlyout.SecondaryCommands>
-                <AppBarButton x:Name="exportButton" Label="Export">
+                <AppBarButton x:Name="exportButton" Label="Export" Visibility="{Binding Type, Converter={StaticResource TypeToExportVisibilityConverter}}">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xEDE1;" />
                     </AppBarButton.Icon>

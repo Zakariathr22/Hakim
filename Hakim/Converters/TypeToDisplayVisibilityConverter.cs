@@ -1,5 +1,5 @@
-﻿using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Hakim.Converters
 {
-    public class TypeToPrintVisibilityConverter : IValueConverter
+    public class TypeToDisplayVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
@@ -16,7 +16,7 @@ namespace Hakim.Converters
             if (value is int intValue)
             {
                 // Return Visible if the value is 1 or 4, else return Collapsed
-                return (intValue == 3) ? Visibility.Visible : Visibility.Collapsed;
+                return (intValue != 0) ? Visibility.Visible : Visibility.Collapsed;
             }
 
             // Default to Collapsed if value is not an integer

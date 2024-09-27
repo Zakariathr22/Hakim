@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Hakim.Converters
 {
-    public class TypeToPrintVisibilityConverter : IValueConverter
+    internal class TypeToExportVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
