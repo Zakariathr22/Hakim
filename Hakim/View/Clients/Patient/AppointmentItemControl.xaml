@@ -19,7 +19,7 @@
         <converters:FileTypeConverter x:Key="FileTypeConverter"/>
         <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
         <converters:TimeSpanConverter x:Key="TimeSpanConverter"/>
-        <CommandBarFlyout x:Name="FileCommandBarFlyout" Placement="TopEdgeAlignedLeft">
+        <CommandBarFlyout x:Name="AppointmentCommandBarFlyout" Placement="TopEdgeAlignedLeft">
             <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults"/>
             <AppBarButton x:Name="deleteButton" Label="Delete" Icon="Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
                 <AppBarButton.Flyout>
@@ -27,7 +27,7 @@
                         <StackPanel Width="300">
                             <TextBlock x:Name="deleteConfirmationText" Text="Are you sure you want to delete this Appointment? If you click `Yes, Delete` you will not be able to recover the Appointment." Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
                                                                            Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                            <Button x:Name="deletePatientButton" Content="Yes, Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
+                            <Button x:Name="deleteAppointmentButton" Content="Yes, Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Click="deleteAppointmentButton_Click"/>
                         </StackPanel>
                     </Flyout>
                 </AppBarButton.Flyout>

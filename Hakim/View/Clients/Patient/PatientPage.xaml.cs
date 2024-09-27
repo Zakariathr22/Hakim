@@ -646,6 +646,11 @@ namespace Hakim.View.Clients
             }
         }
 
+        public void UpdateAppointmentsList()
+        {
+            patientRecords.PatientAppointments.ItemsSource = viewModel.SelectedPatient.appointments;
+        }
+
         private void SearchAutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             IsSuggestionChosen = true;

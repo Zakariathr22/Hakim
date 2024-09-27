@@ -567,5 +567,45 @@ namespace Hakim.ViewModel
         {
             SelectedPatient.appointments = GetAppointmentsByPatient(SelectedPatient);
         }
+
+        public void DeleteAppointmentById(int appointmentId)
+        {
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
+                {
+                    // Enable foreign key constraints
+                    command.CommandText = @"
+                PRAGMA foreign_keys = ON;
+                DELETE FROM Appointment WHERE Id = @Id";
+
+                    // Bind the appointmentId parameter
+                    command.Parameters.AddWithValue("@Id", appointmentId);
+
+                    // Execute the DELETE command
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    // Check if the operation was successful
+                    if (rowsAffected > 0)
+                    {
+                        Console.WriteLine("Appointment deleted successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No appointment found with the provided ID.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while deleting the appointment: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+
+            // Refresh or update any necessary data after the deletion, if needed
+            SelectedPatient.appointments = GetAppointmentsByPatient(SelectedPatient);
+        }
+
     }
 }
