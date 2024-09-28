@@ -46,6 +46,7 @@
     <None Remove="Assets\Icons\Management.png" />
     <None Remove="Assets\Icons\OldAppointment.png" />
     <None Remove="Assets\Icons\Plus 1 Day.png" />
+    <None Remove="Assets\Icons\QuestionMark.png" />
     <None Remove="Assets\Icons\Schedule.png" />
     <None Remove="Assets\Icons\Settings.png" />
     <None Remove="Assets\Icons\Surgery.png" />
