@@ -218,7 +218,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\Clients\ClientsPage.xaml">
+    <Page Update="View\Clients\PatientsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -233,7 +233,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="View\Clients\EditPatient\EdidPatientPage.xaml">
+    <Page Update="View\Clients\EditPatient\EditPatientPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

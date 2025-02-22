@@ -1,6 +1,6 @@
 using Hakim.Models;
 using Hakim.Service;
-using Hakim.View.Clients.EditPatient;
+using Hakim.View.Patients.EditPatient;
 using Hakim.View.Controls;
 using Hakim.ViewModels;
 using Microsoft.UI.Xaml;
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-namespace Hakim.View.Clients
+namespace Hakim.View.Patients
 {
     public sealed partial class PatientsPage : Page
     {

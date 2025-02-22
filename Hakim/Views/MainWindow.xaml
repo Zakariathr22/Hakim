@@ -41,7 +41,7 @@
                         <TextBlock x:Name="homeNavigationItemText" Margin="8 0"/>
                     </StackPanel>
                 </NavigationViewItem>
-                <NavigationViewItem x:Name="patientsNavigationItem" Tag="Clients">
+                <NavigationViewItem x:Name="patientsNavigationItem" Tag="Patients">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Image Width="24" Height="24" Source="/Assets/Icons/Clients.png"/>
                         <TextBlock x:Name="patientsNavigationItemText" Margin="8 0"/>

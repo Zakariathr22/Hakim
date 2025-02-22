@@ -14,25 +14,25 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using Windows.UI;
-using Hakim.View.Clients.AddPatient;
-using Hakim.View.Clients.Patient;
+using Hakim.View.Patients.AddPatient;
+using Hakim.View.Patients.Patient;
 using Hakim.ViewModels;
 using System.Collections.ObjectModel;
 using Hakim.Service;
-using Hakim.View.Clients.EditPatient;
+using Hakim.View.Patients.EditPatient;
 using Hakim.View.Controls;
-using Hakim.View.Clients.Patient.Consultations;
-using Hakim.View.Clients.Patient.XRay_s;
-using Hakim.View.Clients.Patient.SurgeryProtocols;
+using Hakim.View.Patients.Patient.Consultations;
+using Hakim.View.Patients.Patient.XRay_s;
+using Hakim.View.Patients.Patient.SurgeryProtocols;
 using Hakim.Models;
 using System.Threading.Tasks;
-using Hakim.View.Clients.Patient.Appointments;
+using Hakim.View.Patients.Patient.Appointments;
 using Hakim.Converters;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Hakim.View.Clients
+namespace Hakim.View.Patients
 {
     public sealed partial class PatientPage : Page
     {
