@@ -1,7 +1,7 @@
 using Hakim.Converters;
 using Hakim.Service;
 using Hakim.View.Controls;
-using Hakim.ViewModel;
+using Hakim.ViewModels;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

@@ -6,7 +6,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
 
-namespace Hakim.ViewModel
+namespace Hakim.ViewModels
 {
     public partial class ClientsViewModel : ObservableObject
     {

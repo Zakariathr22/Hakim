@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hakim.ViewModel
+namespace Hakim.ViewModels
 {
     public partial class MainViewModel:ObservableObject
     {

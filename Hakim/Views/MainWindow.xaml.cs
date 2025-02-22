@@ -16,7 +16,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using WinRT.Interop;
 using Windows.UI;
-using Hakim.ViewModel;
+using Hakim.ViewModels;
 using Hakim.Service;
 
 // To learn more about WinUI, the WinUI project structure,

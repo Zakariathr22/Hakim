@@ -16,7 +16,7 @@ using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using Windows.UI;
 using Hakim.View.Clients.AddPatient;
 using Hakim.View.Clients.Patient;
-using Hakim.ViewModel;
+using Hakim.ViewModels;
 using System.Collections.ObjectModel;
 using Hakim.Service;
 using Hakim.View.Clients.EditPatient;
