@@ -21,13 +21,13 @@ using Windows.Foundation.Collections;
 
 namespace Hakim.View.Clients
 {
-    public sealed partial class ClientsPage : Page
+    public sealed partial class PatientsPage : Page
     {
         public ClientsViewModel viewModel = new ClientsViewModel();
         private bool IsSuggestionChosen = false;
         private ObservableCollection<Models.Patient> Patients = new ObservableCollection<Models.Patient>();
         private Dictionary<string, Models.Patient> _patientDictionary = new Dictionary<string, Models.Patient>();
-        public ClientsPage()
+        public PatientsPage()
         {
             this.InitializeComponent();
             this.InitializeLocalization();

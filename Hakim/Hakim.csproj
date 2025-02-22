@@ -65,7 +65,6 @@
     <None Remove="Views\Patients\AddPatientPage.xaml" />
     <None Remove="Views\Patients\AddPatient\MedicalInfoPage.xaml" />
     <None Remove="Views\Patients\AddPatient\PatientGeneralInfoPage.xaml" />
-    <None Remove="Views\Patients\ClientsPage.xaml" />
     <None Remove="Views\Patients\PatientCardControl.xaml" />
     <None Remove="Views\Patients\PatientPage.xaml" />
     <None Remove="Views\Patients\Patient\AppointmentItemControl.xaml" />

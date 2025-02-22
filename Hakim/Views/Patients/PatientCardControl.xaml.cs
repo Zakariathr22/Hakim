@@ -26,7 +26,7 @@ namespace Hakim.View.Clients
 {
     public sealed partial class PatientCardControl : UserControl
     {
-        private ClientsPage ParentPage;
+        private PatientsPage ParentPage;
         public PatientCardControl()
         {
             this.InitializeComponent();
@@ -36,7 +36,7 @@ namespace Hakim.View.Clients
 
         private void PatientCardControl_Loaded(object sender, RoutedEventArgs e)
         {
-            ParentPage = VisualTreeExtensionsService.FindParent<ClientsPage>(this);
+            ParentPage = VisualTreeExtensionsService.FindParent<PatientsPage>(this);
             if (ParentPage != null)
             {
                 // You now have access to the parent page
