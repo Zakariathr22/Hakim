@@ -1,4 +1,4 @@
-using Hakim.Model;
+using Hakim.Models;
 using Hakim.View.Clients.AddPatient;
 using Hakim.ViewModel;
 using Microsoft.UI.Xaml;

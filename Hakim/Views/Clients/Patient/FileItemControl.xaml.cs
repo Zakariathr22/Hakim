@@ -44,7 +44,7 @@ namespace Hakim.View.Clients.Patient
         {
             FileCommandBarFlyout.Hide();
 
-            if (this.DataContext is Model.File file)
+            if (this.DataContext is Models.File file)
             {
                 // Now you have access to the associated Patient object
                 ParentPage.viewModel.DeleteFileById(file.id);
@@ -66,7 +66,7 @@ namespace Hakim.View.Clients.Patient
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (this.DataContext is Model.File file)
+            if (this.DataContext is Models.File file)
             {
                 if (file.Type == 0)
                 {

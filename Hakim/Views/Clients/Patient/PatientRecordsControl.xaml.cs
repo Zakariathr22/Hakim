@@ -15,7 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Windows.UI;
 using Hakim.Service;
 using System.Diagnostics;
-using Hakim.Model;
+using Hakim.Models;
 using Microsoft.VisualBasic.FileIO;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -27,7 +27,7 @@ namespace Hakim.View.Clients.Patient
     public sealed partial class PatientRecordsControl : UserControl
     {
         PatientPage ParentPage;
-        public PatientRecordsControl(Model.Patient patient)
+        public PatientRecordsControl(Models.Patient patient)
         {
             this.InitializeComponent();
             PatientFiles.ItemsSource = patient.files;
@@ -79,7 +79,7 @@ namespace Hakim.View.Clients.Patient
             appointmentsImage.Visibility = Visibility.Visible;
         }
 
-        public void UpdateFilesDisplayVisibility(Model.Patient patient)
+        public void UpdateFilesDisplayVisibility(Models.Patient patient)
         {
             if (patient.files.Count == 0)
             {
@@ -97,7 +97,7 @@ namespace Hakim.View.Clients.Patient
             }
         }
 
-        public void UpdateAppointmentsDisplayVisibility(Model.Patient patient)
+        public void UpdateAppointmentsDisplayVisibility(Models.Patient patient)
         {
             if (patient.appointments.Count == 0)
             {

@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Hakim.Model;
+using Hakim.Models;
 using Hakim.Service;
 using System;
 using System.Collections.Generic;

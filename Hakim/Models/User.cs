@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.System.Update;
 
-namespace Hakim.Model
+namespace Hakim.Models
 {
     public class User : INotifyPropertyChanged
     {

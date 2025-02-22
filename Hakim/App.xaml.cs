@@ -1,4 +1,4 @@
-﻿using Hakim.Model;
+﻿using Hakim.Models;
 using Hakim.Service;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

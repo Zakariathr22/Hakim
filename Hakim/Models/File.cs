@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Networking;
 
-namespace Hakim.Model
+namespace Hakim.Models
 {
     public partial class File 
     {

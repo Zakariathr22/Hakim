@@ -24,7 +24,7 @@ using Hakim.View.Controls;
 using Hakim.View.Clients.Patient.Consultations;
 using Hakim.View.Clients.Patient.XRay_s;
 using Hakim.View.Clients.Patient.SurgeryProtocols;
-using Hakim.Model;
+using Hakim.Models;
 using System.Threading.Tasks;
 using Hakim.View.Clients.Patient.Appointments;
 using Hakim.Converters;
@@ -42,9 +42,9 @@ namespace Hakim.View.Clients
         ScrollViewer scrollView2 = new ScrollViewer();
         Grid InternalPanel = new Grid();
         Expander expander = new Expander();
-        private Dictionary<string, Model.File> _filesDictionary = new Dictionary<string, Model.File>();
+        private Dictionary<string, Models.File> _filesDictionary = new Dictionary<string, Models.File>();
         private bool IsSuggestionChosen = false;
-        ObservableCollection<Model.File> Files = new ObservableCollection<Model.File>();
+        ObservableCollection<Models.File> Files = new ObservableCollection<Models.File>();
 
         PatientInfoEditorControl patientInfoEditor;
         PatientDetailsDisplayControl patientDetailsDisplay;
@@ -198,9 +198,9 @@ namespace Hakim.View.Clients
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (e.Parameter is Model.Patient)
+            if (e.Parameter is Models.Patient)
             {
-                viewModel.SelectedPatient = e.Parameter as Model.Patient;
+                viewModel.SelectedPatient = e.Parameter as Models.Patient;
             }
             base.OnNavigatedTo(e);
         }
@@ -462,7 +462,7 @@ namespace Hakim.View.Clients
             patientRecords.UpdateAppointmentsDisplayVisibility(viewModel.SelectedPatient);
         }
 
-        public async void ShowEditPatientDialog(Model.Patient patient)
+        public async void ShowEditPatientDialog(Models.Patient patient)
         {
             ContentDialog dialog = new ContentDialog();
 
@@ -692,7 +692,7 @@ namespace Hakim.View.Clients
             else FilterAppointmentsButton.IsChecked = true;
         }
 
-        public async void ShowEditConsultationDialog(Model.MedicalConsultation consultation)
+        public async void ShowEditConsultationDialog(Models.MedicalConsultation consultation)
         {
             ContentDialog dialog = new ContentDialog();
             dialog.XamlRoot = Content.XamlRoot;

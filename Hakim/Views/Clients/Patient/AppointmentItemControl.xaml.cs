@@ -54,7 +54,7 @@ namespace Hakim.View.Clients.Patient
         {
             AppointmentCommandBarFlyout.Hide();
 
-            if (this.DataContext is Model.Appointment appointment)
+            if (this.DataContext is Models.Appointment appointment)
             {
                 // Now you have access to the associated Patient object
                 ParentPage.viewModel.DeleteAppointmentById(appointment.id);

@@ -1,4 +1,4 @@
-using Hakim.Model;
+using Hakim.Models;
 using Hakim.Service;
 using Hakim.View.Clients.EditPatient;
 using Hakim.View.Controls;
@@ -25,8 +25,8 @@ namespace Hakim.View.Clients
     {
         public ClientsViewModel viewModel = new ClientsViewModel();
         private bool IsSuggestionChosen = false;
-        private ObservableCollection<Model.Patient> Patients = new ObservableCollection<Model.Patient>();
-        private Dictionary<string, Model.Patient> _patientDictionary = new Dictionary<string, Model.Patient>();
+        private ObservableCollection<Models.Patient> Patients = new ObservableCollection<Models.Patient>();
+        private Dictionary<string, Models.Patient> _patientDictionary = new Dictionary<string, Models.Patient>();
         public ClientsPage()
         {
             this.InitializeComponent();
@@ -52,7 +52,7 @@ namespace Hakim.View.Clients
             dialog.Title = new TitleControl(LanguageService.GetResourceValue("AddPatient"), addPatientIcon);
             dialog.PrimaryButtonText = LanguageService.GetResourceValue("Next"); ;
             dialog.CloseButtonText = LanguageService.GetResourceValue("Cancel"); ;
-            viewModel.Patient = new Model.Patient();
+            viewModel.Patient = new Models.Patient();
             dialog.Content = new AddPatientPage(dialog,viewModel);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
@@ -261,13 +261,13 @@ namespace Hakim.View.Clients
             UpdatePatientSearchResults(SearchAutoSuggestBox);
         }
 
-        public async void ShowEditPatientDialog(Model.Patient patient)
+        public async void ShowEditPatientDialog(Models.Patient patient)
         {
             ContentDialog dialog = new ContentDialog();
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.SecondaryButtonText = LanguageService.GetResourceValue("Close");
-            viewModel.Patient = new Model.Patient();
+            viewModel.Patient = new Models.Patient();
             dialog.Content = new EdidPatientPage(dialog, patient);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();

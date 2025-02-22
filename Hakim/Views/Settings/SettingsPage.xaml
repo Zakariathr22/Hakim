@@ -23,15 +23,13 @@
             </StackPanel>
             <TextBlock x:Name="userSubtitle" Margin="0 0 0 8" Style="{ThemeResource SubtitleTextBlockStyle}"/>
             <controls:SettingsCard x:Name="userSettingsCard"
-                                   Header="{Binding User.profitionalName, Mode=TwoWay}"
-                                   HeaderIcon="{ui:FontIcon Glyph=&#xE77B;}">
+                                   Header="{Binding User.profitionalName, Mode=TwoWay}">
                 <HyperlinkButton x:Name="editUserHyperlinkButton" Click="HyperlinkButton_Click"/>
             </controls:SettingsCard>
             <TextBlock Margin="0 8" Style="{ThemeResource SubtitleTextBlockStyle}">
             Apparence
             </TextBlock>
             <controls:SettingsCard x:Name="themeSettingCard"
-                                HeaderIcon="{ui:FontIcon Glyph=&#xE790;}"
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                                 Margin="0 0 0 4">
                 <ComboBox x:Name="themeComboBox" SelectedIndex="{Binding AppTheme, Mode=TwoWay}" SelectionChanged="themeComboBox_SelectionChanged">
@@ -41,7 +39,6 @@
                 </ComboBox>
             </controls:SettingsCard>
             <controls:SettingsCard x:Name="backDropSettingCard"
-                                HeaderIcon="{ui:FontIcon Glyph=&#xE81E;}"
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                                 HorizontalAlignment="Stretch">
                 <ComboBox x:Name="backDropComboBox" SelectedIndex="{Binding AppBackDrop, Mode=TwoWay}" SelectionChanged="backDropComboBox_SelectionChanged">
@@ -52,7 +49,6 @@
             </controls:SettingsCard>
             <TextBlock x:Name="generalSettingsSubtitle" Margin="0 8" Style="{ThemeResource SubtitleTextBlockStyle}"/>
             <controls:SettingsCard x:Name="landingPageSettingCard"
-                                HeaderIcon="{ui:FontIcon Glyph=&#xE89A;}"
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                                 HorizontalAlignment="Stretch"
                                 Margin="0 0 0 4">
@@ -63,7 +59,6 @@
                 </ComboBox>
             </controls:SettingsCard>
             <controls:SettingsCard x:Name="languageSettingCard"
-                                HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}"
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                                 HorizontalAlignment="Stretch"
                                 Margin="0 0 0 4">
@@ -109,7 +104,6 @@
                 </ComboBox>
             </controls:SettingsCard>
             <controls:SettingsCard x:Name="shortCutSettingCard"
-                            HeaderIcon="{ui:FontIcon Glyph=&#xE8A7;}"
                             Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                             HorizontalAlignment="Stretch"
                             IsEnabled="False">
@@ -119,13 +113,11 @@
             <controls:SettingsCard x:Name="aboutAppSettingCard"
                                Margin="0 0 0 4"
                                 Header="Hakim 0.8"
-                                HeaderIcon="{ui:FontIcon Glyph=&#xE946;}"
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                 <HyperlinkButton NavigateUri="https://github.com/Zakariathr22/Hakim">GitHub</HyperlinkButton>
             </controls:SettingsCard>
             <controls:SettingsCard x:Name="aboutIcons"
                                 Margin="0 0 0 4"
-                                HeaderIcon="{ui:FontIcon Glyph=&#xED58;}"
                                 Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                 <HyperlinkButton x:Name="pichonHyperlinkButton" NavigateUri="https://icons8.com/app/windows-pichon"/>
             </controls:SettingsCard>

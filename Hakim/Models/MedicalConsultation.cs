@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hakim.Model
+namespace Hakim.Models
 {
     public partial class MedicalConsultation : File
     {

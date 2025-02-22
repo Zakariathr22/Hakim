@@ -1,4 +1,4 @@
-using Hakim.Model;
+using Hakim.Models;
 using Hakim.Service;
 using Hakim.ViewModel;
 using Microsoft.UI.Xaml;
@@ -59,7 +59,7 @@ namespace Hakim.View.Clients
         private void deletePatientButton_Click(object sender, RoutedEventArgs e)
         {
             CommandBarFlyout.Hide();
-            if (this.DataContext is Model.Patient patient)
+            if (this.DataContext is Models.Patient patient)
             {
                 // Now you have access to the associated Patient object
                 ParentPage.viewModel.DeletePatientById(patient.id);
@@ -70,7 +70,7 @@ namespace Hakim.View.Clients
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
             CommandBarFlyout.Hide();
-            if (this.DataContext is Model.Patient patient)
+            if (this.DataContext is Models.Patient patient)
             {
                 // Now you have access to the associated Patient object
                 ParentPage.ShowEditPatientDialog(patient);
@@ -79,7 +79,7 @@ namespace Hakim.View.Clients
 
         private void CustomButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.DataContext is Model.Patient patient)
+            if (this.DataContext is Models.Patient patient)
             {
                 ParentPage.viewModel.SelectedPatient = patient;
                 App.mainWindow.contentFrame.Navigate(typeof(PatientPage), ParentPage.viewModel.SelectedPatient);
@@ -88,7 +88,7 @@ namespace Hakim.View.Clients
 
         private void SetCardColor()
         {
-            if (this.DataContext is Model.Patient patient)
+            if (this.DataContext is Models.Patient patient)
             {
                 // Check the patient's ID and apply the corresponding styles.
                 if (patient.id % 4 == 0)

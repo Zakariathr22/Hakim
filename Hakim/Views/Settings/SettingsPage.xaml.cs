@@ -50,6 +50,15 @@ namespace Hakim.View.Settings
                 Mode = BindingMode.TwoWay
             };
             languageComboBox.SetBinding(ComboBox.SelectedIndexProperty, binding);
+
+            userSettingsCard.HeaderIcon = new FontIcon { Glyph = "\uE77B" };
+            themeSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE790" };
+            backDropSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE81E" };
+            landingPageSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE89A" };
+            languageSettingCard.HeaderIcon = new FontIcon { Glyph = "\uF2B7" };
+            shortCutSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE8A7" };
+            aboutAppSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE946" };
+            aboutIcons.HeaderIcon = new FontIcon { Glyph = "\uED58" };
         }
 
         private void themeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -1,4 +1,4 @@
-using Hakim.Model;
+using Hakim.Models;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -21,7 +21,7 @@ namespace Hakim.View.Clients.Patient
 {
     public sealed partial class PatientDetailsDisplayControl : UserControl
     {
-        public PatientDetailsDisplayControl(Model.Patient patient)
+        public PatientDetailsDisplayControl(Models.Patient patient)
         {
             this.InitializeComponent();
             DataContext = patient;

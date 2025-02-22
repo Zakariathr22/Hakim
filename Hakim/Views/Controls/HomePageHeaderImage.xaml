@@ -30,7 +30,6 @@
     <Grid>
         <Image
             x:Name="BackOverlayImage"
-            toolkit:VisualExtensions.NormalizedCenterPoint="0.5"
             Source="{ThemeResource ImageSource}"
             Stretch="UniformToFill"
             Opacity="{ThemeResource ImageOpacity}"/>

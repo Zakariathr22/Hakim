@@ -1,4 +1,4 @@
-using Hakim.Model;
+using Hakim.Models;
 using Hakim.Service;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -24,8 +24,8 @@ namespace Hakim.View.Clients.Patient
     public sealed partial class PatientInfoEditorControl : UserControl
     {
         PatientPage ParentPage;
-        Model.Patient patient;
-        public PatientInfoEditorControl(Model.Patient patient)
+        Models.Patient patient;
+        public PatientInfoEditorControl(Models.Patient patient)
         {
             this.InitializeComponent();
             this.patient = patient;

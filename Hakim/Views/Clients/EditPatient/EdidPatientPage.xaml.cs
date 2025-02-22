@@ -12,7 +12,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using Hakim.Model;
+using Hakim.Models;
 using Hakim.Service;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -25,14 +25,14 @@ namespace Hakim.View.Clients.EditPatient
     /// </summary>
     public sealed partial class EdidPatientPage : Page
     {
-        Model.Patient patient;
+        Models.Patient patient;
         ContentDialog dialog;
         public EdidPatientPage()
         {
             this.InitializeComponent();
         }
 
-        public EdidPatientPage(ContentDialog dialog, Model.Patient patient)
+        public EdidPatientPage(ContentDialog dialog, Models.Patient patient)
         {
             this.InitializeComponent();
             this.InitializeLocation();
