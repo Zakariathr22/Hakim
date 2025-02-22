@@ -1,6 +1,6 @@
 using Hakim.Converters;
 using Hakim.Service;
-using Hakim.View.Controls;
+using Hakim.Views.Controls;
 using Hakim.ViewModels;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
@@ -21,7 +21,7 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Hakim.View.Settings
+namespace Hakim.Views.Settings
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within PatientDetailsDisplay Frame.

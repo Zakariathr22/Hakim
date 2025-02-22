@@ -18,7 +18,7 @@ using Windows.Storage.Pickers;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Hakim.View.Patients.Patient.XRay_s
+namespace Hakim.Views.Patients.Patient.XRay_s
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

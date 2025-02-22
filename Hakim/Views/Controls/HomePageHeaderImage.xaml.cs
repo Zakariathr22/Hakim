@@ -1,5 +1,5 @@
 using Hakim.Service;
-using Hakim.View.Home;
+using Hakim.Views.Home;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -19,7 +19,7 @@ using Windows.UI;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Hakim.View.Controls
+namespace Hakim.Views.Controls
 {
     public sealed partial class HomePageHeaderImage : UserControl
     {

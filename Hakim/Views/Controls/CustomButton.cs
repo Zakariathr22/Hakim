@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hakim.View.Controls
+namespace Hakim.Views.Controls
 {
     class CustomButton : Button
     {

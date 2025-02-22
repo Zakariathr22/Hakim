@@ -16,7 +16,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace Hakim.View.Controls
+namespace Hakim.Views.Controls
 {
     public sealed partial class CustomCalendarDatePicker : UserControl
     {

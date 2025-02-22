@@ -113,7 +113,7 @@ namespace Hakim
             if (selectedItem != null)
             {
                 string selectedItemTag = ((string)selectedItem.Tag);
-                string pageName = $"Hakim.View.{selectedItemTag}.{selectedItemTag}Page";
+                string pageName = $"Hakim.Views.{selectedItemTag}.{selectedItemTag}Page";
                 Type pageType = Type.GetType(pageName);
                 contentFrame.Navigate(pageType);
             }
