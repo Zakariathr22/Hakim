@@ -48,7 +48,8 @@
     </UserControl.Resources>
 
     <Button Margin="-12 0 0 0" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
-            MinHeight="72" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Transparent" Padding="12 0 0 0">
+            MinHeight="72" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Transparent" Padding="12 0 0 0"
+            Click="Button_Click">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>

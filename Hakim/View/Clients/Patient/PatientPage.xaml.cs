@@ -691,5 +691,22 @@ namespace Hakim.View.Clients
                 FilterAppointmentsButton.IsChecked = false;
             else FilterAppointmentsButton.IsChecked = true;
         }
+
+        public async void ShowEditConsultationDialog(Model.MedicalConsultation consultation)
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.SecondaryButtonText = LanguageService.GetResourceValue("Close");
+            //viewModel.Patient = new Model.Patient();
+            dialog.Content = new AddEditConsultaionFilePage(dialog, consultation);
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Secondary)
+            {
+                //viewModel.UpdatePatient(patient);
+                //UpdatePatientSearchResults(SearchAutoSuggestBox);
+            }
+        }
     }
 }

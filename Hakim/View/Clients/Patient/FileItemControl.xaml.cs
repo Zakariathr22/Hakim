@@ -63,5 +63,28 @@ namespace Hakim.View.Clients.Patient
             };
             flyout.ShowAt(this, showModeOption);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext is Model.File file)
+            {
+                if (file.Type == 0)
+                {
+
+                }
+                else if (file.Type == 1)
+                {
+                    
+                }
+                else if (file.Type == 2)
+                {
+
+                }
+                else if (file.Type == 3)
+                {
+
+                }
+            }
+        }
     }
 }
