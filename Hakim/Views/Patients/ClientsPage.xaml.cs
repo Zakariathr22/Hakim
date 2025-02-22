@@ -268,7 +268,7 @@ namespace Hakim.View.Clients
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.SecondaryButtonText = LanguageService.GetResourceValue("Close");
             viewModel.Patient = new Models.Patient();
-            dialog.Content = new EdidPatientPage(dialog, patient);
+            dialog.Content = new EditPatientPage(dialog, patient);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Secondary)

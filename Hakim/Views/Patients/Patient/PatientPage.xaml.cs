@@ -470,7 +470,7 @@ namespace Hakim.View.Clients
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
             dialog.SecondaryButtonText = "Fermer";
-            dialog.Content = new EdidPatientPage(dialog, patient);
+            dialog.Content = new EditPatientPage(dialog, patient);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
             if (result == ContentDialogResult.Secondary)

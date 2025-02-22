@@ -23,16 +23,16 @@ namespace Hakim.View.Clients.EditPatient
     /// <summary>
     /// An empty page that can be used on its own or navigated to within PatientDetailsDisplay Frame.
     /// </summary>
-    public sealed partial class EdidPatientPage : Page
+    public sealed partial class EditPatientPage : Page
     {
         Models.Patient patient;
         ContentDialog dialog;
-        public EdidPatientPage()
+        public EditPatientPage()
         {
             this.InitializeComponent();
         }
 
-        public EdidPatientPage(ContentDialog dialog, Models.Patient patient)
+        public EditPatientPage(ContentDialog dialog, Models.Patient patient)
         {
             this.InitializeComponent();
             this.InitializeLocation();
