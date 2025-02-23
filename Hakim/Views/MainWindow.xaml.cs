@@ -15,7 +15,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using WinRT.Interop;
-using Windows.UI;
+using Microsoft.UI;
 using Hakim.ViewModels;
 using Hakim.Service;
 
@@ -44,9 +44,9 @@ namespace Hakim
             overlappedPresenter = GetAppWindowOverlappedPresenter(appWindow);
             titleBar = GetAppWindowTitleBar(appWindow);
             
-            titleBar.ButtonBackgroundColor = Color.FromArgb(0, 0, 0, 0);
-            titleBar.ButtonForegroundColor = Color.FromArgb(0, 128, 128, 128);
-            titleBar.ButtonInactiveBackgroundColor = Color.FromArgb(0, 0, 0, 0);
+            titleBar.ButtonBackgroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
+            titleBar.ButtonForegroundColor = Windows.UI.Color.FromArgb(0, 128, 128, 128);
+            titleBar.ButtonInactiveBackgroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
 
             appWindow.Title = "Hakim";
             appWindow.SetIcon("Assets/Icons/Hakim.ico");
