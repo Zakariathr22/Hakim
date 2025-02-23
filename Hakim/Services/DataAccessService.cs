@@ -2,7 +2,7 @@
 using System.Data.SQLite;
 using System.Diagnostics;
 
-namespace Hakim.Service
+namespace Hakim.Services
 {
     public static class DataAccessService
     {

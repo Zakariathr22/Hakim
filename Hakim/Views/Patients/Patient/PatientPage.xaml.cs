@@ -18,7 +18,7 @@ using Hakim.Views.Patients.AddPatient;
 using Hakim.Views.Patients.Patient;
 using Hakim.ViewModels;
 using System.Collections.ObjectModel;
-using Hakim.Service;
+using Hakim.Services;
 using Hakim.Views.Patients.EditPatient;
 using Hakim.Views.Controls;
 using Hakim.Views.Patients.Patient.Consultations;

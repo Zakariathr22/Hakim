@@ -10,7 +10,7 @@ using System.Xml;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
-namespace Hakim.Service
+namespace Hakim.Services
 {
     public static class ConfigurationService
     {

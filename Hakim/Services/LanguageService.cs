@@ -7,7 +7,7 @@ using Microsoft.Windows.ApplicationModel.Resources;
 using Windows.Globalization;
 
 
-namespace Hakim.Service
+namespace Hakim.Services
 {
     public static class LanguageService
     {

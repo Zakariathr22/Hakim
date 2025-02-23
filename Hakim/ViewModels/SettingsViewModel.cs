@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Hakim.Models;
-using Hakim.Service;
+using Hakim.Services;
 using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Hakim.Models;
-using Hakim.Service;
+using Hakim.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Data.SQLite;
