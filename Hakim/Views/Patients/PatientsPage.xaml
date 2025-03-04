@@ -1,58 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Page
-    x:Class="Hakim.Views.Patients.PatientsPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Hakim.Views.Patients"
-    xmlns:controls="using:Hakim.Controls"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+<Page x:Class="Hakim.Views.Patients.PatientsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Hakim.Views.Patients"
+      xmlns:controls="using:Hakim.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
     <Page.Resources>
-        <FontIcon x:Name="addPatientIcon" x:FieldModifier="public" Glyph="&#xE8FA;"/>
+        <FontIcon x:Name="addPatientIcon"
+                  x:FieldModifier="public"
+                  Glyph="&#xE8FA;" />
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="56"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="56" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ContentPresenter Height="56" Grid.Column="0" Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
-                    BorderThickness="0 0 0 1" BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}">
-            <CommandBar IsOpen="False" Height="56">
-                <AppBarButton x:Name="AddPatientButton" Icon="AddFriend" Click="AddPatientButton_Click">
-                    <KeyboardAccelerator Modifiers="Control" Key="N"/>
+        <ContentPresenter Height="56"
+                          Grid.Column="0"
+                          Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
+                          BorderThickness="0 0 0 1"
+                          BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}">
+            <CommandBar IsOpen="False"
+                        Height="56">
+                <AppBarButton x:Name="AddPatientButton"
+                              Icon="AddFriend"
+                              Click="AddPatientButton_Click">
+                    <KeyboardAccelerator Modifiers="Control"
+                                         Key="N" />
                 </AppBarButton>
                 <AppBarSeparator />
-                <AppBarButton x:Name="sortButton" Icon="Sort">
+                <AppBarButton x:Name="sortButton"
+                              Icon="Sort">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <ToggleMenuFlyoutItem x:Name="OrderByDate" IsChecked="True" Click="OrderByDate_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="OrderByLastName" IsChecked="False" Click="OrderByLastName_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="OrderByFirstName" IsChecked="False" Click="OrderByFirstName_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="OrderByAge" IsChecked="False" Click="OrderByAge_Click"/>
-                            <MenuFlyoutSeparator/>
-                            <ToggleMenuFlyoutItem x:Name="CroissantOrder" Text="Croissant" IsChecked="False" Click="CroissantOrder_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="DecroissantOrder" Text="Décroissant" IsChecked="True" Click="DecroissantOrder_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByDate"
+                                                  IsChecked="True"
+                                                  Click="OrderByDate_Click" />
+                            <ToggleMenuFlyoutItem x:Name="OrderByLastName"
+                                                  IsChecked="False"
+                                                  Click="OrderByLastName_Click" />
+                            <ToggleMenuFlyoutItem x:Name="OrderByFirstName"
+                                                  IsChecked="False"
+                                                  Click="OrderByFirstName_Click" />
+                            <ToggleMenuFlyoutItem x:Name="OrderByAge"
+                                                  IsChecked="False"
+                                                  Click="OrderByAge_Click" />
+                            <MenuFlyoutSeparator />
+                            <ToggleMenuFlyoutItem x:Name="CroissantOrder"
+                                                  Text="Croissant"
+                                                  IsChecked="False"
+                                                  Click="CroissantOrder_Click" />
+                            <ToggleMenuFlyoutItem x:Name="DecroissantOrder"
+                                                  Text="Décroissant"
+                                                  IsChecked="True"
+                                                  Click="DecroissantOrder_Click" />
                         </MenuFlyout>
                     </Button.Flyout>
                 </AppBarButton>
-                <AppBarButton x:Name="refreshButton" Icon="Refresh" Click="AppBarButton_Click"/>
+                <AppBarButton x:Name="refreshButton"
+                              Icon="Refresh"
+                              Click="AppBarButton_Click" />
                 <AppBarElementContainer Padding="6">
-                    <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="200" QueryIcon="Find"
-                                    TextChanged="SearchAutoSuggestBox_TextChanged" SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen"
-                                    QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted"/>
+                    <AutoSuggestBox x:Name="SearchAutoSuggestBox"
+                                    x:FieldModifier="public"
+                                    Width="200"
+                                    QueryIcon="Find"
+                                    TextChanged="SearchAutoSuggestBox_TextChanged"
+                                    SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen"
+                                    QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted" />
                 </AppBarElementContainer>
             </CommandBar>
         </ContentPresenter>
         <ScrollView Grid.Row="1">
-            <ItemsRepeater x:Name="itemsRepeater" x:FieldModifier="public" Margin="24 16" HorizontalAlignment="Stretch">
+            <ItemsRepeater x:Name="itemsRepeater"
+                           x:FieldModifier="public"
+                           Margin="24 16"
+                           HorizontalAlignment="Stretch">
                 <ItemsRepeater.ItemTemplate>
                     <DataTemplate>
-                        <controls:PatientCardControl/>
+                        <controls:PatientCardControl />
                     </DataTemplate>
                 </ItemsRepeater.ItemTemplate>
                 <ItemsRepeater.Layout>
-                    <UniformGridLayout MinRowSpacing="12" MinColumnSpacing="12"/>
+                    <UniformGridLayout MinRowSpacing="12"
+                                       MinColumnSpacing="12" />
                 </ItemsRepeater.Layout>
             </ItemsRepeater>
         </ScrollView>

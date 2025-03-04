@@ -1,68 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Page
-    x:Class="Hakim.Views.Settings.SettingsPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Hakim.Views.Settings"
-    xmlns:converters="using:Hakim.Converters"
-    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
-    xmlns:ui="using:CommunityToolkit.WinUI"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    NavigationCacheMode="Enabled">
+<Page x:Class="Hakim.Views.Settings.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Hakim.Views.Settings"
+      xmlns:converters="using:Hakim.Converters"
+      xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+      xmlns:ui="using:CommunityToolkit.WinUI"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      NavigationCacheMode="Enabled">
 
     <ScrollView>
         <StackPanel Padding="24">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 0 16">
-                <FontIcon Glyph="&#xE713;" Margin="0 0 8 0" FontSize="28" Height="38" VerticalAlignment="Bottom"/>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Margin="0 0 0 16">
+                <FontIcon Glyph="&#xE713;"
+                          Margin="0 0 8 0"
+                          FontSize="28"
+                          Height="38"
+                          VerticalAlignment="Bottom" />
                 <TextBlock x:Name="settingsPageHeader"
                            VerticalAlignment="Center"
                            Style="{ThemeResource TitleTextBlockStyle}"
-                           Margin="0 -5 0 0"/>
+                           Margin="0 -5 0 0" />
             </StackPanel>
-            <TextBlock x:Name="userSubtitle" Margin="0 0 0 8" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            <TextBlock x:Name="userSubtitle"
+                       Margin="0 0 0 8"
+                       Style="{ThemeResource SubtitleTextBlockStyle}" />
             <controls:SettingsCard x:Name="userSettingsCard"
                                    Header="{Binding User.profitionalName, Mode=TwoWay}">
-                <HyperlinkButton x:Name="editUserHyperlinkButton" Click="HyperlinkButton_Click"/>
+                <HyperlinkButton x:Name="editUserHyperlinkButton"
+                                 Click="HyperlinkButton_Click" />
             </controls:SettingsCard>
-            <TextBlock Margin="0 8" Style="{ThemeResource SubtitleTextBlockStyle}">
+            <TextBlock Margin="0 8"
+                       Style="{ThemeResource SubtitleTextBlockStyle}">
             Apparence
             </TextBlock>
             <controls:SettingsCard x:Name="themeSettingCard"
-                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                Margin="0 0 0 4">
-                <ComboBox x:Name="themeComboBox" SelectedIndex="{Binding AppTheme, Mode=TwoWay}" SelectionChanged="themeComboBox_SelectionChanged">
-                    <ComboBoxItem x:Name="systemModeComboBoxItem" Tag="Default"/>
-                    <ComboBoxItem x:Name="lightModeComboBoxItem" Tag="Light"/>
-                    <ComboBoxItem x:Name="darkmModeComboBoxItem" Tag="Dark"/>
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                   Margin="0 0 0 4">
+                <ComboBox x:Name="themeComboBox"
+                          SelectedIndex="{Binding AppTheme, Mode=TwoWay}"
+                          SelectionChanged="themeComboBox_SelectionChanged">
+                    <ComboBoxItem x:Name="systemModeComboBoxItem"
+                                  Tag="Default" />
+                    <ComboBoxItem x:Name="lightModeComboBoxItem"
+                                  Tag="Light" />
+                    <ComboBoxItem x:Name="darkmModeComboBoxItem"
+                                  Tag="Dark" />
                 </ComboBox>
             </controls:SettingsCard>
             <controls:SettingsCard x:Name="backDropSettingCard"
-                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                HorizontalAlignment="Stretch">
-                <ComboBox x:Name="backDropComboBox" SelectedIndex="{Binding AppBackDrop, Mode=TwoWay}" SelectionChanged="backDropComboBox_SelectionChanged">
-                    <ComboBoxItem x:Name="micaComboBoxItem"/>
-                    <ComboBoxItem x:Name="altMicaComboBoxItem"/>
-                    <ComboBoxItem x:Name="desktopAcrylicComboBoxItem"/>
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                   HorizontalAlignment="Stretch">
+                <ComboBox x:Name="backDropComboBox"
+                          SelectedIndex="{Binding AppBackDrop, Mode=TwoWay}"
+                          SelectionChanged="backDropComboBox_SelectionChanged">
+                    <ComboBoxItem x:Name="micaComboBoxItem" />
+                    <ComboBoxItem x:Name="altMicaComboBoxItem" />
+                    <ComboBoxItem x:Name="desktopAcrylicComboBoxItem" />
                 </ComboBox>
             </controls:SettingsCard>
-            <TextBlock x:Name="generalSettingsSubtitle" Margin="0 8" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            <TextBlock x:Name="generalSettingsSubtitle"
+                       Margin="0 8"
+                       Style="{ThemeResource SubtitleTextBlockStyle}" />
             <controls:SettingsCard x:Name="landingPageSettingCard"
-                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                HorizontalAlignment="Stretch"
-                                Margin="0 0 0 4">
-                <ComboBox x:Name="landingPageComboBox" SelectedIndex="{Binding LandingPage, Mode=TwoWay}" SelectionChanged="landingPageComboBox_SelectionChanged">
-                    <ComboBoxItem x:Name="homeComboBoxItem"/>
-                    <ComboBoxItem x:Name="patientsComboBoxItem"/>
-                    <ComboBoxItem x:Name="appointmentsComboBoxItem"/>
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                   HorizontalAlignment="Stretch"
+                                   Margin="0 0 0 4">
+                <ComboBox x:Name="landingPageComboBox"
+                          SelectedIndex="{Binding LandingPage, Mode=TwoWay}"
+                          SelectionChanged="landingPageComboBox_SelectionChanged">
+                    <ComboBoxItem x:Name="homeComboBoxItem" />
+                    <ComboBoxItem x:Name="patientsComboBoxItem" />
+                    <ComboBoxItem x:Name="appointmentsComboBoxItem" />
                 </ComboBox>
             </controls:SettingsCard>
             <controls:SettingsCard x:Name="languageSettingCard"
-                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                HorizontalAlignment="Stretch"
-                                Margin="0 0 0 4">
-                <ComboBox x:Name="languageComboBox" SelectionChanged="languageComboBox_SelectionChanged">
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                   HorizontalAlignment="Stretch"
+                                   Margin="0 0 0 4">
+                <ComboBox x:Name="languageComboBox"
+                          SelectionChanged="languageComboBox_SelectionChanged">
                     <!--<ComboBoxItem Tag="ar-DZ">العربية (الجزائر)</ComboBoxItem>
                     <ComboBoxItem Tag="ar-SA">العربية (السعودية)</ComboBoxItem>
                     <ComboBoxItem Tag="cs-CZ">čeština (Česká republika)</ComboBoxItem>
@@ -104,22 +125,28 @@
                 </ComboBox>
             </controls:SettingsCard>
             <controls:SettingsCard x:Name="shortCutSettingCard"
-                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                            HorizontalAlignment="Stretch"
-                            IsEnabled="False">
-                <ToggleSwitch x:Name="ShortCutToggleSwitch" OnContent="" OffContent="" Toggled="ShortCutToggleSwitch_Toggled"/>
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                   HorizontalAlignment="Stretch"
+                                   IsEnabled="False">
+                <ToggleSwitch x:Name="ShortCutToggleSwitch"
+                              OnContent=""
+                              OffContent=""
+                              Toggled="ShortCutToggleSwitch_Toggled" />
             </controls:SettingsCard>
-            <TextBlock x:Name="aboutAppSubtitle" Margin="0 8" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+            <TextBlock x:Name="aboutAppSubtitle"
+                       Margin="0 8"
+                       Style="{ThemeResource SubtitleTextBlockStyle}" />
             <controls:SettingsCard x:Name="aboutAppSettingCard"
-                               Margin="0 0 0 4"
-                                Header="Hakim 0.8"
-                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                                   Margin="0 0 0 4"
+                                   Header="Hakim 0.8"
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                 <HyperlinkButton NavigateUri="https://github.com/Zakariathr22/Hakim">GitHub</HyperlinkButton>
             </controls:SettingsCard>
             <controls:SettingsCard x:Name="aboutIcons"
-                                Margin="0 0 0 4"
-                                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
-                <HyperlinkButton x:Name="pichonHyperlinkButton" NavigateUri="https://icons8.com/app/windows-pichon"/>
+                                   Margin="0 0 0 4"
+                                   Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                <HyperlinkButton x:Name="pichonHyperlinkButton"
+                                 NavigateUri="https://icons8.com/app/windows-pichon" />
             </controls:SettingsCard>
         </StackPanel>
     </ScrollView>

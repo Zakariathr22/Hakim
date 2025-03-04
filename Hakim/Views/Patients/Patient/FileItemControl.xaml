@@ -63,6 +63,7 @@
                     </Grid.ColumnDefinitions>
                     <Image Source="{Binding Type, Converter={StaticResource IconUrlConverter}, Mode=OneWay}" Width="32" Height="32" Margin="0 0 12 0"/>
                     <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
                 </Grid>
             </Grid>
             <Border Grid.Column="1" VerticalAlignment="Center">

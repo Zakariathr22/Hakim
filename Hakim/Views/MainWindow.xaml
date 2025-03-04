@@ -1,68 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Window
-    x:Class="Hakim.MainWindow"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Hakim"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+<Window x:Class="Hakim.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:Hakim"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d">
 
     <Window.SystemBackdrop>
-        <MicaBackdrop/>
+        <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid x:Name="mainPanel" FlowDirection="LeftToRight" x:FieldModifier="public">
+    <Grid x:Name="mainPanel"
+          FlowDirection="LeftToRight"
+          x:FieldModifier="public">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border x:Name="AppTitleBar" Grid.Row="0" VerticalAlignment="Top">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Image Source="/Assets/Logo.png" Height="24" Width="24" Margin="8 4 4 4" VerticalAlignment="Center"/>
-                <TextBlock x:Name="AppTitle" Text="Hakim" Margin="4" VerticalAlignment="Center" />
+        <Border x:Name="AppTitleBar"
+                Grid.Row="0"
+                VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center">
+                <Image Source="/Assets/Logo.png"
+                       Height="24"
+                       Width="24"
+                       Margin="8 4 4 4"
+                       VerticalAlignment="Center" />
+                <TextBlock x:Name="AppTitle"
+                           Text="Hakim"
+                           Margin="4"
+                           VerticalAlignment="Center" />
             </StackPanel>
         </Border>
 
-        <NavigationView Grid.Row="1" x:Name="navigationView" Width="auto"
+        <NavigationView Grid.Row="1"
+                        x:Name="navigationView"
+                        Width="auto"
                         PaneDisplayMode="Auto"
                         IsBackEnabled="True"
                         SelectionChanged="navigationView_SelectionChanged"
                         IsSettingsVisible="False"
                         PaneTitle="{Binding User.profitionalName, Mode=TwoWay}">
             <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox x:Name="searchAutoSuggestBox" QueryIcon="Find" AutomationProperties.Name="Search"/>
+                <AutoSuggestBox x:Name="searchAutoSuggestBox"
+                                QueryIcon="Find"
+                                AutomationProperties.Name="Search" />
             </NavigationView.AutoSuggestBox>
 
             <NavigationView.MenuItems>
-                <NavigationViewItem x:Name="homeNavigationItem" Tag="Home">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Width="24" Height="24" Source="/Assets/Icons/Home.png"/>
-                        <TextBlock x:Name="homeNavigationItemText" Margin="8 0"/>
+                <NavigationViewItem x:Name="homeNavigationItem"
+                                    Tag="Home">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <Image Width="24"
+                               Height="24"
+                               Source="/Assets/Icons/Home.png" />
+                        <TextBlock x:Name="homeNavigationItemText"
+                                   Margin="8 0" />
                     </StackPanel>
                 </NavigationViewItem>
-                <NavigationViewItem x:Name="patientsNavigationItem" Tag="Patients">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Width="24" Height="24" Source="/Assets/Icons/Clients.png"/>
-                        <TextBlock x:Name="patientsNavigationItemText" Margin="8 0"/>
+                <NavigationViewItem x:Name="patientsNavigationItem"
+                                    Tag="Patients">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <Image Width="24"
+                               Height="24"
+                               Source="/Assets/Icons/Clients.png" />
+                        <TextBlock x:Name="patientsNavigationItemText"
+                                   Margin="8 0" />
                     </StackPanel>
                 </NavigationViewItem>
-                <NavigationViewItem x:Name="scheduleNavigationItem" Tag="Schedule">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Width="24" Height="24" Source="/Assets/Icons/Schedule.png"></Image>
-                        <TextBlock x:Name="scheduleNavigationItemText" Margin="8 0"/>
+                <NavigationViewItem x:Name="scheduleNavigationItem"
+                                    Tag="Schedule">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <Image Width="24"
+                               Height="24"
+                               Source="/Assets/Icons/Schedule.png"></Image>
+                        <TextBlock x:Name="scheduleNavigationItemText"
+                                   Margin="8 0" />
                     </StackPanel>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem x:Name="settingsNavigationItem" Tag="Settings">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Image Width="24" Height="24" Source="/Assets/Icons/Settings.png"/>
-                        <TextBlock x:Name="settingsNavigationItemText" Margin="8 0"/>
+                <NavigationViewItem x:Name="settingsNavigationItem"
+                                    Tag="Settings">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <Image Width="24"
+                               Height="24"
+                               Source="/Assets/Icons/Settings.png" />
+                        <TextBlock x:Name="settingsNavigationItemText"
+                                   Margin="8 0" />
                     </StackPanel>
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>
-            <Frame Margin="0,0,0,0" x:Name="contentFrame" x:FieldModifier="public"/>
+            <Frame Margin="0,0,0,0"
+                   x:Name="contentFrame"
+                   x:FieldModifier="public" />
         </NavigationView>
     </Grid>
 </Window>

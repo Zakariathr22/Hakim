@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Page
-    x:Class="Hakim.Views.Patients.PatientPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Hakim.Views.Patients"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    SizeChanged="Page_SizeChanged">
+<Page x:Class="Hakim.Views.Patients.PatientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Hakim.Views.Patients"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d"
+      SizeChanged="Page_SizeChanged">
 
     <Page.Resources>
-        <ControlTemplate TargetType="Button" x:Key="ButtonTemplate">
-            <Border x:Name="RootElement" HorizontalAlignment="Stretch" Height="100">
+        <ControlTemplate TargetType="Button"
+                         x:Key="ButtonTemplate">
+            <Border x:Name="RootElement"
+                    HorizontalAlignment="Stretch"
+                    Height="100">
                 <Border.Background>
-                    <SolidColorBrush x:Name="BorderBrush" Color="Black" />
+                    <SolidColorBrush x:Name="BorderBrush"
+                                     Color="Black" />
                 </Border.Background>
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="WidthStates">
@@ -22,8 +25,10 @@
                                 <AdaptiveTrigger MinWindowWidth="450" />
                             </VisualState.StateTriggers>
                             <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBrush" Storyboard.TargetProperty="Color">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="Red"/>
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBrush"
+                                                               Storyboard.TargetProperty="Color">
+                                    <DiscreteObjectKeyFrame KeyTime="0"
+                                                            Value="Red" />
                                 </ObjectAnimationUsingKeyFrames>
                             </Storyboard>
                         </VisualState>
@@ -32,94 +37,189 @@
             </Border>
         </ControlTemplate>
     </Page.Resources>
-    
+
     <Grid x:Name="PagePanel">
         <Grid.RowDefinitions>
-            <RowDefinition Height="56"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="56" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ContentPresenter Height="56" Grid.Column="0" Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
-                    BorderThickness="0 0 0 1" BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}">
-            <CommandBar IsOpen="False" Height="56">
-                <AppBarButton x:Name="AddFileButton" x:FieldModifier="public" Label="Ajouter" ToolTipService.ToolTip="Ajouter un fichier">
+        <ContentPresenter Height="56"
+                          Grid.Column="0"
+                          Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
+                          BorderThickness="0 0 0 1"
+                          BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}">
+            <CommandBar IsOpen="False"
+                        Height="56">
+                <AppBarButton x:Name="AddFileButton"
+                              x:FieldModifier="public"
+                              Label="Ajouter"
+                              ToolTipService.ToolTip="Ajouter un fichier">
                     <AppBarButton.Icon>
                         <FontIcon Glyph="&#xED0E;" />
                     </AppBarButton.Icon>
                     <AppBarButton.Flyout>
                         <MenuFlyout>
-                            <MenuFlyoutItem x:Name="AddConsultationItem" Text="Consultation" Click="AddConsultationItem_Click">
+                            <MenuFlyoutItem x:Name="AddConsultationItem"
+                                            Text="Consultation"
+                                            Click="AddConsultationItem_Click">
                                 <MenuFlyoutItem.Icon>
-                                    <ImageIcon Source="\Assets\Icons\Counselor.png"/>
+                                    <ImageIcon Source="\Assets\Icons\Counselor.png" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem x:Name="AddXRayItem" Text="Radiographie" Click="AddXRayItem_Click">
+                            <MenuFlyoutItem x:Name="AddXRayItem"
+                                            Text="Radiographie"
+                                            Click="AddXRayItem_Click">
                                 <MenuFlyoutItem.Icon>
-                                    <ImageIcon Source="\Assets\Icons\X-ray.png"/>
+                                    <ImageIcon Source="\Assets\Icons\X-ray.png" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem x:Name="TelemetryXRayItem" Text="Radiographie télémétrie &#x0A;de la colonne vertébrale" Click="TelemetryXRayItem_Click">
+                            <MenuFlyoutItem x:Name="TelemetryXRayItem"
+                                            Text="Radiographie télémétrie &#x0A;de la colonne vertébrale"
+                                            Click="TelemetryXRayItem_Click">
                                 <MenuFlyoutItem.Icon>
-                                    <ImageIcon Source="\Assets\Icons\X-ray1.png"/>
+                                    <ImageIcon Source="\Assets\Icons\X-ray1.png" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
-                            <MenuFlyoutItem x:Name="SurgeryProtocolItem" Text="Protocol opératoire" Click="SurgeryProtocolItem_Click">
+                            <MenuFlyoutItem x:Name="SurgeryProtocolItem"
+                                            Text="Protocol opératoire"
+                                            Click="SurgeryProtocolItem_Click">
                                 <MenuFlyoutItem.Icon>
-                                    <ImageIcon Source="\Assets\Icons\Surgery.png"/>
+                                    <ImageIcon Source="\Assets\Icons\Surgery.png" />
                                 </MenuFlyoutItem.Icon>
                             </MenuFlyoutItem>
                         </MenuFlyout>
                     </AppBarButton.Flyout>
                 </AppBarButton>
-                <AppBarButton x:Name="AddAppointmentButton" x:FieldModifier="public" Visibility="Collapsed" Icon="Add" Label="Ajouter" ToolTipService.ToolTip="Ajouter un rendez-vous"
-                              Click="AddAppointmentButton_Click"/>
+                <AppBarButton x:Name="AddAppointmentButton"
+                              x:FieldModifier="public"
+                              Visibility="Collapsed"
+                              Icon="Add"
+                              Label="Ajouter"
+                              ToolTipService.ToolTip="Ajouter un rendez-vous"
+                              Click="AddAppointmentButton_Click" />
                 <AppBarSeparator />
-                <AppBarButton x:Name="SortFilesButton" x:FieldModifier="public" Icon="Sort" Label="Trier" ToolTipService.ToolTip="Trier les fichiers">
+                <AppBarButton x:Name="SortFilesButton"
+                              x:FieldModifier="public"
+                              Icon="Sort"
+                              Label="Trier"
+                              ToolTipService.ToolTip="Trier les fichiers">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <ToggleMenuFlyoutItem x:Name="OrderByDate" Text="Par date création" IsChecked="True" Click="OrderByDate_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="OrderByTitle" Text="Par titre" IsChecked="False" Click="OrderByTitle_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="OrderByType" Text="Par type" IsChecked="False" Click="OrderByType_Click"/>
-                            <MenuFlyoutSeparator/>
-                            <ToggleMenuFlyoutItem x:Name="CroissantOrder" Text="Croissant" IsChecked="False" Click="CroissantOrder_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="DecroissantOrder" Text="Décroissant" IsChecked="True" Click="DecroissantOrder_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="OrderByDate"
+                                                  Text="Par date création"
+                                                  IsChecked="True"
+                                                  Click="OrderByDate_Click" />
+                            <ToggleMenuFlyoutItem x:Name="OrderByTitle"
+                                                  Text="Par titre"
+                                                  IsChecked="False"
+                                                  Click="OrderByTitle_Click" />
+                            <ToggleMenuFlyoutItem x:Name="OrderByType"
+                                                  Text="Par type"
+                                                  IsChecked="False"
+                                                  Click="OrderByType_Click" />
+                            <MenuFlyoutSeparator />
+                            <ToggleMenuFlyoutItem x:Name="CroissantOrder"
+                                                  Text="Croissant"
+                                                  IsChecked="False"
+                                                  Click="CroissantOrder_Click" />
+                            <ToggleMenuFlyoutItem x:Name="DecroissantOrder"
+                                                  Text="Décroissant"
+                                                  IsChecked="True"
+                                                  Click="DecroissantOrder_Click" />
                         </MenuFlyout>
                     </Button.Flyout>
                 </AppBarButton>
-                <AppBarButton x:Name="SortAppintmentsButton" x:FieldModifier="public" Visibility="Collapsed" Icon="Sort" Label="Trier" ToolTipService.ToolTip="Trier les rendez-vous">
+                <AppBarButton x:Name="SortAppintmentsButton"
+                              x:FieldModifier="public"
+                              Visibility="Collapsed"
+                              Icon="Sort"
+                              Label="Trier"
+                              ToolTipService.ToolTip="Trier les rendez-vous">
                     <Button.Flyout>
                         <MenuFlyout>
-                            <ToggleMenuFlyoutItem x:Name="CroissantAppointmentOrder" Text="Croissant" IsChecked="False" Click="CroissantAppointmentOrder_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="DecroissantAppointmentOrder" Text="Décroissant" IsChecked="True" Click="DecroissantAppointmentOrder_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="CroissantAppointmentOrder"
+                                                  Text="Croissant"
+                                                  IsChecked="False"
+                                                  Click="CroissantAppointmentOrder_Click" />
+                            <ToggleMenuFlyoutItem x:Name="DecroissantAppointmentOrder"
+                                                  Text="Décroissant"
+                                                  IsChecked="True"
+                                                  Click="DecroissantAppointmentOrder_Click" />
                         </MenuFlyout>
                     </Button.Flyout>
                 </AppBarButton>
 
-                <AppBarToggleButton x:Name="FilterFilesButton" x:FieldModifier="public" Icon="Filter" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers" Click="FilterFilesButton_Click">
+                <AppBarToggleButton x:Name="FilterFilesButton"
+                                    x:FieldModifier="public"
+                                    Icon="Filter"
+                                    Label="Filtrer"
+                                    ToolTipService.ToolTip="Filtrer les fichiers"
+                                    Click="FilterFilesButton_Click">
                     <AppBarToggleButton.ContextFlyout>
                         <MenuFlyout>
-                            <ToggleMenuFlyoutItem x:Name="AllFiles" Text="Tous les fichiers" IsChecked="True" Click="AllFiles_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="Consultations" Text="Consultations" IsChecked="True" Click="Consultations_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="Xray" Text="Radiographies" IsChecked="True" Click="Xray_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="TXray" Text="Radiographies télémétries" IsChecked="True" Click="TXray_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="SurgeryProtocol" Text="Protocols opératoires" IsChecked="True" Click="SurgeryProtocol_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="AllFiles"
+                                                  Text="Tous les fichiers"
+                                                  IsChecked="True"
+                                                  Click="AllFiles_Click" />
+                            <ToggleMenuFlyoutItem x:Name="Consultations"
+                                                  Text="Consultations"
+                                                  IsChecked="True"
+                                                  Click="Consultations_Click" />
+                            <ToggleMenuFlyoutItem x:Name="Xray"
+                                                  Text="Radiographies"
+                                                  IsChecked="True"
+                                                  Click="Xray_Click" />
+                            <ToggleMenuFlyoutItem x:Name="TXray"
+                                                  Text="Radiographies télémétries"
+                                                  IsChecked="True"
+                                                  Click="TXray_Click" />
+                            <ToggleMenuFlyoutItem x:Name="SurgeryProtocol"
+                                                  Text="Protocols opératoires"
+                                                  IsChecked="True"
+                                                  Click="SurgeryProtocol_Click" />
                         </MenuFlyout>
                     </AppBarToggleButton.ContextFlyout>
                 </AppBarToggleButton>
 
-                <AppBarToggleButton x:Name="FilterAppointmentsButton" x:FieldModifier="public" Icon="Filter" Visibility="Collapsed" Label="Filtrer" ToolTipService.ToolTip="Filtrer les fichiers" Click="FilterAppointmentsButton_Click">
+                <AppBarToggleButton x:Name="FilterAppointmentsButton"
+                                    x:FieldModifier="public"
+                                    Icon="Filter"
+                                    Visibility="Collapsed"
+                                    Label="Filtrer"
+                                    ToolTipService.ToolTip="Filtrer les fichiers"
+                                    Click="FilterAppointmentsButton_Click">
                     <AppBarToggleButton.ContextFlyout>
                         <MenuFlyout>
-                            <ToggleMenuFlyoutItem x:Name="AllAppointments" Text="Tous les rendez-vous" IsChecked="True" Click="AllAppointments_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="PresntAndFutureAppointments" Text="Rendez-vous à venir" IsChecked="True" Click="PresntAndFutureAppointments_Click"/>
-                            <ToggleMenuFlyoutItem x:Name="PastAppointments" Text="Aanciens rendez-vous" IsChecked="True" Click="PastAppointments_Click"/>
+                            <ToggleMenuFlyoutItem x:Name="AllAppointments"
+                                                  Text="Tous les rendez-vous"
+                                                  IsChecked="True"
+                                                  Click="AllAppointments_Click" />
+                            <ToggleMenuFlyoutItem x:Name="PresntAndFutureAppointments"
+                                                  Text="Rendez-vous à venir"
+                                                  IsChecked="True"
+                                                  Click="PresntAndFutureAppointments_Click" />
+                            <ToggleMenuFlyoutItem x:Name="PastAppointments"
+                                                  Text="Aanciens rendez-vous"
+                                                  IsChecked="True"
+                                                  Click="PastAppointments_Click" />
                         </MenuFlyout>
                     </AppBarToggleButton.ContextFlyout>
                 </AppBarToggleButton>
-                
-                <AppBarButton x:Name="RefreshButton" Icon="Refresh" Label="Actualiser" ToolTipService.ToolTip="Actualiser" Click="RefreshButton_Click"/>
+
+                <AppBarButton x:Name="RefreshButton"
+                              Icon="Refresh"
+                              Label="Actualiser"
+                              ToolTipService.ToolTip="Actualiser"
+                              Click="RefreshButton_Click" />
                 <AppBarElementContainer Padding="6">
-                    <AutoSuggestBox x:Name="SearchAutoSuggestBox" x:FieldModifier="public" Width="200" QueryIcon="Find" PlaceholderText="Recherche un fichier" 
-                                    TextChanged="SearchAutoSuggestBox_TextChanged" SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen" QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted" />
+                    <AutoSuggestBox x:Name="SearchAutoSuggestBox"
+                                    x:FieldModifier="public"
+                                    Width="200"
+                                    QueryIcon="Find"
+                                    PlaceholderText="Recherche un fichier"
+                                    TextChanged="SearchAutoSuggestBox_TextChanged"
+                                    SuggestionChosen="SearchAutoSuggestBox_SuggestionChosen"
+                                    QuerySubmitted="SearchAutoSuggestBox_QuerySubmitted" />
                 </AppBarElementContainer>
             </CommandBar>
         </ContentPresenter>

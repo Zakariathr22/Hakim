@@ -1,68 +1,101 @@
-<UserControl
-    x:Class="Hakim.Controls.PatientCardControl"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:Hakim.Controls"
-    xmlns:converters="using:Hakim.Converters"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+<UserControl x:Class="Hakim.Controls.PatientCardControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Hakim.Controls"
+             xmlns:converters="using:Hakim.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
 
     <UserControl.Resources>
-        <CommandBarFlyout Placement="Right" x:Name="CommandBarFlyout">
-            <AppBarButton x:Name="displayButton" Icon="ShowResults" Click="CustomButton_Click"/>
-            <AppBarButton x:Name="editButton" Icon="Edit" Click="editButton_Click"/>
+        <CommandBarFlyout Placement="Right"
+                          x:Name="CommandBarFlyout">
+            <AppBarButton x:Name="displayButton"
+                          Icon="ShowResults"
+                          Click="CustomButton_Click" />
+            <AppBarButton x:Name="editButton"
+                          Icon="Edit"
+                          Click="editButton_Click" />
             <CommandBarFlyout.SecondaryCommands>
-                <AppBarButton x:Name="deleteButton" Icon="Delete" Foreground="{ThemeResource SystemFillColorCriticalBrush}">
+                <AppBarButton x:Name="deleteButton"
+                              Icon="Delete"
+                              Foreground="{ThemeResource SystemFillColorCriticalBrush}">
                     <AppBarButton.Flyout>
                         <Flyout>
                             <StackPanel Width="300">
-                                <TextBlock x:Name="deleteConfirmationText" Style="{ThemeResource BaseTextBlockStyle}" TextWrapping="Wrap" Margin="0,0,0,12" 
-                                           Foreground="{ThemeResource SystemFillColorCriticalBrush}"/>
-                                <Button x:Name="deletePatientButton" Content="Oui, Supprimer" Foreground="{ThemeResource SystemFillColorCriticalBrush}" Click="deletePatientButton_Click"/>
+                                <TextBlock x:Name="deleteConfirmationText"
+                                           Style="{ThemeResource BaseTextBlockStyle}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,0,0,12"
+                                           Foreground="{ThemeResource SystemFillColorCriticalBrush}" />
+                                <Button x:Name="deletePatientButton"
+                                        Content="Oui, Supprimer"
+                                        Foreground="{ThemeResource SystemFillColorCriticalBrush}"
+                                        Click="deletePatientButton_Click" />
                             </StackPanel>
                         </Flyout>
                     </AppBarButton.Flyout>
                 </AppBarButton>
             </CommandBarFlyout.SecondaryCommands>
         </CommandBarFlyout>
-        <converters:DateOnlyConverter x:Key="DateOnlyConverter"/>
-        <converters:OutputStringConverter x:Key="OutputStringConverter"/>
-        <converters:PatientStyleConverter x:Key="PatientStyleConverter"/>
-        <converters:PatientForegroundConverter x:Key="PatientForegroundConverter"/>
+        <converters:DateOnlyConverter x:Key="DateOnlyConverter" />
+        <converters:OutputStringConverter x:Key="OutputStringConverter" />
+        <converters:PatientStyleConverter x:Key="PatientStyleConverter" />
+        <converters:PatientForegroundConverter x:Key="PatientForegroundConverter" />
     </UserControl.Resources>
 
     <ToolTipService.ToolTip>
-        <Grid MaxWidth="250" MaxHeight="300">
+        <Grid MaxWidth="250"
+              MaxHeight="300">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="dateAndTimeAddedTitle" Padding="2" FontWeight="Bold"/>
-                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding dateOfRegistration, Mode=OneWay}" Padding="2"/>
+                <TextBlock x:Name="dateAndTimeAddedTitle"
+                           Padding="2"
+                           FontWeight="Bold" />
+                <TextBlock Grid.Column="1"
+                           Grid.Row="0"
+                           Text="{Binding dateOfRegistration, Mode=OneWay}"
+                           Padding="2" />
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="dateOfBirthTitle" Padding="2" FontWeight="Bold"/>
-                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding DateOfBirth.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}" Padding="2"/>
+                <TextBlock x:Name="dateOfBirthTitle"
+                           Padding="2"
+                           FontWeight="Bold" />
+                <TextBlock Grid.Column="1"
+                           Grid.Row="0"
+                           Text="{Binding DateOfBirth.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}"
+                           Padding="2" />
             </Grid>
-            <TextBlock x:Name="medicalHistoryTitle" Grid.Row="2" Padding="2" FontWeight="Bold"/>
-            <TextBlock Grid.Row="3" Text="{Binding MedicalHistory,Converter={StaticResource OutputStringConverter}, Mode=OneWay}" Padding="2" TextWrapping="Wrap"/>
+            <TextBlock x:Name="medicalHistoryTitle"
+                       Grid.Row="2"
+                       Padding="2"
+                       FontWeight="Bold" />
+            <TextBlock Grid.Row="3"
+                       Text="{Binding MedicalHistory,Converter={StaticResource OutputStringConverter}, Mode=OneWay}"
+                       Padding="2"
+                       TextWrapping="Wrap" />
         </Grid>
     </ToolTipService.ToolTip>
 
-    <controls:CustomButton Padding="0" BorderThickness="0" Margin="0" ContextRequested="CustomButton_ContextRequested"
-                           CornerRadius="8" Click="CustomButton_Click">
+    <controls:CustomButton Padding="0"
+                           BorderThickness="0"
+                           Margin="0"
+                           ContextRequested="CustomButton_ContextRequested"
+                           CornerRadius="8"
+                           Click="CustomButton_Click">
         <Grid BorderThickness="1"
               BorderBrush="{ThemeResource ControlElevationBorderBrush}"
               CornerRadius="8"
@@ -72,26 +105,49 @@
               Height="124"
               Width="300">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="60"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" VerticalAlignment="Top">
-                <PersonPicture x:Name="personPicture" Width="48" DisplayName="{Binding fullName}" Style="{Binding id, Converter={StaticResource PatientStyleConverter}}"/>
+            <Border Grid.Column="0"
+                    VerticalAlignment="Top">
+                <PersonPicture x:Name="personPicture"
+                               Width="48"
+                               DisplayName="{Binding fullName}"
+                               Style="{Binding id, Converter={StaticResource PatientStyleConverter}}" />
             </Border>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="fullNameAndAgeTextBlock" Grid.Row="0" Text="{Binding fullNameAndAge}" Margin="4 0 0 8" FontSize="14" FontWeight="SemiBold" Style="{Binding id, Converter={StaticResource PatientForegroundConverter}}" TextWrapping="Wrap"/>
-                <StackPanel Grid.Row="1" Orientation="Horizontal"  Margin="4 0 0 4">
-                    <TextBlock Margin="0 0 4 0" FontFamily="Segoe Fluent Icons" Text="&#xE717;" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding phone1Details}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                <TextBlock x:Name="fullNameAndAgeTextBlock"
+                           Grid.Row="0"
+                           Text="{Binding fullNameAndAge}"
+                           Margin="4 0 0 8"
+                           FontSize="14"
+                           FontWeight="SemiBold"
+                           Style="{Binding id, Converter={StaticResource PatientForegroundConverter}}"
+                           TextWrapping="Wrap" />
+                <StackPanel Grid.Row="1"
+                            Orientation="Horizontal"
+                            Margin="4 0 0 4">
+                    <TextBlock Margin="0 0 4 0"
+                               FontFamily="Segoe Fluent Icons"
+                               Text="&#xE717;"
+                               FontWeight="Bold" />
+                    <TextBlock Text="{Binding phone1Details}"
+                               Style="{ThemeResource BodyTextBlockStyle}" />
                 </StackPanel>
-                <StackPanel Grid.Row="2" Orientation="Horizontal"  Margin="4 0 0 4">
-                    <TextBlock Margin="0 0 4 0" FontFamily="Segoe Fluent Icons" Text="&#xE717;" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding phone2Details}" Style="{ThemeResource BodyTextBlockStyle}"/>
+                <StackPanel Grid.Row="2"
+                            Orientation="Horizontal"
+                            Margin="4 0 0 4">
+                    <TextBlock Margin="0 0 4 0"
+                               FontFamily="Segoe Fluent Icons"
+                               Text="&#xE717;"
+                               FontWeight="Bold" />
+                    <TextBlock Text="{Binding phone2Details}"
+                               Style="{ThemeResource BodyTextBlockStyle}" />
                 </StackPanel>
             </Grid>
         </Grid>
