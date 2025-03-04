@@ -20,7 +20,7 @@ using Hakim.ViewModels;
 using System.Collections.ObjectModel;
 using Hakim.Services;
 using Hakim.Views.Patients.EditPatient;
-using Hakim.Views.Controls;
+using Hakim.Controls;
 using Hakim.Views.Patients.Patient.Consultations;
 using Hakim.Views.Patients.Patient.XRay_s;
 using Hakim.Views.Patients.Patient.SurgeryProtocols;

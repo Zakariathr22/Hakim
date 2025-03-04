@@ -1,12 +1,7 @@
 ﻿using Microsoft.UI.Input;
 using Microsoft.UI.Xaml.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Hakim.Views.Controls
+namespace Hakim.Controls
 {
     class CustomButton : Button
     {

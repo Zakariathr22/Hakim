@@ -78,11 +78,11 @@
     <None Remove="Views\Patients\Patient\SurgeryProtocols\AddSurgeryProtocolPage.xaml" />
     <None Remove="Views\Patients\Patient\XRay_s\AddTelemetryXRayPage.xaml" />
     <None Remove="Views\Patients\Patient\XRay_s\AddXRayPage.xaml" />
-    <None Remove="Views\Controls\CustomCalendarDatePicker.xaml" />
-    <None Remove="Views\Controls\CustomCalendarView.xaml" />
-    <None Remove="Views\Controls\EditNamePage.xaml" />
-    <None Remove="Views\Controls\HomePageHeaderImage.xaml" />
-    <None Remove="Views\Controls\TitleControl.xaml" />
+    <None Remove="Controls\CustomCalendarDatePicker.xaml" />
+    <None Remove="Controls\CustomCalendarView.xaml" />
+    <None Remove="Controls\EditNamePage.xaml" />
+    <None Remove="Controls\HomePageHeaderImage.xaml" />
+    <None Remove="Controls\TitleControl.xaml" />
     <None Remove="Views\Home\HomePage.xaml" />
     <None Remove="Views\Schedule\SchedulePage.xaml" />
     <None Remove="Views\Settings\SettingsPage.xaml" />

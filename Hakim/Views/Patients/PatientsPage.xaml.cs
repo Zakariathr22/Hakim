@@ -1,7 +1,7 @@
 using Hakim.Models;
 using Hakim.Services;
 using Hakim.Views.Patients.EditPatient;
-using Hakim.Views.Controls;
+using Hakim.Controls;
 using Hakim.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
