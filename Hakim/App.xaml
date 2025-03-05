@@ -66,6 +66,26 @@
                 <Setter Property="Foreground"
                         Value="{ThemeResource AccentTextFillColorPrimaryBrush}" />
             </Style>
+
+            <Style x:Key="SelectedTextBlockStyle"
+                   TargetType="TextBlock">
+                <Setter Property="Foreground"
+                        Value="{ThemeResource AccentTextFillColorPrimaryBrush}" />
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="FontWeight"
+                        Value="SemiBold" /> 
+            </Style>
+
+            <Style x:Key="UnselectedTextBlockStyle"
+                   TargetType="TextBlock">
+                <Setter Property="Foreground"
+                        Value="{ThemeResource TextFillColorSecondaryBrush}" />
+                <Setter Property="FontSize"
+                        Value="14" />
+                <Setter Property="FontWeight"
+                        Value="SemiBold" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

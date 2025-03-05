@@ -23,15 +23,16 @@
                 VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Center">
+                        VerticalAlignment="Center"
+                        Height="48">
                 <Image Source="/Assets/Logo.png"
-                       Height="24"
-                       Width="24"
-                       Margin="8 4 4 4"
+                       Height="20"
+                       Width="20"
+                       Margin="16 0 0 0"
                        VerticalAlignment="Center" />
                 <TextBlock x:Name="AppTitle"
                            Text="Hakim"
-                           Margin="4"
+                           Margin="8 0 0 0"
                            VerticalAlignment="Center" />
             </StackPanel>
         </Border>
@@ -55,33 +56,33 @@
                                     Tag="Home">
                     <StackPanel Orientation="Horizontal"
                                 VerticalAlignment="Center">
-                        <Image Width="24"
-                               Height="24"
+                        <Image Width="20"
+                               Height="20"
                                Source="/Assets/Icons/Home.png" />
                         <TextBlock x:Name="homeNavigationItemText"
-                                   Margin="8 0" />
+                                   Margin="12 0" />
                     </StackPanel>
                 </NavigationViewItem>
                 <NavigationViewItem x:Name="patientsNavigationItem"
                                     Tag="Patients">
                     <StackPanel Orientation="Horizontal"
                                 VerticalAlignment="Center">
-                        <Image Width="24"
-                               Height="24"
+                        <Image Width="20"
+                               Height="20"
                                Source="/Assets/Icons/Clients.png" />
                         <TextBlock x:Name="patientsNavigationItemText"
-                                   Margin="8 0" />
+                                   Margin="12 0" />
                     </StackPanel>
                 </NavigationViewItem>
                 <NavigationViewItem x:Name="scheduleNavigationItem"
                                     Tag="Schedule">
                     <StackPanel Orientation="Horizontal"
                                 VerticalAlignment="Center">
-                        <Image Width="24"
-                               Height="24"
+                        <Image Width="20"
+                               Height="20"
                                Source="/Assets/Icons/Schedule.png"></Image>
                         <TextBlock x:Name="scheduleNavigationItemText"
-                                   Margin="8 0" />
+                                   Margin="12 0" />
                     </StackPanel>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
@@ -90,11 +91,11 @@
                                     Tag="Settings">
                     <StackPanel Orientation="Horizontal"
                                 VerticalAlignment="Center">
-                        <Image Width="24"
-                               Height="24"
+                        <Image Width="20"
+                               Height="20"
                                Source="/Assets/Icons/Settings.png" />
                         <TextBlock x:Name="settingsNavigationItemText"
-                                   Margin="8 0" />
+                                   Margin="12 0" />
                     </StackPanel>
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>

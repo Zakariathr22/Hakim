@@ -48,7 +48,7 @@
     </UserControl.Resources>
 
     <Button Margin="-12 0 0 0" BorderThickness="0 0 0 1" BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
-            MinHeight="72" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Transparent" Padding="12 0 0 0"
+            MinHeight="64" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Transparent" Padding="12 0 0 0"
             Click="Button_Click">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -61,9 +61,8 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Source="{Binding Type, Converter={StaticResource IconUrlConverter}, Mode=OneWay}" Width="32" Height="32" Margin="0 0 12 0"/>
-                    <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyStrongTextBlockStyle}" VerticalAlignment="Center"/>
+                    <Image Source="{Binding Type, Converter={StaticResource IconUrlConverter}, Mode=OneWay}" Width="24" Height="24" Margin="0 0 12 0"/>
+                    <TextBlock Grid.Column="1" Text="{Binding Title}" Style="{ThemeResource BodyTextBlockStyle}" VerticalAlignment="Center"/>
                 </Grid>
             </Grid>
             <Border Grid.Column="1" VerticalAlignment="Center">

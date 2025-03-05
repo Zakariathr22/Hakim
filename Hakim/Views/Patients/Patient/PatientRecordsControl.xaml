@@ -23,19 +23,20 @@
     <Pivot>
         <PivotItem Margin="0">
             <PivotItem.Header>
-                <PivotHeaderItem x:Name="FilesHeader"
-                                 Tapped="FilesHeader_Tapped">
-                    <StackPanel Orientation="Horizontal">
-                        <Image x:Name="docsImageD"
-                               Height="32"
-                               Source="/Assets/Icons/DocumentsDisabled.png"
-                               Visibility="Collapsed" />
-                        <Image x:Name="docsImage"
-                               Height="32"
-                               Source="/Assets/Icons/Documents.png" />
-                        <TextBlock Margin="8 0 0 0"
-                                   Foreground="{ThemeResource TextFillColorPrimaryBrush}">Fichiers</TextBlock>
-                    </StackPanel>
+                <PivotHeaderItem x:Name="FilesHeader"  
+                                Tapped="FilesHeader_Tapped">  
+                   <StackPanel Orientation="Horizontal">  
+                       <Image x:Name="docsImageD"  
+                              Height="20"  
+                              Source="/Assets/Icons/DocumentsDisabled.png"  
+                              Visibility="Collapsed" />  
+                       <Image x:Name="docsImage"  
+                              Height="20"  
+                              Source="/Assets/Icons/Documents.png" />  
+                       <TextBlock x:Name="FilesHeaderTextBlock"  
+                                  Margin="8 0 0 0"  
+                                  Style="{StaticResource SelectedTextBlockStyle}">Fichiers</TextBlock>  
+                   </StackPanel>  
                 </PivotHeaderItem>
             </PivotItem.Header>
             <StackPanel>
@@ -46,13 +47,13 @@
                     </Grid.RowDefinitions>
                     <Image Margin="0 24 0 0"
                            Source="/Assets/Icons/DocumentsDisabled.png"
-                           Width="96"
+                           Width="64"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            Opacity="0.5" />
                     <Image Margin="0 24 0 0"
                            Source="/Assets/Icons/QuestionMark.png"
-                           Width="64"
+                           Width="48"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
                     <TextBlock Grid.Row="1"
@@ -80,7 +81,7 @@
                                        TextAlignment="Center"
                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                        Style="{ThemeResource CaptionTextBlockStyle}"
-                                       Margin="56 0 0 0" />
+                                       Margin="48 0 0 0" />
                             <TextBlock Margin="0 0 16 0"
                                        Grid.Column="1"
                                        Text="Type et date de création"
@@ -112,23 +113,41 @@
                                  Tapped="AppointmentsHeader_Tapped">
                     <StackPanel Orientation="Horizontal">
                         <Image x:Name="appointmentsImageD"
-                               Height="32"
+                               Height="20"
                                Source="/Assets/Icons/AppointmentDisabled.png" />
                         <Image x:Name="appointmentsImage"
-                               Height="32"
+                               Height="20"
                                Source="/Assets/Icons/Appointment.png"
                                Visibility="Collapsed" />
-                        <TextBlock Margin="8 0 0 0"
-                                   Foreground="{ThemeResource TextFillColorPrimaryBrush}">Rendez-vous</TextBlock>
+                        <TextBlock x:Name="AppointmentsHeaderTextBlock"
+                                   Margin="8 0 0 0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}">Rendez-vous</TextBlock>
                     </StackPanel>
                 </PivotHeaderItem>
             </PivotItem.Header>
             <StackPanel>
-                <TextBlock x:Name="noAppointmentsTextBlock"
-                           Margin="0 24 0 24"
-                           Text="Il n'y a pas de Rendez-vous"
+                <Grid x:Name="noAppointmentsTextBlock">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Image Margin="0 24 0 0"
+                           Source="/Assets/Icons/AppointmentDisabled.png"
+                           Width="64"
+                           VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           VerticalAlignment="Center" />
+                           Opacity="0.5" />
+                    <Image Margin="0 24 0 0"
+                           Source="/Assets/Icons/QuestionMark.png"
+                           Width="48"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" />
+                    <TextBlock Grid.Row="1"
+                               Margin="0 0 0 24"
+                               Text="Il n'y a pas de Rendez-vous"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                </Grid>
                 <Grid x:Name="appointmentsGrid"
                       Margin="0 16 0 0">
                     <Grid.RowDefinitions>

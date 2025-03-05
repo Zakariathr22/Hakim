@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0"
                    Text="{Binding fullNameAndAge}"
-                   Style="{ThemeResource TitleTextBlockStyle}"
+                   Style="{ThemeResource SubtitleTextBlockStyle}"
                    TextWrapping="Wrap"
                    VerticalAlignment="Center" />
         <Button x:Name="EditButton"

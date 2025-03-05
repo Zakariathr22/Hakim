@@ -61,6 +61,9 @@ namespace Hakim.Views.Patients.Patient
             docsImage.Visibility = Visibility.Visible;
             appointmentsImageD.Visibility = Visibility.Visible;
             appointmentsImage.Visibility = Visibility.Collapsed;
+
+            FilesHeaderTextBlock.Style = App.Current.Resources["SelectedTextBlockStyle"] as Style;
+            AppointmentsHeaderTextBlock.Style = App.Current.Resources["UnselectedTextBlockStyle"] as Style;
         }
 
         private void AppointmentsHeader_Tapped(object sender, TappedRoutedEventArgs e)
@@ -77,6 +80,9 @@ namespace Hakim.Views.Patients.Patient
             docsImage.Visibility = Visibility.Collapsed;
             appointmentsImageD.Visibility = Visibility.Collapsed;
             appointmentsImage.Visibility = Visibility.Visible;
+
+            AppointmentsHeaderTextBlock.Style = App.Current.Resources["SelectedTextBlockStyle"] as Style;
+            FilesHeaderTextBlock.Style = App.Current.Resources["UnselectedTextBlockStyle"] as Style;
         }
 
         public void UpdateFilesDisplayVisibility(Models.Patient patient)
