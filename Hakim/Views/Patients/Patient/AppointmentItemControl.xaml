@@ -82,12 +82,12 @@
             <StackPanel Grid.Column="1"
                         Orientation="Horizontal">
                 <TextBlock Text="{Binding AppointmentDate.Date, Converter={StaticResource DateOnlyConverter}, Mode=OneWay}"
-                           Style="{ThemeResource BodyStrongTextBlockStyle}"
+                           Style="{ThemeResource BodyTextBlockStyle}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
                 <TextBlock Margin="4 0 0 0"
                            Text="{Binding AppointmentTime,Converter={StaticResource TimeSpanConverter}, Mode=OneWay}"
-                           Style="{ThemeResource BodyStrongTextBlockStyle}"
+                           Style="{ThemeResource BodyTextBlockStyle}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center" />
             </StackPanel>

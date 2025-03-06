@@ -25,7 +25,7 @@
                 BorderThickness="0 0 0 1"
                 Margin="0 0 8 0"
                 Click="EditButton_Click">
-            <FontIcon Glyph="&#xE70F;" />
+            <FontIcon Glyph="&#xE70F;" FontSize="16"/>
         </Button>
     </Grid>
 </UserControl>

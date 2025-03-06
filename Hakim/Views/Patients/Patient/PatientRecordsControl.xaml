@@ -24,7 +24,7 @@
         <PivotItem Margin="0">
             <PivotItem.Header>
                 <PivotHeaderItem x:Name="FilesHeader"  
-                                Tapped="FilesHeader_Tapped">  
+                                 Tapped="FilesHeader_Tapped">  
                    <StackPanel Orientation="Horizontal">  
                        <Image x:Name="docsImageD"  
                               Height="20"  
@@ -167,7 +167,7 @@
                                        TextAlignment="Center"
                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                        Style="{ThemeResource CaptionTextBlockStyle}"
-                                       Margin="60 0 0 0" />
+                                       Margin="52 0 0 0" />
                             <TextBlock Grid.Column="1"
                                        Text="Date et heur"
                                        HorizontalAlignment="Left"

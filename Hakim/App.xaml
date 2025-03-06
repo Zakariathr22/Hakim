@@ -8,6 +8,19 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!-- Other merged dictionaries here -->
+                <ResourceDictionary>
+                    <ResourceDictionary.ThemeDictionaries>
+                        <ResourceDictionary x:Key="Default">
+                            <Color x:Key="PageBackground">#E6EEF6</Color>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="Dark">
+                            <Color x:Key="PageBackground">#111927</Color>
+                        </ResourceDictionary>
+                    </ResourceDictionary.ThemeDictionaries>
+
+                    <SolidColorBrush x:Key="PageBackgroundBrush"
+                                     Color="{ThemeResource PageBackground}" />
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
             <FontFamily x:Key="SegoeFluentIcons">ms-appx:///Assets/Fonts/Segoe Fluent Icons.ttf#Segoe Fluent Icons</FontFamily>

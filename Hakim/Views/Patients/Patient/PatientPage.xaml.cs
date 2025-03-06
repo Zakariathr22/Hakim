@@ -119,7 +119,7 @@ namespace Hakim.Views.Patients
             {
                 mainPanel.RowDefinitions.Clear();
                 mainPanel.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-                mainPanel.ColumnDefinitions[0].Width = new GridLength(450);
+                mainPanel.ColumnDefinitions[0].Width = new GridLength(360);
                 mainPanel.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
 
                 mainPanel.Children.Clear();

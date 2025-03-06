@@ -15,9 +15,17 @@
     </UserControl.Resources>
 
     <Pivot>
-        <PivotItem Header="Générales"
-                   HorizontalAlignment="Left"
+        <PivotItem HorizontalAlignment="Left"
                    Visibility="Visible">
+            <PivotItem.Header>
+                <PivotHeaderItem x:Name="GeneralHeader"
+                                 Tapped="GeneralHeader_Tapped">
+                    <TextBlock x:Name="GeneralTextBlock"
+                               Margin="8 0 0 0"
+                               Style="{StaticResource SelectedTextBlockStyle}">Générales</TextBlock>
+                </PivotHeaderItem>
+            </PivotItem.Header>
+
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
@@ -70,7 +78,7 @@
                         <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
-                               Text="Numéro de téléphone 1:"
+                               Text="Téléphone 1:"
                                Margin="0 0 4 0"
                                Style="{ThemeResource BodyStrongTextBlockStyle}"
                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
@@ -85,7 +93,7 @@
                         <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
-                               Text="Numéro de téléphone 2:"
+                               Text="Téléphone 2:"
                                Margin="0 0 4 0"
                                Style="{ThemeResource BodyStrongTextBlockStyle}"
                                Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
@@ -243,7 +251,15 @@
                 </Grid>
             </Grid>
         </PivotItem>
-        <PivotItem Header="Informations médicales">
+        <PivotItem>
+            <PivotItem.Header>
+                <PivotHeaderItem x:Name="InfoHeader"
+                                 Tapped="InfoHeader_Tapped">
+                    <TextBlock x:Name="InfoTextBlock"
+                               Margin="8 0 0 0"
+                               Style="{StaticResource UnselectedTextBlockStyle}">Informations médicales</TextBlock>
+                </PivotHeaderItem>
+            </PivotItem.Header>
             <Grid Margin="0 16 0 0">
                 <Grid.RowDefinitions>
                     <RowDefinition />

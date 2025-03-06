@@ -213,29 +213,29 @@
   <data name="AddPatient" xml:space="preserve">
     <value>Ajouter un patient</value>
   </data>
-  <data name="SortPatients" xml:space="preserve">
-    <value>Trier les patients</value>
-  </data>
   <data name="Sort" xml:space="preserve">
     <value>Trier</value>
   </data>
-  <data name="ByDateAdded" xml:space="preserve">
-    <value>Par date d'ajout</value>
-  </data>
-  <data name="ByLastname" xml:space="preserve">
-    <value>Par nom</value>
-  </data>
-  <data name="ByFirstname" xml:space="preserve">
-    <value>Par prénom</value>
+  <data name="SortPatients" xml:space="preserve">
+    <value>Trier les patients</value>
   </data>
   <data name="ByAge" xml:space="preserve">
     <value>Par age</value>
   </data>
-  <data name="Ascending" xml:space="preserve">
-    <value>Croissant</value>
+  <data name="ByDateAdded" xml:space="preserve">
+    <value>Par date d'ajout</value>
+  </data>
+  <data name="ByFirstname" xml:space="preserve">
+    <value>Par prénom</value>
+  </data>
+  <data name="ByLastname" xml:space="preserve">
+    <value>Par nom</value>
   </data>
   <data name="Descending" xml:space="preserve">
     <value>Décroissant</value>
+  </data>
+  <data name="Ascending" xml:space="preserve">
+    <value>Croissant</value>
   </data>
   <data name="SearchForAPatient" xml:space="preserve">
     <value>Recherche un patient</value>
@@ -246,17 +246,17 @@
   <data name="PersonalInformation" xml:space="preserve">
     <value>Informations personnelles</value>
   </data>
-  <data name="Lastname" xml:space="preserve">
-    <value>Nom</value>
-  </data>
-  <data name="Firstname" xml:space="preserve">
-    <value>Prénom</value>
-  </data>
   <data name="Lastname(Required)" xml:space="preserve">
     <value>Nom (obligatoire)</value>
   </data>
+  <data name="Lastname" xml:space="preserve">
+    <value>Nom</value>
+  </data>
   <data name="Firstname(Required)" xml:space="preserve">
     <value>Prénom (obligatoire)</value>
+  </data>
+  <data name="Firstname" xml:space="preserve">
+    <value>Prénom</value>
   </data>
   <data name="Gender" xml:space="preserve">
     <value>Genre</value>
@@ -271,10 +271,10 @@
     <value>date de naissance</value>
   </data>
   <data name="PhoneNumber1" xml:space="preserve">
-    <value>Numéro de téléphone 1</value>
+    <value>Téléphone 1</value>
   </data>
   <data name="PhoneNumber2" xml:space="preserve">
-    <value>Numéro de téléphone 2</value>
+    <value>Téléphone 2</value>
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Personnel</value>
@@ -366,11 +366,11 @@
   <data name="Female" xml:space="preserve">
     <value>Féminin</value>
   </data>
-  <data name="PhoneNumber1(Required)" xml:space="preserve">
-    <value>Num de téléphone 1  (obligatoire)</value>
-  </data>
   <data name="Owner(Required)" xml:space="preserve">
     <value>Propriétaire (obligatoire)</value>
+  </data>
+  <data name="PhoneNumber1(Required)" xml:space="preserve">
+    <value>Téléphone 1  (obligatoire)</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Suivant</value>

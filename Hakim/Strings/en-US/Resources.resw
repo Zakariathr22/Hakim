@@ -271,10 +271,10 @@
     <value>Date of Birth</value>
   </data>
   <data name="PhoneNumber1" xml:space="preserve">
-    <value>Phone Number 1</value>
+    <value>Phone 1</value>
   </data>
   <data name="PhoneNumber2" xml:space="preserve">
-    <value>Phone Number 2</value>
+    <value>Phone 2</value>
   </data>
   <data name="Personal" xml:space="preserve">
     <value>Personal</value>
@@ -370,7 +370,7 @@
     <value>Owner (Required)</value>
   </data>
   <data name="PhoneNumber1(Required)" xml:space="preserve">
-    <value>Phone Number 1 (Required)</value>
+    <value>Phone 1 (Required)</value>
   </data>
   <data name="Next" xml:space="preserve">
     <value>Next</value>
