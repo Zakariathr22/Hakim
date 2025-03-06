@@ -8,36 +8,6 @@
       mc:Ignorable="d"
       SizeChanged="Page_SizeChanged">
 
-    <Page.Resources>
-        <ControlTemplate TargetType="Button"
-                         x:Key="ButtonTemplate">
-            <Border x:Name="RootElement"
-                    HorizontalAlignment="Stretch"
-                    Height="100">
-                <Border.Background>
-                    <SolidColorBrush x:Name="BorderBrush"
-                                     Color="Black" />
-                </Border.Background>
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="WidthStates">
-                        <VisualState x:Name="WidthMoreThan450">
-                            <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="450" />
-                            </VisualState.StateTriggers>
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="BorderBrush"
-                                                               Storyboard.TargetProperty="Color">
-                                    <DiscreteObjectKeyFrame KeyTime="0"
-                                                            Value="Red" />
-                                </ObjectAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
-            </Border>
-        </ControlTemplate>
-    </Page.Resources>
-
     <Grid x:Name="PagePanel">
         <Grid.RowDefinitions>
             <RowDefinition Height="56" />
