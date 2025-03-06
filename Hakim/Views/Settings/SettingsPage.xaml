@@ -12,7 +12,8 @@
       NavigationCacheMode="Enabled">
 
     <ScrollView>
-        <StackPanel Padding="24">
+        <StackPanel Padding="24"
+                    MaxWidth="1024">
             <StackPanel Orientation="Horizontal"
                         VerticalAlignment="Center"
                         Margin="0 0 0 16">
