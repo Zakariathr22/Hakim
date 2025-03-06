@@ -8,18 +8,11 @@ using WinRT.Interop;
 using Hakim.ViewModels;
 using Hakim.Services;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace Hakim
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within patientDetailsDisplay Frame.
-    /// </summary>
     public sealed partial class MainWindow : Window
     {
         private AppWindow appWindow;
-        private OverlappedPresenter overlappedPresenter;
         private AppWindowTitleBar titleBar;
         private MainViewModel viewModel = new MainViewModel();
         public MainWindow()
@@ -30,7 +23,6 @@ namespace Hakim
             mainPanel.DataContext = viewModel;
 
             appWindow = GetAppWindowForCurrentWindow();
-            overlappedPresenter = GetAppWindowOverlappedPresenter(appWindow);
             titleBar = GetAppWindowTitleBar(appWindow);
             
             titleBar.ButtonBackgroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
@@ -39,7 +31,6 @@ namespace Hakim
 
             appWindow.Title = "Hakim";
             appWindow.SetIcon("Assets/Icons/Hakim.ico");
-            //overlappedPresenter.Maximize();
 
             titleBar.ExtendsContentIntoTitleBar = true;
             appWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
@@ -52,7 +43,6 @@ namespace Hakim
 
         }
 
-
         private AppWindow GetAppWindowForCurrentWindow()
         {
             IntPtr hWnd = WindowNative.GetWindowHandle(this);
@@ -60,17 +50,11 @@ namespace Hakim
             return AppWindow.GetFromWindowId(myWndId);
         }
 
-        private OverlappedPresenter GetAppWindowOverlappedPresenter(AppWindow appWindow)
-        {
-            return (OverlappedPresenter)appWindow.Presenter;
-        }
-
         private AppWindowTitleBar GetAppWindowTitleBar(AppWindow appWindow)
         {
             if (AppWindowTitleBar.IsCustomizationSupported())
             {
                 var titleBar = appWindow.TitleBar;
-
                 return titleBar;
             }
             else
@@ -81,12 +65,12 @@ namespace Hakim
 
         private void CenterWindow()
         {
-            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-            Microsoft.UI.WindowId windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
-            Microsoft.UI.Windowing.AppWindow appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+            var hWnd = WindowNative.GetWindowHandle(this);
+            WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            AppWindow appWindow = AppWindow.GetFromWindowId(windowId);
             if (appWindow is not null)
             {
-                Microsoft.UI.Windowing.DisplayArea displayArea = Microsoft.UI.Windowing.DisplayArea.GetFromWindowId(windowId, Microsoft.UI.Windowing.DisplayAreaFallback.Nearest);
+               DisplayArea displayArea = DisplayArea.GetFromWindowId(windowId, DisplayAreaFallback.Nearest);
                 if (displayArea is not null)
                 {
                     var CenteredPosition = appWindow.Position;
@@ -99,13 +83,20 @@ namespace Hakim
 
         private void navigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
+            var selectedItem = (NavigationViewItem)args.SelectedItem;
             if (selectedItem != null)
             {
                 string selectedItemTag = ((string)selectedItem.Tag);
                 string pageName = $"Hakim.Views.{selectedItemTag}.{selectedItemTag}Page";
                 Type pageType = Type.GetType(pageName);
-                contentFrame.Navigate(pageType);
+                if (pageType != null)
+                {
+                    contentFrame.Navigate(pageType);
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine($"Page type not found: {pageName}");
+                }
             }
         }
 
