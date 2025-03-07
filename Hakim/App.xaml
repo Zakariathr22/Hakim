@@ -11,10 +11,10 @@
                 <ResourceDictionary>
                     <ResourceDictionary.ThemeDictionaries>
                         <ResourceDictionary x:Key="Default">
-                            <Color x:Key="PageBackground">#E6EEF6</Color>
+                            <Color x:Key="PageBackground">#F9F9F9</Color>
                         </ResourceDictionary>
                         <ResourceDictionary x:Key="Dark">
-                            <Color x:Key="PageBackground">#111927</Color>
+                            <Color x:Key="PageBackground">#272727</Color>
                         </ResourceDictionary>
                     </ResourceDictionary.ThemeDictionaries>
 
