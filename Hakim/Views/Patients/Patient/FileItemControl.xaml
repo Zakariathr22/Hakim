@@ -52,8 +52,9 @@
             Click="Button_Click">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="6*"/>
-                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="1.5*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid>
