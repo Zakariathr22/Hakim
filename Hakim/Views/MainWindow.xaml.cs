@@ -25,9 +25,7 @@ namespace Hakim
             appWindow = GetAppWindowForCurrentWindow();
             titleBar = GetAppWindowTitleBar(appWindow);
             
-            titleBar.ButtonBackgroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
-            titleBar.ButtonForegroundColor = Windows.UI.Color.FromArgb(0, 128, 128, 128);
-            titleBar.ButtonInactiveBackgroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
+            titleBar.ButtonBackgroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);            titleBar.ButtonInactiveBackgroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
 
             appWindow.Title = "Hakim";
             appWindow.SetIcon("Assets/Icons/Hakim.ico");
@@ -41,6 +39,32 @@ namespace Hakim
             viewModel.SetAppBackDrop(this);
             navigationView.SelectedItem = navigationView.MenuItems.OfType<NavigationViewItem>().ElementAt(viewModel.LandingPage);
 
+            mainPanel.ActualThemeChanged += MainPanel_ActualThemeChanged;
+            mainPanel.Loaded += MainPanel_Loaded;
+        }
+
+        private void MainPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (mainPanel.ActualTheme == ElementTheme.Dark)
+            {
+                titleBar.ButtonForegroundColor = Windows.UI.Color.FromArgb(0, 255, 255, 255);
+            }
+            else
+            {
+                titleBar.ButtonForegroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
+            }
+        }
+
+        private void MainPanel_ActualThemeChanged(FrameworkElement sender, object args)
+        {
+            if (mainPanel.ActualTheme == ElementTheme.Dark)
+            {
+                titleBar.ButtonForegroundColor = Windows.UI.Color.FromArgb(0, 255, 255, 255);
+            }
+            else
+            {
+                titleBar.ButtonForegroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
+            }
         }
 
         private AppWindow GetAppWindowForCurrentWindow()
