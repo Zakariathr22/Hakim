@@ -22,7 +22,8 @@
                           Placement="TopEdgeAlignedLeft">
             <AppBarButton x:Name="editButton"
                           Label="Edit"
-                          Icon="Edit" />
+                          Icon="Edit"
+                          Click="editButton_Click"/>
             <CommandBarFlyout.SecondaryCommands>
                 <AppBarButton x:Name="deleteButton"
                               Label="Delete"

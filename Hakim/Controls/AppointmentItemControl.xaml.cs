@@ -62,5 +62,10 @@ namespace Hakim.Views.Patients.Patient
                 ParentPage.patientRecords.UpdateAppointmentsDisplayVisibility(ParentPage.viewModel.SelectedPatient);
             }
         }
+
+        private void editButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
