@@ -27,6 +27,7 @@ namespace Hakim.Views.Patients.Patient.Appointments
             this.appointment = appointment;
             DataContext = appointment;
             datePicker.AppointmentsData = appointmentCounts;
+            datePicker.SelectedDate = appointment.AppointmentDate;
         }
     }
 }
