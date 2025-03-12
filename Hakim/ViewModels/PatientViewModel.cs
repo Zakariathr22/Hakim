@@ -604,5 +604,39 @@ namespace Hakim.ViewModels
             SelectedPatient.appointments = GetAppointmentsByPatient(SelectedPatient);
         }
 
+        public void EditAppointment(Appointment appointment)
+        {
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = @"
+                UPDATE Appointment SET
+                    AppointmentDate = @AppointmentDate,
+                    AppointmentHour = @AppointmentTime,
+                    Purpose = @Purpose,
+                    Notes = @Notes
+                    WHERE Id = @Id";
+
+                    command.Parameters.AddWithValue("@AppointmentDate", appointment.AppointmentDate);
+                    command.Parameters.AddWithValue("@AppointmentTime", appointment.AppointmentTime);
+                    command.Parameters.AddWithValue("@Purpose", appointment.Purpose);
+                    command.Parameters.AddWithValue("@Notes", appointment.Notes);
+                    command.Parameters.AddWithValue("@Id", appointment.id);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("Appointment updated successfully.");
+
+                    AppointmentCounts = GetNumberOfAppointmentsPerDay();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while updating the appointment: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+        }
+
     }
 }

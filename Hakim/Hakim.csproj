@@ -70,6 +70,7 @@
     <None Remove="Views\Patients\PatientPage.xaml" />
     <None Remove="Views\Patients\Patient\AppointmentItemControl.xaml" />
     <None Remove="Views\Patients\Patient\Appointments\AddAppointmentPage.xaml" />
+    <None Remove="Views\Patients\Patient\Appointments\EditAppointmentPage.xaml" />
     <None Remove="Views\Patients\Patient\Consultations\AddEditConsultaionFilePage.xaml" />
     <None Remove="Views\Patients\Patient\FileItemControl.xaml" />
     <None Remove="Views\Patients\Patient\PatientDetailsDisplayControl.xaml" />
@@ -137,6 +138,11 @@
     <Content Update="Assets\StoreLogo.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Patients\Patient\Appointments\EditAppointmentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Clients\Patient\AppointmentItemControl.xaml">

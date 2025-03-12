@@ -75,7 +75,7 @@
                            Width="24"
                            Height="24" />
                     <TextBlock Grid.Column="1"
-                               Text="{Binding Purpose}"
+                               Text="{Binding Purpose, Mode=OneWay}"
                                Style="{ThemeResource BodyTextBlockStyle}"
                                VerticalAlignment="Center"
                                Padding="0 8" />

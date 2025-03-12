@@ -52,7 +52,11 @@ namespace Hakim.Views.Patients.Patient
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
-
+            if (this.DataContext is Models.Appointment appointment)
+            {
+                AppointmentCommandBarFlyout.Hide();
+                ParentPage.ShowEditAppointmentDialog(appointment);
+            }
         }
     }
 }

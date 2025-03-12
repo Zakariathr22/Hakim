@@ -29,9 +29,6 @@ using System.Threading.Tasks;
 using Hakim.Views.Patients.Patient.Appointments;
 using Hakim.Converters;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace Hakim.Views.Patients
 {
     public sealed partial class PatientPage : Page
@@ -690,6 +687,22 @@ namespace Hakim.Views.Patients
             if (AllAppointments.IsChecked)
                 FilterAppointmentsButton.IsChecked = false;
             else FilterAppointmentsButton.IsChecked = true;
+        }
+
+        public async void ShowEditAppointmentDialog(Appointment appointment)
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.SecondaryButtonText = LanguageService.GetResourceValue("Close");
+            viewModel.Appointment = new Models.Appointment();
+            dialog.Content = new EditAppointmentPage(dialog, appointment,viewModel.AppointmentCounts);
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Secondary)
+            {
+                viewModel.EditAppointment(appointment);
+            }
         }
 
         public async void ShowEditConsultationDialog(Models.MedicalConsultation consultation)
