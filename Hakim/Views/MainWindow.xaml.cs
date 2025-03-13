@@ -24,8 +24,6 @@ namespace Hakim
 
             appWindow = GetAppWindowForCurrentWindow();
             titleBar = GetAppWindowTitleBar(appWindow);
-            
-            titleBar.ButtonBackgroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);            titleBar.ButtonInactiveBackgroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
 
             appWindow.Title = "Hakim";
             appWindow.SetIcon("Assets/Icons/Hakim.ico");

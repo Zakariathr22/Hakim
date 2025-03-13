@@ -36,15 +36,7 @@
                                 Width="288" />
             </TitleBar.CenterContent>
             <TitleBar.RightContent>
-                <Border CornerRadius="48"
-                        BorderThickness="1"
-                        Height="24"
-                        Width="24"
-                        BorderBrush="{ThemeResource SurfaceStrokeColorDefaultBrush}"
-                        Background="{ThemeResource AccentAcrylicBackgroundFillColorBaseBrush}"
-                        HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <FontIcon Glyph="&#xE77B;" FontSize="14" />
-                </Border>
+                <PersonPicture Height="28" Width="28"/>
             </TitleBar.RightContent>
         </TitleBar>
 
