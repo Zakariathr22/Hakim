@@ -36,7 +36,12 @@
                                 Width="288" />
             </TitleBar.CenterContent>
             <TitleBar.RightContent>
-                <PersonPicture Height="28" Width="28"/>
+                <PersonPicture Height="28"
+                               Width="28">
+                    <ToolTipService.ToolTip>
+                        <ToolTip Content="{Binding User.profitionalName, Mode=TwoWay}" />
+                    </ToolTipService.ToolTip>
+                </PersonPicture>
             </TitleBar.RightContent>
         </TitleBar>
 
