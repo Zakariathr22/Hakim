@@ -87,6 +87,7 @@
     <None Remove="Views\Home\HomePage.xaml" />
     <None Remove="Views\Schedule\SchedulePage.xaml" />
     <None Remove="Views\Settings\SettingsPage.xaml" />
+    <None Remove="Views\Statistics\StatisticsPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -266,6 +267,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Clients\Patient\Appointments\AddAppointmentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Statistics\StatisticsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -82,8 +82,20 @@
                                 VerticalAlignment="Center">
                         <Image Width="20"
                                Height="20"
-                               Source="/Assets/Icons/Schedule.png"></Image>
+                               Source="/Assets/Icons/Schedule.png" />
                         <TextBlock x:Name="scheduleNavigationItemText"
+                                   Margin="12 0" />
+                    </StackPanel>
+                </NavigationViewItem>
+                <NavigationViewItem x:Name="statisticsNavigationItem"
+                                    Tag="Statistics">
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <Image Width="20"
+                               Height="20"
+                               Source="/Assets/Icons/Statistics.png" />
+                        <TextBlock x:Name="statisticsNavigationItemText"
+                                   Text="Statistics"
                                    Margin="12 0" />
                     </StackPanel>
                 </NavigationViewItem>
