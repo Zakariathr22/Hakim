@@ -123,4 +123,7 @@
   <data name="City" xml:space="preserve">
     <value>Ville</value>
   </data>
+  <data name="Statistics" xml:space="preserve">
+    <value />
+  </data>
 </root>

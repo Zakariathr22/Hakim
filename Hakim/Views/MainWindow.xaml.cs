@@ -136,6 +136,9 @@ namespace Hakim
 
             ToolTipService.SetToolTip(settingsNavigationItem, LanguageService.GetResourceValue("Settings"));
             settingsNavigationItemText.Text = LanguageService.GetResourceValue("Settings");
+
+            ToolTipService.SetToolTip(statisticsNavigationItem, LanguageService.GetResourceValue("Statistics"));
+            statisticsNavigationItemText.Text = LanguageService.GetResourceValue("Statistics");
         }
     }
 }

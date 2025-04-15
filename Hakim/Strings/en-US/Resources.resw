@@ -423,4 +423,7 @@
   <data name="NotEntered" xml:space="preserve">
     <value>Not Entered</value>
   </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
 </root>
