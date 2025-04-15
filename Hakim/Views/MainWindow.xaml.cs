@@ -1,144 +1,77 @@
-﻿using Microsoft.UI.Windowing;
-using Microsoft.UI;
+﻿using Hakim.Services;
+using Hakim.ViewModels;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Linq;
-using WinRT.Interop;
-using Hakim.ViewModels;
-using Hakim.Services;
+using Windows.Graphics;
+using Windows.UI;
 
-namespace Hakim
+namespace Hakim;
+
+public sealed partial class MainWindow : Window
 {
-    public sealed partial class MainWindow : Window
+    private readonly MainViewModel viewModel = new();
+
+    public MainWindow()
     {
-        private AppWindow appWindow;
-        private AppWindowTitleBar titleBar;
-        private MainViewModel viewModel = new MainViewModel();
-        public MainWindow()
+        InitializeComponent();
+        InitializeLocalization();
+
+        mainPanel.DataContext = viewModel;
+        AppWindow.Title = "Hakim";
+        AppWindow.SetIcon("Assets/Icons/Hakim.ico");
+        AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
+        AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
+        AppWindow.TitleBar.ButtonHoverForegroundColor = Color.FromArgb(0, 127, 127, 127);
+
+        CenterWindow();
+        viewModel.SetAppTheme(this);
+        viewModel.SetAppBackDrop(this);
+        navigationView.SelectedItem = navigationView.MenuItems.OfType<NavigationViewItem>().ElementAt(viewModel.LandingPage);
+
+        mainPanel.Loaded += (_, _) => UpdateTitleBarColor();
+        mainPanel.ActualThemeChanged += (_, _) => UpdateTitleBarColor();
+    }
+
+    private void UpdateTitleBarColor() =>
+        AppWindow.TitleBar.ButtonForegroundColor = mainPanel.ActualTheme == ElementTheme.Dark
+            ? Color.FromArgb(0, 255, 255, 255)
+            : Color.FromArgb(0, 0, 0, 0);
+
+    private void CenterWindow()
+    {
+        var area = DisplayArea.GetFromWindowId(AppWindow.Id, DisplayAreaFallback.Nearest)?.WorkArea;
+        if (area == null) return;
+        AppWindow.Move(new PointInt32((area.Value.Width - AppWindow.Size.Width) / 2, (area.Value.Height - AppWindow.Size.Height) / 2));
+    }
+
+    private void navigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+    {
+        if (args.SelectedItem is NavigationViewItem item)
         {
-            this.InitializeComponent();
-            this.InitializeLocalization();
+            var tag = item.Tag?.ToString();
+            var type = Type.GetType($"Hakim.Views.{tag}.{tag}Page");
+            if (type != null) contentFrame.Navigate(type);
+            else System.Diagnostics.Debug.WriteLine($"Page not found: {tag}");
+        }
+    }
 
-            mainPanel.DataContext = viewModel;
-
-            appWindow = GetAppWindowForCurrentWindow();
-            titleBar = GetAppWindowTitleBar(appWindow);
-
-            appWindow.Title = "Hakim";
-            appWindow.SetIcon("Assets/Icons/Hakim.ico");
-
-            titleBar.ExtendsContentIntoTitleBar = true;
-            appWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-
-            CenterWindow();
-
-            viewModel.SetAppTheme(this);
-            viewModel.SetAppBackDrop(this);
-            navigationView.SelectedItem = navigationView.MenuItems.OfType<NavigationViewItem>().ElementAt(viewModel.LandingPage);
-
-            mainPanel.ActualThemeChanged += MainPanel_ActualThemeChanged;
-            mainPanel.Loaded += MainPanel_Loaded;
+    public void InitializeLocalization()
+    {
+        void Set(NavigationViewItem item, TextBlock label, string key)
+        {
+            var text = LanguageService.GetResourceValue(key);
+            ToolTipService.SetToolTip(item, text);
+            label.Text = text;
         }
 
-        private void MainPanel_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (mainPanel.ActualTheme == ElementTheme.Dark)
-            {
-                titleBar.ButtonForegroundColor = Windows.UI.Color.FromArgb(0, 255, 255, 255);
-            }
-            else
-            {
-                titleBar.ButtonForegroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
-            }
-        }
-
-        private void MainPanel_ActualThemeChanged(FrameworkElement sender, object args)
-        {
-            if (mainPanel.ActualTheme == ElementTheme.Dark)
-            {
-                titleBar.ButtonForegroundColor = Windows.UI.Color.FromArgb(0, 255, 255, 255);
-            }
-            else
-            {
-                titleBar.ButtonForegroundColor = Windows.UI.Color.FromArgb(0, 0, 0, 0);
-            }
-        }
-
-        private AppWindow GetAppWindowForCurrentWindow()
-        {
-            IntPtr hWnd = WindowNative.GetWindowHandle(this);
-            WindowId myWndId = Win32Interop.GetWindowIdFromWindow(hWnd);
-            return AppWindow.GetFromWindowId(myWndId);
-        }
-
-        private AppWindowTitleBar GetAppWindowTitleBar(AppWindow appWindow)
-        {
-            if (AppWindowTitleBar.IsCustomizationSupported())
-            {
-                var titleBar = appWindow.TitleBar;
-                return titleBar;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        private void CenterWindow()
-        {
-            var hWnd = WindowNative.GetWindowHandle(this);
-            WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
-            AppWindow appWindow = AppWindow.GetFromWindowId(windowId);
-            if (appWindow is not null)
-            {
-               DisplayArea displayArea = DisplayArea.GetFromWindowId(windowId, DisplayAreaFallback.Nearest);
-                if (displayArea is not null)
-                {
-                    var CenteredPosition = appWindow.Position;
-                    CenteredPosition.X = ((displayArea.WorkArea.Width - appWindow.Size.Width) / 2);
-                    CenteredPosition.Y = ((displayArea.WorkArea.Height - appWindow.Size.Height) / 2);
-                    appWindow.Move(CenteredPosition);
-                }
-            }
-        }
-
-        private void navigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-        {
-            var selectedItem = (NavigationViewItem)args.SelectedItem;
-            if (selectedItem != null)
-            {
-                string selectedItemTag = ((string)selectedItem.Tag);
-                string pageName = $"Hakim.Views.{selectedItemTag}.{selectedItemTag}Page";
-                Type pageType = Type.GetType(pageName);
-                if (pageType != null)
-                {
-                    contentFrame.Navigate(pageType);
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine($"Page type not found: {pageName}");
-                }
-            }
-        }
-
-        public void InitializeLocalization()
-        {
-            searchAutoSuggestBox.PlaceholderText = LanguageService.GetResourceValue("Search");
-            ToolTipService.SetToolTip(homeNavigationItem, LanguageService.GetResourceValue("Home"));
-            homeNavigationItemText.Text = LanguageService.GetResourceValue("Home");
-
-            ToolTipService.SetToolTip(patientsNavigationItem, LanguageService.GetResourceValue("Patients"));
-            patientsNavigationItemText.Text = LanguageService.GetResourceValue("Patients");
-
-            ToolTipService.SetToolTip(scheduleNavigationItem, LanguageService.GetResourceValue("Appointments"));
-            scheduleNavigationItemText.Text = LanguageService.GetResourceValue("Appointments");
-
-            ToolTipService.SetToolTip(settingsNavigationItem, LanguageService.GetResourceValue("Settings"));
-            settingsNavigationItemText.Text = LanguageService.GetResourceValue("Settings");
-
-            ToolTipService.SetToolTip(statisticsNavigationItem, LanguageService.GetResourceValue("Statistics"));
-            statisticsNavigationItemText.Text = LanguageService.GetResourceValue("Statistics");
-        }
+        searchAutoSuggestBox.PlaceholderText = LanguageService.GetResourceValue("Search");
+        Set(homeNavigationItem, homeNavigationItemText, "Home");
+        Set(patientsNavigationItem, patientsNavigationItemText, "Patients");
+        Set(scheduleNavigationItem, scheduleNavigationItemText, "Appointments");
+        Set(settingsNavigationItem, settingsNavigationItemText, "Settings");
+        Set(statisticsNavigationItem, statisticsNavigationItemText, "Statistics");
     }
 }
