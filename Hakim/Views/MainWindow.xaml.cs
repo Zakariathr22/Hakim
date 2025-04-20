@@ -13,7 +13,7 @@ namespace Hakim;
 
 public sealed partial class MainWindow : Window
 {
-    private readonly MainViewModel viewModel = new();
+    private MainViewModel viewModel = new();
 
     public MainWindow()
     {
@@ -25,7 +25,6 @@ public sealed partial class MainWindow : Window
         AppWindow.SetIcon("Assets/Icons/Hakim.ico");
         AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
-        AppWindow.TitleBar.ButtonHoverForegroundColor = Color.FromArgb(0, 127, 127, 127);
 
         CenterWindow();
         viewModel.SetAppTheme(this);
