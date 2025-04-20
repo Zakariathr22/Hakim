@@ -59,6 +59,17 @@ namespace Hakim.Views.Settings
             shortCutSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE8A7" };
             aboutAppSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE946" };
             aboutIcons.HeaderIcon = new FontIcon { Glyph = "\uED58" };
+
+            Loaded += SettingsPage_Loaded;
+        }
+
+        private void SettingsPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (App.isNavigatingToUser)
+            {
+                App.isNavigatingToUser = false;
+                ShowEditNameDialog();
+            }
         }
 
         private void themeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

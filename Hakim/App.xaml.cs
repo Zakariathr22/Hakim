@@ -33,6 +33,7 @@ namespace Hakim
     {
         public static MainWindow mainWindow { get; set; }
         public static User user = new User();
+        public static bool isNavigatingToUser = false; 
 
         public App()
         {

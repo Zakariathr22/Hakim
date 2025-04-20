@@ -1,5 +1,6 @@
 ﻿using Hakim.Services;
 using Hakim.ViewModels;
+using Hakim.Views.Settings;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -73,5 +74,11 @@ public sealed partial class MainWindow : Window
         Set(scheduleNavigationItem, scheduleNavigationItemText, "Appointments");
         Set(settingsNavigationItem, settingsNavigationItemText, "Settings");
         Set(statisticsNavigationItem, statisticsNavigationItemText, "Statistics");
+    }
+
+    private void PersonPicture_Tapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
+    {
+        App.isNavigatingToUser = true;
+        navigationView.SelectedItem = settingsNavigationItem;
     }
 }

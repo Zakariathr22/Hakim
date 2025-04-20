@@ -37,7 +37,8 @@
             </TitleBar.CenterContent>
             <TitleBar.RightContent>
                 <PersonPicture Height="28"
-                               Width="28">
+                               Width="28"
+                               Tapped="PersonPicture_Tapped">
                     <ToolTipService.ToolTip>
                         <ToolTip Content="{Binding User.profitionalName, Mode=TwoWay}" />
                     </ToolTipService.ToolTip>
@@ -51,8 +52,7 @@
                         SelectionChanged="navigationView_SelectionChanged"
                         IsBackButtonVisible="Collapsed"
                         IsPaneToggleButtonVisible="False"
-                        IsSettingsVisible="False"
-                        PaneTitle="{Binding User.profitionalName, Mode=TwoWay}">
+                        IsSettingsVisible="False" >
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="homeNavigationItem"
                                     Tag="Home">
