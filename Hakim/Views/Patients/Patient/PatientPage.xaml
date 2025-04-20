@@ -17,9 +17,10 @@
                           Grid.Column="0"
                           Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
                           BorderThickness="0 0 0 1"
-                          BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}">
+                          BorderBrush="{ThemeResource ControlStrokeColorDefaultBrush}"
+                          VerticalContentAlignment="Center">
             <CommandBar IsOpen="False"
-                        Height="56">
+                        DefaultLabelPosition="Right">
                 <AppBarButton x:Name="AddFileButton"
                               x:FieldModifier="public"
                               Label="Ajouter"
