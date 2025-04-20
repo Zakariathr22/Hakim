@@ -29,8 +29,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\Fonts\Segoe Fluent Icons.ttf" />
-    <None Remove="Assets\GalleryHeaderImageDark.png" />
-    <None Remove="Assets\GalleryHeaderImageLight.png" />
+    <None Remove="Assets\HeaderImageDark.png" />
+    <None Remove="Assets\HeaderImageLight.png" />
     <None Remove="Assets\Icons\Appointment.png" />
     <None Remove="Assets\Icons\AppointmentDisabled.png" />
     <None Remove="Assets\Icons\Clients.png" />
