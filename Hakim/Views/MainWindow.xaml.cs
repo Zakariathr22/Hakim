@@ -78,7 +78,10 @@ public sealed partial class MainWindow : Window
 
     private void PersonPicture_Tapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
     {
-        App.isNavigatingToUser = true;
-        navigationView.SelectedItem = settingsNavigationItem;
+        if (contentFrame.CurrentSourcePageType != typeof(SettingsPage))
+        {
+            App.isNavigatingToUser = true;
+            navigationView.SelectedItem = settingsNavigationItem;
+        }
     }
 }
