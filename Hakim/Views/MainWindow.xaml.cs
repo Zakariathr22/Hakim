@@ -83,4 +83,9 @@ public sealed partial class MainWindow : Window
             navigationView.SelectedItem = settingsNavigationItem;
         }
     }
+
+    private void TitleBar_PaneToggleRequested(TitleBar sender, object args)
+    {
+        navigationView.IsPaneOpen = !navigationView.IsPaneOpen;
+    }
 }

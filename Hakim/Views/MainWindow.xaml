@@ -15,15 +15,16 @@
           FlowDirection="LeftToRight"
           x:FieldModifier="public">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <TitleBar Title="Hakim"
                   IsBackButtonVisible="True"
                   IsPaneToggleButtonVisible="True"
                   Subtitle="Preview"
-                  Height="48">
+                  Height="48"
+                  PaneToggleRequested="TitleBar_PaneToggleRequested">
             <TitleBar.LeftContent>
                 <ImageIcon Source="/Assets/Logo.png" Width="20" Margin="12,0,0,0"/>
             </TitleBar.LeftContent>
