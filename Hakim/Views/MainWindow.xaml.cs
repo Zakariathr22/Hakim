@@ -35,10 +35,7 @@ public sealed partial class MainWindow : Window
         mainPanel.ActualThemeChanged += (_, _) => UpdateTitleBarColor();
     }
 
-    private void UpdateTitleBarColor() =>
-        AppWindow.TitleBar.ButtonForegroundColor = mainPanel.ActualTheme == ElementTheme.Dark
-            ? Color.FromArgb(0, 255, 255, 255)
-            : Color.FromArgb(0, 0, 0, 0);
+    private void UpdateTitleBarColor() => AppWindow.TitleBar.ButtonForegroundColor = mainPanel.ActualTheme == ElementTheme.Dark ? Color.FromArgb(0, 255, 255, 255) : Color.FromArgb(0, 0, 0, 0);
 
     private void CenterWindow()
     {
