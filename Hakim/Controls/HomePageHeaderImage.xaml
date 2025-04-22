@@ -6,7 +6,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:toolkit="using:CommunityToolkit.WinUI"
-             Loaded="OnLoaded"
              mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -29,7 +28,7 @@
     <Grid>
         <Image x:Name="BackOverlayImage"
                Source="{ThemeResource ImageSource}"
-               Stretch="UniformToFill"
+               Stretch="Fill"
                Opacity="{ThemeResource ImageOpacity}" />
         <Border x:Name="GradintBorder"
                 Height="408" />
