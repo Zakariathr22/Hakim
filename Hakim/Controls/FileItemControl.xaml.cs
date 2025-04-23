@@ -1,3 +1,4 @@
+using Hakim.Models;
 using Hakim.Services;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -14,9 +15,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Hakim.Views.Patients.Patient
 {
@@ -64,13 +62,14 @@ namespace Hakim.Views.Patients.Patient
             flyout.ShowAt(this, showModeOption);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.DataContext is Models.File file)
             {
                 if (file.Type == 0)
                 {
-
+                    FileCommandBarFlyout.Hide();
+                    ParentPage.ShowEditMedicalConsultationDialog(file);                 
                 }
                 else if (file.Type == 1)
                 {
@@ -85,6 +84,11 @@ namespace Hakim.Views.Patients.Patient
 
                 }
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

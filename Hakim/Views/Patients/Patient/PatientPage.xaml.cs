@@ -721,5 +721,21 @@ namespace Hakim.Views.Patients
                 //UpdatePatientSearchResults(SearchAutoSuggestBox);
             }
         }
+
+        public async void ShowEditMedicalConsultationDialog(Models.File file)
+        {
+            ContentDialog dialog = new ContentDialog();
+            dialog.XamlRoot = Content.XamlRoot;
+            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+            dialog.SecondaryButtonText = LanguageService.GetResourceValue("Close");
+            viewModel.Appointment = new Appointment();
+            dialog.Content = new EditConsultationPage(dialog, file);
+            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.Secondary)
+            {
+                //viewModel.EditAppointment(appointment);
+            }
+        }
     }
 }
