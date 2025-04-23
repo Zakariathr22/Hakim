@@ -134,8 +134,7 @@
                             Margin="4 0 0 4">
                     <TextBlock Margin="0 0 4 0"
                                FontFamily="Segoe Fluent Icons"
-                               Text="&#xE717;"
-                               FontWeight="Bold" />
+                               Text="&#xEE64;" />
                     <TextBlock Text="{Binding phone1Details}"
                                Style="{ThemeResource BodyTextBlockStyle}" />
                 </StackPanel>
@@ -144,8 +143,7 @@
                             Margin="4 0 0 4">
                     <TextBlock Margin="0 0 4 0"
                                FontFamily="Segoe Fluent Icons"
-                               Text="&#xE717;"
-                               FontWeight="Bold" />
+                               Text="&#xEE64;" />
                     <TextBlock Text="{Binding phone2Details}"
                                Style="{ThemeResource BodyTextBlockStyle}" />
                 </StackPanel>
