@@ -5,7 +5,6 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
-using Microsoft.UI.Xaml.Media;
 using System;
 using System.Linq;
 using Windows.Graphics;
@@ -99,7 +98,6 @@ public sealed partial class MainWindow : Window
                 titleBar.IsPaneToggleButtonVisible = true;
                 settingsNavigationItemText.Visibility = Visibility.Visible;
             }
-            viewModel.NavigationStyleChangedCommand.Execute(null);
         }
         else if (NavigationStyle == 1)
         {
@@ -109,8 +107,9 @@ public sealed partial class MainWindow : Window
                 titleBar.IsPaneToggleButtonVisible = false;
                 settingsNavigationItemText.Visibility = Visibility.Collapsed;
             }
-            viewModel.NavigationStyleChangedCommand.Execute(null);
         }
+        viewModel.NavigationStyle = NavigationStyle;
+        viewModel.NavigationStyleChangedCommand.Execute(null);
     }
 
     private void settingsNavigationItem_Tapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
