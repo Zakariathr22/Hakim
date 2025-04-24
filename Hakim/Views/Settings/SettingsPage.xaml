@@ -20,10 +20,10 @@
                     VerticalAlignment="Center"
                     Margin="0 0 0 16"
                     Grid.Row="0"
-                    Padding="24 24 24 0"
+                    Padding="36 36 36 0"
                     MaxWidth="1024">
             <FontIcon Glyph="&#xE713;"
-                      Margin="0 0 8 0"
+                      Margin="0 0 16 0"
                       FontSize="24"
                       Height="38"
                       VerticalAlignment="Bottom" />
@@ -34,38 +34,32 @@
         </StackPanel>
         <ScrollView Grid.Row="1">
             <Border>
-                <StackPanel Padding="24 0 24 24"
-                            MaxWidth="1024">
+                <StackPanel Padding="36 0 36 36"
+                            MaxWidth="1024"
+                            Spacing="8">
                     <TextBlock x:Name="userSubtitle"
-                               Margin="0 0 0 8"
                                Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <controls:SettingsCard x:Name="userSettingsCard"
                                            Header="{Binding User.profitionalName, Mode=TwoWay}">
                         <HyperlinkButton x:Name="editUserHyperlinkButton"
                                          Click="HyperlinkButton_Click" />
                     </controls:SettingsCard>
-                    <TextBlock Margin="0 8"
-                               Style="{ThemeResource SubtitleTextBlockStyle}"
-                               Text="Apparence" />
+                    <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}"
+                               Text="Apparence" 
+                               Margin="0 8 0 0" />
                     <controls:SettingsCard x:Name="themeSettingCard"
-                                           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                           Margin="0 0 0 4">
+                                           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                         <ComboBox x:Name="themeComboBox"
                                   SelectedIndex="{Binding AppTheme, Mode=TwoWay}"
-                                  SelectionChanged="themeComboBox_SelectionChanged"
-                                  Margin="0 0 0 4">
-                            <ComboBoxItem x:Name="systemModeComboBoxItem"
-                                          Tag="Default" />
-                            <ComboBoxItem x:Name="lightModeComboBoxItem"
-                                          Tag="Light" />
-                            <ComboBoxItem x:Name="darkmModeComboBoxItem"
-                                          Tag="Dark" />
+                                  SelectionChanged="themeComboBox_SelectionChanged">
+                            <ComboBoxItem x:Name="systemModeComboBoxItem" />
+                            <ComboBoxItem x:Name="lightModeComboBoxItem" />
+                            <ComboBoxItem x:Name="darkmModeComboBoxItem" />
                         </ComboBox>
                     </controls:SettingsCard>
                     <controls:SettingsCard x:Name="backDropSettingCard"
                                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                           HorizontalAlignment="Stretch"
-                                           Margin="0 0 0 4">
+                                           HorizontalAlignment="Stretch">
                         <ComboBox x:Name="backDropComboBox"
                                   SelectedIndex="{Binding AppBackDrop, Mode=TwoWay}"
                                   SelectionChanged="backDropComboBox_SelectionChanged">
@@ -85,12 +79,11 @@
                         </ComboBox>
                     </controls:SettingsCard>
                     <TextBlock x:Name="generalSettingsSubtitle"
-                               Margin="0 8"
+                               Margin="0 8 0 0"
                                Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <controls:SettingsCard x:Name="landingPageSettingCard"
                                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                           HorizontalAlignment="Stretch"
-                                           Margin="0 0 0 4">
+                                           HorizontalAlignment="Stretch">
                         <ComboBox x:Name="landingPageComboBox"
                                   SelectedIndex="{Binding LandingPage, Mode=TwoWay}"
                                   SelectionChanged="landingPageComboBox_SelectionChanged">
@@ -101,8 +94,7 @@
                     </controls:SettingsCard>
                     <controls:SettingsCard x:Name="languageSettingCard"
                                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                           HorizontalAlignment="Stretch"
-                                           Margin="0 0 0 4">
+                                           HorizontalAlignment="Stretch">
                         <ComboBox x:Name="languageComboBox"
                                   SelectionChanged="languageComboBox_SelectionChanged">
                             <!--<ComboBoxItem Tag="ar-DZ">العربية (الجزائر)</ComboBoxItem>
@@ -155,7 +147,7 @@
                                       Toggled="ShortCutToggleSwitch_Toggled" />
                     </controls:SettingsCard>
                     <TextBlock x:Name="aboutAppSubtitle"
-                               Margin="0 8"
+                               Margin="0 8 0 0"
                                Style="{ThemeResource SubtitleTextBlockStyle}" />
                     <controls:SettingsCard x:Name="aboutAppSettingCard"
                                            Margin="0 0 0 4"

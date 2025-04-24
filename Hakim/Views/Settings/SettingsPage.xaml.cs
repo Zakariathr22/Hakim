@@ -189,24 +189,7 @@ namespace Hakim.Views.Settings
 
         private void navigationStyleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (navigationStyleComboBox.SelectedIndex == 0)
-            {
-                if (App.mainWindow.navigationView.PaneDisplayMode != NavigationViewPaneDisplayMode.Left)
-                {
-                    App.mainWindow.navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
-                    App.mainWindow.titleBar.IsPaneToggleButtonVisible = true;
-                }
-                viewModel.NavigationStyleChangedCommand.Execute(null);
-            }
-            else if(navigationStyleComboBox.SelectedIndex == 1)
-            {
-                if (App.mainWindow.navigationView.PaneDisplayMode != NavigationViewPaneDisplayMode.Top)
-                {
-                    App.mainWindow.navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
-                    App.mainWindow.titleBar.IsPaneToggleButtonVisible = false;
-                }
-                viewModel.NavigationStyleChangedCommand.Execute(null);
-            }
+            App.mainWindow.SetNavigationStyle(navigationStyleComboBox.SelectedIndex);
         }
     }
 }

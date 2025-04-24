@@ -4,6 +4,8 @@ using Hakim.Views.Settings;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Media;
 using System;
 using System.Linq;
 using Windows.Graphics;
@@ -29,7 +31,7 @@ public sealed partial class MainWindow : Window
         CenterWindow();
         viewModel.SetAppTheme(this);
         viewModel.SetAppBackDrop(this);
-        viewModel.SetNavigationStyle(navigationView, titleBar);
+        SetNavigationStyle(viewModel.NavigationStyle);
         navigationView.SelectedItem = navigationView.MenuItems.OfType<NavigationViewItem>().ElementAt(viewModel.LandingPage);
 
         mainPanel.Loaded += (_, _) => UpdateTitleBarColor();
@@ -85,5 +87,50 @@ public sealed partial class MainWindow : Window
     private void TitleBar_PaneToggleRequested(TitleBar sender, object args)
     {
         navigationView.IsPaneOpen = !navigationView.IsPaneOpen;
+    }
+
+    public void SetNavigationStyle(int NavigationStyle)
+    {
+        if (NavigationStyle == 0)
+        {
+            if (navigationView.PaneDisplayMode != NavigationViewPaneDisplayMode.Left)
+            {
+                navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
+                titleBar.IsPaneToggleButtonVisible = true;
+                settingsNavigationItemText.Visibility = Visibility.Visible;
+            }
+            viewModel.NavigationStyleChangedCommand.Execute(null);
+        }
+        else if (NavigationStyle == 1)
+        {
+            if (navigationView.PaneDisplayMode != NavigationViewPaneDisplayMode.Top)
+            {
+                navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
+                titleBar.IsPaneToggleButtonVisible = false;
+                settingsNavigationItemText.Visibility = Visibility.Collapsed;
+            }
+            viewModel.NavigationStyleChangedCommand.Execute(null);
+        }
+    }
+
+    private void settingsNavigationItem_Tapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
+    {
+        // Create the animation
+        var animation = new DoubleAnimation
+        {
+            From = 0,
+            To = 3600, // 10 full rotations (360 * 10)
+            Duration = new Duration(TimeSpan.FromSeconds(0.67)),
+            EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
+        };
+
+        // Create storyboard and target the RotateTransform
+        var storyboard = new Storyboard();
+        Storyboard.SetTarget(animation, WheelRotateTransform);
+        Storyboard.SetTargetProperty(animation, "Angle");
+        storyboard.Children.Add(animation);
+
+        // Start the animation
+        storyboard.Begin();
     }
 }

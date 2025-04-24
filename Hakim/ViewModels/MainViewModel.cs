@@ -5,6 +5,7 @@ using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Hakim.ViewModels
 {
@@ -61,18 +62,10 @@ namespace Hakim.ViewModels
             }
         }
 
-        public void SetNavigationStyle(NavigationView navigationView, TitleBar titleBar)
+        [RelayCommand]
+        void NavigationStyleChanged()
         {
-            if (NavigationStyle == 0) 
-            {
-                navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
-                titleBar.IsPaneToggleButtonVisible = true;
-            }
-            else
-            {
-                navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
-                titleBar.IsPaneToggleButtonVisible = false;
-            }
+            ConfigurationService.SetAppSetting("NavigationStyle", NavigationStyle);
         }
     }
 }

@@ -105,13 +105,21 @@
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem x:Name="settingsNavigationItem"
-                                    Tag="Settings">
+                                    Tag="Settings"
+                                    Tapped="settingsNavigationItem_Tapped">
                     <StackPanel Orientation="Horizontal"
                                 VerticalAlignment="Center">
                         <Image Width="20"
                                Height="20"
-                               Source="/Assets/Icons/Settings.png" />
+                               Source="/Assets/Icons/Settings.png"
+                               RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <RotateTransform x:Name="WheelRotateTransform"
+                                                 Angle="0" />
+                            </Image.RenderTransform>
+                        </Image>
                         <TextBlock x:Name="settingsNavigationItemText"
+                                   x:FieldModifier="Public"
                                    Margin="12 0" />
                     </StackPanel>
                 </NavigationViewItem>
