@@ -52,7 +52,8 @@
                                            Margin="0 0 0 4">
                         <ComboBox x:Name="themeComboBox"
                                   SelectedIndex="{Binding AppTheme, Mode=TwoWay}"
-                                  SelectionChanged="themeComboBox_SelectionChanged">
+                                  SelectionChanged="themeComboBox_SelectionChanged"
+                                  Margin="0 0 0 4">
                             <ComboBoxItem x:Name="systemModeComboBoxItem"
                                           Tag="Default" />
                             <ComboBoxItem x:Name="lightModeComboBoxItem"
@@ -63,13 +64,24 @@
                     </controls:SettingsCard>
                     <controls:SettingsCard x:Name="backDropSettingCard"
                                            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-                                           HorizontalAlignment="Stretch">
+                                           HorizontalAlignment="Stretch"
+                                           Margin="0 0 0 4">
                         <ComboBox x:Name="backDropComboBox"
                                   SelectedIndex="{Binding AppBackDrop, Mode=TwoWay}"
                                   SelectionChanged="backDropComboBox_SelectionChanged">
                             <ComboBoxItem x:Name="micaComboBoxItem" />
                             <ComboBoxItem x:Name="altMicaComboBoxItem" />
                             <ComboBoxItem x:Name="desktopAcrylicComboBoxItem" />
+                        </ComboBox>
+                    </controls:SettingsCard>
+                    <controls:SettingsCard x:Name="navigationStyleSettingCard"
+                                           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                           HorizontalAlignment="Stretch" >
+                        <ComboBox x:Name="navigationStyleComboBox"
+                                  SelectionChanged="navigationStyleComboBox_SelectionChanged"
+                                  SelectedIndex="{Binding NavigationStyle, Mode=TwoWay}">
+                            <ComboBoxItem x:Name="leftComboBoxItem" />
+                            <ComboBoxItem x:Name="topComboBoxItem" />
                         </ComboBox>
                     </controls:SettingsCard>
                     <TextBlock x:Name="generalSettingsSubtitle"

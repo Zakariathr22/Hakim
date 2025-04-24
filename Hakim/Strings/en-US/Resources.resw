@@ -426,4 +426,16 @@
   <data name="Statistics" xml:space="preserve">
     <value>Statistics</value>
   </data>
+  <data name="NavigationStyle" xml:space="preserve">
+    <value>Navigation Style</value>
+  </data>
+  <data name="NavigationStyleDescription" xml:space="preserve">
+    <value>Determines how and where the NavigationView pane is displayed.</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>Top</value>
+  </data>
 </root>

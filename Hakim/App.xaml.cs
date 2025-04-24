@@ -9,6 +9,8 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Shapes;
 using Microsoft.Windows.ApplicationModel.Resources;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -83,26 +85,24 @@ namespace Hakim
 
             DataAccessService.SetupDatabaseSchema();
         }
+
         private void GenerateAppSettingsJson()
         {
             try
             {
-                // Get the path to the AppData\Local directory
                 string localAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                 string appFolder = System.IO.Path.Combine(localAppDataPath, "Hakim");
                 string settingsFile = System.IO.Path.Combine(appFolder, "appsettings.json");
 
-                // Log the full folder path
-                System.Diagnostics.Debug.WriteLine($"App folder path: {appFolder}");
+                Debug.WriteLine($"App folder path: {appFolder}");
 
-                // Check if directory exists, create if not
                 if (!Directory.Exists(appFolder))
                 {
                     Directory.CreateDirectory(appFolder);
-                    System.Diagnostics.Debug.WriteLine($"Created app folder: {appFolder}");
+                    Debug.WriteLine($"Created app folder: {appFolder}");
                 }
 
-                // Define the JSON structure
+                // Define default JSON structure
                 var appSettings = new
                 {
                     AppSettings = new
@@ -118,26 +118,39 @@ namespace Hakim
                     }
                 };
 
-                // Convert the settings to JSON format
-                string jsonContent = Newtonsoft.Json.JsonConvert.SerializeObject(appSettings, Newtonsoft.Json.Formatting.Indented);
+                string jsonContent = JsonConvert.SerializeObject(appSettings, Formatting.Indented);
 
-                // Check if the settings file exists, create if not
                 if (!System.IO.File.Exists(settingsFile))
                 {
                     System.IO.File.WriteAllText(settingsFile, jsonContent);
-                    System.Diagnostics.Debug.WriteLine($"Created appsettings.json file: {settingsFile}");
+                    Debug.WriteLine($"Created appsettings.json file: {settingsFile}");
                 }
                 else
                 {
-                    System.Diagnostics.Debug.WriteLine("appsettings.json already exists.");
+                    Debug.WriteLine("appsettings.json already exists.");
+                }
+
+                // FINAL CHECK: Ensure NavigationStyle exists
+                string existingJson = System.IO.File.ReadAllText(settingsFile);
+                JObject jsonObj = JObject.Parse(existingJson);
+                JObject appSettingsObj = (JObject)jsonObj["AppSettings"];
+
+                if (appSettingsObj["NavigationStyle"] == null)
+                {
+                    appSettingsObj["NavigationStyle"] = 0;
+                    System.IO.File.WriteAllText(settingsFile, jsonObj.ToString(Formatting.Indented));
+                    Debug.WriteLine("Added missing NavigationStyle key with value 0.");
+                }
+                else
+                {
+                    Debug.WriteLine("NavigationStyle already exists.");
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error generating appsettings.json: {ex.Message}");
+                Debug.WriteLine($"Error generating appsettings.json: {ex.Message}");
             }
         }
-
 
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {

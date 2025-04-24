@@ -29,6 +29,7 @@ public sealed partial class MainWindow : Window
         CenterWindow();
         viewModel.SetAppTheme(this);
         viewModel.SetAppBackDrop(this);
+        viewModel.SetNavigationStyle(navigationView, titleBar);
         navigationView.SelectedItem = navigationView.MenuItems.OfType<NavigationViewItem>().ElementAt(viewModel.LandingPage);
 
         mainPanel.Loaded += (_, _) => UpdateTitleBarColor();

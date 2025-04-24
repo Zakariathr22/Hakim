@@ -5,27 +5,12 @@ using Hakim.ViewModels;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Hakim.Views.Settings
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within PatientDetailsDisplay Frame.
-    /// </summary>
     public sealed partial class SettingsPage : Page
     {
         private SettingsViewModel viewModel;
@@ -54,6 +39,7 @@ namespace Hakim.Views.Settings
             userSettingsCard.HeaderIcon = new FontIcon { Glyph = "\uE77B" };
             themeSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE790" };
             backDropSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE81E" };
+            navigationStyleSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE90C" };
             landingPageSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE89A" };
             languageSettingCard.HeaderIcon = new FontIcon { Glyph = "\uF2B7" };
             shortCutSettingCard.HeaderIcon = new FontIcon { Glyph = "\uE8A7" };
@@ -150,7 +136,13 @@ namespace Hakim.Views.Settings
             micaComboBoxItem.Content = LanguageService.GetResourceValue("Mica");
             altMicaComboBoxItem.Content = LanguageService.GetResourceValue("AltMica");
             desktopAcrylicComboBoxItem.Content = LanguageService.GetResourceValue("DesktopAcrylic");
-            
+
+            navigationStyleSettingCard.Header = LanguageService.GetResourceValue("NavigationStyle");
+            navigationStyleSettingCard.Description = LanguageService.GetResourceValue("NavigationStyleDescription");
+
+            leftComboBoxItem.Content = LanguageService.GetResourceValue("Left");
+            topComboBoxItem.Content = LanguageService.GetResourceValue("Top");
+
             generalSettingsSubtitle.Text = LanguageService.GetResourceValue("GeneralSettings");
             
             landingPageSettingCard.Header = LanguageService.GetResourceValue("LandingPage");
@@ -184,15 +176,37 @@ namespace Hakim.Views.Settings
 
             ForceComboBoxRefresh(themeComboBox);
             ForceComboBoxRefresh(backDropComboBox);
+            ForceComboBoxRefresh(navigationStyleComboBox);
             ForceComboBoxRefresh(landingPageComboBox);
         }
 
         private void ForceComboBoxRefresh(ComboBox comboBox)
         {
-            // Force a UI refresh by resetting the SelectedIndex
             int selectedIndex = comboBox.SelectedIndex;
-            comboBox.SelectedIndex = -1; // Temporarily set to an invalid index
-            comboBox.SelectedIndex = selectedIndex; // Reset to the original index
+            comboBox.SelectedIndex = -1;
+            comboBox.SelectedIndex = selectedIndex;
+        }
+
+        private void navigationStyleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (navigationStyleComboBox.SelectedIndex == 0)
+            {
+                if (App.mainWindow.navigationView.PaneDisplayMode != NavigationViewPaneDisplayMode.Left)
+                {
+                    App.mainWindow.navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
+                    App.mainWindow.titleBar.IsPaneToggleButtonVisible = true;
+                }
+                viewModel.NavigationStyleChangedCommand.Execute(null);
+            }
+            else if(navigationStyleComboBox.SelectedIndex == 1)
+            {
+                if (App.mainWindow.navigationView.PaneDisplayMode != NavigationViewPaneDisplayMode.Top)
+                {
+                    App.mainWindow.navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
+                    App.mainWindow.titleBar.IsPaneToggleButtonVisible = false;
+                }
+                viewModel.NavigationStyleChangedCommand.Execute(null);
+            }
         }
     }
 }

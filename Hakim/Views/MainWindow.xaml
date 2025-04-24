@@ -19,9 +19,10 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TitleBar Title="Hakim"
+        <TitleBar x:Name="titleBar"
+                  x:FieldModifier="Public"
+                  Title="Hakim"
                   IsBackButtonVisible="True"
-                  IsPaneToggleButtonVisible="True"
                   Subtitle="Preview"
                   Height="48"
                   PaneToggleRequested="TitleBar_PaneToggleRequested">
@@ -53,7 +54,8 @@
                         SelectionChanged="navigationView_SelectionChanged"
                         IsBackButtonVisible="Collapsed"
                         IsPaneToggleButtonVisible="False"
-                        IsSettingsVisible="False" >
+                        IsSettingsVisible="False"
+                        x:FieldModifier="Public">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="homeNavigationItem"
                                     Tag="Home">

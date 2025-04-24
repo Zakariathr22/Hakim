@@ -13,18 +13,20 @@ namespace Hakim.ViewModels
         [ObservableProperty] private int appBackDrop;
         [ObservableProperty] private int landingPage;
         [ObservableProperty] private string language;
+        [ObservableProperty] private int navigationStyle;
 
         public SettingsViewModel()
         {
-            user = App.user;
-            user.Rank = ConfigurationService.GetAppSetting("Rank");
-            user.LastName = ConfigurationService.GetAppSetting("LastName");
-            user.FirstName = ConfigurationService.GetAppSetting("FirstName");
+            User = App.user;
+            User.Rank = ConfigurationService.GetAppSetting("Rank");
+            User.LastName = ConfigurationService.GetAppSetting("LastName");
+            User.FirstName = ConfigurationService.GetAppSetting("FirstName");
 
-            appTheme = int.Parse(ConfigurationService.GetAppSetting("AppTheme"));
-            appBackDrop = int.Parse(ConfigurationService.GetAppSetting("AppBackDrop"));
-            landingPage = int.Parse(ConfigurationService.GetAppSetting("LandingPage"));
-            language = ConfigurationService.GetAppSetting("Language");
+            AppTheme = int.Parse(ConfigurationService.GetAppSetting("AppTheme"));
+            AppBackDrop = int.Parse(ConfigurationService.GetAppSetting("AppBackDrop"));
+            LandingPage = int.Parse(ConfigurationService.GetAppSetting("LandingPage"));
+            Language = ConfigurationService.GetAppSetting("Language");
+            NavigationStyle = int.Parse(ConfigurationService.GetAppSetting("NavigationStyle"));
         }
 
         [RelayCommand]
@@ -80,6 +82,12 @@ namespace Hakim.ViewModels
         {
             ConfigurationService.SetAppSetting("Language", Language);
             LanguageService.SetLanguage(ConfigurationService.GetAppSetting("Language"));
+        }
+
+        [RelayCommand]
+        void NavigationStyleChanged()
+        {
+            ConfigurationService.SetAppSetting("NavigationStyle", NavigationStyle);
         }
     }
 }

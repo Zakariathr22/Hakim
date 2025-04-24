@@ -4,6 +4,7 @@ using Hakim.Services;
 using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace Hakim.ViewModels
 {
@@ -13,7 +14,8 @@ namespace Hakim.ViewModels
         [ObservableProperty] private int appTheme;
         [ObservableProperty] private int appBackDrop;
         [ObservableProperty] private int landingPage;
-        
+        [ObservableProperty] private int navigationStyle;
+
         public MainViewModel()
         {
             user = App.user;
@@ -21,9 +23,10 @@ namespace Hakim.ViewModels
             user.LastName = ConfigurationService.GetAppSetting("LastName");
             user.FirstName = ConfigurationService.GetAppSetting("FirstName");
 
-            appTheme = int.Parse(ConfigurationService.GetAppSetting("AppTheme"));
-            appBackDrop = int.Parse(ConfigurationService.GetAppSetting("AppBackDrop"));
-            landingPage = int.Parse(ConfigurationService.GetAppSetting("LandingPage"));
+            AppTheme = int.Parse(ConfigurationService.GetAppSetting("AppTheme"));
+            AppBackDrop = int.Parse(ConfigurationService.GetAppSetting("AppBackDrop"));
+            LandingPage = int.Parse(ConfigurationService.GetAppSetting("LandingPage"));
+            NavigationStyle = int.Parse(ConfigurationService.GetAppSetting("NavigationStyle"));
         }
 
         public void SetAppTheme(Window window)
@@ -55,6 +58,20 @@ namespace Hakim.ViewModels
             else
             {
                 window.SystemBackdrop = new DesktopAcrylicBackdrop();
+            }
+        }
+
+        public void SetNavigationStyle(NavigationView navigationView, TitleBar titleBar)
+        {
+            if (NavigationStyle == 0) 
+            {
+                navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
+                titleBar.IsPaneToggleButtonVisible = true;
+            }
+            else
+            {
+                navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
+                titleBar.IsPaneToggleButtonVisible = false;
             }
         }
     }
