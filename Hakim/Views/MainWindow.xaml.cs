@@ -15,6 +15,7 @@ namespace Hakim;
 public sealed partial class MainWindow : Window
 {
     private MainViewModel viewModel = new();
+    private bool settingsNavigationItemIsSelected = false;
 
     public MainWindow()
     {
@@ -54,6 +55,26 @@ public sealed partial class MainWindow : Window
             var type = Type.GetType($"Hakim.Views.{tag}.{tag}Page");
             if (type != null) contentFrame.Navigate(type);
             else System.Diagnostics.Debug.WriteLine($"Page not found: {tag}");
+            if(tag == "Settings")
+            {
+                // Create the animation
+                var animation = new DoubleAnimation
+                {
+                    From = 0,
+                    To = 1800, // 5 full rotations (360 * 5)
+                    Duration = new Duration(TimeSpan.FromSeconds(0.67)),
+                    EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
+                };
+
+                // Create storyboard and target the RotateTransform
+                var storyboard = new Storyboard();
+                Storyboard.SetTarget(animation, WheelRotateTransform);
+                Storyboard.SetTargetProperty(animation, "Angle");
+                storyboard.Children.Add(animation);
+
+                // Start the animation
+                storyboard.Begin();
+            }
         }
     }
 
@@ -110,26 +131,5 @@ public sealed partial class MainWindow : Window
         }
         viewModel.NavigationStyle = NavigationStyle;
         viewModel.NavigationStyleChangedCommand.Execute(null);
-    }
-
-    private void settingsNavigationItem_Tapped(object sender, Microsoft.UI.Xaml.Input.TappedRoutedEventArgs e)
-    {
-        // Create the animation
-        var animation = new DoubleAnimation
-        {
-            From = 0,
-            To = 3600, // 10 full rotations (360 * 10)
-            Duration = new Duration(TimeSpan.FromSeconds(0.67)),
-            EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
-        };
-
-        // Create storyboard and target the RotateTransform
-        var storyboard = new Storyboard();
-        Storyboard.SetTarget(animation, WheelRotateTransform);
-        Storyboard.SetTargetProperty(animation, "Angle");
-        storyboard.Children.Add(animation);
-
-        // Start the animation
-        storyboard.Begin();
     }
 }

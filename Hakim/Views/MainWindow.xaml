@@ -105,8 +105,7 @@
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem x:Name="settingsNavigationItem"
-                                    Tag="Settings"
-                                    Tapped="settingsNavigationItem_Tapped">
+                                    Tag="Settings">
                     <StackPanel Orientation="Horizontal"
                                 VerticalAlignment="Center">
                         <Image Width="20"
