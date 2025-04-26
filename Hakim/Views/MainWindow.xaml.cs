@@ -113,9 +113,9 @@ public sealed partial class MainWindow : Window
     {
         if (NavigationStyle == 0)
         {
-            if (navigationView.PaneDisplayMode != NavigationViewPaneDisplayMode.Left)
+            if (navigationView.PaneDisplayMode != NavigationViewPaneDisplayMode.Auto)
             {
-                navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Left;
+                navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Auto;
                 titleBar.IsPaneToggleButtonVisible = true;
                 settingsNavigationItemText.Visibility = Visibility.Visible;
             }
