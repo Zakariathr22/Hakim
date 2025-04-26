@@ -1,94 +1,67 @@
-using Hakim.Models;
 using Hakim.Services;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 
-namespace Hakim.Views.Patients.Patient
+namespace Hakim.Views.Patients.Patient;
+
+public sealed partial class FileItemControl : UserControl
 {
-    public sealed partial class FileItemControl : UserControl
+    PatientPage ParentPage;
+
+    public FileItemControl()
     {
-        PatientPage ParentPage;
+        this.InitializeComponent();
+        Loaded += FileItemControl_Loaded;
+    }
 
-        public FileItemControl()
+    private void FileItemControl_Loaded(object sender, RoutedEventArgs e)
+    {
+        ParentPage = VisualTreeExtensionsService.FindParent<PatientPage>(this);
+        if (ParentPage != null)
         {
-            this.InitializeComponent();
-            Loaded += FileItemControl_Loaded;
+            // You now have access to the parent page
+            Debug.WriteLine("Parent Page found: " + ParentPage.GetType().Name);
         }
+    }
 
-        private void FileItemControl_Loaded(object sender, RoutedEventArgs e)
+    private void deletePatientButton_Click(object sender, RoutedEventArgs e)
+    {
+        FileCommandBarFlyout.Hide();
+
+        if (this.DataContext is Models.File file)
         {
-            ParentPage = VisualTreeExtensionsService.FindParent<PatientPage>(this);
-            if (ParentPage != null)
-            {
-                // You now have access to the parent page
-                Debug.WriteLine("Parent Page found: " + ParentPage.GetType().Name);
-            }
+            // Now you have access to the associated Patient object
+            ParentPage.viewModel.DeleteFileById(file.id);
+            ParentPage.UpdatePatientSearchResults(ParentPage.SearchAutoSuggestBox);
+            ParentPage.patientRecords.UpdateFilesDisplayVisibility(ParentPage.viewModel.SelectedPatient);
         }
+        
+    }
 
-        private void deletePatientButton_Click(object sender, RoutedEventArgs e)
+    private void _ContextRequested(UIElement sender, ContextRequestedEventArgs args)
+    {
+        CommandBarFlyout flyout = this.Resources["FileCommandBarFlyout"] as CommandBarFlyout;
+        FlyoutShowOptions showModeOption = new FlyoutShowOptions
         {
-            FileCommandBarFlyout.Hide();
+            ShowMode = FlyoutShowMode.Transient
+        };
+        flyout.ShowAt(this, showModeOption);
+    }
 
-            if (this.DataContext is Models.File file)
-            {
-                // Now you have access to the associated Patient object
-                ParentPage.viewModel.DeleteFileById(file.id);
-                ParentPage.UpdatePatientSearchResults(ParentPage.SearchAutoSuggestBox);
-                ParentPage.patientRecords.UpdateFilesDisplayVisibility(ParentPage.viewModel.SelectedPatient);
-            }
-            
-        }
-
-        private void _ContextRequested(UIElement sender, ContextRequestedEventArgs args)
+    private void RenameButton_Click(object sender, RoutedEventArgs e)
+    {
+        FileCommandBarFlyout.Hide();
+        if (this.DataContext is Models.File file)
         {
-            CommandBarFlyout flyout = this.Resources["FileCommandBarFlyout"] as CommandBarFlyout;
-            FlyoutShowOptions showModeOption = new FlyoutShowOptions
-            {
-                ShowMode = FlyoutShowMode.Transient
-            };
-            flyout.ShowAt(this, showModeOption);
+            ParentPage.ShowRenameFileDialog(file);
         }
+    }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.DataContext is Models.File file)
-            {
-                if (file.Type == 0)
-                {
-                    FileCommandBarFlyout.Hide();
-                    ParentPage.ShowEditMedicalConsultationDialog(file);                 
-                }
-                else if (file.Type == 1)
-                {
-                    
-                }
-                else if (file.Type == 2)
-                {
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
 
-                }
-                else if (file.Type == 3)
-                {
-
-                }
-            }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

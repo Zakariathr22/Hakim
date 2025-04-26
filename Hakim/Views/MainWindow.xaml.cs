@@ -55,7 +55,7 @@ public sealed partial class MainWindow : Window
             var type = Type.GetType($"Hakim.Views.{tag}.{tag}Page");
             if (type != null) contentFrame.Navigate(type);
             else System.Diagnostics.Debug.WriteLine($"Page not found: {tag}");
-            if(tag == "Settings")
+            if (tag == "Settings")
             {
                 // Create the animation
                 var animation = new DoubleAnimation

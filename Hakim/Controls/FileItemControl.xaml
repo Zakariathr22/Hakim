@@ -24,7 +24,7 @@
         <converters:TypeToExportVisibilityConverter x:Key="TypeToExportVisibilityConverter"/>
         <CommandBarFlyout x:Name="FileCommandBarFlyout" Placement="TopEdgeAlignedLeft">
             <AppBarButton x:Name="displayButton" Label="Display" Icon="ShowResults" Visibility="{Binding Type, Converter={StaticResource TypeToDisplayVisibilityConverter}}"/>
-            <AppBarButton x:Name="editButton" Label="Edit" Icon="Edit" Click="EditButton_Click" />
+            <AppBarButton x:Name="renameButton" Label="Rename" Icon="Edit" Click="RenameButton_Click" />
             <AppBarButton x:Name="printButton" Label="Print" Icon="Print" Visibility="{Binding Type, Converter={StaticResource TypeToPrintVisibilityConverter}}"/>
             <CommandBarFlyout.SecondaryCommands>
                 <AppBarButton x:Name="exportButton" Label="Export" Visibility="{Binding Type, Converter={StaticResource TypeToExportVisibilityConverter}}">

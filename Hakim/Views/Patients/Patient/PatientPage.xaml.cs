@@ -705,36 +705,19 @@ namespace Hakim.Views.Patients
             }
         }
 
-        public async void ShowEditConsultationDialog(Models.MedicalConsultation consultation)
+        public async void ShowRenameFileDialog(Models.File file)
         {
             ContentDialog dialog = new ContentDialog();
             dialog.XamlRoot = Content.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-            dialog.SecondaryButtonText = LanguageService.GetResourceValue("Close");
-            //viewModel.Patient = new Model.Patient();
-            dialog.Content = new AddEditConsultaionFilePage(dialog, consultation);
-            dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
-            var result = await dialog.ShowAsync();
-            if (result == ContentDialogResult.Secondary)
-            {
-                //viewModel.UpdatePatient(patient);
-                //UpdatePatientSearchResults(SearchAutoSuggestBox);
-            }
-        }
-
-        public async void ShowEditMedicalConsultationDialog(Models.File file)
-        {
-            ContentDialog dialog = new ContentDialog();
-            dialog.XamlRoot = Content.XamlRoot;
-            dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-            dialog.SecondaryButtonText = LanguageService.GetResourceValue("Close");
+            dialog.PrimaryButtonText = LanguageService.GetResourceValue("Close");
             viewModel.Appointment = new Appointment();
-            dialog.Content = new EditConsultationPage(dialog, file);
+            dialog.Content = new RenameFilePage(dialog, file);
             dialog.RequestedTheme = ThemeSelectorService.GetTheme(App.mainWindow);
             var result = await dialog.ShowAsync();
-            if (result == ContentDialogResult.Secondary)
+            if (result == ContentDialogResult.Primary)
             {
-                //viewModel.EditAppointment(appointment);
+                viewModel.RenameFile(file);
             }
         }
     }

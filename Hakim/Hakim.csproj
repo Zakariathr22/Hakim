@@ -72,11 +72,11 @@
     <None Remove="Views\Patients\Patient\Appointments\AddAppointmentPage.xaml" />
     <None Remove="Views\Patients\Patient\Appointments\EditAppointmentPage.xaml" />
     <None Remove="Views\Patients\Patient\Consultations\AddEditConsultaionFilePage.xaml" />
-    <None Remove="Views\Patients\Patient\Consultations\EditConsultationPage.xaml" />
     <None Remove="Views\Patients\Patient\FileItemControl.xaml" />
     <None Remove="Views\Patients\Patient\PatientDetailsDisplayControl.xaml" />
     <None Remove="Views\Patients\Patient\PatientInfoEditorControl.xaml" />
     <None Remove="Views\Patients\Patient\PatientRecordsControl.xaml" />
+    <None Remove="Views\Patients\Patient\RenameFilePage.xaml" />
     <None Remove="Views\Patients\Patient\SurgeryProtocols\AddSurgeryProtocolPage.xaml" />
     <None Remove="Views\Patients\Patient\XRay_s\AddTelemetryXRayPage.xaml" />
     <None Remove="Views\Patients\Patient\XRay_s\AddXRayPage.xaml" />
@@ -142,7 +142,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Patients\Patient\Consultations\EditConsultationPage.xaml">
+    <Page Update="Views\Patients\Patient\RenameFilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -638,5 +638,30 @@ namespace Hakim.ViewModels
             }
         }
 
+        public void RenameFile(File file)
+        {
+            try
+            {
+                using (var connection = DataAccessService.GetConnection())
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = @"
+                UPDATE File SET
+                    Title = @Title
+                WHERE Id = @Id";
+
+                    command.Parameters.AddWithValue("@Title", file.Title);
+                    command.Parameters.AddWithValue("@Id", file.id);
+
+                    command.ExecuteNonQuery();
+                    Console.WriteLine("File renamed successfully.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while renaming the file: {ex.Message}");
+                // Handle the exception (e.g., log it or rethrow it)
+            }
+        }
     }
 }
