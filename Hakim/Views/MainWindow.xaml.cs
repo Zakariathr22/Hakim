@@ -116,18 +116,18 @@ public sealed partial class MainWindow : Window
             if (navigationView.PaneDisplayMode != NavigationViewPaneDisplayMode.Auto)
             {
                 navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Auto;
-                titleBar.IsPaneToggleButtonVisible = true;
                 settingsNavigationItemText.Visibility = Visibility.Visible;
             }
+            titleBar.IsPaneToggleButtonVisible = true;
         }
         else if (NavigationStyle == 1)
         {
             if (navigationView.PaneDisplayMode != NavigationViewPaneDisplayMode.Top)
             {
                 navigationView.PaneDisplayMode = NavigationViewPaneDisplayMode.Top;
-                titleBar.IsPaneToggleButtonVisible = false;
                 settingsNavigationItemText.Visibility = Visibility.Collapsed;
             }
+            titleBar.IsPaneToggleButtonVisible = false;
         }
         viewModel.NavigationStyle = NavigationStyle;
         viewModel.NavigationStyleChangedCommand.Execute(null);
