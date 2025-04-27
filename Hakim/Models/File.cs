@@ -1,79 +1,72 @@
-﻿using Microsoft.UI.Windowing;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Networking;
 
-namespace Hakim.Models
+namespace Hakim.Models;
+
+public partial class File 
 {
-    public partial class File 
+    public int id { get; set; }
+    private Patient patient;
+    private string title;
+    private DateTime creationDate;
+    private string url;
+    private int type;
+}
+
+public partial class File : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+    public void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
+    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+
+    public Patient Patient
     {
-        public int id { get; set; }
-        private Patient patient;
-        private string title;
-        private DateTime creationDate;
-        private string url;
-        private int type;
+        get => patient;
+        set
+        {
+            patient = value;
+            OnPropertyChanged();
+        }
     }
 
-    public partial class File : INotifyPropertyChanged
+    public string Title
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-
-        public Patient Patient
+        get => title;
+        set
         {
-            get => patient;
-            set
-            {
-                patient = value;
-                OnPropertyChanged();
-            }
+            title = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string Title
+    public DateTime CreationDate
+    {
+        get => creationDate;
+        set
         {
-            get => title;
-            set
-            {
-                title = value;
-                OnPropertyChanged();
-            }
+            creationDate = value;
+            OnPropertyChanged();
         }
+    }
 
-        public DateTime CreationDate
+    public string Url
+    {
+        get => url;
+        set
         {
-            get => creationDate;
-            set
-            {
-                creationDate = value;
-                OnPropertyChanged();
-            }
+            url = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string Url
+    public int Type
+    {
+        get => type;
+        set
         {
-            get => url;
-            set
-            {
-                url = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int Type
-        {
-            get => type;
-            set
-            {
-                type = value;
-                OnPropertyChanged();
-            }
+            type = value;
+            OnPropertyChanged();
         }
     }
 }

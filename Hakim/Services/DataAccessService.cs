@@ -2,37 +2,37 @@
 using System.Data.SQLite;
 using System.Diagnostics;
 
-namespace Hakim.Services
+namespace Hakim.Services;
+
+public static class DataAccessService
 {
-    public static class DataAccessService
+    private static readonly string ConnectionString = $"Data Source={Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\Hakim\\Database.sqlite";
+
+    public static SQLiteConnection GetConnection()
     {
-        private static readonly string ConnectionString = $"Data Source={Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\Hakim\\Database.sqlite";
+        var connection = new SQLiteConnection(ConnectionString);
+        connection.Open();
+        return connection;
+    }
 
-        public static SQLiteConnection GetConnection()
+    private static void ExecuteNonQuery(string commandText, string tableName)
+    {
+        try
         {
-            var connection = new SQLiteConnection(ConnectionString);
-            connection.Open();
-            return connection;
+            using var connection = GetConnection();
+            using var command = new SQLiteCommand(commandText, connection);
+            command.ExecuteNonQuery();
+            Debug.WriteLine($"{tableName} table ensured to exist.");
         }
-
-        private static void ExecuteNonQuery(string commandText, string tableName)
+        catch (Exception ex)
         {
-            try
-            {
-                using var connection = GetConnection();
-                using var command = new SQLiteCommand(commandText, connection);
-                command.ExecuteNonQuery();
-                Debug.WriteLine($"{tableName} table ensured to exist.");
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"An error occurred while ensuring the {tableName} table: {ex.Message}");
-            }
+            Debug.WriteLine($"An error occurred while ensuring the {tableName} table: {ex.Message}");
         }
+    }
 
-        public static void SetupDatabaseSchema()
-        {
-            ExecuteNonQuery(@"
+    public static void SetupDatabaseSchema()
+    {
+        ExecuteNonQuery(@"
                 CREATE TABLE IF NOT EXISTS Patient (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     LastName TEXT,
@@ -56,7 +56,7 @@ namespace Hakim.Services
                     DateOfRegistration DATETIME DEFAULT CURRENT_TIMESTAMP
                 )", "Patient");
 
-            ExecuteNonQuery(@"
+        ExecuteNonQuery(@"
                 CREATE TABLE IF NOT EXISTS File (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     patient_id INTEGER,
@@ -67,7 +67,7 @@ namespace Hakim.Services
                     FOREIGN KEY (patient_id) REFERENCES Patient (id) ON DELETE CASCADE
                 )", "File");
 
-            ExecuteNonQuery(@"
+        ExecuteNonQuery(@"
                 CREATE TABLE IF NOT EXISTS Appointment (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     patient_id INTEGER,
@@ -78,7 +78,7 @@ namespace Hakim.Services
                     FOREIGN KEY (patient_id) REFERENCES Patient (id) ON DELETE CASCADE
                 )", "Appointment");
 
-            ExecuteNonQuery(@"
+        ExecuteNonQuery(@"
                 CREATE TABLE IF NOT EXISTS MedicalConsultation (
                     file_id INTEGER PRIMARY KEY,
                     notes TEXT,
@@ -86,7 +86,7 @@ namespace Hakim.Services
                     FOREIGN KEY (file_id) REFERENCES File (id) ON DELETE CASCADE
                 )", "MedicalConsultation");
 
-            ExecuteNonQuery(@"
+        ExecuteNonQuery(@"
                 CREATE TABLE IF NOT EXISTS SurgeryProtocol (
                     file_id INTEGER PRIMARY KEY,
                     surgeon TEXT,
@@ -102,7 +102,7 @@ namespace Hakim.Services
                     FOREIGN KEY (file_id) REFERENCES File (id) ON DELETE CASCADE
                 )", "SurgeryProtocol");
 
-            ExecuteNonQuery(@"
+        ExecuteNonQuery(@"
                 CREATE TABLE IF NOT EXISTS XRay (
                     file_id INTEGER PRIMARY KEY,
                     xray_date DATETIME,
@@ -113,7 +113,7 @@ namespace Hakim.Services
                     FOREIGN KEY (file_id) REFERENCES File (id) ON DELETE CASCADE
                 )", "XRay");
 
-            ExecuteNonQuery(@"
+        ExecuteNonQuery(@"
                 CREATE TABLE IF NOT EXISTS BackSpineTelemetryXRay (
                     xray_id INTEGER PRIMARY KEY,
                     vls INTEGER,
@@ -123,6 +123,5 @@ namespace Hakim.Services
                     red INTEGER,
                     FOREIGN KEY (xray_id) REFERENCES XRay (file_id) ON DELETE CASCADE
                 )", "BackSpineTelemetryXRay");
-        }
     }
 }

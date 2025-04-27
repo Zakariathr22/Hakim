@@ -7,65 +7,64 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using CommunityToolkit.Mvvm.Input;
 
-namespace Hakim.ViewModels
+namespace Hakim.ViewModels;
+
+public partial class MainViewModel:ObservableObject
 {
-    public partial class MainViewModel:ObservableObject
+    [ObservableProperty] private User user;
+    [ObservableProperty] private int appTheme;
+    [ObservableProperty] private int appBackDrop;
+    [ObservableProperty] private int landingPage;
+    [ObservableProperty] private int navigationStyle;
+
+    public MainViewModel()
     {
-        [ObservableProperty] private User user;
-        [ObservableProperty] private int appTheme;
-        [ObservableProperty] private int appBackDrop;
-        [ObservableProperty] private int landingPage;
-        [ObservableProperty] private int navigationStyle;
+        user = App.user;
+        user.Rank = ConfigurationService.GetAppSetting("Rank");
+        user.LastName = ConfigurationService.GetAppSetting("LastName");
+        user.FirstName = ConfigurationService.GetAppSetting("FirstName");
 
-        public MainViewModel()
+        AppTheme = int.Parse(ConfigurationService.GetAppSetting("AppTheme"));
+        AppBackDrop = int.Parse(ConfigurationService.GetAppSetting("AppBackDrop"));
+        LandingPage = int.Parse(ConfigurationService.GetAppSetting("LandingPage"));
+        NavigationStyle = int.Parse(ConfigurationService.GetAppSetting("NavigationStyle"));
+    }
+
+    public void SetAppTheme(Window window)
+    {
+        if (AppTheme == 0)
         {
-            user = App.user;
-            user.Rank = ConfigurationService.GetAppSetting("Rank");
-            user.LastName = ConfigurationService.GetAppSetting("LastName");
-            user.FirstName = ConfigurationService.GetAppSetting("FirstName");
-
-            AppTheme = int.Parse(ConfigurationService.GetAppSetting("AppTheme"));
-            AppBackDrop = int.Parse(ConfigurationService.GetAppSetting("AppBackDrop"));
-            LandingPage = int.Parse(ConfigurationService.GetAppSetting("LandingPage"));
-            NavigationStyle = int.Parse(ConfigurationService.GetAppSetting("NavigationStyle"));
+            ThemeSelectorService.SetTheme(ElementTheme.Default, window);
         }
-
-        public void SetAppTheme(Window window)
+        else if (AppTheme == 1)
         {
-            if (AppTheme == 0)
-            {
-                ThemeSelectorService.SetTheme(ElementTheme.Default, window);
-            }
-            else if (AppTheme == 1)
-            {
-                ThemeSelectorService.SetTheme(ElementTheme.Light, window);
-            }
-            else
-            {
-                ThemeSelectorService.SetTheme(ElementTheme.Dark, window);
-            }
+            ThemeSelectorService.SetTheme(ElementTheme.Light, window);
         }
-
-        public void SetAppBackDrop(Window window)
+        else
         {
-            if (AppBackDrop == 0)
-            {
-                window.SystemBackdrop = new MicaBackdrop() { Kind = MicaKind.Base };
-            }
-            else if (AppBackDrop == 1)
-            {
-                window.SystemBackdrop = new MicaBackdrop() { Kind = MicaKind.BaseAlt };
-            }
-            else
-            {
-                window.SystemBackdrop = new DesktopAcrylicBackdrop();
-            }
+            ThemeSelectorService.SetTheme(ElementTheme.Dark, window);
         }
+    }
 
-        [RelayCommand]
-        void NavigationStyleChanged()
+    public void SetAppBackDrop(Window window)
+    {
+        if (AppBackDrop == 0)
         {
-            ConfigurationService.SetAppSetting("NavigationStyle", NavigationStyle);
+            window.SystemBackdrop = new MicaBackdrop() { Kind = MicaKind.Base };
         }
+        else if (AppBackDrop == 1)
+        {
+            window.SystemBackdrop = new MicaBackdrop() { Kind = MicaKind.BaseAlt };
+        }
+        else
+        {
+            window.SystemBackdrop = new DesktopAcrylicBackdrop();
+        }
+    }
+
+    [RelayCommand]
+    void NavigationStyleChanged()
+    {
+        ConfigurationService.SetAppSetting("NavigationStyle", NavigationStyle);
     }
 }

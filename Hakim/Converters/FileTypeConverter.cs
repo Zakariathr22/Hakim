@@ -1,34 +1,29 @@
 ﻿using Microsoft.UI.Xaml.Data;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Hakim.Converters
+namespace Hakim.Converters;
+
+internal class FileTypeConverter : IValueConverter
 {
-    internal class FileTypeConverter : IValueConverter
+    public object Convert(object value, Type targetType, object parameter, string language)
     {
-        public object Convert(object value, Type targetType, object parameter, string language)
+        if (value is int type)
         {
-            if (value is int type)
-            {
-                if (type == 0)
-                    return @"Consultation";
-                else if (type == 1)
-                    return @"Radiographie";
-                else if (type == 2)
-                    return @"Radiographie télémétrie de la colonne vertébrale";
-                else if (type == 3)
-                    return @"Protocol opératoire";
-                else return @"Fichier médical";
-            }
-            return @"Fichier médical";
+            if (type == 0)
+                return @"Consultation";
+            else if (type == 1)
+                return @"Radiographie";
+            else if (type == 2)
+                return @"Radiographie télémétrie de la colonne vertébrale";
+            else if (type == 3)
+                return @"Protocol opératoire";
+            else return @"Fichier médical";
         }
+        return @"Fichier médical";
+    }
 
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            throw new NotImplementedException();
-        }
+    public object ConvertBack(object value, Type targetType, object parameter, string language)
+    {
+        throw new NotImplementedException();
     }
 }

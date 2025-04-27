@@ -1,401 +1,397 @@
 ﻿using Hakim.Services;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Hakim.Models
-{
-    public partial class Patient 
-    { 
-        public int id { get; set; }
-        private string lastName;
-        private string firstName;
-        private DateTimeOffset dateOfBirth;
-        private int gender;
-        private string address;
-        private string state;
-        private string city;
-        private string postalCode;
-        private string phone1;
-        private int phone1Owner;
-        private string phone2;
-        private int phone2Owner;
-        private string email;
-        private string medicalHistory;
-        private string allergies;
-        private string currentMedications;
-        private string insuranceProvider;
-        private string insuranceNumber;
-        public DateTime dateOfRegistration { get; set; }
-        public ObservableCollection<File> files { get; set; }
-        public ObservableCollection<Appointment> appointments { get; set; }
-        private string GetAgeAsString(DateTimeOffset birthDate)
+namespace Hakim.Models;
+
+public partial class Patient 
+{ 
+    public int id { get; set; }
+    private string lastName;
+    private string firstName;
+    private DateTimeOffset dateOfBirth;
+    private int gender;
+    private string address;
+    private string state;
+    private string city;
+    private string postalCode;
+    private string phone1;
+    private int phone1Owner;
+    private string phone2;
+    private int phone2Owner;
+    private string email;
+    private string medicalHistory;
+    private string allergies;
+    private string currentMedications;
+    private string insuranceProvider;
+    private string insuranceNumber;
+    public DateTime dateOfRegistration { get; set; }
+    public ObservableCollection<File> files { get; set; }
+    public ObservableCollection<Appointment> appointments { get; set; }
+    private string GetAgeAsString(DateTimeOffset birthDate)
+    {
+        TimeSpan age = DateTime.Now - birthDate;
+
+        if (age.TotalDays < 1)
         {
-            TimeSpan age = DateTime.Now - birthDate;
+            // Less than 1 day old
+            return $"{age.TotalHours:F0} {LanguageService.GetResourceValue("hours")}";
+        }
+        else if (age.TotalDays < 30)
+        {
+            // Less than 1 month old
+            return $"{age.TotalDays:F0} {LanguageService.GetResourceValue("days")}";
+        }
+        else if (age.TotalDays < 365)
+        {
+            // Less than 1 year old
+            int months = (int)(age.TotalDays / 30);
+            if (months == 1)
+                return $"{months} {LanguageService.GetResourceValue("month")}";
+            else
+                return $"{months} {LanguageService.GetResourceValue("months")}";
+        }
+        else
+        {
+            // 1 year or older
+            int years = (int)(age.TotalDays / 365);
+            if (years == 1)
+                return $"{years} {LanguageService.GetResourceValue("year")}";
+            else
+                return $"{years} {LanguageService.GetResourceValue("years")}";
+        }
+    }
+    private string AddSpacesBetweenDigits(string input)
+    {
+        StringBuilder result = new StringBuilder();
 
-            if (age.TotalDays < 1)
+        for (int i = 0; i < input.Length; i += 2)
+        {
+            if (i + 1 < input.Length)
             {
-                // Less than 1 day old
-                return $"{age.TotalHours:F0} {LanguageService.GetResourceValue("hours")}";
-            }
-            else if (age.TotalDays < 30)
-            {
-                // Less than 1 month old
-                return $"{age.TotalDays:F0} {LanguageService.GetResourceValue("days")}";
-            }
-            else if (age.TotalDays < 365)
-            {
-                // Less than 1 year old
-                int months = (int)(age.TotalDays / 30);
-                if (months == 1)
-                    return $"{months} {LanguageService.GetResourceValue("month")}";
-                else
-                    return $"{months} {LanguageService.GetResourceValue("months")}";
+                result.Append(input[i]);
+                result.Append(input[i + 1]);
+                result.Append(' '); // Add PatientDetailsDisplay space
             }
             else
             {
-                // 1 year or older
-                int years = (int)(age.TotalDays / 365);
-                if (years == 1)
-                    return $"{years} {LanguageService.GetResourceValue("year")}";
-                else
-                    return $"{years} {LanguageService.GetResourceValue("years")}";
+                result.Append(input[i]);
             }
         }
-        private string AddSpacesBetweenDigits(string input)
-        {
-            StringBuilder result = new StringBuilder();
 
-            for (int i = 0; i < input.Length; i += 2)
-            {
-                if (i + 1 < input.Length)
-                {
-                    result.Append(input[i]);
-                    result.Append(input[i + 1]);
-                    result.Append(' '); // Add PatientDetailsDisplay space
-                }
-                else
-                {
-                    result.Append(input[i]);
-                }
-            }
-
-            return result.ToString();
-        }
-        private string GetOwner(int phoneOwner)
+        return result.ToString();
+    }
+    private string GetOwner(int phoneOwner)
+    {
+        if (phoneOwner == 0)
         {
-            if (phoneOwner == 0)
-            {
-                return LanguageService.GetResourceValue("Personal");
-            } else if (phoneOwner == 1)
-            {
-                return LanguageService.GetResourceValue("Husband");
-            }
-            else if (phoneOwner == 2)
-            {
-                return LanguageService.GetResourceValue("Wife");
-            }
-            else if (phoneOwner == 3)
-            {
-                return LanguageService.GetResourceValue("Son");
-            }
-            else if (phoneOwner == 4)
-            {
-                return LanguageService.GetResourceValue("Daughter");
-            }
-            else if (phoneOwner == 5)
-            {
-                return LanguageService.GetResourceValue("Father");
-            }
-            else if (phoneOwner == 6)
-            {
-                return LanguageService.GetResourceValue("Mother");
-            }
-            else if (phoneOwner == 7)
-            {
-                return LanguageService.GetResourceValue("Brother");
-            }
-            else if (phoneOwner == 8)
-            {
-                return LanguageService.GetResourceValue("Sister");
-            }
-            else if (phoneOwner == 9)
-            {
-                return LanguageService.GetResourceValue("Relative");
-            }
-            else if (phoneOwner == 10)
-            {
-                return LanguageService.GetResourceValue("Friend");
-            }
-            else 
-                return LanguageService.GetResourceValue("NotEntered");
+            return LanguageService.GetResourceValue("Personal");
+        } else if (phoneOwner == 1)
+        {
+            return LanguageService.GetResourceValue("Husband");
         }
-        /*
-        <ComboBoxItem x:Name="fatherPhone1"/>
-        <ComboBoxItem x:Name="motherPhone1"/>
-        <ComboBoxItem x:Name="brotherPhone1"/>
-        <ComboBoxItem x:Name="sisterPhone1"/>
-        <ComboBoxItem x:Name="relativePhone1"/>
-        <ComboBoxItem x:Name="friendPhone1"/>
-         */
+        else if (phoneOwner == 2)
+        {
+            return LanguageService.GetResourceValue("Wife");
+        }
+        else if (phoneOwner == 3)
+        {
+            return LanguageService.GetResourceValue("Son");
+        }
+        else if (phoneOwner == 4)
+        {
+            return LanguageService.GetResourceValue("Daughter");
+        }
+        else if (phoneOwner == 5)
+        {
+            return LanguageService.GetResourceValue("Father");
+        }
+        else if (phoneOwner == 6)
+        {
+            return LanguageService.GetResourceValue("Mother");
+        }
+        else if (phoneOwner == 7)
+        {
+            return LanguageService.GetResourceValue("Brother");
+        }
+        else if (phoneOwner == 8)
+        {
+            return LanguageService.GetResourceValue("Sister");
+        }
+        else if (phoneOwner == 9)
+        {
+            return LanguageService.GetResourceValue("Relative");
+        }
+        else if (phoneOwner == 10)
+        {
+            return LanguageService.GetResourceValue("Friend");
+        }
+        else 
+            return LanguageService.GetResourceValue("NotEntered");
+    }
+    /*
+    <ComboBoxItem x:Name="fatherPhone1"/>
+    <ComboBoxItem x:Name="motherPhone1"/>
+    <ComboBoxItem x:Name="brotherPhone1"/>
+    <ComboBoxItem x:Name="sisterPhone1"/>
+    <ComboBoxItem x:Name="relativePhone1"/>
+    <ComboBoxItem x:Name="friendPhone1"/>
+     */
+}
+
+public partial class Patient : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+    private void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
+    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+
+    public string LastName
+    {
+        get => lastName;
+        set
+        {
+            lastName = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(fullName));
+            OnPropertyChanged(nameof(fullNameAndAge));
+        }
     }
 
-    public partial class Patient : INotifyPropertyChanged
+    public string FirstName
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-
-        public string LastName
+        get => firstName;
+        set
         {
-            get => lastName;
-            set
-            {
-                lastName = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(fullName));
-                OnPropertyChanged(nameof(fullNameAndAge));
-            }
+            firstName = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(fullName));
+            OnPropertyChanged(nameof(fullNameAndAge));
         }
+    }
 
-        public string FirstName
+    public string fullName
+    {
+        get
         {
-            get => firstName;
-            set
-            {
-                firstName = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(fullName));
-                OnPropertyChanged(nameof(fullNameAndAge));
-            }
+            return $"{lastName.ToUpper()} {firstName}";
         }
+    }
 
-        public string fullName
+    public string fullNameAndAge
+    {
+        get
         {
-            get
-            {
-                return $"{lastName.ToUpper()} {firstName}";
-            }
+            return $"{lastName.ToUpper()} {firstName} ({GetAgeAsString(dateOfBirth)})";
         }
+    }
 
-        public string fullNameAndAge
+    public DateTimeOffset DateOfBirth
+    {
+        get => dateOfBirth;
+        set
         {
-            get
-            {
-                return $"{lastName.ToUpper()} {firstName} ({GetAgeAsString(dateOfBirth)})";
-            }
+            dateOfBirth = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(fullNameAndAge));
         }
+    }
 
-        public DateTimeOffset DateOfBirth
+    public int Gender
+    {
+        get => gender;
+        set
         {
-            get => dateOfBirth;
-            set
-            {
-                dateOfBirth = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(fullNameAndAge));
-            }
+            gender = value;
+            OnPropertyChanged();
         }
+    }
 
-        public int Gender
+    public string Address
+    {
+        get => address;
+        set
         {
-            get => gender;
-            set
-            {
-                gender = value;
-                OnPropertyChanged();
-            }
+            address = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string Address
+    public string State
+    {
+        get => state;
+        set
         {
-            get => address;
-            set
-            {
-                address = value;
-                OnPropertyChanged();
-            }
+            state = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string State
+    public string City
+    {
+        get => city;
+        set
         {
-            get => state;
-            set
-            {
-                state = value;
-                OnPropertyChanged();
-            }
+            city = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string City
+    public string PostalCode
+    {
+        get => postalCode;
+        set
         {
-            get => city;
-            set
-            {
-                city = value;
-                OnPropertyChanged();
-            }
+            postalCode = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string PostalCode
+    public string Phone1
+    {
+        get => phone1;
+        set
         {
-            get => postalCode;
-            set
-            {
-                postalCode = value;
-                OnPropertyChanged();
-            }
+            phone1 = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(phone1Details));
         }
+    }
 
-        public string Phone1
+    public int Phone1Owner
+    {
+        get => phone1Owner;
+        set
         {
-            get => phone1;
-            set
-            {
-                phone1 = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(phone1Details));
-            }
+            phone1Owner = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(phone1Details));
         }
+    }
 
-        public int Phone1Owner
+    public string phone1Details
+    {
+        get
         {
-            get => phone1Owner;
-            set
-            {
-                phone1Owner = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(phone1Details));
-            }
+            if (phone1 != "" && phone1 != null)
+                return $"{AddSpacesBetweenDigits(phone1)} ({GetOwner(phone1Owner)})";
+            else return "Non saisi";
         }
+    }
 
-        public string phone1Details
+    public string Phone2
+    {
+        get => phone2;
+        set
         {
-            get
-            {
-                if (phone1 != "" && phone1 != null)
-                    return $"{AddSpacesBetweenDigits(phone1)} ({GetOwner(phone1Owner)})";
-                else return "Non saisi";
-            }
+            phone2 = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(phone2Details));
         }
+    }
 
-        public string Phone2
+    public int Phone2Owner
+    {
+        get => phone2Owner;
+        set
         {
-            get => phone2;
-            set
-            {
-                phone2 = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(phone2Details));
-            }
+            phone2Owner = value;
+            OnPropertyChanged();
+            OnPropertyChanged(nameof(phone2Details));
         }
+    }
 
-        public int Phone2Owner
+    public string phone2Details
+    {
+        get
         {
-            get => phone2Owner;
-            set
-            {
-                phone2Owner = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(phone2Details));
-            }
+            if (phone2 != "" && phone2 != null)
+                return $"{AddSpacesBetweenDigits(phone2)} ({GetOwner(phone2Owner)})";
+            else return "Non saisi";
         }
+    }
 
-        public string phone2Details
+    public string Email
+    {
+        get => email;
+        set
         {
-            get
-            {
-                if (phone2 != "" && phone2 != null)
-                    return $"{AddSpacesBetweenDigits(phone2)} ({GetOwner(phone2Owner)})";
-                else return "Non saisi";
-            }
+            email = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string Email
+    public string MedicalHistory
+    {
+        get => medicalHistory;
+        set
         {
-            get => email;
-            set
-            {
-                email = value;
-                OnPropertyChanged();
-            }
+            medicalHistory = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string MedicalHistory
+    public string Allergies
+    {
+        get => allergies;
+        set
         {
-            get => medicalHistory;
-            set
-            {
-                medicalHistory = value;
-                OnPropertyChanged();
-            }
+            allergies = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string Allergies
+    public string CurrentMedications
+    {
+        get => currentMedications;
+        set
         {
-            get => allergies;
-            set
-            {
-                allergies = value;
-                OnPropertyChanged();
-            }
+            currentMedications = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string CurrentMedications
+    public string InsuranceProvider
+    {
+        get => insuranceProvider;
+        set
         {
-            get => currentMedications;
-            set
-            {
-                currentMedications = value;
-                OnPropertyChanged();
-            }
+            insuranceProvider = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string InsuranceProvider
+    public string InsuranceNumber
+    {
+        get => insuranceNumber;
+        set
         {
-            get => insuranceProvider;
-            set
-            {
-                insuranceProvider = value;
-                OnPropertyChanged();
-            }
+            insuranceNumber = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string InsuranceNumber
-        {
-            get => insuranceNumber;
-            set
-            {
-                insuranceNumber = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public Patient()
-        {
-            LastName = "";
-            FirstName = "";
-            DateOfBirth = DateTime.Now;
-            gender = -1;
-            Address = "";
-            State = "";
-            City = "";
-            PostalCode = "";
-            Phone1 = "";
-            Phone1Owner = -1;
-            Phone2 = "";
-            Phone2Owner = -1;
-            Email = "";
-            MedicalHistory = "";
-            Allergies = "";
-            CurrentMedications = "";
-            InsuranceProvider = "";
-            InsuranceNumber = "";
-        }
+    public Patient()
+    {
+        LastName = "";
+        FirstName = "";
+        DateOfBirth = DateTime.Now;
+        gender = -1;
+        Address = "";
+        State = "";
+        City = "";
+        PostalCode = "";
+        Phone1 = "";
+        Phone1Owner = -1;
+        Phone2 = "";
+        Phone2Owner = -1;
+        Email = "";
+        MedicalHistory = "";
+        Allergies = "";
+        CurrentMedications = "";
+        InsuranceProvider = "";
+        InsuranceNumber = "";
     }
 }

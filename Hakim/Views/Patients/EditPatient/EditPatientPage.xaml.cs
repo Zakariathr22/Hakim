@@ -1,175 +1,161 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using Hakim.Models;
 using Hakim.Services;
 
-namespace Hakim.Views.Patients.EditPatient
+namespace Hakim.Views.Patients.EditPatient;
+
+public sealed partial class EditPatientPage : Page
 {
-    public sealed partial class EditPatientPage : Page
+    Models.Patient patient;
+    ContentDialog dialog;
+    public EditPatientPage()
     {
-        Models.Patient patient;
-        ContentDialog dialog;
-        public EditPatientPage()
+        this.InitializeComponent();
+    }
+
+    public EditPatientPage(ContentDialog dialog, Models.Patient patient)
+    {
+        this.InitializeComponent();
+        this.InitializeLocation();
+        this.dialog = dialog;
+        this.patient = patient;
+        DataContext = patient;
+        Loaded += EdidPatientPage_Loaded;
+    }
+
+    private void EdidPatientPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        UpdateDialogButtonState();
+    }
+
+    private void GenderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        UpdateDialogButtonState();
+    }
+
+    private void Phone1OwnerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        UpdateDialogButtonState();
+    }
+
+    private void lastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateDialogButtonState();
+    }
+
+    private void firstNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateDialogButtonState();
+    }
+
+    private void phone1TextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        UpdateDialogButtonState();
+    }
+
+    private void UpdateDialogButtonState()
+    {
+        if (lastNameTextBox.Text != ""
+            && firstNameTextBox.Text != ""
+            && (GenderComboBox.SelectedIndex == 0 || GenderComboBox.SelectedIndex == 1)
+            && phone1TextBox.Text != ""
+            && (Phone1OwnerComboBox.SelectedIndex >= 0 && Phone1OwnerComboBox.SelectedIndex <= 10))
         {
-            this.InitializeComponent();
+            dialog.IsSecondaryButtonEnabled = true;
         }
+        else dialog.IsSecondaryButtonEnabled = false;
+    }
 
-        public EditPatientPage(ContentDialog dialog, Models.Patient patient)
-        {
-            this.InitializeComponent();
-            this.InitializeLocation();
-            this.dialog = dialog;
-            this.patient = patient;
-            DataContext = patient;
-            Loaded += EdidPatientPage_Loaded;
-        }
+    public void InitializeLocation()
+    {
+        GeneralInfoPivotItem.Header = LanguageService.GetResourceValue("General");
 
-        private void EdidPatientPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            UpdateDialogButtonState();
-        }
+        personalInformationSubtitle.Text = LanguageService.GetResourceValue("PersonalInformation");
 
-        private void GenderComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateDialogButtonState();
-        }
+        lastNameTextBox.Header = LanguageService.GetResourceValue("Lastname");
+        lastNameTextBox.PlaceholderText = LanguageService.GetResourceValue("Lastname(Required)");
+        firstNameTextBox.Header = LanguageService.GetResourceValue("Firstname");
+        firstNameTextBox.PlaceholderText = LanguageService.GetResourceValue("Firstname(Required)");
 
-        private void Phone1OwnerComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateDialogButtonState();
-        }
+        dateOfBirthPicker.Header = LanguageService.GetResourceValue("DateOfBirth");
 
-        private void lastNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateDialogButtonState();
-        }
+        GenderComboBox.Header = LanguageService.GetResourceValue("Gender");
+        GenderComboBox.PlaceholderText = LanguageService.GetResourceValue("Gender(Required)");
+        maleComboBoxItem.Content = LanguageService.GetResourceValue("Male");
+        femaleComboBoxItem.Content = LanguageService.GetResourceValue("Female");
 
-        private void firstNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateDialogButtonState();
-        }
+        contactSubtitle.Text = LanguageService.GetResourceValue("Contact");
 
-        private void phone1TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateDialogButtonState();
-        }
+        phone1TextBox.Header = LanguageService.GetResourceValue("PhoneNumber1");
+        phone1TextBox.PlaceholderText = LanguageService.GetResourceValue("PhoneNumber1(Required)");
 
-        private void UpdateDialogButtonState()
-        {
-            if (lastNameTextBox.Text != ""
-                && firstNameTextBox.Text != ""
-                && (GenderComboBox.SelectedIndex == 0 || GenderComboBox.SelectedIndex == 1)
-                && phone1TextBox.Text != ""
-                && (Phone1OwnerComboBox.SelectedIndex >= 0 && Phone1OwnerComboBox.SelectedIndex <= 10))
-            {
-                dialog.IsSecondaryButtonEnabled = true;
-            }
-            else dialog.IsSecondaryButtonEnabled = false;
-        }
+        Phone1OwnerComboBox.Header = LanguageService.GetResourceValue("Owner");
+        Phone1OwnerComboBox.PlaceholderText = LanguageService.GetResourceValue("Owner(Required)");
+        personalPhone1.Content = LanguageService.GetResourceValue("Personal");
+        husbandPhone1.Content = LanguageService.GetResourceValue("Husband");
+        wifePhone1.Content = LanguageService.GetResourceValue("Wife");
+        sonPhone1.Content = LanguageService.GetResourceValue("Son");
+        daughterPhone1.Content = LanguageService.GetResourceValue("Daughter");
+        fatherPhone1.Content = LanguageService.GetResourceValue("Father");
+        motherPhone1.Content = LanguageService.GetResourceValue("Mother");
+        brotherPhone1.Content = LanguageService.GetResourceValue("Brother");
+        sisterPhone1.Content = LanguageService.GetResourceValue("Sister");
+        relativePhone1.Content = LanguageService.GetResourceValue("Relative");
+        friendPhone1.Content = LanguageService.GetResourceValue("Friend");
 
-        public void InitializeLocation()
-        {
-            GeneralInfoPivotItem.Header = LanguageService.GetResourceValue("General");
+        phone2TextBox.Header = LanguageService.GetResourceValue("PhoneNumber2");
+        phone2TextBox.PlaceholderText = LanguageService.GetResourceValue("PhoneNumber2");
 
-            personalInformationSubtitle.Text = LanguageService.GetResourceValue("PersonalInformation");
+        Phone2OwnerComboBox.Header = LanguageService.GetResourceValue("Owner");
+        Phone2OwnerComboBox.PlaceholderText = LanguageService.GetResourceValue("Owner");
+        personalPhone2.Content = LanguageService.GetResourceValue("Personal");
+        husbandPhone2.Content = LanguageService.GetResourceValue("Husband");
+        wifePhone2.Content = LanguageService.GetResourceValue("Wife");
+        sonPhone2.Content = LanguageService.GetResourceValue("Son");
+        daughterPhone2.Content = LanguageService.GetResourceValue("Daughter");
+        fatherPhone2.Content = LanguageService.GetResourceValue("Father");
+        motherPhone2.Content = LanguageService.GetResourceValue("Mother");
+        brotherPhone2.Content = LanguageService.GetResourceValue("Brother");
+        sisterPhone2.Content = LanguageService.GetResourceValue("Sister");
+        relativePhone2.Content = LanguageService.GetResourceValue("Relative");
+        friendPhone2.Content = LanguageService.GetResourceValue("Friend");
 
-            lastNameTextBox.Header = LanguageService.GetResourceValue("Lastname");
-            lastNameTextBox.PlaceholderText = LanguageService.GetResourceValue("Lastname(Required)");
-            firstNameTextBox.Header = LanguageService.GetResourceValue("Firstname");
-            firstNameTextBox.PlaceholderText = LanguageService.GetResourceValue("Firstname(Required)");
+        emailTextBox.Header = LanguageService.GetResourceValue("Email");
+        emailTextBox.PlaceholderText = LanguageService.GetResourceValue("Email");
 
-            dateOfBirthPicker.Header = LanguageService.GetResourceValue("DateOfBirth");
+        addressInformationSubtitle.Text = LanguageService.GetResourceValue("AddressInformation");
 
-            GenderComboBox.Header = LanguageService.GetResourceValue("Gender");
-            GenderComboBox.PlaceholderText = LanguageService.GetResourceValue("Gender(Required)");
-            maleComboBoxItem.Content = LanguageService.GetResourceValue("Male");
-            femaleComboBoxItem.Content = LanguageService.GetResourceValue("Female");
+        AddressTextBox.Header = LanguageService.GetResourceValue("Address");
+        AddressTextBox.PlaceholderText = LanguageService.GetResourceValue("Address");
 
-            contactSubtitle.Text = LanguageService.GetResourceValue("Contact");
+        stateTextBox.Header = LanguageService.GetResourceValue("State");
+        stateTextBox.PlaceholderText = LanguageService.GetResourceValue("State");
 
-            phone1TextBox.Header = LanguageService.GetResourceValue("PhoneNumber1");
-            phone1TextBox.PlaceholderText = LanguageService.GetResourceValue("PhoneNumber1(Required)");
+        cityTextBox.Header = LanguageService.GetResourceValue("City");
+        cityTextBox.PlaceholderText = LanguageService.GetResourceValue("City");
 
-            Phone1OwnerComboBox.Header = LanguageService.GetResourceValue("Owner");
-            Phone1OwnerComboBox.PlaceholderText = LanguageService.GetResourceValue("Owner(Required)");
-            personalPhone1.Content = LanguageService.GetResourceValue("Personal");
-            husbandPhone1.Content = LanguageService.GetResourceValue("Husband");
-            wifePhone1.Content = LanguageService.GetResourceValue("Wife");
-            sonPhone1.Content = LanguageService.GetResourceValue("Son");
-            daughterPhone1.Content = LanguageService.GetResourceValue("Daughter");
-            fatherPhone1.Content = LanguageService.GetResourceValue("Father");
-            motherPhone1.Content = LanguageService.GetResourceValue("Mother");
-            brotherPhone1.Content = LanguageService.GetResourceValue("Brother");
-            sisterPhone1.Content = LanguageService.GetResourceValue("Sister");
-            relativePhone1.Content = LanguageService.GetResourceValue("Relative");
-            friendPhone1.Content = LanguageService.GetResourceValue("Friend");
+        zipCodeTextBox.Header = LanguageService.GetResourceValue("ZipCode");
+        zipCodeTextBox.PlaceholderText = LanguageService.GetResourceValue("ZipCode");
 
-            phone2TextBox.Header = LanguageService.GetResourceValue("PhoneNumber2");
-            phone2TextBox.PlaceholderText = LanguageService.GetResourceValue("PhoneNumber2");
+        insuranceInformationSubtitle.Text = LanguageService.GetResourceValue("InsuranceInformation");
 
-            Phone2OwnerComboBox.Header = LanguageService.GetResourceValue("Owner");
-            Phone2OwnerComboBox.PlaceholderText = LanguageService.GetResourceValue("Owner");
-            personalPhone2.Content = LanguageService.GetResourceValue("Personal");
-            husbandPhone2.Content = LanguageService.GetResourceValue("Husband");
-            wifePhone2.Content = LanguageService.GetResourceValue("Wife");
-            sonPhone2.Content = LanguageService.GetResourceValue("Son");
-            daughterPhone2.Content = LanguageService.GetResourceValue("Daughter");
-            fatherPhone2.Content = LanguageService.GetResourceValue("Father");
-            motherPhone2.Content = LanguageService.GetResourceValue("Mother");
-            brotherPhone2.Content = LanguageService.GetResourceValue("Brother");
-            sisterPhone2.Content = LanguageService.GetResourceValue("Sister");
-            relativePhone2.Content = LanguageService.GetResourceValue("Relative");
-            friendPhone2.Content = LanguageService.GetResourceValue("Friend");
+        insuranceProviderTextBox.Header = LanguageService.GetResourceValue("InsuranceProvider");
+        insuranceProviderTextBox.PlaceholderText = LanguageService.GetResourceValue("InsuranceProvider");
 
-            emailTextBox.Header = LanguageService.GetResourceValue("Email");
-            emailTextBox.PlaceholderText = LanguageService.GetResourceValue("Email");
+        insuranceNumberTextBox.Header = LanguageService.GetResourceValue("InsuranceNumber");
+        insuranceNumberTextBox.PlaceholderText = LanguageService.GetResourceValue("InsuranceNumber");
 
-            addressInformationSubtitle.Text = LanguageService.GetResourceValue("AddressInformation");
+        medicalInformationPivotItem.Header = LanguageService.GetResourceValue("MedicalInformation");
 
-            AddressTextBox.Header = LanguageService.GetResourceValue("Address");
-            AddressTextBox.PlaceholderText = LanguageService.GetResourceValue("Address");
+        medicalInformationSubtitle.Text = LanguageService.GetResourceValue("MedicalInformation");
 
-            stateTextBox.Header = LanguageService.GetResourceValue("State");
-            stateTextBox.PlaceholderText = LanguageService.GetResourceValue("State");
+        medicalHistoryTextBox.Header = LanguageService.GetResourceValue("MedicalHistory");
+        medicalHistoryTextBox.PlaceholderText = LanguageService.GetResourceValue("MedicalHistoryDetails");
 
-            cityTextBox.Header = LanguageService.GetResourceValue("City");
-            cityTextBox.PlaceholderText = LanguageService.GetResourceValue("City");
+        allergiesTextBox.Header = LanguageService.GetResourceValue("Allergies");
+        allergiesTextBox.PlaceholderText = LanguageService.GetResourceValue("AllergiesDetails");
 
-            zipCodeTextBox.Header = LanguageService.GetResourceValue("ZipCode");
-            zipCodeTextBox.PlaceholderText = LanguageService.GetResourceValue("ZipCode");
-
-            insuranceInformationSubtitle.Text = LanguageService.GetResourceValue("InsuranceInformation");
-
-            insuranceProviderTextBox.Header = LanguageService.GetResourceValue("InsuranceProvider");
-            insuranceProviderTextBox.PlaceholderText = LanguageService.GetResourceValue("InsuranceProvider");
-
-            insuranceNumberTextBox.Header = LanguageService.GetResourceValue("InsuranceNumber");
-            insuranceNumberTextBox.PlaceholderText = LanguageService.GetResourceValue("InsuranceNumber");
-
-            medicalInformationPivotItem.Header = LanguageService.GetResourceValue("MedicalInformation");
-
-            medicalInformationSubtitle.Text = LanguageService.GetResourceValue("MedicalInformation");
-
-            medicalHistoryTextBox.Header = LanguageService.GetResourceValue("MedicalHistory");
-            medicalHistoryTextBox.PlaceholderText = LanguageService.GetResourceValue("MedicalHistoryDetails");
-
-            allergiesTextBox.Header = LanguageService.GetResourceValue("Allergies");
-            allergiesTextBox.PlaceholderText = LanguageService.GetResourceValue("AllergiesDetails");
-
-            currentMedicationsTextBox.Header = LanguageService.GetResourceValue("CurrentMedications");
-            currentMedicationsTextBox.PlaceholderText = LanguageService.GetResourceValue("CurrentMedicationsDetails");
-        }
+        currentMedicationsTextBox.Header = LanguageService.GetResourceValue("CurrentMedications");
+        currentMedicationsTextBox.PlaceholderText = LanguageService.GetResourceValue("CurrentMedicationsDetails");
     }
 }

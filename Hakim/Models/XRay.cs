@@ -1,69 +1,64 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Hakim.Models
+namespace Hakim.Models;
+
+public partial class XRay : File
 {
-    public partial class XRay : File
+    private DateTimeOffset xray_date;
+    private TimeSpan xray_time;
+    private string radiologist;
+    private string diagnosis;
+    private int xray_type;
+}
+public partial class XRay
+{
+    public DateTimeOffset Xray_date
     {
-        private DateTimeOffset xray_date;
-        private TimeSpan xray_time;
-        private string radiologist;
-        private string diagnosis;
-        private int xray_type;
+        get => xray_date;
+        set
+        {
+            xray_date = value;
+            OnPropertyChanged();
+        }
     }
-    public partial class XRay
+
+    public TimeSpan XrayTime
     {
-        public DateTimeOffset Xray_date
+        get => xray_time;
+        set
         {
-            get => xray_date;
-            set
-            {
-                xray_date = value;
-                OnPropertyChanged();
-            }
+            xray_time = value;
+            OnPropertyChanged();
         }
+    }
 
-        public TimeSpan XrayTime
+    public string Radiologist
+    {
+        get => radiologist;
+        set
         {
-            get => xray_time;
-            set
-            {
-                xray_time = value;
-                OnPropertyChanged();
-            }
+            radiologist = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string Radiologist
+    public string Diagnosis
+    {
+        get => diagnosis;
+        set
         {
-            get => radiologist;
-            set
-            {
-                radiologist = value;
-                OnPropertyChanged();
-            }
+            diagnosis = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string Diagnosis
+    public int Xray_type
+    {
+        get => xray_type;
+        set
         {
-            get => diagnosis;
-            set
-            {
-                diagnosis = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int Xray_type
-        {
-            get => xray_type;
-            set
-            {
-                xray_type = value;
-                OnPropertyChanged();
-            }
+            xray_type = value;
+            OnPropertyChanged();
         }
     }
 }

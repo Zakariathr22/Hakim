@@ -1,77 +1,72 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Hakim.Models
+namespace Hakim.Models;
+
+public partial class Appointment
 {
-    public partial class Appointment
+    public int id { set; get; }
+    private Patient patient;
+    private DateTime appointmentDate;
+    private TimeSpan appointmentTime;
+    private string purpose;
+    private string notes;
+}
+
+public partial class Appointment : INotifyPropertyChanged
+{
+    public event PropertyChangedEventHandler PropertyChanged;
+    public void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
+    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
+
+    public Patient Patient
     {
-        public int id { set; get; }
-        private Patient patient;
-        private DateTime appointmentDate;
-        private TimeSpan appointmentTime;
-        private string purpose;
-        private string notes;
+        get => patient;
+        set
+        {
+            patient = value;
+            OnPropertyChanged();
+        }
     }
 
-    public partial class Appointment : INotifyPropertyChanged
+    public DateTime AppointmentDate
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string PropertyName = "") =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
-
-        public Patient Patient
+        get => appointmentDate;
+        set
         {
-            get => patient;
-            set
-            {
-                patient = value;
-                OnPropertyChanged();
-            }
+            appointmentDate = value;
+            OnPropertyChanged();
         }
+    }
 
-        public DateTime AppointmentDate
+    public TimeSpan AppointmentTime
+    {
+        get => appointmentTime;
+        set
         {
-            get => appointmentDate;
-            set
-            {
-                appointmentDate = value;
-                OnPropertyChanged();
-            }
+            appointmentTime = value;
+            OnPropertyChanged();
         }
+    }
 
-        public TimeSpan AppointmentTime
+    public string Purpose
+    {
+        get => purpose;
+        set
         {
-            get => appointmentTime;
-            set
-            {
-                appointmentTime = value;
-                OnPropertyChanged();
-            }
+            purpose = value;
+            OnPropertyChanged();
         }
+    }
 
-        public string Purpose
+    public string Notes
+    {
+        get => notes;
+        set
         {
-            get => purpose;
-            set
-            {
-                purpose = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Notes
-        {
-            get => notes;
-            set
-            {
-                notes = value;
-                OnPropertyChanged();
-            }
+            notes = value;
+            OnPropertyChanged();
         }
     }
 }

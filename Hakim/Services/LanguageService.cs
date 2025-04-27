@@ -1,32 +1,30 @@
 ﻿using Microsoft.Windows.ApplicationModel.Resources;
 using Windows.Globalization;
 
+namespace Hakim.Services;
 
-namespace Hakim.Services
+public static class LanguageService
 {
-    public static class LanguageService
+    private static ResourceMap resourceMap;
+    private static ResourceManager context;
+    private static ResourceContext resourceContext;
+
+    public static void SetLanguage(string language)
     {
-        private static ResourceMap resourceMap;
-        private static ResourceManager context;
-        private static ResourceContext resourceContext;
+        // Set the primary language override
+        ApplicationLanguages.PrimaryLanguageOverride = language;
 
-        public static void SetLanguage(string language)
-        {
-            // Set the primary language override
-            ApplicationLanguages.PrimaryLanguageOverride = language;
+        // Create a ResourceContext and ResourceManager in WinUI 3
+        context = new ResourceManager();
+        resourceMap = context.MainResourceMap.GetSubtree("Resources");
 
-            // Create a ResourceContext and ResourceManager in WinUI 3
-            context = new ResourceManager();
-            resourceMap = context.MainResourceMap.GetSubtree("Resources");
+        // Apply the new language to the context
+        resourceContext = context.CreateResourceContext();
+        resourceContext.QualifierValues["Language"] = language;
+    }
 
-            // Apply the new language to the context
-            resourceContext = context.CreateResourceContext();
-            resourceContext.QualifierValues["Language"] = language;
-        }
-
-        public static string GetResourceValue(string name)
-        {
-            return resourceMap.GetValue(name, resourceContext).ValueAsString;
-        }
+    public static string GetResourceValue(string name)
+    {
+        return resourceMap.GetValue(name, resourceContext).ValueAsString;
     }
 }

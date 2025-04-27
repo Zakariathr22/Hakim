@@ -1,35 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Hakim.Models;
 
-namespace Hakim.Models
+public partial class MedicalConsultation : File
 {
-    public partial class MedicalConsultation : File
+    private string notes;
+    private string prescription;
+}
+public partial class MedicalConsultation 
+{
+    public string Notes
     {
-        private string notes;
-        private string prescription;
-    }
-    public partial class MedicalConsultation 
-    {
-        public string Notes
+        get => notes;
+        set
         {
-            get => notes;
-            set
-            {
-                notes = value;
-                OnPropertyChanged();
-            }
+            notes = value;
+            OnPropertyChanged();
         }
-        public string Prescription
+    }
+    public string Prescription
+    {
+        get => prescription;
+        set
         {
-            get => prescription;
-            set
-            {
-                prescription = value;
-                OnPropertyChanged();
-            }
+            prescription = value;
+            OnPropertyChanged();
         }
     }
 }

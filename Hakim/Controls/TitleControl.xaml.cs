@@ -1,25 +1,24 @@
 using Microsoft.UI.Xaml.Controls;
 
-namespace Hakim.Controls
+namespace Hakim.Controls;
+
+public sealed partial class TitleControl : UserControl
 {
-    public sealed partial class TitleControl : UserControl
+    public TitleControl()
     {
-        public TitleControl()
-        {
-            this.InitializeComponent();
-        }
+        this.InitializeComponent();
+    }
 
-        public TitleControl(string title)
-        {
-            this.InitializeComponent();
-            Title.Text = title;
-        }
+    public TitleControl(string title)
+    {
+        this.InitializeComponent();
+        Title.Text = title;
+    }
 
-        public TitleControl(string title, FontIcon icon)
-        {
-            this.InitializeComponent();
-            Title.Text = title;
-            this.icon.Glyph = icon.Glyph;
-        }
+    public TitleControl(string title, FontIcon icon)
+    {
+        this.InitializeComponent();
+        Title.Text = title;
+        this.icon.Glyph = icon.Glyph;
     }
 }

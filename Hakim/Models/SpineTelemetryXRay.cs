@@ -1,70 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Hakim.Models;
 
-namespace Hakim.Models
+public partial class SpineTelemetryXRay : XRay
 {
-    public partial class SpineTelemetryXRay : XRay
+    private int vls;
+    private int vli;
+    private int cobb;
+    private int bend;
+    private int red;
+}
+
+public partial class SpineTelemetryXRay
+{
+    public int VLS
     {
-        private int vls;
-        private int vli;
-        private int cobb;
-        private int bend;
-        private int red;
+        get => vls;
+        set
+        {
+            vls = value;
+            OnPropertyChanged();
+        }
     }
 
-    public partial class SpineTelemetryXRay
+    public int VLI
     {
-        public int VLS
+        get => vli;
+        set
         {
-            get => vls;
-            set
-            {
-                vls = value;
-                OnPropertyChanged();
-            }
+            vli = value;
+            OnPropertyChanged();
         }
+    }
 
-        public int VLI
+    public int COBB
+    {
+        get => cobb;
+        set
         {
-            get => vli;
-            set
-            {
-                vli = value;
-                OnPropertyChanged();
-            }
+            cobb = value;
+            OnPropertyChanged();
         }
+    }
 
-        public int COBB
+    public int BEND
+    {
+        get => bend;
+        set
         {
-            get => cobb;
-            set
-            {
-                cobb = value;
-                OnPropertyChanged();
-            }
+            bend = value;
+            OnPropertyChanged();
         }
+    }
 
-        public int BEND
+    public int RED
+    {
+        get => red;
+        set
         {
-            get => bend;
-            set
-            {
-                bend = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int RED
-        {
-            get => red;
-            set
-            {
-                red = value;
-                OnPropertyChanged();
-            }
+            red = value;
+            OnPropertyChanged();
         }
     }
 }
