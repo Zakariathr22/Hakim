@@ -7,11 +7,14 @@ using System.Collections.Generic;
 
 namespace Hakim.Controls;
 
+/// <summary>
+/// Custom calendar view that shows appointment density using background color.
+/// </summary>
 public sealed partial class CustomCalendarView : UserControl
 {
     public static readonly DependencyProperty AppointmentsDataProperty =
         DependencyProperty.Register(
-            "AppointmentsData",
+            nameof(AppointmentsData),
             typeof(Dictionary<DateTime, int>),
             typeof(CustomCalendarView),
             new PropertyMetadata(new Dictionary<DateTime, int>(), OnAppointmentsDataChanged));
@@ -24,23 +27,25 @@ public sealed partial class CustomCalendarView : UserControl
 
     public static readonly DependencyProperty SelectedDateProperty =
         DependencyProperty.Register(
-        "SelectedDate",         // The name of the property
-        typeof(DateTime),       // The type of the property
-        typeof(CustomCalendarDatePicker), // The owner of the property
-        new PropertyMetadata(DateTime.Now)); // Default value
+            nameof(SelectedDate),
+            typeof(DateTime),
+            typeof(CustomCalendarView),
+            new PropertyMetadata(DateTime.Now));
 
     public DateTime SelectedDate
     {
         get => (DateTime)GetValue(SelectedDateProperty);
-        set
-        {
-            SetValue(SelectedDateProperty, value);
-        }
+        set => SetValue(SelectedDateProperty, value);
     }
+
+    private static readonly Windows.UI.Color DensityColor = Windows.UI.Color.FromArgb(127, 0, 120, 212);
+    private static readonly string Today = DateTime.Now.Date.ToString("d");
+    private static readonly string Yesterday = DateTime.Now.Date.AddDays(-1).ToString("d");
+    private static readonly string Tomorrow = DateTime.Now.Date.AddDays(1).ToString("d");
 
     public CustomCalendarView()
     {
-        this.InitializeComponent();
+        InitializeComponent();
         SelectedDate = DateTime.Now;
         calendarView.SelectedDates.Add(SelectedDate.Date);
         calendarView.SelectedDatesChanged += CalendarView_SelectedDatesChanged;
@@ -50,7 +55,7 @@ public sealed partial class CustomCalendarView : UserControl
 
     private void CalendarView_SelectedDatesChanged(CalendarView sender, CalendarViewSelectedDatesChangedEventArgs args)
     {
-        if (calendarView.SelectedDates.Count != 0)
+        if (calendarView.SelectedDates.Count > 0)
         {
             SelectedDate = calendarView.SelectedDates[0].DateTime;
         }
@@ -60,125 +65,99 @@ public sealed partial class CustomCalendarView : UserControl
         }
     }
 
-    private void CalendarView_ActualThemeChanged(FrameworkElement sender, object args)
-    {
-        AddToolTipToAllDays();
-    }
+    private void CalendarView_ActualThemeChanged(FrameworkElement sender, object args) => ApplyToolTipsAndColors();
 
     private void CalendarView_CalendarViewDayItemChanging(CalendarView sender, CalendarViewDayItemChangingEventArgs args)
     {
         if (args.Phase == 0)
         {
-            // Ensure we clear any previous content from reused items
-            RemoveExistingToolTip(args.Item);
-
-            // Register for the next phase
+            ToolTipService.SetToolTip(args.Item, null);
             args.RegisterUpdateCallback(CalendarView_CalendarViewDayItemChanging);
         }
-        else if (args.Phase == 1)
+        else if (args.Phase == 1 && AppointmentsData.TryGetValue(args.Item.Date.Date, out int count) && count > 0)
         {
-            DateTime date = args.Item.Date.Date;
-
-            // Get the number of appointments for the current date
-            if (AppointmentsData.TryGetValue(date, out int appointmentCount) && appointmentCount > 0)
-            {
-                // Add the appointment count ToolTip
-                AddToolTip(args.Item, appointmentCount);
-            }
+            AddToolTip(args.Item, count);
         }
     }
 
-    private void AddToolTip(CalendarViewDayItem dayItem, int count)
+    private void AddToolTip(CalendarViewDayItem item, int count)
     {
-        ToolTip toolTip;
+        string dateStr = item.Date.Date.ToString("d");
+        string dayLabel = dateStr == Yesterday ? "Yesterday" :
+                          dateStr == Today ? "Today" :
+                          dateStr == Tomorrow ? "Tomorrow" :
+                          dateStr;
 
-        string dayLabel = dayItem.Date.Date == DateTime.Now.Date.AddDays(-1) ? "Yesterday" :
-                          dayItem.Date.Date == DateTime.Now.Date ? "Today" :
-                          dayItem.Date.Date == DateTime.Now.Date.AddDays(1) ? "Tomorrow" :
-                          dayItem.Date.Date.ToString("d");
+        string tooltipText = $"{count} {(count == 1 ? "Appointment" : "Appointments")}\r\n{dayLabel}";
 
-        string appointmentLabel = count == 1 ? "Appointment" : "Appointments";
-
-        toolTip = new ToolTip
+        ToolTipService.SetToolTip(item, new ToolTip
         {
-            Content = $"{count} {appointmentLabel}\r\n{dayLabel}",
+            Content = tooltipText,
             Placement = PlacementMode.Mouse
-        };
+        });
 
-        // Associate the ToolTip with the CalendarViewDayItem
-        ToolTipService.SetToolTip(dayItem, toolTip);
-        if (dayItem.Date.Date != DateTime.Now.Date)
+        if (dateStr != Today)
         {
-            Border criticalBackground = new Border();
-            if (count < 6)
-                criticalBackground = (Border)this.Resources["FewAppointmentsBackground"];
-            else if (count >= 6 && count < 11) 
-                criticalBackground = (Border)this.Resources["AverageAppointmentsBackground"];            
-            else
-                criticalBackground = (Border)this.Resources["ManyAppointmentsBackground"];
-            dayItem.Background = criticalBackground.Background;
-        } 
+            item.SetDensityColors(GetDensityColors(count));
+        }
     }
 
-    private void RemoveExistingToolTip(CalendarViewDayItem dayItem)
+    private static IEnumerable<Windows.UI.Color> GetDensityColors(int count)
     {
-        // Clear any existing ToolTip from the CalendarViewDayItem
-        ToolTipService.SetToolTip(dayItem, null);
+        int cappedCount = Math.Min(10, count);
+        Windows.UI.Color[] colors = new Windows.UI.Color[cappedCount];
+        for (int i = 0; i < cappedCount; i++)
+        {
+            colors[i] = DensityColor;
+        }
+        return colors;
     }
 
-    private void AddToolTipToAllDays()
+    private void ApplyToolTipsAndColors()
     {
         foreach (var item in FindVisualChildren<CalendarViewDayItem>(calendarView))
         {
-            DateTime date = item.Date.Date;
-            if (AppointmentsData.TryGetValue(date, out int appointmentCount) && appointmentCount > 0)
+            var date = item.Date.Date;
+            if (AppointmentsData.TryGetValue(date, out int count) && count > 0)
             {
-                // Remove any existing appointment count to prevent duplicates
-                RemoveExistingToolTip(item);
-
-                // Add the appointment count InfoBadge
-                AddToolTip(item, appointmentCount);
+                ToolTipService.SetToolTip(item, null);
+                AddToolTip(item, count);
             }
             else
             {
-                // Ensure no residual InfoBadge exists for dates without appointments
-                RemoveExistingToolTip(item);
+                ToolTipService.SetToolTip(item, null);
             }
         }
     }
 
-    // Helper method to recursively find children of a specific type
-    private IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+    private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
     {
         if (depObj == null) yield break;
 
-        for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-        {
-            DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
-            if (child is T t)
-            {
-                yield return t;
-            }
+        var queue = new Queue<DependencyObject>();
+        queue.Enqueue(depObj);
 
-            foreach (var childOfChild in FindVisualChildren<T>(child))
+        while (queue.Count > 0)
+        {
+            var current = queue.Dequeue();
+            int childCount = VisualTreeHelper.GetChildrenCount(current);
+            for (int i = 0; i < childCount; i++)
             {
-                yield return childOfChild;
+                var child = VisualTreeHelper.GetChild(current, i);
+                if (child is T match)
+                {
+                    yield return match;
+                }
+                queue.Enqueue(child);
             }
         }
     }
 
     private static void OnAppointmentsDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
-        var control = (CustomCalendarView)d;
-        var newData = (Dictionary<DateTime, int>)e.NewValue;
-
-        // Handle the new data, e.g., refresh the UI
-        control.RefreshCalendarView();
-    }
-
-    private void RefreshCalendarView()
-    {
-        // Update the CalendarView based on the new dictionary data
-        AddToolTipToAllDays();
+        if (d is CustomCalendarView control && e.NewValue is Dictionary<DateTime, int>)
+        {
+            control.ApplyToolTipsAndColors();
+        }
     }
 }

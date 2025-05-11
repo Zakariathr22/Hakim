@@ -8,19 +8,9 @@
              mc:Ignorable="d"
              ScrollViewer.HorizontalScrollMode="Disabled"
              ScrollViewer.VerticalScrollBarVisibility="Disabled">
-    <UserControl.Resources>
-        <Border x:Key="ManyAppointmentsBackground"
-                Background="{ThemeResource SystemFillColorCriticalBackgroundBrush}" />
-        <Border x:Key="AverageAppointmentsBackground"
-                Background="{ThemeResource SystemFillColorCautionBackgroundBrush}" />
-        <Border x:Key="FewAppointmentsBackground"
-                Background="{ThemeResource SystemFillColorSuccessBackgroundBrush}" />
-    </UserControl.Resources>
     <CalendarView x:Name="calendarView"
-                  BorderThickness="0"
                   NumberOfWeeksInView="5"
                   Margin="0"
-                  Background="Transparent"
                   SelectionMode="Single"
                   ScrollViewer.HorizontalScrollMode="Disabled"
                   ScrollViewer.VerticalScrollBarVisibility="Disabled" />
