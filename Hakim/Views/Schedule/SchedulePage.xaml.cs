@@ -6,15 +6,21 @@ namespace Hakim.Views.Schedule;
 
 public sealed partial class SchedulePage : Page
 {
+    public Dictionary<DateTime, int> AppointmentsData { get; set; }
+    public DateTime CurrentDate { get; set; }
+
     public SchedulePage()
     {
         this.InitializeComponent();
-        CustomCalendarDatePicker.AppointmentsData = new Dictionary<DateTime, int>
+
+        var today = DateTime.Now.Date;
+        var totalDays = (15 * 365);
+        AppointmentsData = new Dictionary<DateTime, int>(totalDays);
+
+        for (int i = -3650; i <= 1825; i++) // 10 years back, 5 years forward
         {
-            { new DateTime(2024, 9, 1), 5 },
-            { new DateTime(2024, 9, 3), 15 },
-            { new DateTime(2024, 9, 4), 1 },
-            { new DateTime(2024, 9, 5), 25 },
-        };
+            var date = today.AddDays(i);
+            AppointmentsData[date] = Random.Shared.Next(0, 25); // density between 0 and 24
+        }
     }
 }
