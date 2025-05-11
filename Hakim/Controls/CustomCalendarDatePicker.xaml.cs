@@ -141,23 +141,17 @@ public sealed partial class CustomCalendarDatePicker : UserControl
         ToolTipService.SetToolTip(dayItem, toolTip);
         if (dayItem.Date.Date != DateTime.Now.Date)
         {
-            Border criticalBackground = new Border();
-            if (count < 11)
-                dayItem.SetDensityColors(GetColors(Windows.UI.Color.FromArgb(48, 0, 255, 0)));
-            else if (count >= 11 && count < 20)
-                dayItem.SetDensityColors(GetColors(Windows.UI.Color.FromArgb(48, 255, 128, 32)));
-            else
-                dayItem.SetDensityColors(GetColors(Windows.UI.Color.FromArgb(48, 255, 0, 0)));
-            dayItem.Background = criticalBackground.Background;
+            dayItem.SetDensityColors(GetColors(Windows.UI.Color.FromArgb(127, 0, 120, 212), count));
         }          
     }
 
-    private IEnumerable<Windows.UI.Color> GetColors(Windows.UI.Color color)
+    private IEnumerable<Windows.UI.Color> GetColors(Windows.UI.Color color, int count)
     {
         var colors = new List<Windows.UI.Color>();
 
         for (int i = 0; i < 10; i++)
         {
+            if (i+1 > count) break;
             colors.Add(color);
         }
 
