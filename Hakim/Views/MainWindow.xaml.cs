@@ -28,6 +28,11 @@ public sealed partial class MainWindow : Window
         AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
 
+        OverlappedPresenter presenter = OverlappedPresenter.Create();
+        presenter.PreferredMinimumWidth = 532;
+        presenter.PreferredMinimumHeight = 500;
+        AppWindow.SetPresenter(presenter);
+
         CenterWindow();
         viewModel.SetAppTheme(this);
         viewModel.SetAppBackDrop(this);

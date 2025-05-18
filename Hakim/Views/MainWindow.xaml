@@ -26,18 +26,18 @@
                   Subtitle="Preview"
                   Height="48"
                   PaneToggleRequested="TitleBar_PaneToggleRequested">
-            <TitleBar.LeftContent>
+            <TitleBar.LeftHeader>
                 <ImageIcon Source="/Assets/Logo.png" Width="20" Margin="12,0,0,0"/>
-            </TitleBar.LeftContent>
-            <TitleBar.CenterContent>
+            </TitleBar.LeftHeader>
+            <TitleBar.Content>
                 <AutoSuggestBox x:Name="searchAutoSuggestBox"
                                 PlaceholderText="Search"
                                 QueryIcon="Find"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Stretch"
                                 Width="288" />
-            </TitleBar.CenterContent>
-            <TitleBar.RightContent>
+            </TitleBar.Content>
+            <TitleBar.RightHeader>
                 <PersonPicture Height="28"
                                Width="28"
                                Tapped="PersonPicture_Tapped">
@@ -45,7 +45,7 @@
                         <ToolTip Content="{Binding User.profitionalName, Mode=TwoWay}" />
                     </ToolTipService.ToolTip>
                 </PersonPicture>
-            </TitleBar.RightContent>
+            </TitleBar.RightHeader>
         </TitleBar>
 
         <NavigationView Grid.Row="1"
