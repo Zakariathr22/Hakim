@@ -54,12 +54,13 @@
                             <!-- Bind your items here -->
                             <ItemsControl.Items>
                                 <Button Width="200"
-                                        Height="224"
+                                        Height="200"
                                         Margin="24 0 0 0"
                                         Padding="16 24 16 16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                         CornerRadius="12"
-                                        HorizontalContentAlignment="Stretch">
+                                        HorizontalContentAlignment="Stretch"
+                                        VerticalContentAlignment="Top">
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
@@ -67,7 +68,7 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Image Width="64"
+                                        <Image Width="48"
                                                Source="/Assets/Icons/Today.png"
                                                HorizontalAlignment="Left" />
                                         <TextBlock Grid.Row="1"
@@ -75,7 +76,7 @@
                                                    Style="{ThemeResource BodyStrongTextBlockStyle}" />
                                         <TextBlock Grid.Row="2"
                                                    Text="5"
-                                                   Style="{ThemeResource TitleLargeTextBlockStyle}"
+                                                   Style="{ThemeResource TitleTextBlockStyle}"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Stretch"
                                                    TextAlignment="Center" />
@@ -89,7 +90,7 @@
                                 </Button>
 
                                 <Button Width="200"
-                                        Height="224"
+                                        Height="200"
                                         Margin="16 0 0 0"
                                         Padding="16 24 16 16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
@@ -103,7 +104,7 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Image Width="64"
+                                        <Image Width="48"
                                                Source="/Assets/Icons/Plus 1 Day.png"
                                                HorizontalAlignment="Left" />
                                         <TextBlock Grid.Row="1"
@@ -111,7 +112,7 @@
                                                    Style="{ThemeResource BodyStrongTextBlockStyle}" />
                                         <TextBlock Grid.Row="2"
                                                    Text="26"
-                                                   Style="{ThemeResource TitleLargeTextBlockStyle}"
+                                                   Style="{ThemeResource TitleTextBlockStyle}"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Stretch"
                                                    TextAlignment="Center" />
@@ -125,7 +126,7 @@
                                 </Button>
 
                                 <Button Width="200"
-                                        Height="224"
+                                        Height="200"
                                         Margin="16 0 0 0"
                                         Padding="16 24 16 16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
@@ -139,7 +140,7 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Image Width="64"
+                                        <Image Width="48"
                                                Source="/Assets/Icons/Appointment.png"
                                                HorizontalAlignment="Left" />
                                         <TextBlock Grid.Row="1"
@@ -147,7 +148,7 @@
                                                    Style="{ThemeResource BodyStrongTextBlockStyle}" />
                                         <TextBlock Grid.Row="2"
                                                    Text="8"
-                                                   Style="{ThemeResource TitleLargeTextBlockStyle}"
+                                                   Style="{ThemeResource TitleTextBlockStyle}"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Stretch"
                                                    TextAlignment="Center" />
@@ -161,7 +162,7 @@
                                 </Button>
 
                                 <Button Width="200"
-                                        Height="224"
+                                        Height="200"
                                         Margin="16 0 0 0"
                                         Padding="16 24 16 16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
@@ -175,15 +176,16 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Image Width="64"
+                                        <Image Width="48"
                                                Source="/Assets/Icons/Clients.png"
                                                HorizontalAlignment="Left" />
                                         <TextBlock Grid.Row="1"
                                                    Text="Total Number of Patients"
-                                                   Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                                                   Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                                   MinHeight="38" />
                                         <TextBlock Grid.Row="2"
                                                    Text="8"
-                                                   Style="{ThemeResource TitleLargeTextBlockStyle}"
+                                                   Style="{ThemeResource TitleTextBlockStyle}"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Stretch"
                                                    TextAlignment="Center" />
@@ -197,7 +199,7 @@
                                 </Button>
 
                                 <Button Width="200"
-                                        Height="224"
+                                        Height="200"
                                         Margin="16 0 0 0"
                                         Padding="16 24 16 16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
@@ -211,15 +213,16 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <Image Width="64"
+                                        <Image Width="48"
                                                Source="/Assets/Icons/Documents.png"
                                                HorizontalAlignment="Left" />
                                         <TextBlock Grid.Row="1"
                                                    Text="Total Number of Files"
-                                                   Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                                                   Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                                   MinHeight="38" />
                                         <TextBlock Grid.Row="2"
                                                    Text="20"
-                                                   Style="{ThemeResource TitleLargeTextBlockStyle}"
+                                                   Style="{ThemeResource TitleTextBlockStyle}"
                                                    VerticalAlignment="Center"
                                                    HorizontalAlignment="Stretch"
                                                    TextAlignment="Center" />
@@ -233,12 +236,12 @@
                                 </Button>
 
                                 <Border Width="2"
-                                        Height="224"
+                                        Height="200"
                                         Margin="24 0 0 0"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}" />
 
                                 <Button Width="200"
-                                        Height="224"
+                                        Height="200"
                                         Margin="24 0 0 0"
                                         Padding="16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
@@ -251,7 +254,7 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
-                                        <Image Width="64"
+                                        <Image Width="48"
                                                Source="/Assets/Logo.png"
                                                HorizontalAlignment="Left" />
                                         <TextBlock Grid.Row="1"
@@ -265,7 +268,7 @@
                                 </Button>
 
                                 <Button Width="200"
-                                        Height="224"
+                                        Height="200"
                                         Margin="16 0 0 0"
                                         Padding="16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
@@ -278,7 +281,7 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
-                                        <Image Width="64"
+                                        <Image Width="48"
                                                Source="/Assets/Icons/Gears.png"
                                                HorizontalAlignment="Left" />
                                         <TextBlock Grid.Row="1"
@@ -292,7 +295,7 @@
                                 </Button>
 
                                 <Button Width="200"
-                                        Height="224"
+                                        Height="200"
                                         Margin="16 0 0 0"
                                         Padding="16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
@@ -305,7 +308,7 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
-                                        <Image Width="64"
+                                        <Image Width="48"
                                                Source="/Assets/Icons/Management.png"
                                                HorizontalAlignment="Left" />
                                         <TextBlock Grid.Row="1"
@@ -319,7 +322,7 @@
                                 </Button>
 
                                 <Button Width="200"
-                                        Height="224"
+                                        Height="200"
                                         Margin="16 0 0 0"
                                         Padding="16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
@@ -332,7 +335,7 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
-                                        <Image Width="64"
+                                        <Image Width="48"
                                                Source="/Assets/Icons/EditCalendar.png"
                                                HorizontalAlignment="Left" />
                                         <TextBlock Grid.Row="1"
@@ -346,7 +349,7 @@
                                 </Button>
 
                                 <Button Width="200"
-                                        Height="224"
+                                        Height="200"
                                         Margin="16 0 24 0"
                                         Padding="16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
@@ -359,7 +362,7 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
-                                        <Image Width="64"
+                                        <Image Width="48"
                                                Source="/Assets/Icons/Edit File.png"
                                                HorizontalAlignment="Left" />
                                         <TextBlock Grid.Row="1"
