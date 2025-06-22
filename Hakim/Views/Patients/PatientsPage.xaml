@@ -78,7 +78,7 @@
         <ScrollView Grid.Row="1">
             <ItemsRepeater x:Name="itemsRepeater"
                            x:FieldModifier="public"
-                           Margin="24 16"
+                           Margin="36 24"
                            HorizontalAlignment="Stretch">
                 <ItemsRepeater.ItemTemplate>
                     <DataTemplate>

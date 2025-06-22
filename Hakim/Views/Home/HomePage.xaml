@@ -27,11 +27,11 @@
                     </Grid.RowDefinitions>
                     <TextBlock Text="Welcom to Hakim 0.8 (Pre Release)"
                                Style="{ThemeResource TitleTextBlockStyle}"
-                               Margin="24 64 0 0" />
+                               Margin="36 64 0 0" />
                     <TextBlock Grid.Row="1"
                                Text="Revolutionize Patient Care with Effortless Organization"
                                Style="{ThemeResource SubtitleTextBlockStyle}"
-                               Margin="24 0 0 0"
+                               Margin="36 0 0 0"
                                Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                 </Grid>
                 <Grid Grid.Row="1">
@@ -55,7 +55,7 @@
                             <ItemsControl.Items>
                                 <Button Width="200"
                                         Height="200"
-                                        Margin="24 0 0 0"
+                                        Margin="36 0 0 0"
                                         Padding="16 24 16 16"
                                         Background="{ThemeResource AcrylicBackgroundFillColorBaseBrush}"
                                         CornerRadius="12"
@@ -398,7 +398,7 @@
                 </Grid>
             </Grid>
             <StackPanel Grid.Row="1"
-                        Margin="24">
+                        Margin="36 24">
                 <TextBlock Text="Appointments of Today"
                            Style="{ThemeResource SubtitleTextBlockStyle}" />
                 <TextBlock Text="29/08/2024"
