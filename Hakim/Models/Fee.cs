@@ -9,8 +9,8 @@ public partial class Fee
     public int Id { get; set; }
     private Patient patient;
     private DateTime visitDate;
-    private double amount;
-    private double paidAmount;
+    private decimal amount;
+    private decimal paidAmount;
     private string notes;
 }
 
@@ -40,7 +40,7 @@ public partial class Fee : INotifyPropertyChanged
         }
     }
 
-    public double Amount
+    public decimal Amount
     {
         get => amount;
         set
@@ -51,7 +51,7 @@ public partial class Fee : INotifyPropertyChanged
         }
     }
 
-    public double PaidAmount
+    public decimal PaidAmount
     {
         get => paidAmount;
         set

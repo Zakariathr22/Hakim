@@ -123,5 +123,16 @@ public static class DataAccessService
                     red INTEGER,
                     FOREIGN KEY (xray_id) REFERENCES XRay (file_id) ON DELETE CASCADE
                 )", "BackSpineTelemetryXRay");
+
+        ExecuteNonQuery(@"
+                CREATE TABLE IF NOT EXISTS Fee (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    patient_id INTEGER,
+                    visit_date DATETIME,
+                    amount DECIMAL(10, 2),
+                    paid_amount DECIMAL(10, 2),
+                    notes TEXT,
+                    FOREIGN KEY (patient_id) REFERENCES Patient(id) ON DELETE CASCADE
+                )", "Fee");
     }
 }
