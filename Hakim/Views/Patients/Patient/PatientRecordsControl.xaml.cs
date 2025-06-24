@@ -46,9 +46,12 @@ public sealed partial class PatientRecordsControl : UserControl
         docsImage.Visibility = Visibility.Visible;
         appointmentsImageD.Visibility = Visibility.Visible;
         appointmentsImage.Visibility = Visibility.Collapsed;
+        feesImageD.Visibility = Visibility.Visible;
+        feesImage.Visibility = Visibility.Collapsed;
 
         FilesHeaderTextBlock.Style = App.Current.Resources["SelectedTextBlockStyle"] as Style;
         AppointmentsHeaderTextBlock.Style = App.Current.Resources["UnselectedTextBlockStyle"] as Style;
+        FeesTextBlock.Style = App.Current.Resources["UnselectedTextBlockStyle"] as Style;
     }
 
     private void AppointmentsHeader_Tapped(object sender, TappedRoutedEventArgs e)
@@ -65,9 +68,34 @@ public sealed partial class PatientRecordsControl : UserControl
         docsImage.Visibility = Visibility.Collapsed;
         appointmentsImageD.Visibility = Visibility.Collapsed;
         appointmentsImage.Visibility = Visibility.Visible;
+        feesImageD.Visibility = Visibility.Visible;
+        feesImage.Visibility = Visibility.Collapsed;
 
         AppointmentsHeaderTextBlock.Style = App.Current.Resources["SelectedTextBlockStyle"] as Style;
         FilesHeaderTextBlock.Style = App.Current.Resources["UnselectedTextBlockStyle"] as Style;
+        FeesTextBlock.Style = App.Current.Resources["UnselectedTextBlockStyle"] as Style;
+    }
+
+    private void FeesHeader_Tapped(object sender, TappedRoutedEventArgs e)
+    {
+        ParentPage.AddFileButton.Visibility = Visibility.Collapsed;
+        ParentPage.SortFilesButton.Visibility = Visibility.Collapsed;
+        ParentPage.FilterFilesButton.Visibility = Visibility.Collapsed;
+        ParentPage.SearchAutoSuggestBox.Visibility = Visibility.Collapsed;
+        ParentPage.AddAppointmentButton.Visibility = Visibility.Collapsed;
+        ParentPage.SortAppintmentsButton.Visibility = Visibility.Collapsed;
+        ParentPage.FilterAppointmentsButton.Visibility = Visibility.Collapsed;
+
+        docsImageD.Visibility = Visibility.Visible;
+        docsImage.Visibility = Visibility.Collapsed;
+        appointmentsImageD.Visibility = Visibility.Visible;
+        appointmentsImage.Visibility = Visibility.Collapsed;
+        feesImageD.Visibility = Visibility.Collapsed;
+        feesImage.Visibility = Visibility.Visible;
+
+        AppointmentsHeaderTextBlock.Style = App.Current.Resources["UnselectedTextBlockStyle"] as Style;
+        FilesHeaderTextBlock.Style = App.Current.Resources["UnselectedTextBlockStyle"] as Style;
+        FeesTextBlock.Style = App.Current.Resources["SelectedTextBlockStyle"] as Style;
     }
 
     public void UpdateFilesDisplayVisibility(Models.Patient patient)

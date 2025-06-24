@@ -193,5 +193,24 @@
                 </Grid>
             </StackPanel>
         </PivotItem>
+        <PivotItem Margin="0">
+            <PivotItem.Header>
+                <PivotHeaderItem x:Name="FeesHeader"
+                                 Tapped="FeesHeader_Tapped">
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="feesImageD"
+                               Height="20"
+                               Source="/Assets/Icons/FeesDisabled.png" />
+                        <Image x:Name="feesImage"
+                               Height="20"
+                               Source="/Assets/Icons/Fees.png"
+                               Visibility="Collapsed" />
+                        <TextBlock x:Name="FeesTextBlock"
+                                   Margin="8 0 0 0"
+                                   Style="{StaticResource BodyStrongTextBlockStyle}">Honoraires</TextBlock>
+                    </StackPanel>
+                </PivotHeaderItem>
+            </PivotItem.Header>
+        </PivotItem>
     </Pivot>
 </UserControl>
