@@ -1,6 +1,7 @@
 ﻿using Hakim.Services;
 using Hakim.ViewModels;
 using Hakim.Views.Settings;
+using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -15,7 +16,6 @@ namespace Hakim;
 public sealed partial class MainWindow : Window
 {
     private MainViewModel viewModel = new();
-    private bool settingsNavigationItemIsSelected = false;
 
     public MainWindow()
     {
@@ -43,7 +43,11 @@ public sealed partial class MainWindow : Window
         mainPanel.ActualThemeChanged += (_, _) => UpdateTitleBarColor();
     }
 
-    private void UpdateTitleBarColor() => AppWindow.TitleBar.ButtonForegroundColor = mainPanel.ActualTheme == ElementTheme.Dark ? Color.FromArgb(0, 255, 255, 255) : Color.FromArgb(0, 0, 0, 0);
+    private void UpdateTitleBarColor() 
+    {
+        AppWindow.TitleBar.ButtonForegroundColor = mainPanel.ActualTheme == ElementTheme.Dark ? Colors.White : Colors.Black;
+        AppWindow.TitleBar.ButtonHoverForegroundColor = mainPanel.ActualTheme == ElementTheme.Dark ? Color.FromArgb(0, 192, 192, 192) : Color.FromArgb(0, 127, 127, 127);
+    }
 
     private void CenterWindow()
     {
